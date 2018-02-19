@@ -49,7 +49,7 @@
     },
     {
       "name": "web",
-      "image": "agilesix/adpq2018:latest",
+      "image": "agilesix/adpq2018_backend:latest",
       "essential": true,
       "memory": 300,
       "mountPoints": [
@@ -83,7 +83,7 @@
     },
     {
       "name": "bg_worker",
-      "image": "agilesix/adpq2018:latest",
+      "image": "agilesix/adpq2018_backend:latest",
       "essential": true,
       "memory": 200,
       "mountPoints": [
