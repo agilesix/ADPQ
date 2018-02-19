@@ -1,0 +1,17 @@
+version: '2'
+volumes:
+    node_modules:
+services:
+  angular-dev:
+    image: angular-development
+    build:
+      context: .
+      dockerfile: Dockerfile.development
+    environment: &app_server_enviroment_vars
+      NODE_ENV: development
+    volumes:
+      - .:/ng-app
+      - node_modules:/ng-app/node_modules
+    ports:
+      - "8080:4200"
+    command: ["npm", "start", "--", "--host", "0.0.0.0", "--poll", "500"]

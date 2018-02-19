@@ -1,0 +1,16 @@
+#Angular Development Environment
+
+FROM circleci/node:9.5-browsers
+
+RUN sudo mkdir /ng-app
+COPY package.json ./ng-app/
+
+RUN npm set progress=false && npm config set depth 0 && npm cache clean --force
+
+#fix infinite loop during install
+RUN sudo npm install -g @angular/cli --unsafe
+RUN sudo chown -R circleci:circleci /ng-app
+
+WORKDIR ./ng-app
+
+RUN npm install

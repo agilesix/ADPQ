@@ -1,0 +1,72 @@
+version: '2'
+services:
+  db_dev:
+    image: postgres:9.5.1
+    environment:
+      POSTGRES_PASSWORD: mysecretlocalpassword
+      POSTGRES_USER: postgres
+      POSTGRES_DB: web_app
+  sharedbox:
+    image: busybox
+    volumes:
+      - /var/www
+      - /var/run
+  redis_dev:
+    image: redis
+  proxy:
+    image: web_nginx_development
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.development # we mean the ./nginx/Dockerfile.development
+    volumes:
+      - ./logs:/var/log
+    volumes_from:
+      - sharedbox
+    ports:
+      - "8000:80"
+    depends_on:
+      - web
+  web:
+    image: web_app_development
+    build:
+      context: ./web
+      dockerfile: Dockerfile.development
+    environment: &app_server_enviroment_vars
+      CONTAINER_ROLE: 'app_server'
+      RAILS_ENV: development
+      MAX_THREADS: 2
+      WEB_CONCURRENCY: 1
+      SECRET_KEY_BASE: 19d07059ab81ff584bd8fd7be03ed765c63f5f4c3518d05f39b41c7152134e294b2f09cbf5d925045caab0ef6475862fc42c8e6b35d63e353a1472057e90f8c4
+
+      REL_DATABASE_PASSWORD: mysecretlocalpassword
+      REL_DATABASE_USERNAME: postgres
+      REL_DATABASE_DATABASE: web_app
+      REL_DATABASE_HOST: db_dev
+      REL_DATABASE_PORT: 5432
+
+      REDIS_HOST: redis_dev
+      REDIS_PORT: 6379
+      REDIS_DB_ID: 0
+    volumes:
+      - ./logs:/app/log
+      - ./web:/app
+    volumes_from:
+      - sharedbox
+    links:
+      - db_dev
+      - redis_dev
+  bg_worker:
+    image: web_app_development
+    environment:
+      <<: *app_server_enviroment_vars
+      CONTAINER_ROLE: 'bg_worker'
+      MAX_THREADS: 5  # Sidekiq threads,  watch out so you don't run out of DB connection pool
+    volumes:
+      - ./logs:/app/log
+    volumes_from:
+      - sharedbox
+    links:
+      - db_dev
+      - redis_dev
+    depends_on:
+      - web

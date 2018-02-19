@@ -1,0 +1,59 @@
+version: 2
+jobs:
+  build:
+    parallelism: 1
+    working_directory: ~/frontend
+    docker:
+      - image: circleci/node:9.5-browsers
+        environment:
+          NODE_ENV: test
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Install dependencies
+          command: npm install
+
+      - run:
+          name: Run Jasmine and Protractor unit tests
+          command: npm test
+
+  deploy:
+      docker:
+        - image: docker:17.05.0-ce-git
+      working_directory: ~/lightning-angular-docker
+      steps:
+        - checkout
+        - run:
+            name: Install dependencies
+            command: |
+              apk add --no-cache py-pip=9.0.0-r1
+              pip install awsebcli
+        - run:
+            branches:
+              only: master
+            name: Build production and push image (only master)
+            command: |
+              docker login -u $DOCKER_USER -p $DOCKER_PASS
+              docker-compose build
+              docker-compose push
+        - run:
+            name: Set up for deploy
+            command: |
+              eb status
+        - run:
+            name: Deploy
+            command: |
+              eb deploy --verbose
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master

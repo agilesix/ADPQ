@@ -1,0 +1,11 @@
+version: '2'
+services:
+  angular:
+    image: agilesix/adpq2018_frontend:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment: &app_server_enviroment_vars
+      NODE_ENV: production
+    ports:
+      - "8080:80"

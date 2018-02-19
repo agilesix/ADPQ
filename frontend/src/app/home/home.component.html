@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col s12">
+    <h1 class="h1 main title" >
+      Welcome to ADPQ2018!
+    </h1>
+    <div *ngIf="!(authService.userSignedIn$ | async)">
+      <p>Log in or register to see some s e c r e t information.</p>
+    </div>
+    <div *ngIf="(authService.userSignedIn$ | async)">
+      <p>42.</p>
+    </div>
+  </div>
+</div>

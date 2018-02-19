@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  timeout: 5000
+  pool: <%= (ENV['MAX_THREADS'] || 5).to_i * 2 %>
+  host: <%= ENV['REL_DATABASE_HOST'] %>
+  port: <%= ENV['REL_DATABASE_PORT'] %>
+  username: <%= ENV['REL_DATABASE_USERNAME'] %>
+  password: <%= ENV['REL_DATABASE_PASSWORD'] %>
+
+production:
+  <<: *default
+  adapter: <%= ENV['DB_ADAPTER'] ||= 'postgresql' %>
+  database: <%= ENV['REL_DATABASE_DATABASE'] %>
+
+development:
+  <<: *default
+  database: <%= ENV['REL_DATABASE_DATABASE'] %>
+
+test:
+  <<: *default
+  database: <%= ENV['REL_DATABASE_DATABASE'] %>

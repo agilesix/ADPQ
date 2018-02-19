@@ -1,0 +1,17 @@
+FROM circleci/ruby:2.3-browsers
+
+RUN gem install bundler
+
+# Preinstall gems. This will ensure that Gem Cache wont drop on code change
+WORKDIR /tmp
+ADD ./Gemfile Gemfile
+ADD ./Gemfile.lock Gemfile.lock
+
+RUN (bundle check || bundle install --full-index)
+
+ADD ./ /app
+RUN sudo chown -R circleci:circleci /app/
+WORKDIR /app
+RUN (bundle check || bundle install --full-index)
+
+CMD bash script/start_server.sh

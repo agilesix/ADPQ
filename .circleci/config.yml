@@ -1,0 +1,134 @@
+#full stack changed
+version: 2
+jobs:
+  build_backend:
+    parallelism: 1
+    working_directory: ~/backend
+    docker:
+      - image: docker:17.05.0-ce-git
+        environment:
+          RAILS_ENV: test
+    steps:
+      - checkout
+      - setup_remote_docker
+
+      - run:
+          name: Install dependencies
+          command: |
+            apk add --no-cache \
+              py-pip=9.0.0-r1
+            pip install \
+              docker-compose==1.12.0 \
+              awscli==1.11.76
+
+      - run:
+          name: Start container
+          command: |
+            cd backend
+            docker-compose -f docker-compose-test.yml build
+
+      - run:
+          name: Run Rails unit tests
+          command: |
+            cd backend
+            docker-compose -f docker-compose-test.yml run web bundle exec rails db:migrate
+            docker-compose -f docker-compose-test.yml run web bundle exec rspec
+
+  deploy_backend:
+    docker:
+      - image: docker:17.05.0-ce-git
+    working_directory: ~/backend
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Install dependencies
+          command: |
+            apk add --no-cache py-pip=9.0.0-r1
+            pip install docker-compose
+            pip install awsebcli
+
+      - run:
+          name: Build production and push image (only master)
+          command: |
+            cd backend
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose build
+            docker-compose push
+
+      - run:
+          name: Deploy
+          command: |
+            cd backend
+            eb deploy --verbose
+
+  build_frontend:
+    parallelism: 1
+    working_directory: ~/frontend
+    docker:
+      - image: circleci/node:9.5-browsers
+        environment:
+          NODE_ENV: test
+    steps:
+      - checkout
+      - setup_remote_docker
+
+      - run:
+          name: Install dependencies
+          command: |
+            cd frontend
+            npm install
+
+      - run:
+          name: Run Jasmine and Protractor unit tests
+          command: |
+            cd frontend
+            npm test
+
+  deploy_frontend:
+      docker:
+        - image: docker:17.05.0-ce-git
+      working_directory: ~/frontend
+      steps:
+        - checkout
+        - setup_remote_docker
+
+        - run:
+            name: Install dependencies
+            command: |
+              apk add --no-cache py-pip=9.0.0-r1
+              pip install docker-compose
+              pip install awsebcli
+
+        - run:
+            name: Build production and push image (only master)
+            command: |
+              cd frontend
+              docker login -u $DOCKER_USER -p $DOCKER_PASS
+              docker-compose build
+              docker-compose push
+
+        - run:
+            name: Deploy
+            command: |
+              cd frontend
+              eb deploy --verbose
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build_backend
+      - build_frontend
+      - deploy_backend:
+          requires:
+            - build_backend
+          filters:
+            branches:
+              only: master
+      - deploy_frontend:
+          requires:
+            - build_frontend
+          filters:
+            branches:
+              only: master
