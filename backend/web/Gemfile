@@ -89,5 +89,5 @@ gem 'rack-cors', :require => 'rack/cors'
 
 gem 'activerecord-nulldb-adapter'
 
-gem 'swagger-docs'
+gem 'rswag'
 
