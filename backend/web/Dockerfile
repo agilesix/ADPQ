@@ -16,6 +16,6 @@ WORKDIR /app
 RUN (bundle check || bundle install --without development test)
 
 ARG DEVISE_SECRET_KEY
-RUN DB_ADAPTER=nulldb RAILS_ENV=production rake assets:precompile
+RUN DB_ADAPTER=nulldb RAILS_ENV=production bundle exec rake assets:precompile
 
 CMD bash script/start_server.sh

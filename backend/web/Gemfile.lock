@@ -271,10 +271,6 @@ GEM
     rspec-steps (2.1.1)
       rspec (>= 3.0, < 3.99)
     rspec-support (3.7.1)
-    rswag (1.5.2)
-      rswag-api (= 1.5.2)
-      rswag-specs (= 1.5.2)
-      rswag-ui (= 1.5.2)
     rswag-api (1.5.2)
       railties (>= 3.1, < 6.0)
     rswag-specs (1.5.2)
@@ -399,7 +395,9 @@ DEPENDENCIES
   rspec
   rspec-rails
   rspec-steps
-  rswag
+  rswag-api
+  rswag-specs
+  rswag-ui
   sass-rails (~> 5.0)
   selenium-webdriver
   shoulda
