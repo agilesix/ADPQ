@@ -3,21 +3,23 @@ variable region {
 }
 
 variable project {
-  default = "noproject"
-}
-variable environment {
-  default = "default"
+  default = "project"
 }
 
-variable domain {}
+variable environment {
+  default = "staging"
+}
 
 variable bucket_name {
   description = "The name of the S3 bucket to create."
 }
 
-variable duplicate-content-penalty-secret {}
+variable aliases {
+  type    = "list"
+  default = []
+}
+
 variable deployer {}
-variable acm-certificate-arn {}
 
 variable routing_rules {
   default = ""
@@ -31,11 +33,6 @@ variable "tags" {
   type        = "map"
   description = "Optional Tags"
   default     = {}
-}
-
-variable "trusted_signers" {
-  type = "list"
-  default = []
 }
 
 variable "forward-query-string" {

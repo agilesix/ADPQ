@@ -13,7 +13,6 @@ data "template_file" "bucket_policy" {
 
   vars {
     bucket = "${var.bucket_name}"
-    secret = "${var.duplicate-content-penalty-secret}"
   }
 }
 
@@ -28,7 +27,7 @@ resource "aws_s3_bucket" "website_bucket" {
     routing_rules  = "${var.routing_rules}"
   }
 
-  tags = "${merge("${var.tags}",map("Name", "${var.project}-${var.environment}-${var.domain}", "Environment", "${var.environment}", "Project", "${var.project}"))}"
+  tags = "${merge("${var.tags}",map("Name", "${var.project}-${var.environment}", "Environment", "${var.environment}", "Project", "${var.project}"))}"
 }
 
 ## Configure the credentials and access to the bucket for a deployment user
@@ -68,17 +67,14 @@ resource "aws_cloudfront_distribution" "website_cdn" {
     domain_name = "${aws_s3_bucket.website_bucket.website_endpoint}"
 
     custom_origin_config {
-      origin_protocol_policy = "http-only"
+      origin_protocol_policy = "https-only"
       http_port              = "80"
       https_port             = "443"
       origin_ssl_protocols   = ["TLSv1"]
     }
-
-    custom_header {
-      name  = "User-Agent"
-      value = "${var.duplicate-content-penalty-secret}"
-    }
   }
+
+  aliases = ["${var.aliases}"]
 
   default_root_object = "index.html"
 
@@ -114,7 +110,5 @@ resource "aws_cloudfront_distribution" "website_cdn" {
     cloudfront_default_certificate = true
   }
 
-  aliases = ["${var.domain}"]
-
-  tags = "${merge("${var.tags}",map("Name", "${var.project}-${var.environment}-${var.domain}", "Environment", "${var.environment}", "Project", "${var.project}"))}"
+  tags = "${merge("${var.tags}",map("Name", "${var.project}-${var.environment}", "Environment", "${var.environment}", "Project", "${var.project}"))}"
 }
