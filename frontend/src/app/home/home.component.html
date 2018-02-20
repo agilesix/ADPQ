@@ -1,13 +1,11 @@
-<div class="row">
-  <div class="col s12">
-    <h1 class="h1 main title" >
-      Welcome to ADPQ2018!
-    </h1>
+<div class="usa-grid">
+  <div class="usa-width-one-half">
+    <h3>Welcome to ADPQ 2018</h3>
     <div *ngIf="!(authService.userSignedIn$ | async)">
       <p>Log in or register to see some s e c r e t information.</p>
     </div>
     <div *ngIf="(authService.userSignedIn$ | async)">
-      <p>42.</p>
+      <p>You are signed in.</p>
     </div>
   </div>
 </div>

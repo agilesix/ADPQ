@@ -20,13 +20,15 @@
       "prefix": "app",
       "styles": [
         "styles.scss",
+        "../node_modules/uswds/dist/css/uswds.min.css",
         "../node_modules/materialize-css/dist/css/materialize.css",
         "../node_modules/font-awesome/css/font-awesome.css"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",
         "../node_modules/hammerjs/hammer.js",
-        "../node_modules/materialize-css/dist/js/materialize.js"
+        "../node_modules/materialize-css/dist/js/materialize.js",
+        "../node_modules/uswds/dist/js/uswds.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
