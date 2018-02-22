@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+html > body {
+    font-size: 12pt;
+}
+
+header.usa-header {
+    z-index: 1000;
+}
+
+.usa-nav, nav.usa-nav {
+    background-color: transparent;
+    box-shadow: none;
+    z-index: 1001;
+}
