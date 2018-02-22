@@ -1,26 +1,63 @@
 <!--Navigation-->
-<div class="navbar-fixed">
-
-    <nav  role="navigation">
-
-      <div class="nav-wrapper blue ">
-        <a [routerLink]="['']">
-          <img width="120" alt="Agile Six Logo" src="/assets/images/Agile6Logo.png">
-        </a>
-        <ul class="right hide-on-med-and-down">
-
-          <li *ngIf="!(authService.userSignedIn$ | async)"> <a (click)="presentAuthDialog()" >Login</a></li>
-          <li *ngIf="!(authService.userSignedIn$ | async)"> <a (click)="presentAuthDialog('register')">Register</a></li>
-
-          <li *ngIf="(authService.userSignedIn$ | async)"><a [routerLink]="['/profile']">Profile</a></li>
-          <li *ngIf="(authService.userSignedIn$ | async)"><a (click)="logOut()">Logout</a></li>
-
-        </ul>
-
-      </div>
-
-  </nav>
-
-</div>
-
+<a class="usa-skipnav" href="#main-content">Skip to main content</a>
+<header class="usa-header usa-header-basic" role="banner">
+    <div class="usa-nav-container">
+        <div class="usa-navbar">
+            <div class="usa-logo" id="basic-logo">
+                <em class="usa-logo-text">
+                    <a [routerLink]="['']" href="/" title="Home" aria-label="Home">a2</a>
+                </em>
+            </div>
+            <button class="usa-menu-btn">Menu</button>
+        </div>
+        <nav role="navigation" class="usa-nav">
+            <button class="usa-nav-close">
+                <img src="/assets/img/close.svg" alt="close">
+            </button>
+            <ul class="usa-nav-primary usa-accordion">
+<!--
+                <li>
+                    <button class="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="extended-nav-section-one">
+                        <span>Section title</span>
+                    </button>
+                    <ul id="extended-nav-section-one" class="usa-nav-submenu">
+                        <li>
+                            <a href="#">Subsection title</a>
+                        </li>
+                        <li>
+                            <a href="#">Subsection title</a>
+                        </li>
+                        <li>
+                            <a href="#">Subsection title</a>
+                        </li>
+                    </ul>
+                </li>
+-->
+                <li *ngIf="!(authService.userSignedIn$ | async)">
+                    <a class="usa-nav-link" (click)="presentAuthDialog()" >Login</a>
+                </li>
+                <li *ngIf="!(authService.userSignedIn$ | async)">
+                    <a class="usa-nav-link" (click)="presentAuthDialog('register')">Register</a>
+                </li>
+                <li *ngIf="(authService.userSignedIn$ | async)">
+                    <a class="usa-nav-link" [routerLink]="['/profile']">Profile</a>
+                </li>
+                <li *ngIf="(authService.userSignedIn$ | async)">
+                    <a class="usa-nav-link" (click)="logOut()">Logout</a>
+                </li>
+            </ul>
+<!--
+            <form class="usa-search usa-search-small">
+                <div role="search">
+                    <label class="usa-sr-only" for="basic-search-field-small">Search small</label>
+                    <input id="basic-search-field-small" type="search" name="search">
+                    <button type="submit">
+                        <span class="usa-sr-only">Search</span>
+                    </button>
+                </div>
+            </form>
+-->
+        </nav>
+    </div>
+</header>
 <app-auth-dialog #authDialog ></app-auth-dialog>

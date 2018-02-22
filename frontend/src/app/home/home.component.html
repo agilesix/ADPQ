@@ -1,11 +1,16 @@
-<div class="usa-grid">
-  <div class="usa-width-one-half">
-    <h3>Welcome to ADPQ 2018</h3>
-    <div *ngIf="!(authService.userSignedIn$ | async)">
-      <p>Log in or register to see some s e c r e t information.</p>
-    </div>
-    <div *ngIf="(authService.userSignedIn$ | async)">
-      <p>You are signed in.</p>
-    </div>
-  </div>
+<div>
+    <main id="main-content">
+        <div class="usa-grid">
+            <div class="usa-hero-callout usa-section-dark">
+                <h2 *ngIf="(authService.userSignedIn$ | async)">
+                    <span class="usa-hero-callout-alt">Hi,</span>
+                    You are signed in.
+                </h2>
+                <h2 *ngIf="!(authService.userSignedIn$ | async)">
+                    <span class="usa-hero-callout-alt">Hi,</span>
+                    Login or register
+                </h2>
+            </div>
+        </div>
+    </main>
 </div>
