@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
   token_auth_config: {
-    apiBase: 'https://lightning-rails-docker.us-west-2.elasticbeanstalk.com'
+    apiBase: 'https://prod-agilesix-adpq-2018-backend.us-west-2.elasticbeanstalk.com/'
   }
 };
