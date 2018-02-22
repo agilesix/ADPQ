@@ -34,13 +34,16 @@
                 </li>
 -->
                 <li *ngIf="!(authService.userSignedIn$ | async)">
-                    <a class="usa-nav-link" (click)="presentAuthDialog()" >Login</a>
-                </li>
-                <li *ngIf="!(authService.userSignedIn$ | async)">
-                    <a class="usa-nav-link" (click)="presentAuthDialog('register')">Register</a>
+                    <a class="usa-nav-link" [routerLink]="['/login']">Login</a>
                 </li>
                 <li *ngIf="(authService.userSignedIn$ | async)">
                     <a class="usa-nav-link" [routerLink]="['/profile']">Profile</a>
+                </li>
+                <li *ngIf="(authService.userSignedIn$ | async)">
+                    <a class="usa-nav-link" [routerLink]="['/step']">Step</a>
+                </li>
+                <li *ngIf="(authService.userSignedIn$ | async)">
+                    <a class="usa-nav-link" [routerLink]="['/article']">Article</a>
                 </li>
                 <li *ngIf="(authService.userSignedIn$ | async)">
                     <a class="usa-nav-link" (click)="logOut()">Logout</a>
@@ -60,4 +63,3 @@
         </nav>
     </div>
 </header>
-<app-auth-dialog #authDialog ></app-auth-dialog>

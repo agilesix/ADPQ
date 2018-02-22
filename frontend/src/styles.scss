@@ -1,5 +1,9 @@
-html > body {
-    font-size: 12pt;
+body, label {
+    font-size: 1.7rem;
+}
+
+.usa-form input {
+    font-size: 1.7rem !important;
 }
 
 header.usa-header {
@@ -10,4 +14,16 @@ header.usa-header {
     background-color: transparent;
     box-shadow: none;
     z-index: 1001;
+}
+
+.usa-form {
+    max-width: none;
+}
+
+.modal .modal-content {
+    padding: 60px;
+}
+
+a {
+    cursor: pointer;
 }
