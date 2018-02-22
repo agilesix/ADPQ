@@ -1,7 +1,9 @@
 ### STAGE 1: Build ###
-
 # We label our stage as 'builder'
 FROM node:9.5-alpine as builder
+
+ARG environment=prod
+RUN echo $environment
 
 COPY package.json ./
 
@@ -14,8 +16,8 @@ WORKDIR /ng-app
 
 COPY . .
 
-## Build the angular app in production mode and store the artifacts in dist folder
-RUN $(npm bin)/ng build --prod --build-optimizer
+# Build the angular app in production mode and store the artifacts in dist folder
+RUN $(npm bin)/ng build --prod --build-optimizer --environment $environment
 
 
 ### STAGE 2: Setup ###
