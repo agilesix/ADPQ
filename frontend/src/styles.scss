@@ -2,6 +2,10 @@ body, label {
     font-size: 1.7rem;
 }
 
+.usa-form input {
+    font-size: 1.7rem !important;
+}
+
 header.usa-header {
     z-index: 1000;
 }
@@ -18,4 +22,8 @@ header.usa-header {
 
 .modal .modal-content {
     padding: 60px;
+}
+
+a {
+    cursor: pointer;
 }
