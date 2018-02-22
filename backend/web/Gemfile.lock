@@ -248,6 +248,7 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
+    rolify (5.2.0)
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
       rspec-expectations (~> 3.7.0)
@@ -392,6 +393,7 @@ DEPENDENCIES
   rainbow
   redis
   redis-rails
+  rolify
   rspec
   rspec-rails
   rspec-steps

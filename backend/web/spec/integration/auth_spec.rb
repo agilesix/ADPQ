@@ -1,6 +1,6 @@
 require 'swagger_helper'
 
-describe 'Authentication API' do
+describe 'Authentication API', type: :request do
 
   path '/auth' do
     post 'create' do
