@@ -93,3 +93,4 @@ gem 'activerecord-nulldb-adapter'
 gem 'rswag-api'
 gem 'rswag-ui'
 
+gem 'rolify'
