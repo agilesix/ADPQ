@@ -2,6 +2,9 @@ require 'swagger_helper'
 
 describe 'Authentication API', type: :request do
 
+  #skip for rspec
+  before { pending }
+
   path '/auth' do
     post 'create' do
       tags 'User Registration'
