@@ -10,10 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180222071935) do
+ActiveRecord::Schema.define(version: 20180222213744) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "file_attachments", force: :cascade do |t|
+    t.boolean  "approved"
+    t.string   "filename"
+    t.integer  "user_id"
+    t.integer  "category_id"
+    t.integer  "file_type_id"
+    t.integer  "knowledge_article_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "attached_file_file_name"
+    t.string   "attached_file_content_type"
+    t.integer  "attached_file_file_size"
+    t.datetime "attached_file_updated_at"
+    t.index ["category_id"], name: "index_file_attachments_on_category_id", using: :btree
+    t.index ["file_type_id"], name: "index_file_attachments_on_file_type_id", using: :btree
+    t.index ["knowledge_article_id"], name: "index_file_attachments_on_knowledge_article_id", using: :btree
+    t.index ["user_id"], name: "index_file_attachments_on_user_id", using: :btree
+  end
+
+  create_table "file_types", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "knowledge_articles", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "user_id"
+    t.boolean  "published",  default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["user_id"], name: "index_knowledge_articles_on_user_id", using: :btree
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -62,4 +105,44 @@ ActiveRecord::Schema.define(version: 20180222071935) do
     t.index ["user_id"], name: "index_users_roles_on_user_id", using: :btree
   end
 
+  create_table "workflow_step_knowledge_articles", force: :cascade do |t|
+    t.integer "workflow_step_id"
+    t.integer "knowledge_article_id"
+    t.index ["knowledge_article_id"], name: "index_workflow_step_knowledge_articles_on_knowledge_article_id", using: :btree
+    t.index ["workflow_step_id", "knowledge_article_id"], name: "index_on_wfs_ka_id", using: :btree
+    t.index ["workflow_step_id"], name: "index_workflow_step_knowledge_articles_on_workflow_step_id", using: :btree
+  end
+
+  create_table "workflow_steps", force: :cascade do |t|
+    t.integer  "workflow_id"
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["workflow_id"], name: "index_workflow_steps_on_workflow_id", using: :btree
+  end
+
+  create_table "workflow_types", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "workflows", force: :cascade do |t|
+    t.integer  "workflow_type_id"
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["workflow_type_id"], name: "index_workflows_on_workflow_type_id", using: :btree
+  end
+
+  add_foreign_key "file_attachments", "categories"
+  add_foreign_key "file_attachments", "file_types"
+  add_foreign_key "file_attachments", "knowledge_articles"
+  add_foreign_key "file_attachments", "users"
+  add_foreign_key "knowledge_articles", "users"
+  add_foreign_key "workflow_steps", "workflows"
+  add_foreign_key "workflows", "workflow_types"
 end
