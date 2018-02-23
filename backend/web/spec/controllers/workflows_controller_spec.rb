@@ -30,6 +30,8 @@ RSpec.describe WorkflowsController, type: :controller do
     @auth_headers = user.create_new_auth_token
     request.headers.merge!(@auth_headers)
     @workflow_type = FactoryBot.create(:workflow_type)
+    Role.create! name: 'Admin'
+    user.add_role 'Admin'
   end
 
   # This should return the minimal set of attributes required to create a valid

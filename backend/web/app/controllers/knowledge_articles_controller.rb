@@ -1,6 +1,7 @@
 class KnowledgeArticlesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_knowledge_article, only: [:show, :edit, :update, :destroy]
+  before_action :current_user_is_admin?, only: [:create, :update, :destroy]
 
   # GET /knowledge_articles
   # GET /knowledge_articles.json

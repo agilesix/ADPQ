@@ -28,6 +28,8 @@ RSpec.describe FileTypesController, type: :controller do
     user = FactoryBot.create(:user)
     @auth_headers = user.create_new_auth_token
     request.headers.merge!(@auth_headers)
+    Role.create! name: 'Admin'
+    user.add_role 'Admin'
   end
   # This should return the minimal set of attributes required to create a valid
   # FileType. As you add validations to FileType, be sure to

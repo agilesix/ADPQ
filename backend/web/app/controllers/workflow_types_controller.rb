@@ -1,6 +1,7 @@
 class WorkflowTypesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_workflow_type, only: [:show, :edit, :update, :destroy]
+  before_action :current_user_is_admin?, only: [:create, :update, :destroy]
 
   # GET /workflow_types
   # GET /workflow_types.json
