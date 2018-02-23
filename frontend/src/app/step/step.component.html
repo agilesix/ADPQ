@@ -16,22 +16,32 @@
             <li>Inspiring: motivates employees and is something that employees view as desirable</li>
         </ul>
     </div>
+    
     <div class="usa-width-one-third">
-        <div class="a2-callout">
-            <p>Ready to start yours?</p>
-            <button class="usa-button-secondary"><i class="fa fa-upload"></i> Upload</button>
+        <!-- IF ROLE: USER -->
+        <div class="a2-callout border-primary">
+            <label>Ready to start yours?</label>
+            <button class="usa-button usa-button-secondary">Create a portfolio</button>
+        </div>
+        
+        <br/><br/>
+        
+        <!-- IF ROLE: ADMIN -->
+        <div class="a2-callout border-tertiary">
+            <button class="usa-button usa-button-tertiary"><i class="fa fa-pencil"></i> Edit</button>
+            <button class="usa-button usa-button-tertiary"><i class="fa fa-plus"></i> Add article</button>
         </div>
     </div>
 </div>
 
-<div class="usa-grid-fullwidth indigo lighten-5">
+<div class="usa-grid-fullwidth grey lighten-4">
     <div class="usa-grid">
         <div class="usa-width-one-half">
             <br/>
             <div role="search">
                 <form class="usa-search usa-search-big">
                     <input id="search-field" type="search" name="search" class="browser-default">
-                    <button type="submit" class="usa-button-secondary">
+                    <button type="submit" class="usa-button usa-button-secondary">
                         <span class="usa-search-submit-text"><i class="fa fa-search"></i></span>
                     </button>
                 </form>
@@ -50,81 +60,72 @@
     </div>
     <div class="usa-grid">
         <div class="card usa-width-one-fourth">
-            <div class="card-content">
-                <p><small>Feb 5, 2018</small></p>
-                <h4>Knowledge Article</h4>
-                <p class="truncate">Long description here. This would be inputted by a limited-WYSIWYG editor to allow for tables/lists/etc.</p>
-            </div>
-            <div class="card-content grey lighten-4">
-                <button class="usa-button right" [routerLink]="['/article']">Go <i class="fa fa-angle-right"></i></button>
-                <span class="chip">4 files</span>
-            </div>
+            <a [routerLink]="['/article']">
+                <div class="card-content">
+                    <h4>Knowledge Article</h4>
+                    <p class="truncate">Long description here. This would be inputted by a limited-WYSIWYG editor to allow for tables/lists/etc.</p>
+                </div>
+                <div class="card-content grey lighten-4">
+                    <span class="chip">4 files</span>
+                    <p class="right"><small>Feb 5, 2018</small></p>
+                </div>
+            </a>
         </div>
         <div class="card usa-width-one-fourth">
-            <div class="card-content">
-                <p><small>Feb 5, 2018</small></p>
-                <h4>Knowledge Article</h4>
-                <p class="truncate">Long description here. This would be inputted by a limited-WYSIWYG editor to allow for tables/lists/etc.</p>
-            </div>
-            <div class="card-content grey lighten-4">
-                <button class="usa-button right" [routerLink]="['/article']">Go <i class="fa fa-angle-right"></i></button>
-                <span class="chip">4 files</span>
-            </div>
+            <a [routerLink]="['/article']">
+                <div class="card-content">
+                    <h4>Knowledge Article</h4>
+                    <p class="truncate">Long description here. This would be inputted by a limited-WYSIWYG editor to allow for tables/lists/etc.</p>
+                </div>
+                <div class="card-content grey lighten-4">
+                    <span class="chip">4 files</span>
+                    <p class="right"><small>Feb 5, 2018</small></p>
+                </div>
+            </a>
         </div>
         <div class="card usa-width-one-fourth">
-            <div class="card-content">
-                <p><small>Feb 5, 2018</small></p>
-                <h4>Knowledge Article</h4>
-                <p class="truncate">Long description here. This would be inputted by a limited-WYSIWYG editor to allow for tables/lists/etc.</p>
-            </div>
-            <div class="card-content grey lighten-4">
-                <button class="usa-button right" [routerLink]="['/article']">Go <i class="fa fa-angle-right"></i></button>
-                <span class="chip">4 files</span>
-            </div>
+            <a [routerLink]="['/article']">
+                <div class="card-content">
+                    <h4>Knowledge Article</h4>
+                    <p class="truncate">Long description here. This would be inputted by a limited-WYSIWYG editor to allow for tables/lists/etc.</p>
+                </div>
+                <div class="card-content grey lighten-4">
+                    <span class="chip">4 files</span>
+                    <p class="right"><small>Feb 5, 2018</small></p>
+                </div>
+            </a>
         </div>
         <div class="card usa-width-one-fourth">
-            <div class="card-content">
-                <p><small>Feb 5, 2018</small></p>
-                <h4>Knowledge Article</h4>
-                <p class="truncate">Long description here. This would be inputted by a limited-WYSIWYG editor to allow for tables/lists/etc.</p>
-            </div>
-            <div class="card-content grey lighten-4">
-                <button class="usa-button right" [routerLink]="['/article']">Go <i class="fa fa-angle-right"></i></button>
-                <span class="chip">4 files</span>
-            </div>
+            <a [routerLink]="['/article']">
+                <div class="card-content">
+                    <h4>Knowledge Article</h4>
+                    <p class="truncate">Long description here. This would be inputted by a limited-WYSIWYG editor to allow for tables/lists/etc.</p>
+                </div>
+                <div class="card-content grey lighten-4">
+                    <span class="chip">4 files</span>
+                    <p class="right"><small>Feb 5, 2018</small></p>
+                </div>
+            </a>
         </div>
         <div class="card usa-width-one-fourth">
-            <div class="card-content">
-                <p><small>Feb 5, 2018</small></p>
-                <h4>Knowledge Article</h4>
-                <p class="truncate">Long description here. This would be inputted by a limited-WYSIWYG editor to allow for tables/lists/etc.</p>
-            </div>
-            <div class="card-content grey lighten-4">
-                <button class="usa-button right" [routerLink]="['/article']">Go <i class="fa fa-angle-right"></i></button>
-                <span class="chip">4 files</span>
-            </div>
+            <a [routerLink]="['/article']">
+                <div class="card-content">
+                    <h4>Knowledge Article</h4>
+                    <p class="truncate">Long description here. This would be inputted by a limited-WYSIWYG editor to allow for tables/lists/etc.</p>
+                </div>
+                <div class="card-content grey lighten-4">
+                    <span class="chip">4 files</span>
+                    <p class="right"><small>Feb 5, 2018</small></p>
+                </div>
+            </a>
         </div>
         <div class="card usa-width-one-fourth">
-            <div class="card-content">
-                <p><small>Feb 5, 2018</small></p>
-                <h4>Knowledge Article</h4>
-                <p class="truncate">Long description here. This would be inputted by a limited-WYSIWYG editor to allow for tables/lists/etc.</p>
-            </div>
-            <div class="card-content grey lighten-4">
-                <button class="usa-button right" [routerLink]="['/article']">Go <i class="fa fa-angle-right"></i></button>
-                <span class="chip">4 files</span>
-            </div>
-        </div>
-        <div class="card usa-width-one-fourth">
-            <div class="card-content">
-                <p><small>Feb 5, 2018</small></p>
-                <h4>Knowledge Article</h4>
-                <p class="truncate">Long description here. This would be inputted by a limited-WYSIWYG editor to allow for tables/lists/etc.</p>
-            </div>
-            <div class="card-content grey lighten-4">
-                <button class="usa-button right" [routerLink]="['/article']">Go <i class="fa fa-angle-right"></i></button>
-                <span class="chip">4 files</span>
-            </div>
+            <a [routerLink]="['/article']">
+                <div class="card-content card-content-tertiary center-align">
+                    <br/>
+                    <h4><i class="fa fa-plus fa-4x "></i><br/>Add article</h4>
+                </div>
+            </a>
         </div>
         
         
