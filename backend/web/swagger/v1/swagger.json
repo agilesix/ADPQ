@@ -46,6 +46,215 @@
           }
         }
       }
+    },
+    "/knowledge_articles.json": {
+      "get": {
+        "summary": "index",
+        "tags": [
+          "KnowledgeArticles"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "access-token",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "client",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "uid",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "knowledge article steps retrieved"
+          }
+        }
+      },
+      "post": {
+        "summary": "create",
+        "tags": [
+          "KnowledgeArticles"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "access-token",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "client",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "uid",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "knowledge_article",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user_id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "body": {
+                  "type": "string"
+                },
+                "published": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "knowledge article created"
+          }
+        }
+      }
+    },
+    "/knowledge_articles/{id}.json": {
+      "get": {
+        "summary": "show/{id}.json",
+        "tags": [
+          "KnowledgeArticles"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "access-token",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "client",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "uid",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "knowledge article step retrieved"
+          }
+        }
+      }
+    },
+    "/workflow_steps.json": {
+      "get": {
+        "summary": "index",
+        "tags": [
+          "WorkflowSteps"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "access-token",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "client",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "uid",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "workflow steps retrieved"
+          }
+        }
+      }
+    },
+    "/workflow_steps/{id}.json": {
+      "get": {
+        "summary": "show/{id}.json",
+        "tags": [
+          "WorkflowSteps"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "access-token",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "client",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "uid",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "workflow step retrieved"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "basic": {
+      "type": "basic"
+    },
+    "apiKey": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "query"
     }
   }
 }
