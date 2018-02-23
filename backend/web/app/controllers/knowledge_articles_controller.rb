@@ -26,17 +26,21 @@ class KnowledgeArticlesController < ApplicationController
   # POST /knowledge_articles
   # POST /knowledge_articles.json
   def create
-    @knowledge_article = KnowledgeArticle.new(knowledge_article_params)
-
-    respond_to do |format|
-      if @knowledge_article.save
-        WorkflowStepKnowledgeArticle.create!(workflow_step_id: params[:knowledge_article][:workflow_step_id], knowledge_article_id: @knowledge_article.id)
-        format.html { redirect_to @knowledge_article, notice: 'Knowledge article was successfully created.' }
-        format.json { render :show, status: :created, location: @knowledge_article }
-      else
-        format.html { render :new }
-        format.json { render json: @knowledge_article.errors, status: :unprocessable_entity }
+    if params[:workflow_step_id].present?
+      @knowledge_article = KnowledgeArticle.new(knowledge_article_params)
+      @workflow_step = WorkflowStep.find(params[:workflow_step_id])
+      respond_to do |format|
+        if @knowledge_article.save
+          WorkflowStepKnowledgeArticle.create!(workflow_step_id: @workflow_step.id, knowledge_article_id: @knowledge_article.id)
+          format.html { redirect_to @knowledge_article, notice: 'Knowledge article was successfully created.' }
+          format.json { render :show, status: :created, location: @knowledge_article }
+        else
+          format.html { render :new }
+          format.json { render json: @knowledge_article.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      render json: {success: false, message: 'Missing parameter: workflow_step_id.'}
     end
   end
 
@@ -65,13 +69,13 @@ class KnowledgeArticlesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_knowledge_article
-      @knowledge_article = KnowledgeArticle.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_knowledge_article
+    @knowledge_article = KnowledgeArticle.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def knowledge_article_params
-      params.require(:knowledge_article).permit(:title, :body, :user_id, :published, :workflow_step_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def knowledge_article_params
+    params.require(:knowledge_article).permit(:title, :body, :user_id, :published)
+  end
 end

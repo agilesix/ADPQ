@@ -14,12 +14,9 @@ export class StepComponent implements OnInit {
   ngOnInit() {
      window.scrollTo(0, 0);
   }
-    
+
   hasRole(roleName) {
-      
-      let userHasRole = this.authTokenService.currentUserData.roles.some(r => r.name == roleName);
-      
-      return userHasRole;
+    return this.authTokenService.currentUserData.roles.some(r => r.name == roleName);
   }
 
 }

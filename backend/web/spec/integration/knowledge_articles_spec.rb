@@ -60,11 +60,12 @@ describe 'Knowledge Article API', type: :request do
               title: {type: :string},
               body: {type: :string},
               published: {type: :boolean},
+              workflow_step_id: {type: :integer}
           }
       }
 
       response '200', 'knowledge article created' do
-        let(:knowledge_article) { { user_id: 1, title: 'The Best Knowledge Article', body: 'Knowledge Article Content', published: false} }
+        let(:knowledge_article) { { user_id: 1, title: 'The Best Knowledge Article', body: 'Knowledge Article Content', published: false, workflow_step_id: 1} }
         run_test!
       end
 

@@ -123,6 +123,9 @@
                 },
                 "published": {
                   "type": "boolean"
+                },
+                "workflow_step_id": {
+                  "type": "integer"
                 }
               }
             }
