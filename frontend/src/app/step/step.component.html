@@ -18,16 +18,14 @@
     </div>
     
     <div class="usa-width-one-third">
-        <!-- IF ROLE: USER -->
-        <div class="a2-callout border-primary">
+        <div class="a2-callout border-primary" *ngIf="hasRole('Contributor')">
             <label>Ready to start yours?</label>
             <button class="usa-button usa-button-secondary">Create a portfolio</button>
         </div>
         
         <br/><br/>
         
-        <!-- IF ROLE: ADMIN -->
-        <div class="a2-callout border-tertiary">
+        <div class="a2-callout border-tertiary" *ngIf="hasRole('Admin')">
             <button class="usa-button usa-button-tertiary"><i class="fa fa-pencil"></i> Edit</button>
             <button class="usa-button usa-button-tertiary"><i class="fa fa-plus"></i> Add article</button>
         </div>

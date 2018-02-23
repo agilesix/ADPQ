@@ -235,6 +235,11 @@ header.usa-header {
         padding-top: 50px;
         border-top: 1px solid #0288d1;
         clear: both;
+        
+        .chip {
+            background-color: #1565c0;
+            color: white;
+        }
     }
 }
 
