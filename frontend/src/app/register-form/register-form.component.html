@@ -6,6 +6,13 @@
            name='email'
            [(ngModel)]="signUpUser.email"
            class="validate" />
+    
+    <!-- Name field needs wired up (added to db?)-->
+    <label for="email">Name</label>
+    <input id="name"
+           type="text"
+           name='name' />
+
     <label for="password_create">Password</label>
     <input id="password_create"
            type="password"
@@ -13,19 +20,18 @@
            name='password'
            [(ngModel)]="signUpUser.password"
            class="validate" />
-    <label for="password_confirmation">Password confirmation</label>
-    <input id="password_confirmation"
-           type="password"
-           required
-           name='password_confirmation'
-           [(ngModel)]="signUpUser.passwordConfirmation"
-           class="validate" />
     
-    <div class="usa-alert usa-alert-error" *ngIf="signUpUser.password != signUpUser.passwordConfirmation">
-        <div class="usa-alert-body">
-            <p class="usa-alert-text">Passwords must match</p>
-        </div>
+    <div [ngClass]="{'usa-input-error' : signUpUser.password != signUpUser.passwordConfirmation}">
+        <label for="password_confirmation">Password confirmation</label>
+        <input id="password_confirmation"
+               type="password"
+               required
+               name='password_confirmation'
+               [(ngModel)]="signUpUser.passwordConfirmation"
+               class="validate" />
+        <span class="usa-input-error-message" *ngIf="signUpUser.password != signUpUser.passwordConfirmation" role="alert">Passwords must match</span>
     </div>
+    
     <input type="submit" 
            [disabled]="!(f.valid) || !(signUpUser.password == signUpUser.passwordConfirmation)" 
            value="Sign up" />
