@@ -5,24 +5,27 @@
            required
            name='email'
            [(ngModel)]="signUpUser.email"
-           class="validate">
+           class="validate" />
     <label for="password_create">Password</label>
     <input id="password_create"
            type="password"
            required
            name='password'
            [(ngModel)]="signUpUser.password"
-           class="validate">
+           class="validate" />
     <label for="password_confirmation">Password confirmation</label>
     <input id="password_confirmation"
            type="password"
            required
            name='password_confirmation'
            [(ngModel)]="signUpUser.passwordConfirmation"
-           class="validate">
-    <span *ngIf="signUpUser.password != signUpUser.passwordConfirmation" style="color:red">
-           Passwords must match
-    </span>
+           class="validate" />
+    
+    <div class="usa-alert usa-alert-error" *ngIf="signUpUser.password != signUpUser.passwordConfirmation">
+        <div class="usa-alert-body">
+            <p class="usa-alert-text">Passwords must match</p>
+        </div>
+    </div>
     <input type="submit" 
            [disabled]="!(f.valid) || !(signUpUser.password == signUpUser.passwordConfirmation)" 
            value="Sign up" />

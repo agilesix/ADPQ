@@ -1,16 +1,10 @@
-<div>
-    <main id="main-content">
-        <div class="usa-grid">
-            <div class="usa-hero-callout usa-section-dark">
-                <h2 *ngIf="(authService.userSignedIn$ | async)">
-                    <span class="usa-hero-callout-alt">Hi,</span>
-                    You are signed in.
-                </h2>
-                <h2 *ngIf="!(authService.userSignedIn$ | async)">
-                    <span class="usa-hero-callout-alt">Hi,</span>
-                    Login or register
-                </h2>
-            </div>
-        </div>
-    </main>
+<div class="usa-grid">
+    <br/><br/><br/>
+    <h2 *ngIf="(authService.userSignedIn$ | async)">
+        Hi, you are signed in.
+    </h2>
+    <h2 *ngIf="!(authService.userSignedIn$ | async)">
+        <span class="usa-hero-callout-alt">Hi,</span>
+        Login or register
+    </h2>
 </div>
