@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>File Attachments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Approved</th>
+      <th>Filename</th>
+      <th>User</th>
+      <th>Category</th>
+      <th>File type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @file_attachments.each do |file_attachment| %>
+      <tr>
+        <td><%= file_attachment.approved %></td>
+        <td><%= file_attachment.filename %></td>
+        <td><%= file_attachment.user %></td>
+        <td><%= file_attachment.category %></td>
+        <td><%= file_attachment.file_type %></td>
+        <td><%= link_to 'Show', file_attachment %></td>
+        <td><%= link_to 'Edit', edit_file_attachment_path(file_attachment) %></td>
+        <td><%= link_to 'Destroy', file_attachment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New File Attachment', new_file_attachment_path %>

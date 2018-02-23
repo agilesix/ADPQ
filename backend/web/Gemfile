@@ -94,3 +94,4 @@ gem 'rswag-api'
 gem 'rswag-ui'
 
 gem 'rolify'
+gem 'paperclip', '5.1.0'

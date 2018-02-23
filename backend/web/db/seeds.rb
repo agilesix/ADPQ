@@ -8,11 +8,13 @@
 
 #Create Roles
 Role.create!(name: 'Admin') unless Role.exists? name: 'Admin'
+Role.create!(name: 'Contributor') unless Role.exists? name: 'Contributor'
 
 #Create Users
-User.create!(email: 'dan@a2tool.com', nickname: 'Dan', name: 'Dan', password: "dana2tool") unless User.find_by(email: 'dan@a2tool.com').present?
-User.create!(email: 'bob@a2tool.com', nickname: 'Bob', name: 'Bob', password: "boba2tool") unless User.find_by(email: 'bob@a2tool.com').present?
-User.create!(email: 'tanya@a2tool.com', nickname: 'Tanya', name: 'Tanya', password: "tanyaa2tool") unless User.find_by(email: 'tanya@a2tool.com').present?
+dan = User.create!(email: 'dan@a2tool.com', nickname: 'Dan', name: 'Dan', password: "dana2tool") unless User.find_by(email: 'dan@a2tool.com').present?
+chris = User.create!(email: 'chris@a2tool.com', nickname: 'Chris', name: 'Chris', password: "chrisa2tool") unless User.find_by(email: 'chris@a2tool.com').present?
+bob = User.create!(email: 'bob@a2tool.com', nickname: 'Bob', name: 'Bob', password: "boba2tool") unless User.find_by(email: 'bob@a2tool.com').present?
+tanya = User.create!(email: 'tanya@a2tool.com', nickname: 'Tanya', name: 'Tanya', password: "tanyaa2tool") unless User.find_by(email: 'tanya@a2tool.com').present?
 admin = User.create!(email: 'admin@a2tool.com', nickname: 'Admin', name: 'Admin', password: "admina2tool") unless User.find_by(email: 'admin@a2tool.com').present?
 
 #Assign Roles to Users
@@ -60,4 +62,8 @@ end
 if dan.present? && ka1.present? && ft1.present? && cat1.present? && cat2.present?
   FileAttachment.create!(filename: 'Vision Statement Template', approved: true, user: dan, category: cat1, file_type: ft1, knowledge_article: ka1, attached_file: seed_file('VisionStatementTemplate.docx'))
   FileAttachment.create!(filename: 'Sample Vision Statement', approved: true, user: dan, category: cat2, file_type: ft1, knowledge_article: ka1, attached_file: seed_file('SampleVisionStatement.docx'))
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> master

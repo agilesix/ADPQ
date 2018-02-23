@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @knowledge_article.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @knowledge_article.body %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @knowledge_article.user %>
+</p>
+
+<p>
+  <strong>Published:</strong>
+  <%= @knowledge_article.published %>
+</p>
+
+<p>
+  <strong>Workflow step:</strong>
+  <%= @knowledge_article.workflow_step %>
+</p>
+
+<%= link_to 'Edit', edit_knowledge_article_path(@knowledge_article) %> |
+<%= link_to 'Back', knowledge_articles_path %>
