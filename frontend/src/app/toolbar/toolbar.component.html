@@ -27,7 +27,7 @@
     </nav>
     
     <div class="a2-profile center-align" *ngIf="(authService.userSignedIn$ | async)">
-        <img src="./../../../assets/images/avatar.png" class="circle img-50" alt="John Smith">
+        <img *ngIf="authTokenService.currentUserData" src="./../../../assets/images/avatar.png" class="circle img-50" alt="John Smith">
         <p *ngIf="authTokenService.currentUserData">
             <b>{{authTokenService.currentUserData.name}} Bob Smith</b>
             <br/><small>{{authTokenService.currentUserData.email}}</small>
