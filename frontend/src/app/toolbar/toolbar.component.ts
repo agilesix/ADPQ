@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {AuthService} from '../services/auth.service';
 import {Router, RouterLink} from '@angular/router';
+import {Angular2TokenService} from "angular2-token";
 
 @Component({
   selector: 'app-toolbar',
@@ -9,7 +10,7 @@ import {Router, RouterLink} from '@angular/router';
 })
 export class ToolbarComponent {
 
-  constructor(public authService: AuthService, private router: Router) { }
+  constructor(public authTokenService:Angular2TokenService, public authService: AuthService, private router: Router) { }
 
   logOut() {
     this.authService.logOutUser().subscribe(() => this.router.navigate(['/login']));

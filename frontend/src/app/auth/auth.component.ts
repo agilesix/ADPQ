@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AuthComponent implements OnInit {
 
-  @Input() authMode: 'login' | 'register' = 'login';
+  @Input() authMode: 'Login' | 'Register' = 'Login';
 
   constructor( private router: Router ) { }
   
@@ -33,11 +33,11 @@ export class AuthComponent implements OnInit {
   }
   
   isLoginMode() {
-    return this.authMode === 'login';
+    return this.authMode === 'Login';
   }
 
   isRegisterMode() {
-    return this.authMode === 'register';
+    return this.authMode === 'Register';
   }
 
 

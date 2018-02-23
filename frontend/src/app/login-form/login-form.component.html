@@ -5,16 +5,16 @@
            required
            name='email' 
            [(ngModel)]="signInUser.email" 
-           class="validate">
+           class="validate" />
     <label for="password">Password</label>
     <input id="password" 
            type="password" 
            required  
            name='password' 
            [(ngModel)]="signInUser.password" 
-           class="validate">
+           class="validate" />
     <input type="submit" 
            [disabled]="!(f.valid)" 
            [ngClass]="{'disabled': !(f.valid)}" 
-           value="Sign in"> 
+           value="Sign in" /> 
 </form>
