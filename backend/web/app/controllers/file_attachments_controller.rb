@@ -1,4 +1,5 @@
 class FileAttachmentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_file_attachment, only: [:show, :edit, :update, :destroy]
 
   # GET /file_attachments

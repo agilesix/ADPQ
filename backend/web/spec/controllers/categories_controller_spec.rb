@@ -25,6 +25,11 @@ require 'rails_helper'
 
 RSpec.describe CategoriesController, type: :controller do
 
+  before :each do
+    user = FactoryBot.create(:user)
+    @auth_headers = user.create_new_auth_token
+    request.headers.merge!(@auth_headers)
+  end
   # This should return the minimal set of attributes required to create a valid
   # Category. As you add validations to Category, be sure to
   # adjust the attributes here as well.

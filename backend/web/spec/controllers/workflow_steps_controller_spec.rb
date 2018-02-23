@@ -26,6 +26,9 @@ require 'rails_helper'
 RSpec.describe WorkflowStepsController, type: :controller do
 
   before :each do
+    user = FactoryBot.create(:user)
+    @auth_headers = user.create_new_auth_token
+    request.headers.merge!(@auth_headers)
     @workflow_type = FactoryBot.create(:workflow_type)
     @workflow = FactoryBot.create(:workflow, workflow_type: @workflow_type)
   end

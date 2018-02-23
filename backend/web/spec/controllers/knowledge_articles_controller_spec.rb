@@ -27,6 +27,8 @@ RSpec.describe KnowledgeArticlesController, type: :controller do
 
   before :each do
     @user = FactoryBot.create(:user)
+    @auth_headers = @user.create_new_auth_token
+    request.headers.merge!(@auth_headers)
   end
   # This should return the minimal set of attributes required to create a valid
   # KnowledgeArticle. As you add validations to KnowledgeArticle, be sure to

@@ -1,4 +1,5 @@
 class WorkflowStepsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_workflow_step, only: [:show, :edit, :update, :destroy]
 
   # GET /workflow_steps

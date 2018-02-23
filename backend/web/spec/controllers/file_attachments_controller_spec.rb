@@ -27,6 +27,8 @@ RSpec.describe FileAttachmentsController, type: :controller do
 
   before :each do
     @user = FactoryBot.create(:user)
+    @auth_headers = @user.create_new_auth_token
+    request.headers.merge!(@auth_headers)
     @knowledge_article = FactoryBot.create(:knowledge_article, user: @user)
     @category = FactoryBot.create(:category)
     @file_type = FactoryBot.create(:file_type)

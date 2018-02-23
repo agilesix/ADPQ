@@ -1,4 +1,5 @@
 class KnowledgeArticlesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_knowledge_article, only: [:show, :edit, :update, :destroy]
 
   # GET /knowledge_articles

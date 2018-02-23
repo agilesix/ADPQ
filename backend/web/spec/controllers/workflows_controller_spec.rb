@@ -26,6 +26,9 @@ require 'rails_helper'
 RSpec.describe WorkflowsController, type: :controller do
 
   before :each do
+    user = FactoryBot.create(:user)
+    @auth_headers = user.create_new_auth_token
+    request.headers.merge!(@auth_headers)
     @workflow_type = FactoryBot.create(:workflow_type)
   end
 
@@ -48,7 +51,7 @@ RSpec.describe WorkflowsController, type: :controller do
   describe "GET #index" do
     it "returns a success response" do
       workflow = Workflow.create! valid_attributes
-      get :index, params: {}, session: valid_session
+      get :index, params:{}, session: valid_session
       expect(response).to be_success
     end
   end

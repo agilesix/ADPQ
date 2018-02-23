@@ -24,7 +24,11 @@ require 'rails_helper'
 # `rails-controller-testing` gem.
 
 RSpec.describe WorkflowTypesController, type: :controller do
-
+  before :each do
+    user = FactoryBot.create(:user)
+    @auth_headers = user.create_new_auth_token
+    request.headers.merge!(@auth_headers)
+  end
   # This should return the minimal set of attributes required to create a valid
   # WorkflowType. As you add validations to WorkflowType, be sure to
   # adjust the attributes here as well.
