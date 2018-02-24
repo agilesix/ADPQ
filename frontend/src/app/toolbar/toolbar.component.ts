@@ -1,7 +1,7 @@
-import {Component, ViewChild} from '@angular/core';
-import {AuthService} from '../services/auth.service';
-import {Router, RouterLink} from '@angular/router';
-import {Angular2TokenService} from "angular2-token";
+import { Component, ViewChild } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { Router, RouterLink } from '@angular/router';
+import { Angular2TokenService } from "angular2-token";
 
 @Component({
   selector: 'app-toolbar',

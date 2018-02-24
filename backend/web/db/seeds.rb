@@ -21,8 +21,8 @@ admin = User.create!(email: 'admin@a2tool.com', nickname: 'Admin', name: 'Admin'
 admin.add_role 'Admin' unless admin.blank? || admin.has_role?('Admin')
 dan.add_role 'Admin' unless dan.blank? || dan.has_role?('Admin')
 chris.add_role 'Admin' unless chris.blank? || chris.has_role?('Admin')
-bob.add_role 'Admin' unless bob.blank? || bob.has_role?('Contributor')
-tanya.add_role 'Admin' unless tanya.blank? || tanya.has_role?('Contributor')
+bob.add_role 'Contributor' unless bob.blank? || bob.has_role?('Contributor')
+tanya.add_role 'Contributor' unless tanya.blank? || tanya.has_role?('Contributor')
 
 #Create Workflow Type
 workflow_type = WorkflowType.create!(name: 'Acquisition Workflow Type', description: 'The workflow to acquire agile.') unless WorkflowType.exists? name: 'Acquisition Workflow Type'
@@ -62,4 +62,8 @@ end
 if dan.present? && ka1.present? && ft1.present? && cat1.present? && cat2.present?
   FileAttachment.create!(filename: 'Vision Statement Template', approved: true, user: dan, category: cat1, file_type: ft1, knowledge_article: ka1, attached_file: seed_file('VisionStatementTemplate.docx'))
   FileAttachment.create!(filename: 'Sample Vision Statement', approved: true, user: dan, category: cat2, file_type: ft1, knowledge_article: ka1, attached_file: seed_file('SampleVisionStatement.docx'))
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> master
