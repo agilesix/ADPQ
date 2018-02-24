@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Angular2TokenService } from "angular2-token";
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-step',
@@ -8,6 +9,8 @@ import { Angular2TokenService } from "angular2-token";
   styleUrls: ['./step.component.scss']
 })
 export class StepComponent implements OnInit {
+
+  @ViewChild('modal') modal: ModalComponent;
 
   constructor(public authTokenService:Angular2TokenService, public authService: AuthService) { }
 
@@ -18,6 +21,12 @@ export class StepComponent implements OnInit {
   hasRole(roleName) {
       let userHasRole = this.authTokenService.currentUserData.roles.some(r => r.name == roleName);
       return userHasRole;
+  }
+
+  presentModal() {
+    //(mode?: 'stepEdit'| 'articleAdd')
+    //this.modal.openModal(mode);
+    this.modal.openModal();
   }
 
 }

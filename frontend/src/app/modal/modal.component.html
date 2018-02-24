@@ -1,0 +1,21 @@
+<div class="modal" materialize="modal" [materializeActions]="modalActions">
+    <div class="modal-content">
+      <span class="modal-close right">
+        <i class="fa fa-times"(click)="closeModal()" aria-hidden="true"></i>
+      </span>
+        <h4>Modal Header</h4>
+        <p>A bunch of text</p>
+    </div>
+    <div class="modal-content">
+    
+<!--
+      <modal-step-edit *ngIf="modalStepEdit()"></modal-step-edit>
+      <modal-article-add *ngIf="modalArticleAdd()"></modal-article-add>
+-->
+        
+    </div>
+    <div class="modal-footer">
+        <a class="waves-effect waves-green btn-flat" (click)="closeModal()">Close</a>
+        <a class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+</div>

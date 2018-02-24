@@ -17,6 +17,7 @@ import { APP_BASE_HREF } from '@angular/common';
 import { StepComponent } from './step/step.component';
 import { AuthComponent } from './auth/auth.component';
 import { ArticleComponent } from './article/article.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ArticleComponent } from './article/article.component';
     ProfileComponent,
     StepComponent,
     AuthComponent,
-    ArticleComponent
+    ArticleComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
