@@ -1,7 +1,7 @@
 json.extract! workflow_step, :id, :workflow_id, :name, :description, :created_at, :updated_at
 json.url workflow_step_url(workflow_step, format: :json)
 
-json.knowledge_articles workflow_step.knowledge_articles do |ka|
+json.knowledge_articles workflow_step.knowledge_articles.where(published: true) do |ka|
   json.extract! ka,
                 :id,
                 :title,

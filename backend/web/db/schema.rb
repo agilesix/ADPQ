@@ -23,14 +23,14 @@ ActiveRecord::Schema.define(version: 20180222213744) do
   end
 
   create_table "file_attachments", force: :cascade do |t|
-    t.boolean  "approved"
+    t.boolean  "approved",                   default: false
     t.string   "filename"
     t.integer  "user_id"
     t.integer  "category_id"
     t.integer  "file_type_id"
     t.integer  "knowledge_article_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.string   "attached_file_file_name"
     t.string   "attached_file_content_type"
     t.integer  "attached_file_file_size"

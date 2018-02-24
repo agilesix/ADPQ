@@ -6,6 +6,8 @@ import { AuthComponent } from './auth/auth.component';
 import { ProfileComponent } from './profile/profile.component';
 import { StepComponent } from './step/step.component';
 import { ArticleComponent } from './article/article.component';
+import { ArticleNewComponent } from './article-new/article-new.component';
+import { ArticleEditComponent } from './article-edit/article-edit.component';
 
 const routes: Routes = [
   {
@@ -28,15 +30,25 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'step',
+    path: 'step/:id',
     component: StepComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: 'article',
+    path: 'step/:stepId/article/:id',
     component: ArticleComponent,
     canActivate: [AuthGuard]
-  }
+  },
+  {
+    path: 'step/:stepId/new/article',
+    component: ArticleNewComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'step/:stepId/article/:id/edit',
+    component: ArticleEditComponent,
+    canActivate: [AuthGuard]
+  }    
 ];
 
 @NgModule({

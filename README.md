@@ -7,9 +7,13 @@
 - [Docker/docker-compose](https://www.docker.com/get-docker)
 - [git](https://git-scm.com/downloads)
 
+For Ubuntu, see:
+- [How To Install and Use Docker on Ubuntu 16.04]https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
+- [How To Install Docker Compose on Ubuntu 16.04]https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-16-04
+
 **If you do not wish to develop with docker**
 
-In this `README`, there are no instructions on how to set up without `docker/docker-compose`. 
+In this `README`, there are no instructions on how to set up without `docker/docker-compose`.
 Please contact a developer if you want to know how to do this.
 
 - Backend stack:
@@ -30,15 +34,15 @@ Please contact a developer if you want to know how to do this.
 2. Change directory into the newly created project directory
 
     `cd ADPQ`
-    
+
 3. Change directory into the backend project
-    
+
     `cd backend`
 
 4. Build the development environment with docker-compose (this may take a while)
 
     `docker-compose -f docker-compose-development.yml build`
-    
+
 5. Spin up the backend development server
 
     `docker-compose -f docker-compose-development.yml up`
@@ -56,7 +60,7 @@ ex:
 `docker-compose -f docker-compose-development.yml run web bundle install`
 
 #### How to run tests
-In order to run the tests, the test environment must be built first. This environment includes browsers and settings for testing purposes. 
+In order to run the tests, the test environment must be built first. This environment includes browsers and settings for testing purposes.
 
 `docker-compose -f docker-compose-test.yml build`
 
@@ -78,15 +82,15 @@ In order to run the tests, the test environment must be built first. This enviro
 2. Change directory into the newly created project directory
 
     `cd ADPQ`
-    
+
 3. Change directory into the backend project
-    
+
     `cd frontend`
 
 4. Build the development environment with docker-compose (this may take a while)
 
     `docker-compose -f docker-compose-development.yml build`
-    
+
 5. Spin up the frontend development server
 
     `docker-compose -f docker-compose-development.yml up`

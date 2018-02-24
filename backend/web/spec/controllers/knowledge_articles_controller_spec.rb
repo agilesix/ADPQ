@@ -31,6 +31,7 @@ RSpec.describe KnowledgeArticlesController, type: :controller do
     request.headers.merge!(@auth_headers)
     Role.create! name: 'Admin'
     @user.add_role 'Admin'
+    @workflow_step = FactoryBot.create(:workflow_step, workflow: FactoryBot.create(:workflow, workflow_type: FactoryBot.create(:workflow_type)))
   end
   # This should return the minimal set of attributes required to create a valid
   # KnowledgeArticle. As you add validations to KnowledgeArticle, be sure to
@@ -83,18 +84,23 @@ RSpec.describe KnowledgeArticlesController, type: :controller do
     context "with valid params" do
       it "creates a new KnowledgeArticle" do
         expect {
-          post :create, params: {knowledge_article: valid_attributes}, session: valid_session
+          post :create, params: {knowledge_article: valid_attributes, workflow_step_id: @workflow_step.id}, session: valid_session
         }.to change(KnowledgeArticle, :count).by(1)
       end
 
       it "redirects to the created knowledge_article" do
-        post :create, params: {knowledge_article: valid_attributes}, session: valid_session
+        post :create, params: {knowledge_article: valid_attributes, workflow_step_id: @workflow_step.id}, session: valid_session
         expect(response).to redirect_to(KnowledgeArticle.last)
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'new' template)" do
+        post :create, params: {knowledge_article: invalid_attributes, workflow_step_id: @workflow_step.id}, session: valid_session
+        expect(response).to be_success
+      end
+
+      it "missing param: returns a success response (i.e. to display json error)" do
         post :create, params: {knowledge_article: invalid_attributes}, session: valid_session
         expect(response).to be_success
       end
