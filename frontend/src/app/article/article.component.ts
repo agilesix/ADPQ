@@ -3,6 +3,8 @@ import { Router, RouterLink, ActivatedRoute } from '@angular/router';
 import { ArticleService } from '../services/article.service';
 import { environment } from '../../environments/environment';
 import { DatePipe } from '@angular/common';
+import { AuthService } from '../services/auth.service';
+import { Angular2TokenService } from "angular2-token";
 
 @Component({
   selector: 'app-article',
@@ -18,7 +20,9 @@ export class ArticleComponent implements OnInit {
   public article;
   baseUrl: string = environment.token_auth_config.apiBase;
 
-  constructor(private route: ActivatedRoute, private articleService: ArticleService) { }
+  constructor(private route: ActivatedRoute, private articleService: ArticleService, public authTokenService:Angular2TokenService, public authService: AuthService) { }
+
+  constructor() { }
 
   ngOnInit() {
     window.scrollTo(0, 0);
@@ -43,6 +47,11 @@ export class ArticleComponent implements OnInit {
       err => console.error(err),
       () => console.log('article: ', this.article)
     );
+  }
+    
+  hasRole(roleName) {
+      let userHasRole = this.authTokenService.currentUserData.roles.some(r => r.name == roleName);
+      return userHasRole;
   }
 
 }
