@@ -1,0 +1,2 @@
+module KnowledgeArticlesHelper
+end

@@ -1,26 +1,80 @@
 <!--Navigation-->
-<div class="navbar-fixed">
 
-    <nav  role="navigation">
-
-      <div class="nav-wrapper blue ">
-        <a [routerLink]="['']">
-          <img width="120" alt="Agile Six Logo" src="/assets/images/Agile6Logo.png">
-        </a>
-        <ul class="right hide-on-med-and-down">
-
-          <li *ngIf="!(authService.userSignedIn$ | async)"> <a (click)="presentAuthDialog()" >LOGIN</a></li>
-          <li *ngIf="!(authService.userSignedIn$ | async)"> <a (click)="presentAuthDialog('register')">REGISTER</a></li>
-
-          <li *ngIf="(authService.userSignedIn$ | async)"><a [routerLink]="['/profile']">PROFILE</a></li>
-          <li *ngIf="(authService.userSignedIn$ | async)"><a (click)="logOut()">LOGOUT</a></li>
-
+<header class="a2-sidenav blue darken-2" role="banner">
+    <div class="usa-logo">
+        <em class="usa-logo-text">
+            <a [routerLink]="['']" href="/" title="Home" aria-label="Home">a2</a>
+        </em>
+    </div>
+    <nav role="navigation" class="usa-nav" *ngIf="(authService.userSignedIn$ | async)">
+        <ul class="usa-nav-primary usa-accordion">
+            <li>
+                <a class="usa-nav-link active" [routerLink]="['/step']">1 <span class="text">Visioning</span></a>
+            </li>
+            <li>
+                <a class="usa-nav-link" [routerLink]="['/step']">2 <span class="text">SOO</span></a>
+            </li>
+            <li>
+                <a class="usa-nav-link" [routerLink]="['/step']">3 <span class="text">ConOps</span></a>
+            </li>
+            <li>
+                <a class="usa-nav-link" [routerLink]="['/step']">4 <span class="text">IGCE</span></a>
+            </li>
+            <li>
+                <a class="usa-nav-link" [routerLink]="['/step']">5 <span class="text">PI/EC</span></a>
+            </li>
         </ul>
+    </nav>
+    
+    <div class="a2-profile center-align" *ngIf="(authService.userSignedIn$ | async)">
+        <img *ngIf="authTokenService.currentUserData" src="./../../../assets/images/avatar.png" class="circle img-50" alt="John Smith">
+        <p *ngIf="authTokenService.currentUserData">
+            <b>{{authTokenService.currentUserData.name}}</b>
+            <br/><small>{{authTokenService.currentUserData.email}}</small>
+        </p>
+        <p *ngIf="authTokenService.currentUserData.roles.length != 0">
+            <span class="chip" *ngFor="let role of authTokenService.currentUserData.roles">{{role.name}}</span>
+        </p>
+        <button class="usa-button" (click)="logOut()">Logout</button>
+    </div>
+</header>
 
-      </div>
 
-  </nav>
 
-</div>
-
-<app-auth-dialog #authDialog ></app-auth-dialog>
+<!--
+<a class="usa-skipnav" href="#main-content">Skip to main content</a>
+<header class="usa-header usa-header-basic" role="banner">
+    <div class="usa-nav-container">
+        <div class="usa-navbar">
+            <div class="usa-logo" id="basic-logo">
+                <em class="usa-logo-text">
+                    <a [routerLink]="['']" href="/" title="Home" aria-label="Home">a2</a>
+                </em>
+            </div>
+            <button class="usa-menu-btn">Menu</button>
+        </div>
+        <nav role="navigation" class="usa-nav">
+            <button class="usa-nav-close">
+                <img src="/assets/img/close.svg" alt="close">
+            </button>
+            <ul class="usa-nav-primary usa-accordion">
+                <li *ngIf="!(authService.userSignedIn$ | async)">
+                    <a class="usa-nav-link" [routerLink]="['/login']">Login</a>
+                </li>
+                <li *ngIf="(authService.userSignedIn$ | async)">
+                    <a class="usa-nav-link" [routerLink]="['/profile']">Profile</a>
+                </li>
+                <li *ngIf="(authService.userSignedIn$ | async)">
+                    <a class="usa-nav-link" [routerLink]="['/step']">Step</a>
+                </li>
+                <li *ngIf="(authService.userSignedIn$ | async)">
+                    <a class="usa-nav-link" [routerLink]="['/article']">Article</a>
+                </li>
+                <li *ngIf="(authService.userSignedIn$ | async)">
+                    <a class="usa-nav-link" (click)="logOut()">Logout</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+-->

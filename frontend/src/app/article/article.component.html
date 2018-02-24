@@ -1,0 +1,141 @@
+<div class="a2-header grey lighten-4">
+    <div class="usa-grid">
+        <div class="usa-width-one-half">
+            <h6>
+                <a [routerLink]="['/step']">
+                    <i class="fa fa-angle-left left"></i> 
+                    <span class="chip"><b>1</b></span> 
+                    <b>Visioning</b>
+                </a>
+            </h6>
+        </div>
+        
+        <div *ngIf="hasRole('Admin')" class="usa-width-one-half right-align">
+            <button class="usa-button usa-button-tertiary"><i class="fa fa-pencil"></i> Edit</button>
+            <button class="usa-button usa-button-tertiary"><i class="fa fa-plus"></i> Add file</button>
+        </div>
+        
+        <div *ngIf="hasRole('Contributor')" class="usa-width-one-half right-align">
+            <button class="usa-button usa-button-secondary right">Create a portfolio</button>
+            <label class="right">Ready to start yours?</label>
+        </div>
+    </div>
+</div>    
+<div class="usa-grid">
+    <div class="usa-width-two-thirds">
+        <h2>Knowledge Article</h2>
+        <p>Long description here. This would be inputted by a limited-WYSIWYG editor to allow for tables/lists/etc.</p>
+        <ul class="browser-default">
+            <li>Concise: able to be easily remembered and repeated</li>
+            <li>Clear: defines a prime goal</li>
+            <li>Time horizon: defines a time horizon</li>
+            <li>Future-oriented: describes where the company is going rather than the current state</li>
+        </ul>
+        
+        <table class="usa-table-borderless">
+            <thead>
+                <tr>
+                    <th scope="col">Document Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Year</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Declaration of Independence</th>
+                    <td>Statement adopted by the Continental Congress declaring independence from the British Empire.</td>
+                    <td>1776</td>
+                </tr>
+                <tr>
+                    <th scope="row">Bill of Rights</th>
+                    <td>The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.</td>
+                    <td>1791</td>
+                </tr>
+                <tr>
+                    <th scope="row">Declaration of Sentiments</th>
+                    <td>A document written during the Seneca Falls Convention outlining the rights that American women should be entitled to as citizens.</td>
+                    <td>1848</td>
+                </tr>
+                <tr>
+                    <th scope="row">Emancipation Proclamation</th>
+                    <td>An executive order granting freedom to slaves in designated southern states.</td>
+                    <td>1863</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="usa-width-one-third">
+        <div class="a2-callout border-primary">
+            <button class="usa-button">
+                <i class="fa fa-download"></i> File.docx
+            </button>
+            <button class="usa-button">
+                <i class="fa fa-download"></i> AnotherFile.docx
+            </button>
+            <button class="usa-button">
+                <i class="fa fa-download"></i> ALongerFile.docx
+            </button>
+            <button class="usa-button">
+                <i class="fa fa-download"></i> File.docx
+            </button>
+            <button class="usa-button">
+                <i class="fa fa-download"></i> File.docx
+            </button>
+            
+            <div *ngIf="hasRole('Contributor')">
+                <br/><br/><br/><hr/>
+                <label>Have something to add?</label>
+                <button class="usa-button-secondary"><i class="fa fa-plus"></i> Submit a file</button>
+            </div>
+            
+            <br/><br/><hr/><br/>
+            <p>
+                <img src="./../../../assets/images/avatar.png" class="circle img-30 left" alt="John Smith">
+                John Smith
+            </p>
+            <p>
+                <small>
+                    Created <b>Feb 2, 2018</b><br/>
+                    Last Updated <b>Feb 5, 2018</b>
+                </small>
+            </p>
+            <div class="chip">Visioning Statement</div>
+        </div>
+    </div>
+</div>
+<div class="usa-grid-fullwidth grey lighten-5 a2-future">
+    <div class="a2-future-overlay"></div>
+    <div class="a2-future-text">
+        <h2>coming soon</h2>
+    </div>
+    <div class="usa-grid">
+        <br/><h4>Discussion</h4><br/>
+        <ul class="collection">
+            <li class="collection-item avatar">
+                <img src="./../../../assets/images/avatar.png" alt="" class="circle">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <br/>
+                <p class="right-align"><b>John Smith</b> <small>Feb 12, 2018, 8:01pm</small></p>
+            </li>
+        </ul>
+        <br/>
+        <ul class="collection">
+            <li class="collection-item avatar">
+                <img src="./../../../assets/images/avatar.png" alt="" class="circle">
+                <p>Convallis posuere morbi leo urna molestie. Mi proin sed libero enim sed faucibus turpis in. Nibh tortor id aliquet lectus proin nibh nisl. Imperdiet sed euismod nisi porta lorem mollis aliquam. Vitae justo eget magna fermentum. Eget sit amet tellus cras adipiscing enim eu turpis. Blandit libero volutpat sed cras ornare arcu. Orci ac auctor augue mauris. A diam maecenas sed enim ut. Elit scelerisque mauris pellentesque pulvinar pellentesque.</p>
+                <br/>
+                <p class="right-align"><b>Mary Jones</b> <small>Feb 15, 2018, 2:43pm</small></p>
+            </li>
+        </ul>
+        <br/>
+        <ul class="collection">
+            <li class="collection-item avatar">
+                <img src="./../../../assets/images/avatar.png" alt="" class="circle">
+                <p>Et ultrices neque ornare aenean euismod elementum. Sed felis eget velit aliquet. Pretium lectus quam id leo in vitae. Erat velit scelerisque in dictum non consectetur. Viverra mauris in aliquam sem fringilla ut.</p>
+                <br/>
+                <p class="right-align"><b>Bob Martin</b> <small>Feb 16, 2018, 11:45am</small></p>
+            </li>
+        </ul>
+        <br/><br/>
+    </div>
+</div>

@@ -1,59 +1,40 @@
-<form (ngSubmit)="onSignUpSubmit()" #f="ngForm" >
+<form (ngSubmit)="onSignUpSubmit()" #f="ngForm" class="usa-form">
+    <label for="email">Email</label>
+    <input id="email"
+           type="email"
+           required
+           name='email'
+           [(ngModel)]="signUpUser.email"
+           class="validate" />
+    
+    <label for="email">Name</label>
+    <input id="name"
+           type="text"
+           required
+           name='name'
+           [(ngModel)]="signUpUser.name"
+           class="validate" />
 
-
-    <div class="row">
-  
-      <div class="input-field col s12">
-        <input id="email"
-               type="email"
-               required
-               name='email'
-               [(ngModel)]="signUpUser.email"
-               class="validate">
-        <label for="email">Email</label>
-      </div> 
-  
-  
-      <div class="input-field col s12">
-        <input id="password"
-               type="password"
-               required
-               name='password'
-               [(ngModel)]="signUpUser.password"
-               class="validate">
-        <label for="password">Password</label>
-      </div>
-  
-  
-  
-      <div class="input-field col s12">
+    <label for="password_create">Password</label>
+    <input id="password_create"
+           type="password"
+           required
+           name='password'
+           [(ngModel)]="signUpUser.password"
+           class="validate" />
+    
+    <div [ngClass]="{'usa-input-error' : signUpUser.password != signUpUser.passwordConfirmation}">
+        <label for="password_confirmation">Password confirmation</label>
         <input id="password_confirmation"
                type="password"
                required
                name='password_confirmation'
                [(ngModel)]="signUpUser.passwordConfirmation"
-               class="validate">
-        <label for="password_confirmation">Password confirmation</label>
-      </div>
-  
-      <span *ngIf="signUpUser.password != signUpUser.passwordConfirmation"
-            style="color:red">
-        Passwords must match
-      </span>
-  
-  
-      <div class="col s12">
-  
-        <button type="submit"
-                [disabled]="!(f.valid) || !(signUpUser.password == signUpUser.passwordConfirmation)"
-                class="waves-effect waves-light btn blue right">
-          Sign up
-        </button>
-  
-      </div>
-  
+               class="validate" />
+        <span class="usa-input-error-message" *ngIf="signUpUser.password != signUpUser.passwordConfirmation" role="alert">Passwords must match</span>
     </div>
-  
-  
-  </form>
-  
+    
+    <input type="submit" 
+           [disabled]="!(f.valid) || !(signUpUser.password == signUpUser.passwordConfirmation)" 
+           value="Sign up" />
+</form>

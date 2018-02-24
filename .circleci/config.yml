@@ -22,15 +22,10 @@ jobs:
               awscli==1.11.76
 
       - run:
-          name: Start container
-          command: |
-            cd backend
-            docker-compose -f docker-compose-test.yml build
-
-      - run:
           name: Run Rails unit tests
           command: |
             cd backend
+            docker-compose -f docker-compose-test.yml build
             docker-compose -f docker-compose-test.yml run web bundle exec rails db:migrate
             docker-compose -f docker-compose-test.yml run web bundle exec rspec
 
@@ -105,7 +100,7 @@ jobs:
             command: |
               cd frontend
               docker login -u $DOCKER_USER -p $DOCKER_PASS
-              docker-compose build
+              docker-compose build --build-arg environment=qa angular
               docker-compose push
 
         - run:

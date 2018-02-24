@@ -19,19 +19,22 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.scss",
         "../node_modules/materialize-css/dist/css/materialize.css",
-        "../node_modules/font-awesome/css/font-awesome.css"
+        "../node_modules/font-awesome/css/font-awesome.css",
+        "../node_modules/uswds/dist/css/uswds.min.css",
+        "styles.scss"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",
         "../node_modules/hammerjs/hammer.js",
-        "../node_modules/materialize-css/dist/js/materialize.js"
+        "../node_modules/materialize-css/dist/js/materialize.js",
+        "../node_modules/uswds/dist/js/uswds.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
-        "prod": "environments/environment.prod.ts"
+        "prod": "environments/environment.prod.ts",
+        "qa": "environments/environment.qa.ts"
       }
     }
   ],

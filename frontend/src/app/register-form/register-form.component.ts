@@ -1,5 +1,4 @@
-
-import {Component, OnInit, EventEmitter, Output} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {AuthService} from '../services/auth.service';
 
 @Component({
@@ -11,34 +10,31 @@ export class RegisterFormComponent implements OnInit {
 
   signUpUser = {
     email: '',
+    name: '',
     password: '',
     passwordConfirmation: ''
   };
 
   @Output() onFormResult = new EventEmitter<any>();
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService) {}
 
   ngOnInit() {}
-
 
   onSignUpSubmit() {
 
     this.authService.registerUser(this.signUpUser).subscribe(
-
-        (res) => {
-
+        res => {
           if (res.status === 200) {
             this.onFormResult.emit({signedUp: true, res});
           }
-
         },
-
-        (err) => {
-          console.log(err.json());
+        err => {
+          console.log('err:', err);
           this.onFormResult.emit({signedUp: false, err});
         }
     );
 
   }
+
 }

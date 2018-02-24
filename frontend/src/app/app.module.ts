@@ -8,23 +8,27 @@ import { AppComponent } from './app.component';
 import { Angular2TokenService } from 'angular2-token';
 import { HomeComponent } from './home/home.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { ProfileComponent } from './profile/profile.component';
-import {AuthService} from './services/auth.service';
-import {AuthGuard} from './guards/auth.guard';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './guards/auth.guard';
 import { APP_BASE_HREF } from '@angular/common';
+import { StepComponent } from './step/step.component';
+import { AuthComponent } from './auth/auth.component';
+import { ArticleComponent } from './article/article.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ToolbarComponent,
-    AuthDialogComponent,
     LoginFormComponent,
     RegisterFormComponent,
-    ProfileComponent
+    ProfileComponent,
+    StepComponent,
+    AuthComponent,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,

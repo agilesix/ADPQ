@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Knowledge Articles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th>User</th>
+      <th>Published</th>
+      <th>Workflow step</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @knowledge_articles.each do |knowledge_article| %>
+      <tr>
+        <td><%= knowledge_article.title %></td>
+        <td><%= knowledge_article.body %></td>
+        <td><%= knowledge_article.user %></td>
+        <td><%= knowledge_article.published %></td>
+        <td><%= knowledge_article.workflow_step %></td>
+        <td><%= link_to 'Show', knowledge_article %></td>
+        <td><%= link_to 'Edit', edit_knowledge_article_path(knowledge_article) %></td>
+        <td><%= link_to 'Destroy', knowledge_article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Knowledge Article', new_knowledge_article_path %>

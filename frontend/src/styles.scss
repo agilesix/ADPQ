@@ -1,1 +1,322 @@
-/* You can add global styles to this file, and also import other style files */
+body, label {
+    font-size: 1.5rem;
+}
+
+
+/*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+          STYLE & COLORS
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+hr {
+    box-shadow: none;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ddd;
+}
+
+a {
+    cursor: pointer;
+}
+
+.usa-button, .usa-button-primary, .usa-button-primary:visited, .usa-button:visited, [type=button], [type=image], [type=reset], [type=submit], button {
+    background-color: #2196f3;
+}
+
+.usa-button-primary.usa-button-secondary, .usa-button-primary:visited.usa-button-secondary, .usa-button.usa-button-secondary, .usa-button:visited.usa-button-secondary, [type=button].usa-button-secondary, [type=image].usa-button-secondary, [type=reset].usa-button-secondary, [type=submit].usa-button-secondary, button.usa-button-secondary {
+    -webkit-box-shadow: inset 0 0 0 2px #2196f3;
+    box-shadow: inset 0 0 0 2px #2196f3;
+    color: #2196f3;
+}
+
+.usa-button-tertiary {
+    color: #ef5350;
+    background-color: #fff;
+    -webkit-box-shadow: inset 0 0 0 2px #ef5350;
+    box-shadow: inset 0 0 0 2px #ef5350;
+    
+    &:hover, &:active, &:focus {
+        color: #c62828;
+        background-color: #fff;
+        -webkit-box-shadow: inset 0 0 0 2px #c62828;
+        box-shadow: inset 0 0 0 2px #c62828;
+    }
+}
+
+.border-primary {
+    border-color: #2196f3;
+}
+
+.border-tertiary {
+    border-color: #ef5350;
+}
+
+.text-tertiary {
+    color: #ef5350;
+}
+
+.img-50 {
+    width: 50px;
+}
+
+.img-30 {
+    width: 30px;
+    margin-right: 5px;
+}
+
+
+/*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+            MATERIALIZE
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+.modal .modal-content {
+    padding: 60px;
+}
+
+.card .card-content > button {
+    margin-top: 0 !important;
+}
+
+    .card > a {
+        text-decoration: none;
+        
+        > .card-content {
+            color: #444;
+            display: block;
+        }
+        
+        > .card-content-tertiary {
+            min-height: 211px;
+            color: #ccc;
+        }
+
+        &:hover {
+            > .card-content {
+                color: #2196f3;
+                
+                .chip {
+                    background-color: #2196f3;
+                    color: white;
+                }
+            }
+
+            > .card-content-tertiary {
+                color: #ef5350;
+            }
+        }
+    }
+
+
+/*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+              USWDS
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+.usa-grid {
+    padding-bottom: 50px;
+}
+
+    .usa-grid>.card:first-child {
+        margin-top: 0.5rem;
+    }
+
+header.usa-header {
+    z-index: 1000;
+}
+
+    .usa-nav, nav.usa-nav {
+        background-color: transparent;
+        box-shadow: none;
+        z-index: 1001;
+    }
+
+.usa-form {
+    max-width: none;
+}
+
+    .usa-form input {
+        font-size: 1.7rem !important;
+    }
+
+.usa-form-inline select {
+    width: auto;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+
+/*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+                A2
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+.a2-sidenav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    color: white;
+    z-index: 3;
+    
+    .usa-logo {
+        float: none;
+        width: 100%;
+        text-align: center;
+        margin: 50px 0 20px 0;
+
+        a {
+            color: white;
+            font-size: 4rem;
+        }
+    }
+    
+    .usa-nav {
+        float: none;
+        width: 100%;
+        
+        > .usa-nav-primary > li {
+            display: block;
+            width: 100%;
+            text-align: right;
+            
+            a {
+                color: white;
+                float: right;
+                background: #0071bc;
+                position: relative;
+                
+                > .text {
+                    display: none;
+                }
+                
+                &:hover {
+                    background: #205493;
+                    
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        background: #205493;
+                        top: 0;
+                        left: 100%;
+                        height: 100%;
+                        width: 15px;
+                    }
+                }
+                
+                &.active {
+                    background: #205493;
+                    
+                    > .text {
+                        display: inline;
+                    }
+                    
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        background: #205493;
+                        top: 0;
+                        left: 100%;
+                        height: 100%;
+                        width: 15px;
+                    }
+                }
+            }
+        }
+    }
+    
+    .a2-profile {
+        margin-top: 50px;
+        padding-top: 50px;
+        border-top: 1px solid #0288d1;
+        clear: both;
+        
+        .chip {
+            background-color: #1565c0;
+            color: white;
+        }
+    }
+}
+
+.a2-content {
+    margin-left: 200px;
+}
+
+.a2-callout {
+    border-left-width: 5px;
+    border-left-style: solid;
+    padding-left: 30px;
+    margin-left: 60px;
+}
+
+.a2-header {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-bottom: 60px;
+    
+    .usa-grid {
+        padding-bottom: 0;
+        
+        label, h6 {
+            margin-top: .5em;
+            margin-right: 2em;
+            color: #aaa;
+
+            a {
+                text-decoration: none;
+                font-size: 2rem;
+                color: #1976d2;
+
+                i {
+                    font-size: 3rem;
+                }
+                
+                .chip {
+                    background-color: #1976d2;
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+.a2-future {
+    position: relative;
+    
+    .a2-future-overlay {
+        background-image: linear-gradient(to bottom, 
+            transparent, 
+            rgba(250,250,250,.7) 30%, 
+            rgba(250,250,250,.95)
+        );
+        z-index: 1;
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .a2-future-text {
+        z-index: 2;
+        position: absolute;
+        bottom: 40%;
+        left: 40%;
+        display: block;
+        width: 20%;
+        text-align: center;
+        color: #aaa;
+        
+        h2 {
+            display: block;
+            font-family: 'Source Sans Pro';
+            padding: 10px;
+            border: 5px solid #eee;
+            background: #fafafa;
+        }
+    }
+}

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Approved:</strong>
+  <%= @file_attachment.approved %>
+</p>
+
+<p>
+  <strong>Filename:</strong>
+  <%= @file_attachment.filename %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @file_attachment.user %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @file_attachment.category %>
+</p>
+
+<p>
+  <strong>File type:</strong>
+  <%= @file_attachment.file_type %>
+</p>
+
+<%= link_to 'Edit', edit_file_attachment_path(@file_attachment) %> |
+<%= link_to 'Back', file_attachments_path %>

@@ -1,7 +1,7 @@
-import {Component, ViewChild} from '@angular/core';
-import {AuthDialogComponent} from '../auth-dialog/auth-dialog.component';
-import {AuthService} from '../services/auth.service';
-import {Router, RouterLink} from '@angular/router';
+import { Component, ViewChild } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { Router, RouterLink } from '@angular/router';
+import { Angular2TokenService } from "angular2-token";
 
 @Component({
   selector: 'app-toolbar',
@@ -10,16 +10,10 @@ import {Router, RouterLink} from '@angular/router';
 })
 export class ToolbarComponent {
 
-  @ViewChild('authDialog') authDialog: AuthDialogComponent;
-
-  constructor(public authService: AuthService, private router: Router) { }
+  constructor(public authTokenService:Angular2TokenService, public authService: AuthService, private router: Router) { }
 
   logOut() {
-    this.authService.logOutUser().subscribe(() => this.router.navigate(['/']));
-  }
-
-  presentAuthDialog(mode?: 'login'| 'register') {
-    this.authDialog.openDialog(mode);
+    this.authService.logOutUser().subscribe(() => this.router.navigate(['/login']));
   }
 
 }

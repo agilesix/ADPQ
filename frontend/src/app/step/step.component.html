@@ -1,0 +1,133 @@
+<br/><br/><br/>
+
+<div class="usa-grid">
+    <div class="usa-width-two-thirds">
+        <h2>1. Vision Statement</h2>
+        <p>A vision statement is a government program’s road map, indicating both what the program wants to become and guiding transformational initiatives by setting a defined direction for the program's future. Vision statements undergo minimal revisions during the life of a program, unlike operational goals and objectives which may be updated from year-to-year. Effective vision statements are clear, concise and usually consist of two to four sentences. Vision statements should provide a high-level description of the program outcomes required to meet the definition of success.</p>
+        <p>Commonly cited vision statement traits include:</p>
+        <ul class="browser-default">
+            <li>Concise: able to be easily remembered and repeated</li>
+            <li>Clear: defines a prime goal</li>
+            <li>Time horizon: defines a time horizon</li>
+            <li>Future-oriented: describes where the company is going rather than the current state</li>
+            <li>Stable: offers a long-term perspective and is unlikely to be impacted by market or technology changes</li>
+            <li>Challenging: not something that can be easily met and discarded</li>
+            <li>Abstract: general enough to encompass all of the organization's interests and strategic direction</li>
+            <li>Inspiring: motivates employees and is something that employees view as desirable</li>
+        </ul>
+    </div>
+    
+    <div class="usa-width-one-third">
+        <div class="a2-callout border-primary" *ngIf="hasRole('Contributor')">
+            <label>Ready to start yours?</label>
+            <button class="usa-button usa-button-secondary">Create a portfolio</button>
+        </div>
+        
+        <br/><br/>
+        
+        <div class="a2-callout border-tertiary" *ngIf="hasRole('Admin')">
+            <button class="usa-button usa-button-tertiary"><i class="fa fa-pencil"></i> Edit</button>
+            <button class="usa-button usa-button-tertiary"><i class="fa fa-plus"></i> Add article</button>
+        </div>
+    </div>
+</div>
+
+<div class="usa-grid-fullwidth grey lighten-4">
+    <div class="usa-grid">
+        <div class="usa-width-one-half">
+            <br/>
+            <div role="search">
+                <form class="usa-search usa-search-big">
+                    <input id="search-field" type="search" name="search" class="browser-default">
+                    <button type="submit" class="usa-button usa-button-secondary">
+                        <span class="usa-search-submit-text"><i class="fa fa-search"></i></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="usa-width-one-half align-right">
+            <form class="usa-form usa-form-inline">
+                <select name="options" class="right">
+                    <option value="value1">Newest</option>
+                    <option value="value2">Title</option>
+                    <option value="value3">Largest number of files</option>
+                </select>
+                <label for="options" class="right">Sort by</label>
+            </form>
+        </div>
+    </div>
+    <div class="usa-grid">
+        <div class="card usa-width-one-fourth">
+            <a [routerLink]="['/article']">
+                <div class="card-content">
+                    <h4>Knowledge Article</h4>
+                    <p class="truncate">Long description here. This would be inputted by a limited-WYSIWYG editor to allow for tables/lists/etc.</p>
+                </div>
+                <div class="card-content grey lighten-4">
+                    <span class="chip">4 files</span>
+                    <p class="right"><small>Feb 5, 2018</small></p>
+                </div>
+            </a>
+        </div>
+        <div class="card usa-width-one-fourth">
+            <a [routerLink]="['/article']">
+                <div class="card-content">
+                    <h4>Knowledge Article</h4>
+                    <p class="truncate">Long description here. This would be inputted by a limited-WYSIWYG editor to allow for tables/lists/etc.</p>
+                </div>
+                <div class="card-content grey lighten-4">
+                    <span class="chip">4 files</span>
+                    <p class="right"><small>Feb 5, 2018</small></p>
+                </div>
+            </a>
+        </div>
+        <div class="card usa-width-one-fourth">
+            <a [routerLink]="['/article']">
+                <div class="card-content">
+                    <h4>Knowledge Article</h4>
+                    <p class="truncate">Long description here. This would be inputted by a limited-WYSIWYG editor to allow for tables/lists/etc.</p>
+                </div>
+                <div class="card-content grey lighten-4">
+                    <span class="chip">4 files</span>
+                    <p class="right"><small>Feb 5, 2018</small></p>
+                </div>
+            </a>
+        </div>
+        <div class="card usa-width-one-fourth">
+            <a [routerLink]="['/article']">
+                <div class="card-content">
+                    <h4>Knowledge Article</h4>
+                    <p class="truncate">Long description here. This would be inputted by a limited-WYSIWYG editor to allow for tables/lists/etc.</p>
+                </div>
+                <div class="card-content grey lighten-4">
+                    <span class="chip">4 files</span>
+                    <p class="right"><small>Feb 5, 2018</small></p>
+                </div>
+            </a>
+        </div>
+        <div class="card usa-width-one-fourth">
+            <a [routerLink]="['/article']">
+                <div class="card-content">
+                    <h4>Knowledge Article</h4>
+                    <p class="truncate">Long description here. This would be inputted by a limited-WYSIWYG editor to allow for tables/lists/etc.</p>
+                </div>
+                <div class="card-content grey lighten-4">
+                    <span class="chip">4 files</span>
+                    <p class="right"><small>Feb 5, 2018</small></p>
+                </div>
+            </a>
+        </div>
+        
+        
+        
+        
+        <div class="card usa-width-one-fourth" *ngIf="hasRole('Admin')">
+            <a [routerLink]="['/article']">
+                <div class="card-content card-content-tertiary center-align">
+                    <br/>
+                    <h4><i class="fa fa-plus fa-4x "></i><br/>Add article</h4>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
