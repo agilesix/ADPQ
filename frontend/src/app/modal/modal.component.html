@@ -3,47 +3,28 @@
         <span class="modal-close right">
             <i class="fa fa-times"(click)="closeModal()" aria-hidden="true"></i>
         </span>
-    
-<!--
-        <modal-step-edit *ngIf="modalStepEdit()"></modal-step-edit>
-        <modal-article-add *ngIf="modalArticleAdd()"></modal-article-add>
--->
         
-        
-        <!-- MODAL: stepEdit -->
-        <div *ngIf="modalStepEdit()">
-            <h3>Edit the workflow step</h3>
-            
-            <div class="modal-body">
-                <label for="title">Title</label>
-                <input id="title"
-                    type="text"
-                    required
-                    name="title"
-                    [(ngModel)]="knowledgeArticle.title"
-                    class="validate" />
-                
-                <label for="description">Description</label>
-                <md-editor name="description" required name='body' class="validate"></md-editor>              
-            </div>
-            <div class="modal-footer">
-                <a class="usa-button usa-button-secondary" (click)="closeModal()">Cancel</a>
-                <a class="usa-button">Save</a>
-            </div>
-        </div>
         
         
         <!-- MODAL: fileSubmit -->
         <div *ngIf="modalFileSubmit()">
             <div *ngIf="!submitted">
-                <h3>Submit a file</h3>
+                <h3>Submit files</h3>
 
                 <div class="modal-body">
-                    <p class="text-large">Have something to add to this knowledge article? We'd love to share your thoughts or resources with this knowledge base. If you have a file that enhances this article, upload it for publishing below.</p>
+                    <p class="text-large">Have something to add to this knowledge article? We'd love to share your thoughts or resources with this knowledge base. If you have files that enhances this article, upload them for publishing below.</p>
 
                     <!--TODO: Get a fancy file uploader that allows for multiple, wire up -->
-                    <label for="files">Upload file</label>
-                    <input type="file" name="files" />
+                    <label for="files">Upload files</label>
+                    <div class="file-field input-field">
+                      <div class="btn blue">
+                        <span>File</span>
+                        <input type="file" multiple>
+                      </div>
+                      <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                      </div>
+                    </div>
                 </div>
 
                 <div class="modal-footer">

@@ -57,4 +57,8 @@ export class StepComponent implements OnInit {
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
+  
+  toggleEdit() {
+    this.edit = !this.edit;
+  }
 }

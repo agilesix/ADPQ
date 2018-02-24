@@ -5,7 +5,7 @@
                 <a *ngIf="!loading" [routerLink]="['/step', stepId]">
                     <i class="fa fa-angle-left left"></i> 
                     <span class="chip"><b>{{stepId}}</b></span> 
-                    <b >{{step.name}}</b>
+                    <b>{{step.name}}</b>
                 </a>
             </h6>
         </div>
@@ -29,17 +29,26 @@
                         name="title"
                         [(ngModel)]="knowledgeArticle.title"
                         class="validate" />
-                    <!--TODO: Wire up description, should be required -->
+                    
+                    <!--TODO: Wire up description to db, should be required -->
                     <label for="description">Description</label>
-                    <textarea id="description" name="description" required class="validate"></textarea>
+                    <div class="input-field">
+                        <textarea id="description" class="materialize-textarea" data-length="250"></textarea>
+                    </div>
                 </div>
                 
-                <!--TODO: Get a fancy file uploader that allows for multiple, wire up -->
+                <!--TODO: Wire up to db -->
                 <div class="usa-width-one-half">
                     <label for="files">Upload files</label>
-                    <input id="files"
-                        type="file"
-                        name="files" />
+                    <div class="file-field input-field">
+                      <div class="btn blue">
+                        <span>File</span>
+                        <input type="file" multiple>
+                      </div>
+                      <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                      </div>
+                    </div>
                 </div>
             </fieldset>
             <br><hr/><br>

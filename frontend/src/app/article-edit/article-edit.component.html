@@ -29,17 +29,26 @@
                         name="title"
                         [(ngModel)]="knowledgeArticle.title"
                         class="validate" />
-                    <!--TODO: Wire up description, should be required -->
+                    
+                    <!--TODO: Wire up description to db, should be required -->
                     <label for="description">Description</label>
-                    <textarea id="description" name="description" required class="validate"></textarea>
+                    <div class="input-field">
+                        <textarea id="description" class="materialize-textarea" data-length="250"></textarea>
+                    </div>
                 </div>
                 
-                <!--TODO: Get a fancy file uploader that allows for multiple, wire up -->
+                <!--TODO: Wire up to db -->
                 <div class="usa-width-one-half">
                     <label for="files">Upload files</label>
-                    <input id="files"
-                        type="file"
-                        name="files" />
+                    <div class="file-field input-field">
+                      <div class="btn blue">
+                        <span>File</span>
+                        <input type="file" multiple>
+                      </div>
+                      <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                      </div>
+                    </div>
                 </div>
             </fieldset>
             <br><hr/><br>
@@ -63,7 +72,7 @@
                     <div *ngIf="edit">
                         <!--TODO: Content block shouldn't be required, but you always have one in the form. Additional can be added and removed-->
                         <label for="body">Content</label>
-                        <md-editor id="body" name="body" required name='body' [(ngModel)]="knowledgeArticle.body" class="validate"></md-editor>              
+                        <md-editor id="body" name="body" required [(ngModel)]="knowledgeArticle.body" class="validate"></md-editor>              
                     </div>
                     <div *ngIf="!edit">
                         <label>Content</label>

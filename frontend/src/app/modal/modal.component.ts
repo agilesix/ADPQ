@@ -30,10 +30,6 @@ export class ModalComponent implements OnInit {
     return this.modalContent === 'portfolio';
   }
 
-  modalStepEdit() {
-    return this.modalContent === 'stepEdit';
-  }
-
   modalFileSubmit() {
     return this.modalContent === 'fileSubmit';
   }

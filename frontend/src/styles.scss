@@ -70,6 +70,14 @@ a {
     margin-right: 5px;
 }
 
+ul:not(.browser-default)  {
+    margin-left: 30px;
+    
+    > li {
+        list-style-type: disc;
+    }
+}
+
 
 /*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -147,8 +155,14 @@ header.usa-header {
     max-width: none;
 }
 
-    .usa-form input {
+    .usa-form input, .usa-form textarea {
         font-size: 1.7rem !important;
+    }
+
+    .usa-form input.h2 {
+        font-size: 3rem !important;
+        font-weight: 700;
+        font-family: Merriweather,Georgia,Cambria,Times New Roman,Times,serif;
     }
 
     .usa-form [type=submit] {

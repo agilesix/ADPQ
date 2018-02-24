@@ -4,9 +4,25 @@
     <div *ngIf="loading" class="loading">Loading...</div>
     <div class="usa-width-two-thirds">
         <div *ngIf="!loading">
-            <h2>{{step.name}}</h2>
-            <div class="workflow-step-description">
-                <markdown [data]="step.description"></markdown>
+            <div *ngIf="!edit">
+                <h2>{{step.name}}</h2>
+                <div class="workflow-step-description">
+                    <markdown [data]="step.description"></markdown>
+                </div>
+            </div>
+            <div *ngIf="edit">
+                <form class="usa-form">
+                    <label for="name">Name</label>
+                    <input id="name"
+                        type="text"
+                        required
+                        name="title"
+                        [(ngModel)]="step.name"
+                        class="validate h2" />
+
+                    <label for="description">Description</label>
+                    <md-editor id="description" name="description" required [(ngModel)]="step.description" class="validate"></md-editor>  
+                </form>
             </div>
         </div>
     </div>
@@ -20,7 +36,12 @@
         <br/><br/>
 
         <div class="a2-callout border-tertiary" *ngIf="hasRole('Admin')">
-            <button (click)="presentModal('stepEdit')" class="usa-button usa-button-tertiary"><i class="fa fa-pencil"></i> Edit</button>
+            <button *ngIf="!edit" (click)="toggleEdit()" class="usa-button usa-button-tertiary"><i class="fa fa-pencil"></i>  Edit</button>
+            
+            <!--TODO: Wire up Save/Cancel buttons to actually Save and Cancel -->
+            <button *ngIf="edit" (click)="toggleEdit()" class="usa-button usa-button-tertiary">Cancel</button>
+            <button *ngIf="edit" (click)="toggleEdit()" class="usa-button usa-button-tertiary">Save</button>
+            
             <a [routerLink]="['new/article']" class="usa-button usa-button-tertiary"><i class="fa fa-plus"></i> Add article</a>
         </div>
     </div>
