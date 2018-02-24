@@ -7,11 +7,11 @@ WORKDIR /tmp
 ADD ./Gemfile Gemfile
 ADD ./Gemfile.lock Gemfile.lock
 
-RUN (bundle check || bundle install --full-index)
+RUN (bundle check || bundle install --without development)
 
 ADD ./ /app
 RUN sudo chown -R circleci:circleci /app/
 WORKDIR /app
-RUN (bundle check || bundle install --full-index)
+RUN (bundle check || bundle install --without development)
 
 CMD bash script/start_server.sh
