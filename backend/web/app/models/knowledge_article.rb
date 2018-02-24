@@ -5,4 +5,6 @@ class KnowledgeArticle < ApplicationRecord
   has_many :file_attachments
 
   validates :title, :user_id, presence: true
+
+  resourcify # for cancancan
 end

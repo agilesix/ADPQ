@@ -8,8 +8,8 @@
 - [git](https://git-scm.com/downloads)
 
 For Ubuntu, see:
-- [How To Install and Use Docker on Ubuntu 16.04]https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
-- [How To Install Docker Compose on Ubuntu 16.04]https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-16-04
+- [How To Install and Use Docker on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04)
+- [How To Install Docker Compose on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-16-04)
 
 **If you do not wish to develop with docker**
 
@@ -55,9 +55,17 @@ To do this, run these commands:
 
 `docker-compose -f docker-compose-development.yml run web <COMMAND>`
 
-ex:
+Eg:
 
 `docker-compose -f docker-compose-development.yml run web bundle install`
+
+To seed the database with user, articles, etc:
+
+`docker-compose -f docker-compose-development.yml run web rake db:seed`
+
+For working in the image, use:
+
+`docker-compose -f docker-compose-development.yml run web bash`
 
 #### How to run tests
 In order to run the tests, the test environment must be built first. This environment includes browsers and settings for testing purposes.

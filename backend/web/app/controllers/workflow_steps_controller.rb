@@ -1,5 +1,7 @@
 class WorkflowStepsController < ApplicationController
   before_action :authenticate_user!
+  load_and_authorize_resource # for cancancan
+
   before_action :set_workflow_step, only: [:show, :edit, :update, :destroy]
   before_action :current_user_is_admin?, only: [:create, :update, :destroy]
 

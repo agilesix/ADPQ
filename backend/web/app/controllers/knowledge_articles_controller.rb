@@ -1,5 +1,7 @@
 class KnowledgeArticlesController < ApplicationController
   before_action :authenticate_user!
+  load_and_authorize_resource # for cancancan
+
   before_action :set_knowledge_article, only: [:show, :edit, :update, :destroy]
   before_action :current_user_is_admin?, only: [:create, :update, :destroy]
 
