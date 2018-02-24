@@ -64,11 +64,11 @@
                     </div>
                 </a>
             </div>
-            <div class="card usa-width-one-fourth">
-                <a [routerLink]="['new/article']">
+            <div class="card usa-width-one-fourth" *ngIf="hasRole('Admin')">
+                <a [routerLink]="['/new/article']">
                     <div class="card-content card-content-tertiary center-align">
                         <br/>
-                        <h4><span class="fa fa-plus fa-4x "></span><br/>Add article</h4>
+                        <h4><i class="fa fa-plus fa-4x "></i><br/>Add article</h4>
                     </div>
                 </a>
             </div>

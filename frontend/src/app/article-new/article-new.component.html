@@ -1,52 +1,56 @@
 <div class="a2-header grey lighten-4">
     <div class="usa-grid">
-        <h6 class="left">
-            <a *ngIf="!loading" [routerLink]="['/step', stepId]">
-                <i class="fa fa-angle-left left"></i> 
-                <span class="chip"><b>{{stepId}}</b></span> 
-                <b>{{step.name}}</b>
-            </a>
-        </h6>
+        <div class="usa-width-one-half">
+            <h6>
+                <a *ngIf="!loading" [routerLink]="['/step', stepId]">
+                    <i class="fa fa-angle-left left"></i> 
+                    <span class="chip"><b>{{stepId}}</b></span> 
+                    <b >{{step.name}}</b>
+                </a>
+            </h6>
+        </div>
         
-        <!-- IF ROLE: ADMIN -->
-        <button class="right usa-button usa-button-tertiary"><i class="fa fa-plus"></i> Add file</button>
-        <button class="right usa-button usa-button-tertiary"><i class="fa fa-pencil"></i> Edit</button>
-        
-        <!-- IF ROLE: USER -->
-        <button class="right usa-button usa-button-secondary">Create a portfolio</button>
-        <p class="right">Ready to start yours?</p>
+        <div class="usa-width-one-half right-align">            
+            <button class="right usa-button usa-button-tertiary" [routerLink]="['/step', stepId]"><i class="fa fa-times"></i> Cancel</button>
+        </div>
     </div>
 </div>    
+
 <div class="usa-grid">
-  <h2>Add Knowledge Article</h2>
-  <div *ngIf="!loading" class="usa-width-two-thirds">
-      <form (ngSubmit)="createKnowledgeArticle()" #f="ngForm" class="usa-form">
-          <label for="title">Title</label>
-          <input id="title"
-                  type="text"
-                  required
-                  name='title'
-                  [(ngModel)]="knowledgeArticle.title"
-                  class="validate" />
-          <button (click)="toggleEdit()" type="button">{{edit ? 'Preview' : 'Edit'}}</button>
-          <div *ngIf="edit">
-              <label for="body">Content</label>
-              <md-editor id="body" name="body" required name='body' [(ngModel)]="knowledgeArticle.body" class="validate"></md-editor>              
-          </div>
-          <div *ngIf="!edit">
-              <h3>Preview</h3>
-            <markdown [data]="knowledgeArticle.body"></markdown>
-          </div>
+    <button (click)="toggleEdit()" type="button" class="usa-button usa-button-secondary right">{{edit ? 'Preview' : 'Edit'}}</button>
+    <h3>Add Knowledge Article</h3>
+    <div *ngIf="!loading">
+        <form (ngSubmit)="createKnowledgeArticle()" #f="ngForm" class="usa-form">
+            <label for="title">Title</label>
+            <input id="title"
+                type="text"
+                required
+                name='title'
+                [(ngModel)]="knowledgeArticle.title"
+                class="validate" />
 
-          <input id="published" type="checkbox" name="published" [(ngModel)]="knowledgeArticle.published" />
-          <label for="published">Publish?</label>
+            <div *ngIf="edit">
+                <label for="body">Content</label><br/>
+                <md-editor id="body" name="body" required name='body' [(ngModel)]="knowledgeArticle.body" class="validate"></md-editor>              
+            </div>
+            <div *ngIf="!edit">
+                <h3>Preview</h3>
+                <markdown [data]="knowledgeArticle.body"></markdown>
+            </div>
 
-          <input type="hidden" name="workflow_step_id" [(ngModel)]="knowledgeArticle.workflow_step_id" [value]="stepId" />
-          <input type="hidden" name="user_id" [(ngModel)]="knowledgeArticle.userId" [value]="authTokenService.currentUserData.id" />
-
-          <input type="submit" 
-                  [disabled]="!(f.valid)" 
-                  value="Save" />
-      </form>       
-  </div>    
+            <input id="published" 
+                type="checkbox" 
+                name="published" [(ngModel)]="knowledgeArticle.published" />
+            <label for="published">Publish?</label>
+            <input type="hidden" 
+                name="workflow_step_id" [(ngModel)]="knowledgeArticle.workflow_step_id" 
+                [value]="stepId" />
+            <input type="hidden" 
+                name="user_id" [(ngModel)]="knowledgeArticle.userId" [value]="authTokenService.currentUserData.id" />
+            <input type="submit" 
+                [disabled]="!(f.valid)" 
+                value="Save" 
+                class="usa-button" />
+        </form>       
+    </div>    
 </div>

@@ -320,3 +320,28 @@ header.usa-header {
         }
     }
 }
+
+
+/*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+             PLUGINS
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+
+.md-editor-container[_ngcontent-c3] .tool-bar[_ngcontent-c3] .btn-group[_ngcontent-c3] {
+    display: inline-block;
+    margin: 5px 0;
+}
+
+.md-editor-container[_ngcontent-c3] .tool-bar[_ngcontent-c3] .btn[_ngcontent-c3] {
+    padding: .1rem 1rem;
+    margin: 0 0 0 2px;
+    height: 28px;
+    
+    
+    > i {
+        font-size: 1rem;
+    }
+}
+
+
