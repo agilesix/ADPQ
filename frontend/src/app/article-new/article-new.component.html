@@ -11,32 +11,105 @@
         </div>
         
         <div class="usa-width-one-half right-align">            
-            <button class="right usa-button usa-button-tertiary" [routerLink]="['/step', stepId]"><i class="fa fa-times"></i> Cancel</button>
+            <button class="right usa-button usa-button-secondary" [routerLink]="['/step', stepId]">Cancel</button>
         </div>
     </div>
 </div>    
 
 <div class="usa-grid">
-    <h3>Add Knowledge Article</h3>
+    <h2>Add a new knowledge article</h2><br/>
     <div *ngIf="!loading">
         <form (ngSubmit)="createKnowledgeArticle()" #f="ngForm" class="usa-form">
-            <label for="title">Title</label>
-            <input id="title"
-                type="text"
-                required
-                name='title'
-                [(ngModel)]="knowledgeArticle.title"
-                class="validate" />
-
-            <div *ngIf="edit">
-                <label for="body">Content</label><br/>
-                <md-editor id="body" name="body" required name='body' [(ngModel)]="knowledgeArticle.body" class="validate"></md-editor>              
-            </div>
-            <div *ngIf="!edit">
-                <div class="card-panel">
-                    <markdown [data]="knowledgeArticle.body"></markdown>
+            <fieldset>
+                <div class="usa-width-one-half">
+                    <label for="title">Title</label>
+                    <input id="title"
+                        type="text"
+                        required
+                        name="title"
+                        [(ngModel)]="knowledgeArticle.title"
+                        class="validate" />
+                    <!--TODO: Wire up description, should be required -->
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" required class="validate"></textarea>
                 </div>
-            </div>
+                
+                <!--TODO: Get a fancy file uploader that allows for multiple, wire up -->
+                <div class="usa-width-one-half">
+                    <label for="files">Upload files</label>
+                    <input id="files"
+                        type="file"
+                        name="files" />
+                </div>
+            </fieldset>
+            <br><hr/><br>
+            <fieldset class="grey lighten-4">
+                <div class="usa-grid">
+                    <br/>
+                    <h3>
+                        <!--TODO: Hide when only one content block (one always has to be visible)-->
+                        <a class="usa-button usa-button-tertiary right"><i class="fa fa-times"></i> Delete</a>
+                        Content block
+                    </h3>
+                    
+                    <!--TODO: Wire up roles, allow for multiple selections-->
+                    <label for="role">Viewable by</label>
+                    <select id="role" name="role" multiple>
+                        <option>System roles imported here</option>
+                        <option>System roles imported here</option>
+                        <option>System roles imported here</option>
+                    </select>
+
+                    <div *ngIf="edit">
+                        <!--TODO: Content block shouldn't be required, but you always have one in the form. Additional can be added and removed-->
+                        <label for="body">Content</label>
+                        <md-editor id="body" name="body" required name='body' [(ngModel)]="knowledgeArticle.body" class="validate"></md-editor>              
+                    </div>
+                    <div *ngIf="!edit">
+                        <label>Content</label>
+                        <div class="card-panel">
+                            <markdown [data]="knowledgeArticle.body"></markdown>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <br/>
+            <fieldset class="grey lighten-4">
+                <div class="usa-grid">
+                    <br/>
+                    <h3>
+                        <!--TODO: Hide when only one content block (one always has to be visible)-->
+                        <a class="usa-button usa-button-tertiary right"><i class="fa fa-times"></i> Delete</a>
+                        Content block
+                    </h3>
+                    
+                    <!--TODO: Wire up roles, allow for multiple selections-->
+                    <label for="role">Viewable by</label>
+                    <select id="role" name="role" multiple>
+                        <option>System roles imported here</option>
+                        <option>System roles imported here</option>
+                        <option>System roles imported here</option>
+                    </select>
+
+                    <div *ngIf="edit">
+                        <!--TODO: Content block shouldn't be required-->
+                        <label for="body2">Content</label>
+                        <md-editor id="body2" name="body2" required name="body2" class="validate"></md-editor>              
+                    </div>
+                    <div *ngIf="!edit">
+                        <label>Content</label>
+                        <div class="card-panel">
+                            <markdown></markdown>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <br/>
+            <fieldset>
+                <button (click)="toggleEdit()" type="button" class="usa-button usa-button-secondary">{{edit ? 'Preview all content blocks' : 'Back to editing mode'}}</button>
+                <a class="usa-button usa-button-secondary"><i class="fa fa-plus"></i> Add additional content block</a>
+            </fieldset>
+            <br><hr/><br>
 
             <input id="published" 
                 type="checkbox" 
@@ -49,11 +122,12 @@
                 name="user_id" [(ngModel)]="knowledgeArticle.userId" [value]="authTokenService.currentUserData.id" />
             
             <fieldset>
-                <button (click)="toggleEdit()" type="button" class="usa-button usa-button-secondary left">{{edit ? 'Preview' : 'Edit'}}</button>
                 <input type="submit" 
                     [disabled]="!(f.valid)" 
-                    value="Save" 
-                    class="usa-button left" />
+                    value="Publish knowledge article" 
+                    class="usa-button right" />
+                <button class="usa-button usa-button-secondary right" [routerLink]="['/step', stepId]">Cancel</button>
+                <br/><br/><br/><br/>
             </fieldset>
         </form>       
     </div>    

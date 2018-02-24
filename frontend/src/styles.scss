@@ -36,7 +36,8 @@ a {
     -webkit-box-shadow: inset 0 0 0 2px #ef5350;
     box-shadow: inset 0 0 0 2px #ef5350;
     
-    &:hover, &:active, &:focus {
+    &:hover, &:active, &:focus, 
+    &.usa-button:hover, &.usa-button:active, &.usa-button:focus {
         color: #c62828;
         background-color: #fff;
         -webkit-box-shadow: inset 0 0 0 2px #c62828;
@@ -89,7 +90,7 @@ a {
         }
         
         > .card-content-tertiary {
-            min-height: 211px;
+            min-height: 233px;
             color: #ccc;
         }
 
@@ -146,6 +147,10 @@ header.usa-header {
         padding: 1rem 2rem;
         margin: .5em .5em .5em 0;
         height: 37px;
+    }
+
+    .usa-form select[multiple] {
+        height: 80px;
     }
 
 .usa-form-inline select {
@@ -334,19 +339,18 @@ header.usa-header {
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-.md-editor-container[_ngcontent-c3] .tool-bar[_ngcontent-c3] .btn-group[_ngcontent-c3] {
+.md-editor-container .tool-bar .btn-group {
     display: inline-block;
     margin: 5px 0;
-}
 
-.md-editor-container[_ngcontent-c3] .tool-bar[_ngcontent-c3] .btn[_ngcontent-c3] {
-    padding: .1rem 1rem;
-    margin: 0 0 0 2px;
-    height: 28px;
-    
-    
-    > i {
-        font-size: 1rem;
+    .btn {
+        padding: 0 1rem;
+        margin: 0 0 0 2px;
+        height: 24px;
+
+        > i {
+            font-size: 1rem;
+        }
     }
 }
 

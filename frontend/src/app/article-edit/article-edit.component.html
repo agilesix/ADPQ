@@ -1,89 +1,101 @@
 <div class="a2-header grey lighten-4">
     <div class="usa-grid">
-        <h6 class="left">
-            <a *ngIf="!stepLoading" [routerLink]="['/step', stepId]">
-                <i class="fa fa-angle-left left"></i> 
-                <span class="chip"><b>{{stepId}}</b></span> 
-                <b>{{step.name}}</b>
-            </a>
-        </h6>
+        <div class="usa-width-one-half">
+            <h6>
+                <a *ngIf="!stepLoading" [routerLink]="['/step', stepId]">
+                    <i class="fa fa-angle-left left"></i> 
+                    <span class="chip"><b>{{stepId}}</b></span> 
+                    <b>{{step.name}}</b>
+                </a>
+            </h6>
+        </div>
         
-        <!-- IF ROLE: ADMIN -->
-        <button class="right usa-button usa-button-tertiary"><i class="fa fa-plus"></i> Add file</button>
-        
-        <!-- IF ROLE: USER -->
-        <button class="right usa-button usa-button-secondary">Create a portfolio</button>
-        <p class="right">Ready to start yours?</p>
+        <div class="usa-width-one-half right-align">            
+            <a class="right usa-button usa-button-secondary" *ngIf="!stepLoading" [routerLink]="['/step', stepId, 'article', article.id]">Cancel edits</a>
+        </div>
     </div>
 </div>    
 <div class="usa-grid">  
-  <h2>Update Knowledge Article</h2>
-  <div *ngIf="!loading" class="usa-width-two-thirds">
-      <a *ngIf="!stepLoading" [routerLink]="['/step', stepId, 'article', article.id]">Cancel</a>
-      <form (ngSubmit)="updateKnowledgeArticle(f.value)" #f="ngForm" class="usa-form">
-          <label for="title">Title</label>
-          <input id="title"
-                  type="text"
-                  required
-                  name='title'
-                  [(ngModel)]="knowledgeArticle.title"
-                  class="validate" />
-          <button (click)="toggleEdit()" type="button">{{edit ? 'Preview' : 'Edit'}}</button>
-          <div *ngIf="edit">
-              <label for="body">Content</label>
-              <md-editor id="body" name="body" required name='body' [(ngModel)]="knowledgeArticle.body" class="validate"></md-editor>
-          </div>
-          <div *ngIf="!edit">
-            <h3>Preview</h3>
-            <markdown [data]="knowledgeArticle.body"></markdown>
-          </div>
+    <h2>Edit the <i class="blue-text">{{knowledgeArticle.title}}</i> knowledge article</h2>
+    
+    <div *ngIf="!loading">
+        <form (ngSubmit)="updateKnowledgeArticle()" #f="ngForm" class="usa-form">
+            <fieldset>
+                <div class="usa-width-one-half">
+                    <label for="title">Title</label>
+                    <input id="title"
+                        type="text"
+                        required
+                        name="title"
+                        [(ngModel)]="knowledgeArticle.title"
+                        class="validate" />
+                    <!--TODO: Wire up description, should be required -->
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" required class="validate"></textarea>
+                </div>
+                
+                <!--TODO: Get a fancy file uploader that allows for multiple, wire up -->
+                <div class="usa-width-one-half">
+                    <label for="files">Upload files</label>
+                    <input id="files"
+                        type="file"
+                        name="files" />
+                </div>
+            </fieldset>
+            <br><hr/><br>
+            <fieldset class="grey lighten-4">
+                <div class="usa-grid">
+                    <br/>
+                    <h3>
+                        <!--TODO: Hide when only one content block (one always has to be visible)-->
+                        <a class="usa-button usa-button-tertiary right"><i class="fa fa-times"></i> Delete</a>
+                        Content block
+                    </h3>
+                    
+                    <!--TODO: Wire up roles, allow for multiple selections-->
+                    <label for="role">Viewable by</label>
+                    <select id="role" name="role" multiple>
+                        <option>System roles imported here</option>
+                        <option>System roles imported here</option>
+                        <option>System roles imported here</option>
+                    </select>
 
-          <input id="published" type="checkbox" name="published" [(ngModel)]="knowledgeArticle.published" />
-          <label for="published">Publish?</label>
+                    <div *ngIf="edit">
+                        <!--TODO: Content block shouldn't be required, but you always have one in the form. Additional can be added and removed-->
+                        <label for="body">Content</label>
+                        <md-editor id="body" name="body" required name='body' [(ngModel)]="knowledgeArticle.body" class="validate"></md-editor>              
+                    </div>
+                    <div *ngIf="!edit">
+                        <label>Content</label>
+                        <div class="card-panel">
+                            <markdown [data]="knowledgeArticle.body"></markdown>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <br/>
+            <fieldset>
+                <button (click)="toggleEdit()" type="button" class="usa-button usa-button-secondary">{{edit ? 'Preview all content blocks' : 'Back to editing mode'}}</button>
+                <a class="usa-button usa-button-secondary"><i class="fa fa-plus"></i> Add additional content block</a>
+            </fieldset>
+            <br><hr/><br>
 
-          <input type="submit" 
-                  [disabled]="!(f.valid)" 
-                  value="Save" />
-
-      </form> 
-      
-      
-
-  </div>    
-</div>
-<div class="usa-grid-fullwidth grey lighten-5 a2-future">
-    <div class="a2-future-overlay"></div>
-    <div class="a2-future-text">
-        <h2>coming soon</h2>
-    </div>
-    <div class="usa-grid">
-        <br/><h4>Discussion</h4><br/>
-        <ul class="collection">
-            <li class="collection-item avatar">
-                <img src="./../../../assets/images/avatar.png" alt="" class="circle">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <br/>
-                <p class="right-align"><b>John Smith</b> <small>Feb 12, 2018, 8:01pm</small></p>
-            </li>
-        </ul>
-        <br/>
-        <ul class="collection">
-            <li class="collection-item avatar">
-                <img src="./../../../assets/images/avatar.png" alt="" class="circle">
-                <p>Convallis posuere morbi leo urna molestie. Mi proin sed libero enim sed faucibus turpis in. Nibh tortor id aliquet lectus proin nibh nisl. Imperdiet sed euismod nisi porta lorem mollis aliquam. Vitae justo eget magna fermentum. Eget sit amet tellus cras adipiscing enim eu turpis. Blandit libero volutpat sed cras ornare arcu. Orci ac auctor augue mauris. A diam maecenas sed enim ut. Elit scelerisque mauris pellentesque pulvinar pellentesque.</p>
-                <br/>
-                <p class="right-align"><b>Mary Jones</b> <small>Feb 15, 2018, 2:43pm</small></p>
-            </li>
-        </ul>
-        <br/>
-        <ul class="collection">
-            <li class="collection-item avatar">
-                <img src="./../../../assets/images/avatar.png" alt="" class="circle">
-                <p>Et ultrices neque ornare aenean euismod elementum. Sed felis eget velit aliquet. Pretium lectus quam id leo in vitae. Erat velit scelerisque in dictum non consectetur. Viverra mauris in aliquam sem fringilla ut.</p>
-                <br/>
-                <p class="right-align"><b>Bob Martin</b> <small>Feb 16, 2018, 11:45am</small></p>
-            </li>
-        </ul>
-        <br/><br/>
-    </div>
+            <input id="published" type="checkbox" name="published" [(ngModel)]="knowledgeArticle.published" />
+            <label for="published">Publish?</label>
+            <input type="hidden" 
+                name="workflow_step_id" [(ngModel)]="knowledgeArticle.workflow_step_id" 
+                [value]="stepId" />
+            <input type="hidden" 
+                name="user_id" [(ngModel)]="knowledgeArticle.userId" [value]="authTokenService.currentUserData.id" />
+            
+            <fieldset>
+                <input type="submit" 
+                    [disabled]="!(f.valid)" 
+                    value="Update knowledge article" 
+                    class="usa-button right" />     
+                    <a class="right usa-button usa-button-secondary" *ngIf="!stepLoading" [routerLink]="['/step', stepId, 'article', article.id]">Cancel edits</a>
+                <br/><br/><br/><br/>
+            </fieldset>
+        </form>       
+    </div>    
 </div>
