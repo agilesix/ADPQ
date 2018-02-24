@@ -17,7 +17,6 @@
 </div>    
 
 <div class="usa-grid">
-    <button (click)="toggleEdit()" type="button" class="usa-button usa-button-secondary right">{{edit ? 'Preview' : 'Edit'}}</button>
     <h3>Add Knowledge Article</h3>
     <div *ngIf="!loading">
         <form (ngSubmit)="createKnowledgeArticle()" #f="ngForm" class="usa-form">
@@ -34,8 +33,9 @@
                 <md-editor id="body" name="body" required name='body' [(ngModel)]="knowledgeArticle.body" class="validate"></md-editor>              
             </div>
             <div *ngIf="!edit">
-                <h3>Preview</h3>
-                <markdown [data]="knowledgeArticle.body"></markdown>
+                <div class="card-panel">
+                    <markdown [data]="knowledgeArticle.body"></markdown>
+                </div>
             </div>
 
             <input id="published" 
@@ -47,10 +47,14 @@
                 [value]="stepId" />
             <input type="hidden" 
                 name="user_id" [(ngModel)]="knowledgeArticle.userId" [value]="authTokenService.currentUserData.id" />
-            <input type="submit" 
-                [disabled]="!(f.valid)" 
-                value="Save" 
-                class="usa-button" />
+            
+            <fieldset>
+                <button (click)="toggleEdit()" type="button" class="usa-button usa-button-secondary left">{{edit ? 'Preview' : 'Edit'}}</button>
+                <input type="submit" 
+                    [disabled]="!(f.valid)" 
+                    value="Save" 
+                    class="usa-button left" />
+            </fieldset>
         </form>       
     </div>    
 </div>

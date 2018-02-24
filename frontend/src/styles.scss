@@ -142,6 +142,12 @@ header.usa-header {
         font-size: 1.7rem !important;
     }
 
+    .usa-form [type=submit] {
+        padding: 1rem 2rem;
+        margin: .5em .5em .5em 0;
+        height: 37px;
+    }
+
 .usa-form-inline select {
     width: auto;
     margin-top: 20px;
