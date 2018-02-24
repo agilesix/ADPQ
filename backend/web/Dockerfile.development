@@ -1,5 +1,8 @@
 FROM ruby:2.3.1
 
+# Used by ERD gem (which is only in development)
+RUN apt-get update && apt-get -y install graphviz
+
 RUN gem install bundler
 
 # Preinstall gems. This will ensure that Gem Cache wont drop on code change

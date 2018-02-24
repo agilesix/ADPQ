@@ -262,17 +262,17 @@ header.usa-header {
     .usa-grid {
         padding-bottom: 0;
         
-        > p, h6 {
-            margin-top: 1em;
+        label, h6 {
+            margin-top: .5em;
             margin-right: 2em;
             color: #aaa;
 
-            > a {
+            a {
                 text-decoration: none;
                 font-size: 2rem;
                 color: #1976d2;
 
-                > i {
+                i {
                     font-size: 3rem;
                 }
                 

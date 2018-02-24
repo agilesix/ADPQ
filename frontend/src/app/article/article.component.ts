@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, ActivatedRoute } from '@angular/router';
 import { ArticleService } from '../services/article.service';
+import { Angular2TokenService } from "angular2-token";
 import { environment } from '../../environments/environment';
 import { DatePipe } from '@angular/common';
 
@@ -18,7 +19,7 @@ export class ArticleComponent implements OnInit {
   public article;
   baseUrl: string = environment.token_auth_config.apiBase;
 
-  constructor(private route: ActivatedRoute, private articleService: ArticleService) { }
+  constructor(public authTokenService:Angular2TokenService,, private route: ActivatedRoute, private articleService: ArticleService) { }
 
   ngOnInit() {
     window.scrollTo(0, 0);
@@ -27,7 +28,7 @@ export class ArticleComponent implements OnInit {
       this.stepId = +params['stepId'];
       this.getKnowledgeArticle(this.id);
     });
-  } 
+  }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
@@ -36,13 +37,21 @@ export class ArticleComponent implements OnInit {
   getKnowledgeArticle(id) {
     this.loading = true;
     this.articleService.getKnowledgeArticle(id).subscribe(
-      data => { 
+      data => {
         this.article = JSON.parse(data['_body']);
         this.loading = false;
       },
       err => console.error(err),
       () => console.log('article: ', this.article)
     );
+  }
+
+  hasRole(roleName) {
+    let userHasRole = false;
+    if (this.authTokenService.currentUserData && this.authTokenService.currentUserData['roles'].length != 0) {
+      userHasRole = this.authTokenService.currentUserData['roles'].some(r => r.name == roleName);
+    }
+    return userHasRole;
   }
 
 }

@@ -33,11 +33,11 @@ export class StepComponent implements OnInit {
     }
     return userHasRole;
   }
-  
+
   getStep(id) {
     this.loading = true;
     this.stepService.getWorkflowStep(id).subscribe(
-      data => { 
+      data => {
         this.step = JSON.parse(data['_body']);
         this.step.published_articles = this.step.knowledge_articles.filter(ka => ka.published);
         this.loading = false;
@@ -45,7 +45,7 @@ export class StepComponent implements OnInit {
       err => console.error(err),
       () => console.log('step: ', this.step)
     );
-  } 
+  }
 
   ngOnDestroy() {
     this.sub.unsubscribe();

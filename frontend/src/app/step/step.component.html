@@ -1,7 +1,7 @@
 <br/><br/><br/>
 
 <div class="usa-grid">
-    <div *ngIf="loading" class="loading">Loading...</div>    
+    <div *ngIf="loading" class="loading">Loading...</div>
     <div class="usa-width-two-thirds">
         <div *ngIf="!loading">
             <h2>{{step.name}}</h2>
@@ -20,7 +20,7 @@
         <br/><br/>
 
         <div class="a2-callout border-tertiary" *ngIf="hasRole('Admin')">
-            <button class="usa-button usa-button-tertiary"><i class="fa fa-pencil"></i> Edit</button>            
+            <button class="usa-button usa-button-tertiary"><i class="fa fa-pencil"></i> Edit</button>
             <a [routerLink]="['new/article']" class="usa-button usa-button-tertiary"><i class="fa fa-plus"></i> Add article</a>
         </div>
     </div>
@@ -73,36 +73,5 @@
                 </a>
             </div>
         </div>
-        
-        
     </div>
-<!--
-        <table class="usa-table-borderless">
-            <thead>
-                <tr>
-                    <th scope="col"><a>Name <i class="fa fa-angle-down"></i></a></th>
-                    <th scope="col"><a>Author <i class="fa fa-angle-down"></i></a></th>
-                    <th scope="col"><a>Files <i class="fa fa-angle-down"></i></a></th>
-                    <th scope="col"><a>Date <i class="fa fa-angle-down"></i></a></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">Knowledge Article</th>
-                    <td>John Smith</td>
-                    <td>4 files</td>
-                    <td>Feb 4, 2018</td>
-                    <td class="right-align"><button class="usa-button" [routerLink]="['/article']"><i class="fa fa-angle-right"></i></button></td>
-                </tr>
-                <tr>
-                    <th scope="row">Knowledge Article</th>
-                    <td>John Smith</td>
-                    <td>4 files</td>
-                    <td>Feb 4, 2018</td>
-                    <td class="right-align"><button class="usa-button" [routerLink]="['/article']"><i class="fa fa-angle-right"></i></button></td>
-                </tr>
-            </tbody>
-        </table>
--->
 </div>
