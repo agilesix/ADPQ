@@ -12,11 +12,15 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthService } from './services/auth.service';
+import { StepService } from './services/step.service';
 import { AuthGuard } from './guards/auth.guard';
 import { APP_BASE_HREF } from '@angular/common';
 import { StepComponent } from './step/step.component';
 import { AuthComponent } from './auth/auth.component';
 import { ArticleComponent } from './article/article.component';
+import { HttpClientModule} from '@angular/common/http';
+import { ArticleService } from './services/article.service';
+import { ArticleNewComponent } from './article-new/article-new.component';
 
 @NgModule({
   declarations: [
@@ -28,16 +32,25 @@ import { ArticleComponent } from './article/article.component';
     ProfileComponent,
     StepComponent,
     AuthComponent,
-    ArticleComponent
+    ArticleComponent,
+    ArticleNewComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    MaterializeModule    
+    MaterializeModule,
+    HttpClientModule
   ],
-  providers: [ Angular2TokenService, AuthService, AuthGuard, {provide: APP_BASE_HREF, useValue: '/'}],
+  providers: [
+    Angular2TokenService, 
+    AuthService, 
+    AuthGuard, 
+    {provide: APP_BASE_HREF, useValue: '/'}, 
+    StepService,
+    ArticleService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

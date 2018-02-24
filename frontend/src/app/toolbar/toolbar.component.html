@@ -7,21 +7,11 @@
         </em>
     </div>
     <nav role="navigation" class="usa-nav" *ngIf="(authService.userSignedIn$ | async)">
-        <ul class="usa-nav-primary usa-accordion">
-            <li>
-                <a class="usa-nav-link active" [routerLink]="['/step']">1 <span class="text">Visioning</span></a>
-            </li>
-            <li>
-                <a class="usa-nav-link" [routerLink]="['/step']">2 <span class="text">SOO</span></a>
-            </li>
-            <li>
-                <a class="usa-nav-link" [routerLink]="['/step']">3 <span class="text">ConOps</span></a>
-            </li>
-            <li>
-                <a class="usa-nav-link" [routerLink]="['/step']">4 <span class="text">IGCE</span></a>
-            </li>
-            <li>
-                <a class="usa-nav-link" [routerLink]="['/step']">5 <span class="text">PI/EC</span></a>
+        <ul *ngIf="!loading" class="usa-nav-primary usa-accordion">
+            <li *ngFor="let step of steps; let i = index" [attr.data-index]="i">
+                <a class="usa-nav-link" [ngClass]="{'active': isActive(step.id)}" [routerLink]="['/step', step.id]">
+                    {{i + 1}} <span class="text">{{step.name}}</span>
+                </a>
             </li>
         </ul>
     </nav>
@@ -32,7 +22,7 @@
             <b>{{authTokenService.currentUserData.name}}</b>
             <br/><small>{{authTokenService.currentUserData.email}}</small>
         </p>
-        <p *ngIf="authTokenService.currentUserData.roles && authTokenService.currentUserData.roles.length != 0">
+        <p *ngIf="authTokenService.currentUserData && authTokenService.currentUserData.roles.length != 0">
             <span class="chip" *ngFor="let role of authTokenService.currentUserData.roles">{{role.name}}</span>
         </p>
         <button class="usa-button" (click)="logOut()">Logout</button>

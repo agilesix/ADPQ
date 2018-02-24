@@ -1,10 +1,10 @@
 <div class="a2-header grey lighten-4">
-    <div class="usa-grid">
+    <div class="usa-grid">        
         <h6 class="left">
-            <a [routerLink]="['/step']">
+            <a *ngIf="!loading" [routerLink]="['/step', stepId]">
                 <i class="fa fa-angle-left left"></i> 
-                <span class="chip"><b>1</b></span> 
-                <b>Visioning</b>
+                <span class="chip"><b>{{stepId}}</b></span> 
+                <b >{{article.workflow_steps[0].name}}</b>
             </a>
         </h6>
         
@@ -18,65 +18,20 @@
     </div>
 </div>    
 <div class="usa-grid">
-    <div class="usa-width-two-thirds">
-        <h2>Knowledge Article</h2>
-        <p>Long description here. This would be inputted by a limited-WYSIWYG editor to allow for tables/lists/etc.</p>
-        <ul class="browser-default">
-            <li>Concise: able to be easily remembered and repeated</li>
-            <li>Clear: defines a prime goal</li>
-            <li>Time horizon: defines a time horizon</li>
-            <li>Future-oriented: describes where the company is going rather than the current state</li>
-        </ul>
-        
-        <table class="usa-table-borderless">
-            <thead>
-                <tr>
-                    <th scope="col">Document Title</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Year</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">Declaration of Independence</th>
-                    <td>Statement adopted by the Continental Congress declaring independence from the British Empire.</td>
-                    <td>1776</td>
-                </tr>
-                <tr>
-                    <th scope="row">Bill of Rights</th>
-                    <td>The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.</td>
-                    <td>1791</td>
-                </tr>
-                <tr>
-                    <th scope="row">Declaration of Sentiments</th>
-                    <td>A document written during the Seneca Falls Convention outlining the rights that American women should be entitled to as citizens.</td>
-                    <td>1848</td>
-                </tr>
-                <tr>
-                    <th scope="row">Emancipation Proclamation</th>
-                    <td>An executive order granting freedom to slaves in designated southern states.</td>
-                    <td>1863</td>
-                </tr>
-            </tbody>
-        </table>
+        <div *ngIf="loading" class="loading">Loading...</div>  
+    <div *ngIf="!loading" class="usa-width-two-thirds">
+        <h2>{{article.title}}</h2>
+        <div class="workflow-step-description">
+            {{article.body}}
+        </div>        
     </div>
     <div class="usa-width-one-third">
-        <div class="a2-callout border-primary">
-            <button class="usa-button">
-                <i class="fa fa-download"></i> File.docx
-            </button>
-            <button class="usa-button">
-                <i class="fa fa-download"></i> AnotherFile.docx
-            </button>
-            <button class="usa-button">
-                <i class="fa fa-download"></i> ALongerFile.docx
-            </button>
-            <button class="usa-button">
-                <i class="fa fa-download"></i> File.docx
-            </button>
-            <button class="usa-button">
-                <i class="fa fa-download"></i> File.docx
-            </button>
+        <div *ngIf="!loading" class="a2-callout border-primary">
+            <div *ngFor="let attachment of article.file_attachments">
+                <a href="{{baseUrl + attachment.attached_file}}" *ngIf="attachment.approved" class="usa-button">
+                    <span class="fa fa-download"></span> {{attachment.filename}}
+                </a>
+            </div>            
             
             <!-- IF ROLE: USER -->
             <br/><br/><br/><hr/>
@@ -85,16 +40,16 @@
             
             <br/><br/><hr/><br/>
             <p>
-                <img src="./../../../assets/images/avatar.png" class="circle img-30 left" alt="John Smith">
-                John Smith
+                <img src="./../../../assets/images/avatar.png" class="circle img-30 left" alt="{{article.user.name}}">
+                {{article.user.name}}
             </p>
             <p>
                 <small>
-                    Created <b>Feb 2, 2018</b><br/>
-                    Last Updated <b>Feb 5, 2018</b>
+                    Created <b>{{article.created_at | date}}</b><br/>
+                    Last Updated <b>{{article.updated_at | date}}</b>
                 </small>
             </p>
-            <div class="chip">Visioning Statement</div>
+            <div class="chip">{{article.workflow_steps[0].name}}</div>
         </div>
     </div>
 </div>
