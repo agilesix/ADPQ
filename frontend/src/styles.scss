@@ -57,6 +57,10 @@ a {
     color: #ef5350;
 }
 
+.text-large {
+    font-size: 1.7rem;
+}
+
 .img-50 {
     width: 50px;
 }
@@ -64,6 +68,14 @@ a {
 .img-30 {
     width: 30px;
     margin-right: 5px;
+}
+
+ul:not(.browser-default)  {
+    margin-left: 30px;
+    
+    > li {
+        list-style-type: disc;
+    }
 }
 
 
@@ -75,6 +87,10 @@ a {
 
 .modal .modal-content {
     padding: 60px;
+    
+    .modal-body {
+        padding: 0 0 50px 0;
+    }
 }
 
 .card .card-content > button {
@@ -139,8 +155,14 @@ header.usa-header {
     max-width: none;
 }
 
-    .usa-form input {
+    .usa-form input, .usa-form textarea {
         font-size: 1.7rem !important;
+    }
+
+    .usa-form input.h2 {
+        font-size: 3rem !important;
+        font-weight: 700;
+        font-family: Merriweather,Georgia,Cambria,Times New Roman,Times,serif;
     }
 
     .usa-form [type=submit] {

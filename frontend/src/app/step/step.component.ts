@@ -19,6 +19,10 @@ export class StepComponent implements OnInit {
 
   @ViewChild('modal') modal: ModalComponent;
 
+  presentModal(mode) {
+    this.modal.openModal(mode);
+  }
+
   constructor(public authTokenService:Angular2TokenService, private stepService: StepService, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -37,10 +41,6 @@ export class StepComponent implements OnInit {
     return userHasRole;
   }
 
-  presentModal(mode) {
-    this.modal.openModal(mode);
-  }
-
   getStep(id) {
     this.loading = true;
     this.stepService.getWorkflowStep(id).subscribe(
@@ -56,5 +56,9 @@ export class StepComponent implements OnInit {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+  
+  toggleEdit() {
+    this.edit = !this.edit;
   }
 }
