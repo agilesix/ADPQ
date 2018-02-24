@@ -30,7 +30,7 @@ export class ToolbarComponent {
     this.loading = true;
     this.stepService.getWorkflowSteps().subscribe(
       data => { 
-        this.steps = JSON.parse(data._body);
+        this.steps = JSON.parse(data['_body']);
         this.loading = false;
       },
       err => console.error(err),

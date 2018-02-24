@@ -28,14 +28,20 @@
                   name='title'
                   [(ngModel)]="knowledgeArticle.title"
                   class="validate" />
-          
-          <label for="body">Content</label>
-          <textarea id="body"
-                  type="text"
-                  required
-                  name='body'
-                  [(ngModel)]="knowledgeArticle.body"
-                  class="validate"></textarea>  
+          <button (click)="toggleEdit()" type="button">{{edit ? 'Preview' : 'Edit'}}</button>
+          <div *ngIf="edit">
+              <label for="body">Content</label>
+              <textarea id="body"
+                      type="text"
+                      required
+                      name='body'
+                      [(ngModel)]="knowledgeArticle.body"
+                      class="validate"></textarea>  
+              <h3>Preview</h3>
+          </div>
+          <div *ngIf="!edit">
+            <markdown [data]="knowledgeArticle.body"></markdown>
+          </div>
 
           <input id="published" type="checkbox" name="published" [(ngModel)]="knowledgeArticle.published" />
           <label for="published">Publish?</label>

@@ -38,7 +38,7 @@ export class StepComponent implements OnInit {
     this.loading = true;
     this.stepService.getWorkflowStep(id).subscribe(
       data => { 
-        this.step = JSON.parse(data._body);
+        this.step = JSON.parse(data['_body']);
         this.step.published_articles = this.step.knowledge_articles.filter(ka => ka.published);
         this.loading = false;
       },

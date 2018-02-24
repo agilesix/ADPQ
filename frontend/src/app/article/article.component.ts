@@ -21,12 +21,12 @@ export class ArticleComponent implements OnInit {
   constructor(private route: ActivatedRoute, private articleService: ArticleService) { }
 
   ngOnInit() {
-     window.scrollTo(0, 0);
-      this.sub = this.route.params.subscribe(params => {
-        this.id = +params['id'];
-        this.stepId = +params['stepId'];
-        this.getKnowledgeArticle(this.id);
-      });
+    window.scrollTo(0, 0);
+    this.sub = this.route.params.subscribe(params => {
+      this.id = +params['id'];
+      this.stepId = +params['stepId'];
+      this.getKnowledgeArticle(this.id);
+    });
   } 
 
   ngOnDestroy() {
@@ -37,7 +37,7 @@ export class ArticleComponent implements OnInit {
     this.loading = true;
     this.articleService.getKnowledgeArticle(id).subscribe(
       data => { 
-        this.article = JSON.parse(data._body);
+        this.article = JSON.parse(data['_body']);
         this.loading = false;
       },
       err => console.error(err),

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterializeModule } from 'angular2-materialize';
@@ -21,6 +21,8 @@ import { ArticleComponent } from './article/article.component';
 import { HttpClientModule} from '@angular/common/http';
 import { ArticleService } from './services/article.service';
 import { ArticleNewComponent } from './article-new/article-new.component';
+import { MarkdownModule } from 'ngx-markdown';
+import { ArticleEditComponent } from './article-edit/article-edit.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { ArticleNewComponent } from './article-new/article-new.component';
     StepComponent,
     AuthComponent,
     ArticleComponent,
-    ArticleNewComponent
+    ArticleNewComponent,
+    ArticleEditComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,9 @@ import { ArticleNewComponent } from './article-new/article-new.component';
     HttpModule,
     AppRoutingModule,
     MaterializeModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    MarkdownModule.forRoot()
   ],
   providers: [
     Angular2TokenService, 

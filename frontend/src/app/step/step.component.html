@@ -6,7 +6,7 @@
         <div *ngIf="!loading">
             <h2>{{step.name}}</h2>
             <div class="workflow-step-description">
-                {{step.description}}
+                <markdown [data]="step.description"></markdown>
             </div>
         </div>
     </div>
