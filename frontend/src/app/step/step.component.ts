@@ -19,6 +19,10 @@ export class StepComponent implements OnInit {
 
   @ViewChild('modal') modal: ModalComponent;
 
+  presentModal(mode) {
+    this.modal.openModal(mode);
+  }
+
   constructor(public authTokenService:Angular2TokenService, private stepService: StepService, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -35,10 +39,6 @@ export class StepComponent implements OnInit {
       userHasRole = this.authTokenService.currentUserData['roles'].some(r => r.name == roleName);
     }
     return userHasRole;
-  }
-
-  presentModal(mode) {
-    this.modal.openModal(mode);
   }
 
   getStep(id) {

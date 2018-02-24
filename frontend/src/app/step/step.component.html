@@ -1,5 +1,3 @@
-<app-modal #modal ></app-modal>
-
 <br/><br/><br/>
 
 <div class="usa-grid">
@@ -14,10 +12,10 @@
     </div>
 
     <div class="usa-width-one-third">
-        <div class="a2-callout border-primary" *ngIf="hasRole('Contributor')">
+        <!--<div class="a2-callout border-primary" *ngIf="hasRole('Contributor')">
             <label>Ready to start yours?</label>
-            <button class="usa-button usa-button-secondary">Create a portfolio</button>
-        </div>
+            <button class="usa-button usa-button-secondary"(click)="presentModal('portfolio')">Create a portfolio</button>
+        </div>-->
 
         <br/><br/>
 
@@ -77,3 +75,5 @@
         </div>
     </div>
 </div>
+
+<app-modal #modal ></app-modal>

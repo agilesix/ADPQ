@@ -26,13 +26,20 @@ export class ModalComponent implements OnInit {
     this.modalActions.emit({action: 'modal', params: ['close']});
   }
 
+  modalPortfolio() {
+    return this.modalContent === 'portfolio';
+  }
 
   modalStepEdit() {
     return this.modalContent === 'stepEdit';
   }
 
-  modalArticleAdd() {
-    return this.modalContent === 'articleAdd';
+  modalFileSubmit() {
+    return this.modalContent === 'fileSubmit';
+  }
+  
+  submitSuccess() {
+    this.submitted = !this.submitted;
   }
 
 }

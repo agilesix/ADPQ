@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, RouterLink, ActivatedRoute } from '@angular/router';
 import { ArticleService } from '../services/article.service';
 import { Angular2TokenService } from "angular2-token";
 import { environment } from '../../environments/environment';
 import { DatePipe } from '@angular/common';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-article',
@@ -20,6 +21,12 @@ export class ArticleComponent implements OnInit {
   baseUrl: string = environment.token_auth_config.apiBase;
 
   constructor(public authTokenService:Angular2TokenService,, private route: ActivatedRoute, private articleService: ArticleService) { }
+
+  @ViewChild('modal') modal: ModalComponent;
+
+  presentModal(mode) {
+    this.modal.openModal(mode);
+  }
 
   ngOnInit() {
     window.scrollTo(0, 0);

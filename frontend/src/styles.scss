@@ -57,6 +57,10 @@ a {
     color: #ef5350;
 }
 
+.text-large {
+    font-size: 1.7rem;
+}
+
 .img-50 {
     width: 50px;
 }
@@ -75,6 +79,10 @@ a {
 
 .modal .modal-content {
     padding: 60px;
+    
+    .modal-body {
+        padding: 0 0 50px 0;
+    }
 }
 
 .card .card-content > button {
