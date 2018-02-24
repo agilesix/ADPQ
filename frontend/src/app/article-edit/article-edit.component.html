@@ -16,7 +16,7 @@
     </div>
 </div>    
 <div class="usa-grid">  
-    <h2>Edit the <i class="blue-text">{{knowledgeArticle.title}}</i> knowledge article</h2>
+    <h2>Edit the <i class="blue-text">{{knowledgeArticle.title}}</i> knowledge article</h2><br/>
     
     <div *ngIf="!loading">
         <form (ngSubmit)="updateKnowledgeArticle()" #f="ngForm" class="usa-form">
@@ -79,9 +79,11 @@
                 <a class="usa-button usa-button-secondary"><i class="fa fa-plus"></i> Add additional content block</a>
             </fieldset>
             <br><hr/><br>
-
+            
+            <!--TODO: remove "draft" status functionality (and this publish checkbox) for now, will add back later? -->
             <input id="published" type="checkbox" name="published" [(ngModel)]="knowledgeArticle.published" />
             <label for="published">Publish?</label>
+            
             <input type="hidden" 
                 name="workflow_step_id" [(ngModel)]="knowledgeArticle.workflow_step_id" 
                 [value]="stepId" />
