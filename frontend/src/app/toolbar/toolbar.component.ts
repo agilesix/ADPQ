@@ -3,15 +3,17 @@ import { AuthService } from '../services/auth.service';
 import { Router, RouterLink, ActivatedRoute } from '@angular/router';
 import { Angular2TokenService } from "angular2-token";
 import { StepService } from '../services/step.service';
+import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common'
 
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.scss']
+  styleUrls: ['./toolbar.component.scss'],
+  providers: [Location, {provide: LocationStrategy, useClass: PathLocationStrategy}]
 })
 export class ToolbarComponent {
 
-  constructor(public authTokenService:Angular2TokenService, public authService: AuthService, private router: Router, private stepService: StepService, private route: ActivatedRoute) { }
+  constructor(public location: Location, public authTokenService:Angular2TokenService, public authService: AuthService, public router: Router, private stepService: StepService, private route: ActivatedRoute) { }
 
   id: number;
   private sub: any;
@@ -39,8 +41,8 @@ export class ToolbarComponent {
   }
 
   isActive(stepId) {
-   if (this.router.location.path().indexOf('step') > 0) {
-    let paramId = +this.router.location.path().split('/')[2];
+   if (this.location.path().indexOf('step') > 0) {     
+    let paramId = +this.location.path().split('/')[2];
 
     return stepId == paramId;    
    }

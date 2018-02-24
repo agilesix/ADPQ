@@ -23,6 +23,7 @@ import { ArticleService } from './services/article.service';
 import { ArticleNewComponent } from './article-new/article-new.component';
 import { MarkdownModule } from 'ngx-markdown';
 import { ArticleEditComponent } from './article-edit/article-edit.component';
+import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ArticleEditComponent } from './article-edit/article-edit.component';
     MaterializeModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
+    LMarkdownEditorModule
   ],
   providers: [
     Angular2TokenService, 

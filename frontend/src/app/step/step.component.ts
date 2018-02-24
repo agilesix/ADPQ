@@ -28,8 +28,8 @@ export class StepComponent implements OnInit {
 
   hasRole(roleName) {
     let userHasRole = false;
-    if (this.authTokenService.currentUserData) {
-      userHasRole = this.authTokenService.currentUserData.roles.some(r => r.name == roleName);
+    if (this.authTokenService.currentUserData && this.authTokenService.currentUserData['roles'].length != 0) {
+      userHasRole = this.authTokenService.currentUserData['roles'].some(r => r.name == roleName);
     }
     return userHasRole;
   }
