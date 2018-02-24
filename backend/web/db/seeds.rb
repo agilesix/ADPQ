@@ -62,4 +62,8 @@ end
 if dan.present? && ka1.present? && ft1.present? && cat1.present? && cat2.present?
   FileAttachment.create!(filename: 'Vision Statement Template', approved: true, user: dan, category: cat1, file_type: ft1, knowledge_article: ka1, attached_file: seed_file('VisionStatementTemplate.docx'))
   FileAttachment.create!(filename: 'Sample Vision Statement', approved: true, user: dan, category: cat2, file_type: ft1, knowledge_article: ka1, attached_file: seed_file('SampleVisionStatement.docx'))
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> master

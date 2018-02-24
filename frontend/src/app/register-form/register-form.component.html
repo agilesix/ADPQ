@@ -7,11 +7,13 @@
            [(ngModel)]="signUpUser.email"
            class="validate" />
     
-    <!-- Name field needs wired up (added to db?)-->
     <label for="email">Name</label>
     <input id="name"
            type="text"
-           name='name' />
+           required
+           name='name'
+           [(ngModel)]="signUpUser.name"
+           class="validate" />
 
     <label for="password_create">Password</label>
     <input id="password_create"

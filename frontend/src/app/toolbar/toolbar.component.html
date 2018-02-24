@@ -29,11 +29,11 @@
     <div class="a2-profile center-align" *ngIf="(authService.userSignedIn$ | async)">
         <img *ngIf="authTokenService.currentUserData" src="./../../../assets/images/avatar.png" class="circle img-50" alt="John Smith">
         <p *ngIf="authTokenService.currentUserData">
-            <b>{{authTokenService.currentUserData.name}} Bob Smith</b>
+            <b>{{authTokenService.currentUserData.name}}</b>
             <br/><small>{{authTokenService.currentUserData.email}}</small>
         </p>
-        <p *ngIf="authTokenService.currentUserData.roles.length">
-            <span class="chip" *ngFor="let role of authTokenService.currentUserData.roles">{{role.name}} Role</span>
+        <p *ngIf="authTokenService.currentUserData.roles.length != 0">
+            <span class="chip" *ngFor="let role of authTokenService.currentUserData.roles">{{role.name}}</span>
         </p>
         <button class="usa-button" (click)="logOut()">Logout</button>
     </div>
