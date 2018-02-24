@@ -31,7 +31,7 @@
           <button (click)="toggleEdit()" type="button">{{edit ? 'Preview' : 'Edit'}}</button>
           <div *ngIf="edit">
               <label for="body">Content</label>
-              <md-editor name="content" required name='body' [(ngModel)]="knowledgeArticle.body" class="validate"></md-editor>
+              <md-editor id="body" name="body" required name='body' [(ngModel)]="knowledgeArticle.body" class="validate"></md-editor>
           </div>
           <div *ngIf="!edit">
             <h3>Preview</h3>
@@ -44,7 +44,7 @@
           <input type="submit" 
                   [disabled]="!(f.valid)" 
                   value="Save" />
-                  
+
       </form> 
       
       

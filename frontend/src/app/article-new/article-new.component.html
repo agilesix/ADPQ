@@ -31,15 +31,10 @@
           <button (click)="toggleEdit()" type="button">{{edit ? 'Preview' : 'Edit'}}</button>
           <div *ngIf="edit">
               <label for="body">Content</label>
-              <textarea id="body"
-                      type="text"
-                      required
-                      name='body'
-                      [(ngModel)]="knowledgeArticle.body"
-                      class="validate"></textarea>  
-              <h3>Preview</h3>
+              <md-editor id="body" name="body" required name='body' [(ngModel)]="knowledgeArticle.body" class="validate"></md-editor>              
           </div>
           <div *ngIf="!edit">
+              <h3>Preview</h3>
             <markdown [data]="knowledgeArticle.body"></markdown>
           </div>
 
