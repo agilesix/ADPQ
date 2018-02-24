@@ -19,7 +19,7 @@ export class ArticleComponent implements OnInit {
   public article;
   baseUrl: string = environment.token_auth_config.apiBase;
 
-  constructor(public authTokenService:Angular2TokenService,, private route: ActivatedRoute, private articleService: ArticleService) { }
+  constructor(public authTokenService:Angular2TokenService, private route: ActivatedRoute, private articleService: ArticleService) { }
 
   ngOnInit() {
     window.scrollTo(0, 0);

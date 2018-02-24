@@ -1,6 +1,7 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
+  resources :content_blocks
   resources :file_types
   resources :categories
   resources :file_attachments

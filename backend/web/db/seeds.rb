@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 #Create Roles
-Role.create!(name: 'Admin') unless Role.exists? name: 'Admin'
-Role.create!(name: 'Contributor') unless Role.exists? name: 'Contributor'
+admin_role = Role.create!(name: 'Admin') unless Role.exists? name: 'Admin'
+contributor_role = Role.create!(name: 'Contributor') unless Role.exists? name: 'Contributor'
 
 #Create Users
 dan = User.create!(email: 'dan@a2tool.com', nickname: 'Dan', name: 'Dan', password: "dana2tool") unless User.find_by(email: 'dan@a2tool.com').present?
@@ -39,9 +39,16 @@ wfs4 = WorkflowStep.create!(workflow: workflow, name: 'Independent Government Co
 wfs5 = WorkflowStep.create!(workflow: workflow, name: 'Proposal Instructions/Evaluation Criteria', description: 'This is the description for the Proposal Instructions/Evaluation Criteria workflow step.') unless workflow.blank? || WorkflowStep.exists?(name: 'Proposal Instructions/Evaluation Criteria')
 
 #Create Knowledge Article(s)
-ka1 = KnowledgeArticle.create!(title: 'How to Create a Vision Statement', body: '# This is a header', user: dan, published: true) unless dan.blank? || KnowledgeArticle.exists?(title: 'How to Create a Vision Statement')
+ka1 = KnowledgeArticle.create!(title: 'How to Create a Vision Statement', body: 'This is a short description of what the knowledge article is about.', user: dan, published: true) unless dan.blank? || KnowledgeArticle.exists?(title: 'How to Create a Vision Statement')
 wfs_ka1 = WorkflowStepKnowledgeArticle.create!(workflow_step: wfs1, knowledge_article: ka1) unless (wfs1.blank? || ka1.blank?) || WorkflowStepKnowledgeArticle.exists?(workflow_step: wfs1, knowledge_article: ka1)
 
+#Create Content Block(s) for Knowledge Article(s)
+cb1 = ContentBlock.create!(knowledge_article: ka1, content: '## Only an admin can see this markdown! ---') unless admin_role.blank? or ka1.blank?
+cb2 = ContentBlock.create!(knowledge_article: ka1, content: '### Only a contributor can see this markdown!') unless contributor_role.blank? or ka1.blank?
+cb3 = ContentBlock.create!(knowledge_article: ka1, content: '### all roles can see this') unless contributor_role.blank? or ka1.blank?
+
+r_cb1 = RoleContentBlock.create!(role: admin_role, content_block: cb1) unless admin_role.blank? or cb1.blank?
+r_cb2 = RoleContentBlock.create!(role: contributor_role, content_block: cb2) unless contributor_role.blank? or cb2.blank?
 
 #Create File Types
 ft1 = FileType.create!(name: 'Microsoft Word') unless FileType.exists?(name: 'Microsoft Word')

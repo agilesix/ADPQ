@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180222213744) do
+ActiveRecord::Schema.define(version: 20180224192748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 20180222213744) do
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "content_blocks", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "knowledge_article_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["knowledge_article_id"], name: "index_content_blocks_on_knowledge_article_id", using: :btree
   end
 
   create_table "file_attachments", force: :cascade do |t|
@@ -56,6 +64,14 @@ ActiveRecord::Schema.define(version: 20180222213744) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.index ["user_id"], name: "index_knowledge_articles_on_user_id", using: :btree
+  end
+
+  create_table "role_content_blocks", force: :cascade do |t|
+    t.integer "role_id"
+    t.integer "content_block_id"
+    t.index ["content_block_id"], name: "index_role_content_blocks_on_content_block_id", using: :btree
+    t.index ["role_id", "content_block_id"], name: "index_role_content_blocks_on_role_id_and_content_block_id", using: :btree
+    t.index ["role_id"], name: "index_role_content_blocks_on_role_id", using: :btree
   end
 
   create_table "roles", force: :cascade do |t|
@@ -138,6 +154,7 @@ ActiveRecord::Schema.define(version: 20180222213744) do
     t.index ["workflow_type_id"], name: "index_workflows_on_workflow_type_id", using: :btree
   end
 
+  add_foreign_key "content_blocks", "knowledge_articles"
   add_foreign_key "file_attachments", "categories"
   add_foreign_key "file_attachments", "file_types"
   add_foreign_key "file_attachments", "knowledge_articles"

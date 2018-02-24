@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @content_block.role %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @content_block.content %>
+</p>
+
+<p>
+  <strong>Knowledge article:</strong>
+  <%= @content_block.knowledge_article %>
+</p>
+
+<%= link_to 'Edit', edit_content_block_path(@content_block) %> |
+<%= link_to 'Back', content_blocks_path %>

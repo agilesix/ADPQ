@@ -37,7 +37,7 @@ import { LMarkdownEditorModule } from 'ngx-markdown-editor';
     StepComponent,
     AuthComponent,
     ArticleComponent,
-    ModalComponent
+    ModalComponent,
     ArticleNewComponent,
     ArticleEditComponent
   ],
