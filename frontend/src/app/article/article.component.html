@@ -1,20 +1,24 @@
 <div class="a2-header grey lighten-4">
     <div class="usa-grid">
-        <h6 class="left">
-            <a [routerLink]="['/step']">
-                <i class="fa fa-angle-left left"></i> 
-                <span class="chip"><b>1</b></span> 
-                <b>Visioning</b>
-            </a>
-        </h6>
+        <div class="usa-width-one-half">
+            <h6>
+                <a [routerLink]="['/step']">
+                    <i class="fa fa-angle-left left"></i> 
+                    <span class="chip"><b>1</b></span> 
+                    <b>Visioning</b>
+                </a>
+            </h6>
+        </div>
         
-        <!-- IF ROLE: ADMIN -->
-        <button class="right usa-button usa-button-tertiary"><i class="fa fa-plus"></i> Add file</button>
-        <button class="right usa-button usa-button-tertiary"><i class="fa fa-pencil"></i> Edit</button>
+        <div *ngIf="hasRole('Admin')" class="usa-width-one-half right-align">
+            <button class="usa-button usa-button-tertiary"><i class="fa fa-pencil"></i> Edit</button>
+            <button class="usa-button usa-button-tertiary"><i class="fa fa-plus"></i> Add file</button>
+        </div>
         
-        <!-- IF ROLE: USER -->
-        <button class="right usa-button usa-button-secondary">Create a portfolio</button>
-        <p class="right">Ready to start yours?</p>
+        <div *ngIf="hasRole('Contributor')" class="usa-width-one-half right-align">
+            <button class="usa-button usa-button-secondary right">Create a portfolio</button>
+            <label class="right">Ready to start yours?</label>
+        </div>
     </div>
 </div>    
 <div class="usa-grid">
@@ -78,10 +82,11 @@
                 <i class="fa fa-download"></i> File.docx
             </button>
             
-            <!-- IF ROLE: USER -->
-            <br/><br/><br/><hr/>
-            <label>Have something to add?</label>
-            <button class="usa-button-secondary"><i class="fa fa-plus"></i> Submit a file</button>
+            <div *ngIf="hasRole('Contributor')">
+                <br/><br/><br/><hr/>
+                <label>Have something to add?</label>
+                <button class="usa-button-secondary"><i class="fa fa-plus"></i> Submit a file</button>
+            </div>
             
             <br/><br/><hr/><br/>
             <p>

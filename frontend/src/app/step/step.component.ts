@@ -16,9 +16,7 @@ export class StepComponent implements OnInit {
   }
     
   hasRole(roleName) {
-      
       let userHasRole = this.authTokenService.currentUserData.roles.some(r => r.name == roleName);
-      
       return userHasRole;
   }
 
