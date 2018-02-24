@@ -9,9 +9,19 @@
     <div class="modal-content">
     
 <!--
+
       <modal-step-edit *ngIf="modalStepEdit()"></modal-step-edit>
       <modal-article-add *ngIf="modalArticleAdd()"></modal-article-add>
 -->
+        
+        <div *ngIf="modalStepEdit()">
+            <h1>Step edit</h1>
+        </div>
+        
+        <div *ngIf="modalArticleAdd()">
+            <h1>Article add</h1>
+        </div>
+
         
     </div>
     <div class="modal-footer">

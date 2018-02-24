@@ -8,7 +8,7 @@ import { MaterializeAction } from 'angular2-materialize';
 })
 export class ModalComponent implements OnInit {
 
-  //@Input() modalContent: 'stepEdit' | 'articleAdd' = 'stepEdit';
+  @Input() modalContent;
 
   modalActions = new EventEmitter<string|MaterializeAction>();
 
@@ -17,9 +17,8 @@ export class ModalComponent implements OnInit {
   ngOnInit() {
   }
 
-  openModal() {
-    //(mode: 'stepEdit' | 'articleAdd' = 'stepEdit')
-    //this.modalContent = mode;
+  openModal(mode) {
+    this.modalContent = mode;
     this.modalActions.emit({action: 'modal', params: ['open']});
   }
 
@@ -28,12 +27,12 @@ export class ModalComponent implements OnInit {
   }
 
 
-//  modalStepEdit() {
-//    return this.modalContent === 'stepEdit';
-//  }
-//
-//  modalArticleAdd() {
-//    return this.modalContent === 'articleAdd';
-//  }
+  modalStepEdit() {
+    return this.modalContent === 'stepEdit';
+  }
+
+  modalArticleAdd() {
+    return this.modalContent === 'articleAdd';
+  }
 
 }

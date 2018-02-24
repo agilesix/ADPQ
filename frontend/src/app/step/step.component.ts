@@ -23,10 +23,8 @@ export class StepComponent implements OnInit {
       return userHasRole;
   }
 
-  presentModal() {
-    //(mode?: 'stepEdit'| 'articleAdd')
-    //this.modal.openModal(mode);
-    this.modal.openModal();
+  presentModal(mode) {
+    this.modal.openModal(mode);
   }
 
 }
