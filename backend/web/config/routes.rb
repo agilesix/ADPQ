@@ -13,5 +13,10 @@ Rails.application.routes.draw do
   mount_devise_token_auth_for 'User', at: 'auth'
   mount Sidekiq::Web => '/sidekiq'
 
+  # Authorization check
+  # can?operation=read&resource=KnowledgeArticle&resource_id=42
+  # For opetations see models/abilty.rb. Examples: read, manage
+  get '/can', to: 'can#can'
+
   root 'home#index'
 end
