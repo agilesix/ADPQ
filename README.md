@@ -43,14 +43,23 @@ A. Team Agile Six was lead by Product Owner/Manager Robert Rasmussen who had com
 B. Team Agile Six was cross-functional and included:
 
 Robert Rasmussen (Agile Six) - Product Manager, Agile Coach
+
 Delali Dziaras (Fearless) - Agile Coach, Content Writer
+
 Dan Levenson (Agile Six) - Content Writer
+
 Brian Derfer (Agile Six)  - Technical Architect
+
 Aurora Hay (Agile Six)  - Front-end Web Developer
+
 Chris Cairns (Skylight)- Content Writer, Usability Tester
+
 Allan Schougaard (Agile Six)  - Technical Architect, DevOps Engineer & Back-end Web Developer
+
 David Gage (Fearless) - Back-end Web Developer
+
 Bethany Halteman (Fearless) -  Visual Designer, Usability Tester
+
 Edward Teeple (Agile Six)  - Security Engineer
 
 C. Agile Six included end-users from the inception of our prototype , see [test videos here](../artifacts/videos)
