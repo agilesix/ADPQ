@@ -14,6 +14,7 @@ json.workflow_steps workflow.workflow_steps do |wfs|
     json.extract! ka,
                   :id,
                   :title,
+                  :description,
                   :body,
                   :user,
                   :published,

@@ -45,7 +45,7 @@ export class ArticleComponent implements OnInit {
     this.loading = true;
     this.articleService.getKnowledgeArticle(id).subscribe(
       data => {
-        this.article = JSON.parse(data['_body']);
+        this.article = data.json();;
         this.loading = false;
       },
       err => console.error(err),

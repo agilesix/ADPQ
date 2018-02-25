@@ -37,7 +37,7 @@ RSpec.describe KnowledgeArticlesController, type: :controller do
   # KnowledgeArticle. As you add validations to KnowledgeArticle, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    {title: 'Test', user_id: @user.id}
+    {title: 'Test', description: 'Description', user_id: @user.id}
   }
 
   let(:invalid_attributes) {

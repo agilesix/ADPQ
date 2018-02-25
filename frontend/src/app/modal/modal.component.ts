@@ -7,6 +7,7 @@ import { MaterializeAction } from 'angular2-materialize';
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent implements OnInit {
+  submitted: boolean;
 
   @Input() modalContent;
 

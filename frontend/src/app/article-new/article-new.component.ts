@@ -24,6 +24,7 @@ export class ArticleNewComponent implements OnInit {
   knowledgeArticle = {
     id: 0, 
     title: '', 
+    description: '',
     body: '', 
     workflow_step_id: 0, 
     user_id: 0, 
@@ -50,7 +51,7 @@ export class ArticleNewComponent implements OnInit {
     this.knowledgeArticle.workflow_step_id = this.stepId;
     this.articleService.createKnowledgeArticle(this.knowledgeArticle).subscribe(
       data => { 
-        this.article = JSON.parse(data['_body']);
+        this.article = data.json();
         this.submitting = false;
         this.router.navigate(['/step/'+ this.stepId + '/article/' + this.article.id]);
       },

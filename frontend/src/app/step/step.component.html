@@ -17,11 +17,11 @@
                         type="text"
                         required
                         name="title"
-                        [(ngModel)]="step.name"
+                        [(ngModel)]="workflowStep.name"
                         class="validate h2" />
 
                     <label for="description">Description</label>
-                    <md-editor id="description" name="description" required [(ngModel)]="step.description" class="validate"></md-editor>  
+                    <md-editor id="description" name="description" required [(ngModel)]="workflowStep.description" class="validate"></md-editor>  
                 </form>
             </div>
         </div>
@@ -39,8 +39,8 @@
             <button *ngIf="!edit" (click)="toggleEdit()" class="usa-button usa-button-tertiary"><i class="fa fa-pencil"></i>  Edit</button>
             
             <!--TODO: Wire up Save/Cancel buttons to actually Save and Cancel -->
-            <button *ngIf="edit" (click)="toggleEdit()" class="usa-button usa-button-tertiary">Cancel</button>
-            <button *ngIf="edit" (click)="toggleEdit()" class="usa-button usa-button-tertiary">Save</button>
+            <button *ngIf="edit" (click)="toggleEdit()" class="usa-button usa-button-tertiary"><i class="fa fa-close"></i> Cancel</button>
+            <button *ngIf="edit" (click)="updateStep()" class="usa-button usa-button-tertiary"><i class="fa fa-save"></i> Save</button>
             
             <a [routerLink]="['new/article']" class="usa-button usa-button-tertiary"><i class="fa fa-plus"></i> Add article</a>
         </div>
@@ -73,11 +73,11 @@
     </div>
     <div class="usa-grid">
         <div *ngIf="!loading">
-            <div *ngFor="let article of step.published_articles" class="card usa-width-one-fourth">
+            <div *ngFor="let article of step.knowledge_articles" class="card usa-width-one-fourth">
                 <a [routerLink]="['article', article.id]">
                     <div class="card-content">
                         <h4>{{article.title}}</h4>
-                        <p class="truncate">{{article.body}}</p>
+                        <p class="truncate">{{article.description}}</p>
                     </div>
                     <div class="card-content grey lighten-4">
                         <span class="chip">{{article.file_attachments.length}} files</span>

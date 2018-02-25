@@ -58,6 +58,7 @@ describe 'Knowledge Article API', type: :request do
           properties: {
               user_id: {type: :integer},
               title: {type: :string},
+              description: {type: :string},
               body: {type: :string},
               published: {type: :boolean},
               workflow_step_id: {type: :integer}
@@ -65,7 +66,7 @@ describe 'Knowledge Article API', type: :request do
       }
 
       response '200', 'knowledge article created' do
-        let(:knowledge_article) { { user_id: 1, title: 'The Best Knowledge Article', body: 'Knowledge Article Content', published: false, workflow_step_id: 1} }
+        let(:knowledge_article) { { user_id: 1, title: 'The Best Knowledge Article', body: 'Knowledge Article Content', description: 'The best description', published: false, workflow_step_id: 1} }
         run_test!
       end
 

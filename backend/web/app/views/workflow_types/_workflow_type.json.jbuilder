@@ -20,6 +20,7 @@ json.workflows workflow_type.workflows do |wf|
       json.extract! ka,
                     :id,
                     :title,
+                    :description,
                     :body,
                     :user,
                     :published,

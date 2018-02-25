@@ -1,4 +1,4 @@
-json.extract! knowledge_article, :id, :title, :body, :user, :published, :created_at, :updated_at
+json.extract! knowledge_article, :id, :title, :body, :user, :published, :created_at, :updated_at, :description
 json.url knowledge_article_url(knowledge_article, format: :json)
 
 json.file_attachments knowledge_article.file_attachments do |fa|
@@ -19,6 +19,10 @@ json.file_attachments knowledge_article.file_attachments do |fa|
                 :updated_at
 end
 
+json.roles Role.all.each do |r|
+  json.extract! r, :id, :name
+end
+
 json.content_blocks knowledge_article.content_blocks do |cb|
 
   if cb.roles.any?
@@ -29,7 +33,7 @@ json.content_blocks knowledge_article.content_blocks do |cb|
       user_has_role = current_user.has_role? r.name
     end
 
-    if user_has_role
+    if user_has_role || current_user.has_role?('Admin')
       json.extract! cb,
                     :id,
                     :content,

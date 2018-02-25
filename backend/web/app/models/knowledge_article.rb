@@ -5,5 +5,5 @@ class KnowledgeArticle < ApplicationRecord
   has_many :file_attachments
   has_many :content_blocks
 
-  validates :title, :user_id, presence: true
+  validates :title, :user_id, :description, presence: true
 end

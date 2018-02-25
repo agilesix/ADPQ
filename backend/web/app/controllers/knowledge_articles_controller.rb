@@ -32,6 +32,9 @@ class KnowledgeArticlesController < ApplicationController
       respond_to do |format|
         if @knowledge_article.save
           WorkflowStepKnowledgeArticle.create!(workflow_step_id: @workflow_step.id, knowledge_article_id: @knowledge_article.id)
+          #process file attachments here
+
+
           format.html { redirect_to @knowledge_article, notice: 'Knowledge article was successfully created.' }
           format.json { render :show, status: :created, location: @knowledge_article }
         else
@@ -49,6 +52,8 @@ class KnowledgeArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @knowledge_article.update(knowledge_article_params)
+        #update file attachments
+
         format.html { redirect_to @knowledge_article, notice: 'Knowledge article was successfully updated.' }
         format.json { render :show, status: :ok, location: @knowledge_article }
       else
@@ -76,6 +81,6 @@ class KnowledgeArticlesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def knowledge_article_params
-    params.require(:knowledge_article).permit(:title, :body, :user_id, :published)
+    params.require(:knowledge_article).permit(:title, :body, :description, :user_id, :published)
   end
 end

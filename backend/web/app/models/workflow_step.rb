@@ -4,4 +4,6 @@ class WorkflowStep < ApplicationRecord
   has_many :knowledge_articles, through: :workflow_step_knowledge_articles
 
   validates :name, :workflow_id, presence: true
+
+  default_scope {order(id: :asc)}
 end

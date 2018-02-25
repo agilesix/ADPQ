@@ -23,7 +23,7 @@ export class ArticleService {
     return this.authTokenService.post(resource + '.json', article);
   }
 
-  updateKnowledgeArticle(article: {id: number, title: string, body: string, workflow_step_id: number, user_id: number, published: boolean}) {
+  updateKnowledgeArticle(article: {id: number, title: string, description: string, body: string, workflow_step_id: number, user_id: number}) {
     return this.authTokenService.put(resource + '/' + article.id + '.json', article);
   }
 
