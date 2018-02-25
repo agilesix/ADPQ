@@ -19,41 +19,6 @@ json.file_attachments knowledge_article.file_attachments do |fa|
                 :updated_at
 end
 
-json.roles Role.all.each do |r|
-  json.extract! r, :id, :name
-end
-
-json.content_blocks knowledge_article.content_blocks do |cb|
-
-  if cb.roles.any?
-    #check if user has any of the roles
-
-    user_has_role = false
-    cb.roles.each do |r|
-      user_has_role = current_user.has_role? r.name
-    end
-
-    if user_has_role || current_user.has_role?('Admin')
-      json.extract! cb,
-                    :id,
-                    :content,
-                    :roles,
-                    :knowledge_article,
-                    :created_at,
-                    :updated_at
-    end
-  else
-    json.extract! cb,
-                  :id,
-                  :content,
-                  :roles,
-                  :knowledge_article,
-                  :created_at,
-                  :updated_at
-  end
-end
-
-
 json.workflow_steps knowledge_article.workflow_steps do |wfs|
   json.extract! wfs,
                 :id,

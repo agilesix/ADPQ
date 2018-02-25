@@ -4,16 +4,20 @@ import {Response} from '@angular/http';
 import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import { StepService } from './step.service';
 
 @Injectable()
 export class AuthService {
 
   userSignedIn$: Subject<boolean> = new Subject();
 
-  constructor(private authService: Angular2TokenService) {
+  constructor(private authService: Angular2TokenService, public stepService: StepService) {
 
     this.authService.validateToken().subscribe(
-        res => res.status === 200 ? this.userSignedIn$.next(res.json().success) : this.userSignedIn$.next(false)
+        res => { 
+          res.status === 200 ? this.userSignedIn$.next(res.json().success) : this.userSignedIn$.next(false);
+          this.stepService.getWorkflowSteps();
+        }
     );
   }
 

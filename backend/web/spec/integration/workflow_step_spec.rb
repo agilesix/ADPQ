@@ -40,4 +40,30 @@ describe 'Workflow Step API', type: :request do
       end
     end
   end
+
+  path '/workflow_steps/{id}.json' do
+    patch 'update' do
+      tags 'WorkflowSteps'
+
+      produces 'application/json'
+
+      parameter name: 'access-token', :in => :header, :type => :string
+      parameter name: 'client', :in => :header, :type => :string
+      parameter name: 'uid', :in => :header, :type => :string
+      parameter name: 'id', :in => :path, :type => :string
+
+      parameter name: :workflow_step, in: :body, schema: {
+          type: :object,
+          properties: {
+              name: {type: :string},
+              description: {type: :string}
+          }
+      }
+
+      response '200', 'workflow step updated' do
+        let(:workflow_step) { {name: 'Step 1', description: 'Step description'} }
+        run_test!
+      end
+    end
+  end
 end

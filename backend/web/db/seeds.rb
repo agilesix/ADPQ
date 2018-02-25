@@ -54,14 +54,6 @@ wfs5 = WorkflowStep.create!(workflow: workflow, name: 'Proposal Instructions/Eva
 ka1 = KnowledgeArticle.create!(title: 'How to Create a Vision Statement', description: 'This is a short description of what the knowledge article is about.', body:'# This is a header', user: dan, published: true) unless dan.blank? || KnowledgeArticle.exists?(title: 'How to Create a Vision Statement')
 wfs_ka1 = WorkflowStepKnowledgeArticle.create!(workflow_step: wfs1, knowledge_article: ka1) unless (wfs1.blank? || ka1.blank?) || WorkflowStepKnowledgeArticle.exists?(workflow_step: wfs1, knowledge_article: ka1)
 
-#Create Content Block(s) for Knowledge Article(s)
-cb1 = ContentBlock.create!(knowledge_article: ka1, content: '## Only an admin can see this markdown! ---') unless admin_role.blank? or ka1.blank?
-cb2 = ContentBlock.create!(knowledge_article: ka1, content: '### Only a contributor can see this markdown!') unless contributor_role.blank? or ka1.blank?
-cb3 = ContentBlock.create!(knowledge_article: ka1, content: '### all roles can see this') unless contributor_role.blank? or ka1.blank?
-
-r_cb1 = RoleContentBlock.create!(role: admin_role, content_block: cb1) unless admin_role.blank? or cb1.blank?
-r_cb2 = RoleContentBlock.create!(role: contributor_role, content_block: cb2) unless contributor_role.blank? or cb2.blank?
-
 #Create File Types
 ft1 = FileType.create!(name: 'Microsoft Word') unless FileType.exists?(name: 'Microsoft Word')
 ft2 = FileType.create!(name: 'Microsoft Excel') unless FileType.exists?(name: 'Microsoft Excel')
