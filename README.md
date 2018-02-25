@@ -63,14 +63,12 @@ Future Backlog - The following link shows the trello board we used as both a pro
 
 D. Agile Six used 4 user design techniques
 
-  [Personas](XXX)
-  [Empathy Map](XX)
-  User Testing Sessions
-  [Wireframe](XXX) 
+Pesonas - https://app.xtensio.com/folio/y0wgeokr
+
 
 E. We used only one repository located at https://github.com/agilesix/ADPQ where all code and artifacts are stored and all code commits documented.
 
-F. We have documented a subset of the Spree RESTful API in order to demonstrate our understanding of how to use Swagger to document RESTful APIs https://XXX
+F. We have documented a subset of the A2 RESTful API in order to demonstrate our understanding of how to use Swagger to document RESTful APIs hhttps://lightning-rails-docker.us-west-2.elasticbeanstalk.com/api-docs
 
 G. We followed WCAG 2.0 as well as http://www.ca.gov/Accessibility. We also leveraged Sniffybara, a Ruby gem that adds automatic 508 accessibility compliance checks into your Capybara specs. Report screenshot can be found here 508 Report.
 
@@ -85,14 +83,12 @@ K. The user-facing features of our prototype leverage Bootstrap's grid system an
 L. Our solution is comprised entirely of modern open source technologies, including:
 
 Rails 5.0.1 as a webdevelopment language/framework - https://github.com/rails/rails
-SpreeCommerce 3.2.0 as an e-commerce platform - https://github.com/spree
 Bootstrap 3.3.7 as a responsive UI framework - https://github.com/twbs
 JQuery 3.1.1 as a Javascript Library - https://github.com/jquery/jquery
 Puma 3.7.1 as a web server - https://github.com/puma/puma
-Capybara 2.12.1 as a Testing Framework - https://github.com/teamcapybara/capybara
-Sniffybara 0.0.1 as a 508 Compliance Testing Framework - https://github.com/department-of-veterans-affairs/sniffybara
 PostgreSQL 9.6.2 as a relational DBMS - https://git.postgresql.org/gitweb/
 NewRelic RPM 3.18.1 as a Application Performance Monitoring Framework - https://github.com/newrelic/rpm
+
 M. We deployed the prototype on Heroku, a PaaS provider. Heroku integrates with GitHub, allowing for easy automated deployment.
 
 Hosting and Deployment: Deployment to Heroku
@@ -107,7 +103,9 @@ P. Setup or used configuration management;
 
 This was managed via GitHub https://github.com/agilesix/ADPQ/
 
-Q. We used New Relic for Continous Monitoring, Error Collection & Alerting New Relic
+Q. 
+Continuous Monitoring - The team leveraged Amazon Cloud Watch to continuously monitor the availability and performance of the the application. We set up a dashboard in Cloudwatch that displayed a variety of EC2 metrics, including Network-In, Network-Out, CPU utilization, and Status Check Failures on each production web server. Because we used Elastic Beanstalk to manage our application instances, we were able to set up metrics and alarms on EB auto-scaling groups as well. We configured alarms to alert our DevOps personnel whenever the site became unavailable, as well as “self-healing” alarms to automatically add an instance whenever the in-service instance pool dropped below a certain threshold.
+
 
 R. We deployed to the LXC open source container system: https://linuxcontainers.org/
 
