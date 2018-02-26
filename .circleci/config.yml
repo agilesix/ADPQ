@@ -72,6 +72,7 @@ jobs:
           name: Install dependencies
           command: |
             cd frontend
+            sudo npm install -g @angular/cli --unsafe
             npm install
 
       - run:
