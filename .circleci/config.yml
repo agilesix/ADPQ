@@ -164,6 +164,7 @@ workflows:
           requires:
             - build_backend
             - build_frontend
+            - deploy_backend
           filters:
             branches:
               only: master
