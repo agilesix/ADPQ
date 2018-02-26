@@ -52,7 +52,7 @@ jobs:
       - save_cache:
           key: rails-bundle-v2-{{ checksum "Gemfile.lock" }}
           paths:
-            - backend/web/vendor/bundle
+            - backend/web/
 
       - run:
           name: Wait for DB
