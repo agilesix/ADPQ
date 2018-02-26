@@ -79,6 +79,7 @@ jobs:
           command: |
             cd frontend
             npm test
+            ng e2e
 
   deploy_frontend:
       docker:
