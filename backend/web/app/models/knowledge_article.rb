@@ -4,5 +4,5 @@ class KnowledgeArticle < ApplicationRecord
   has_many :workflow_steps, through: :workflow_step_knowledge_articles
   has_many :file_attachments
 
-  validates :title, :user_id, presence: true
+  validates :title, :user_id, :description, presence: true
 end

@@ -58,16 +58,50 @@ describe 'Knowledge Article API', type: :request do
           properties: {
               user_id: {type: :integer},
               title: {type: :string},
+              description: {type: :string},
               body: {type: :string},
               published: {type: :boolean},
+              workflow_step_id: {type: :integer}
           }
       }
 
       response '200', 'knowledge article created' do
-        let(:knowledge_article) { { user_id: 1, title: 'The Best Knowledge Article', body: 'Knowledge Article Content', published: false} }
+        let(:knowledge_article) { { user_id: 1, title: 'The Best Knowledge Article', body: 'Knowledge Article Content', description: 'The best description', published: false, workflow_step_id: 1} }
         run_test!
       end
 
     end
   end
+
+  path '/knowledge_articles/{id}.json' do
+    patch 'update' do
+      tags 'KnowledgeArticles'
+
+      consumes 'application/json'
+      produces 'application/json'
+
+      parameter name: 'access-token', :in => :header, :type => :string
+      parameter name: 'client', :in => :header, :type => :string
+      parameter name: 'uid', :in => :header, :type => :string
+
+      parameter name: :knowledge_article, in: :body, schema: {
+          type: :object,
+          properties: {
+              user_id: {type: :integer},
+              title: {type: :string},
+              description: {type: :string},
+              body: {type: :string},
+              published: {type: :boolean},
+              workflow_step_id: {type: :integer}
+          }
+      }
+
+      response '200', 'knowledge article updated' do
+        let(:knowledge_article) { { user_id: 1, title: 'The Best Knowledge Article', body: 'Knowledge Article Content', description: 'The best description', published: false, workflow_step_id: 1} }
+        run_test!
+      end
+
+    end
+  end
+
 end

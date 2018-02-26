@@ -72,6 +72,7 @@ jobs:
           name: Install dependencies
           command: |
             cd frontend
+            sudo npm install -g @angular/cli --unsafe
             npm install
 
       - run:
@@ -79,6 +80,7 @@ jobs:
           command: |
             cd frontend
             npm test
+            ng e2e
 
   deploy_frontend:
       docker:

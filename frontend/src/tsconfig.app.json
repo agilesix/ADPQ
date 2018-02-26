@@ -6,6 +6,11 @@
     "module": "es2015",
     "types": []
   },
+  "include": [
+    "./main.ts",
+    "polyfills.ts",
+    "../node_modules/ngx-markdown-editor/index.ts"
+  ],
   "exclude": [
     "test.ts",
     "**/*.spec.ts"

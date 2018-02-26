@@ -1,0 +1,96 @@
+<div class="a2-header grey lighten-4">
+        <div class="usa-grid">
+            <div class="usa-width-one-half">
+                <h6>
+                    <a *ngIf="!stepLoading" [routerLink]="['/step', stepId]">
+                        <i class="fa fa-angle-left left"></i>
+                        <span class="chip"><b>{{stepId}}</b></span>
+                        <b>{{step.name}}</b>
+                    </a>
+                </h6>
+            </div>
+    
+            <div class="usa-width-one-half right-align">
+                <a class="right usa-button usa-button-secondary" *ngIf="!stepLoading && !loading" [routerLink]="['/step', stepId, 'article', article.id]">Cancel edits</a>
+            </div>
+        </div>
+    </div>
+    <div class="usa-grid">
+        <h2>Edit the <i class="blue-text">{{knowledgeArticle.title}}</i> knowledge article</h2><br/>
+    
+        <div *ngIf="!loading">
+            <form (ngSubmit)="updateKnowledgeArticle()" #f="ngForm" class="usa-form">
+                <fieldset>
+                    <div class="usa-width-one-half">
+                        <label for="title">Title</label>
+                        <input id="title"
+                            type="text"
+                            required
+                            name="title"
+                            [(ngModel)]="knowledgeArticle.title"
+                            class="validate" />
+    
+                        <label for="description">Description</label>
+                        <div class="input-field">
+                            <textarea [(ngModel)]="knowledgeArticle.description" id="description" name="description" required class="validate materialize-textarea" data-length="250"></textarea>
+                        </div>
+                    </div>
+    
+                    <!--TODO: Wire up to db -->
+                    <div class="usa-width-one-half">
+                        <label for="files">Upload files</label>
+                        <div class="file-field input-field">
+                          <div class="btn blue">
+                            <span>File</span>
+                            <input type="file" multiple>
+                          </div>
+                          <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                          </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <br><hr/><br>
+                <fieldset class="grey lighten-4">
+                    <div class="usa-grid">
+                            <div class="grey lighten-4">
+                                <h3>
+                                    Content
+                                </h3> 
+    
+                                <div *ngIf="edit">
+                                    <label for="body">Content</label>
+                                    <md-editor id="body" name="body" [(ngModel)]="knowledgeArticle.body"></md-editor>
+                                </div>
+                                <div *ngIf="!edit">
+                                    <label>Content</label>
+                                    <div class="card-panel">
+                                        <markdown [data]="knowledgeArticle.body"></markdown>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </fieldset>
+                <br/>
+                <fieldset>
+                    <button (click)="toggleEdit()" type="button" class="usa-button usa-button-secondary">{{edit ? 'Preview content' : 'Back to editing mode'}}</button>
+                </fieldset>
+                <br><hr/><br>
+    
+                <!--TODO: remove "draft" status functionality (and this publish checkbox) for now, will add back later? -->
+                <!-- <input id="published" type="checkbox" name="published" [(ngModel)]="knowledgeArticle.published" />
+                <label for="published">Publish?</label> -->
+    
+                <fieldset>
+                    <input type="submit"
+                        [disabled]="!(f.valid)"
+                        value="Update knowledge article"
+                        class="usa-button right" />
+                        <a class="right usa-button usa-button-secondary" *ngIf="!stepLoading" [routerLink]="['/step', stepId, 'article', article.id]">Cancel edits</a>
+                    <br/><br/><br/><br/>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    
+    

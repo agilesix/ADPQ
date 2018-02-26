@@ -5,6 +5,7 @@ json.knowledge_articles workflow_step.knowledge_articles do |ka|
   json.extract! ka,
                 :id,
                 :title,
+                :description,
                 :body,
                 :user,
                 :published,

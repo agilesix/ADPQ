@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 #Create Roles
-Role.create!(name: 'Admin') unless Role.exists? name: 'Admin'
-Role.create!(name: 'Contributor') unless Role.exists? name: 'Contributor'
+admin_role = Role.create!(name: 'Admin') unless Role.exists? name: 'Admin'
+contributor_role = Role.create!(name: 'Contributor') unless Role.exists? name: 'Contributor'
 
 #Create Users
 dan = User.create!(email: 'dan@a2tool.com', nickname: 'Dan', name: 'Dan', password: "dana2tool") unless User.find_by(email: 'dan@a2tool.com').present?
@@ -31,7 +31,19 @@ workflow_type = WorkflowType.create!(name: 'Acquisition Workflow Type', descript
 workflow = Workflow.create!(workflow_type: workflow_type, name: 'Agile Acquisition Workflow') unless workflow_type.blank? || Workflow.exists?(name: 'Agile Acquisition Workflow')
 
 #Create Workflow Step(s)
-vision_statement_description = "A vision statement is a government program’s road map, indicating both what the program wants to become and guiding transformational initiatives by setting a defined direction for the program's future. Vision statements undergo minimal revisions during the life of a program, unlike operational goals and objectives which may be updated from year-to-year. Effective vision statements are clear, concise and usually consist of two to four sentences. Vision statements should provide a high-level description of the program outcomes required to meet the definition of success."
+vision_statement_description = "---
+A vision statement is a government program’s road map, indicating both what the program wants to become and guiding transformational initiatives by setting a defined direction for the program's future. Vision statements undergo minimal revisions during the life of a program, unlike operational goals and objectives which may be updated from year-to-year. Effective vision statements are clear, concise and usually consist of two to four sentences. Vision statements should provide a high-level description of the program outcomes required to meet the definition of success.
+
+#### Commonly cited vision statement traits include:
+- concise: able to be easily remembered and repeated
+- clear: defines a prime goal
+- Time horizon: defines a time horizon
+- future-oriented: describes where the company is going rather than the current state
+- stable: offers a long-term perspective and is unlikely to be impacted by market or technology changes
+- challenging: not something that can be easily met and discarded
+- abstract: general enough to encompass all of the organization's interests and strategic direction
+- inspiring: motivates employees and is something that employees view as desirable
+"
 wfs1 = WorkflowStep.create!(workflow: workflow, name: 'Vision Statement', description: vision_statement_description) unless workflow.blank? && WorkflowStep.exists?(name: 'Vision Statement')
 wfs2 = WorkflowStep.create!(workflow: workflow, name: 'Statement of Objectives (SOO)', description: 'This is the description for the Statement of Objectives (SOO) workflow step.') unless workflow.blank? || WorkflowStep.exists?(name: 'Statement of Objectives (SOO)')
 wfs3 = WorkflowStep.create!(workflow: workflow, name: 'Concept of Operations (ConOps)', description: 'This is the description for the Concept of Operations (ConOps) workflow step.') unless workflow.blank? || WorkflowStep.exists?(name: 'Concept of Operations (ConOps)')
@@ -39,9 +51,8 @@ wfs4 = WorkflowStep.create!(workflow: workflow, name: 'Independent Government Co
 wfs5 = WorkflowStep.create!(workflow: workflow, name: 'Proposal Instructions/Evaluation Criteria', description: 'This is the description for the Proposal Instructions/Evaluation Criteria workflow step.') unless workflow.blank? || WorkflowStep.exists?(name: 'Proposal Instructions/Evaluation Criteria')
 
 #Create Knowledge Article(s)
-ka1 = KnowledgeArticle.create!(title: 'How to Create a Vision Statement', body: '# This is a header', user: dan, published: true) unless dan.blank? || KnowledgeArticle.exists?(title: 'How to Create a Vision Statement')
+ka1 = KnowledgeArticle.create!(title: 'How to Create a Vision Statement', description: 'This is a short description of what the knowledge article is about.', body:'# This is a header', user: dan, published: true) unless dan.blank? || KnowledgeArticle.exists?(title: 'How to Create a Vision Statement')
 wfs_ka1 = WorkflowStepKnowledgeArticle.create!(workflow_step: wfs1, knowledge_article: ka1) unless (wfs1.blank? || ka1.blank?) || WorkflowStepKnowledgeArticle.exists?(workflow_step: wfs1, knowledge_article: ka1)
-
 
 #Create File Types
 ft1 = FileType.create!(name: 'Microsoft Word') unless FileType.exists?(name: 'Microsoft Word')
@@ -62,8 +73,4 @@ end
 if dan.present? && ka1.present? && ft1.present? && cat1.present? && cat2.present?
   FileAttachment.create!(filename: 'Vision Statement Template', approved: true, user: dan, category: cat1, file_type: ft1, knowledge_article: ka1, attached_file: seed_file('VisionStatementTemplate.docx'))
   FileAttachment.create!(filename: 'Sample Vision Statement', approved: true, user: dan, category: cat2, file_type: ft1, knowledge_article: ka1, attached_file: seed_file('SampleVisionStatement.docx'))
-<<<<<<< HEAD
 end
-=======
-end
->>>>>>> master

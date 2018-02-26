@@ -1,0 +1,65 @@
+<div class="modal" materialize="modal" [materializeActions]="modalActions">
+    <div class="modal-content">
+        <span class="modal-close right">
+            <i class="fa fa-times"(click)="closeModal()" aria-hidden="true"></i>
+        </span>
+        
+        
+        
+        <!-- MODAL: fileSubmit -->
+        <div *ngIf="modalFileSubmit()">
+            <div *ngIf="!submitted">
+                <h3>Submit files</h3>
+
+                <div class="modal-body">
+                    <p class="text-large">Have something to add to this knowledge article? We'd love to share your thoughts or resources with this knowledge base. If you have files that enhances this article, upload them for publishing below.</p>
+
+                    <!--TODO: Get a fancy file uploader that allows for multiple, wire up -->
+                    <label for="files">Upload files</label>
+                    <div class="file-field input-field">
+                      <div class="btn blue">
+                        <span>File</span>
+                        <input type="file" multiple>
+                      </div>
+                      <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                      </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <a class="usa-button usa-button-secondary" (click)="closeModal()">Close</a>
+                    <a class="usa-button" (click)="submitSuccess()">Submit</a>
+                </div>
+            </div>
+            <div *ngIf="submitted">
+                <div class="modal-body green-text lighten-1 center-align">
+                    <h1><i class="fa fa-check fa-3x"></i></h1>
+                    <h3>File submitted!</h3>
+                    <p class="text-large">Thanks for contributing your work.</p>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- MODAL: portfolio -->
+        <div *ngIf="modalPortfolio()">
+            <h3>Your Portfolio</h3>
+
+            <div class="modal-body">
+                <p class="text-large">Compile your artifacts here.</p>
+
+                <label for="files">Upload file</label>
+                <input type="file" name="files" />
+            </div>
+
+            <div class="modal-footer">
+                <a class="usa-button usa-button-secondary" (click)="closeModal()">Close</a>
+                <a class="usa-button" (click)="submitSuccess()">Submit</a>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>

@@ -1,5 +1,6 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {AuthService} from '../services/auth.service';
+import { StepService } from '../services/step.service';
 
 @Component({
   selector: 'app-login-form',
@@ -15,7 +16,7 @@ export class LoginFormComponent implements OnInit {
 
   @Output() onFormResult = new EventEmitter<any>();
 
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService, public stepService: StepService) {}
 
   ngOnInit() {}
 
@@ -25,6 +26,7 @@ export class LoginFormComponent implements OnInit {
         res => {
           if (res.status === 200) {
             this.onFormResult.emit({signedIn: true, res});
+            this.stepService.getWorkflowSteps();
           }
         },
         err => {

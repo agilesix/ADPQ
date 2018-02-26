@@ -118,11 +118,17 @@
                 "title": {
                   "type": "string"
                 },
+                "description": {
+                  "type": "string"
+                },
                 "body": {
                   "type": "string"
                 },
                 "published": {
                   "type": "boolean"
+                },
+                "workflow_step_id": {
+                  "type": "integer"
                 }
               }
             }
@@ -170,6 +176,67 @@
         "responses": {
           "200": {
             "description": "knowledge article step retrieved"
+          }
+        }
+      },
+      "patch": {
+        "summary": "update",
+        "tags": [
+          "KnowledgeArticles"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "access-token",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "client",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "uid",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "knowledge_article",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user_id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "body": {
+                  "type": "string"
+                },
+                "published": {
+                  "type": "boolean"
+                },
+                "workflow_step_id": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "knowledge article updated"
           }
         }
       }
@@ -242,6 +309,58 @@
         "responses": {
           "200": {
             "description": "workflow step retrieved"
+          }
+        }
+      },
+      "patch": {
+        "summary": "update",
+        "tags": [
+          "WorkflowSteps"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "access-token",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "client",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "uid",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "workflow_step",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "workflow step updated"
           }
         }
       }
