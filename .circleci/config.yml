@@ -153,17 +153,17 @@ workflows:
   build-deploy:
     jobs:
       - build_backend
-#      - build_frontend
-#      - deploy_backend:
-#          requires:
-#            - build_backend
-#          filters:
-#            branches:
-#              only: master
-#      - deploy_frontend:
-#          requires:
-#            - build_backend
-#            - build_frontend
-#          filters:
-#            branches:
-#              only: master
+      - build_frontend
+      - deploy_backend:
+          requires:
+            - build_backend
+          filters:
+            branches:
+              only: master
+      - deploy_frontend:
+          requires:
+            - build_backend
+            - build_frontend
+          filters:
+            branches:
+              only: master
