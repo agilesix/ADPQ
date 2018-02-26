@@ -1,14 +1,24 @@
-import { AppPage } from './app.po';
+import { A2 } from './app.po';
+import { browser, by, element } from 'protractor';
 
-describe('lightning-angular-docker App', () => {
-  let page: AppPage;
+describe('a2 App', () => {
+  const page: A2 = new A2();
 
   beforeEach(() => {
-    page = new AppPage();
+    page.navigateTo();
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to Lightning Angular Docker!');
+  it('should display the login page', () => {
+    expect(page.getLoginHeaderText()).toEqual('login');
   });
+
+  it('should display the initial toolbar', () => {
+    expect(page.getToolbarText()).toEqual('a2');
+  });
+
+  it('should log the user in', () => {
+    page.login();
+    browser.sleep(30000);
+  });
+  
 });

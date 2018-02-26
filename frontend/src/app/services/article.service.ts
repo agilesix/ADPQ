@@ -9,7 +9,7 @@ const resource = 'knowledge_articles';
 @Injectable()
 export class ArticleService {
 
-  constructor(private http: HttpClient, private authTokenService: Angular2TokenService) { }
+  constructor(private authTokenService: Angular2TokenService) { }
 
   getKnowledgeArticles() {
     return this.authTokenService.get(resource + '.json')

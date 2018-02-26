@@ -12,7 +12,7 @@ export class StepService {
 
   workflowSteps$: Subject<Object> = new Subject();
 
-  constructor(private http: HttpClient, private authTokenService: Angular2TokenService) { }
+  constructor(private authTokenService: Angular2TokenService) { }
 
   getWorkflowSteps() {
     return this.authTokenService.get(resource + '.json').subscribe(
