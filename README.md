@@ -1,21 +1,21 @@
 # PQVP AD-DS Refresh
 
 How we approached the Prototype:
-Agile Six is a small firm founded in response to the US Digital Service. Therefore, we plan to invest often in competitions like ADPQ and have won a few (i.e. as subs on GSA 18F and DHS Flash). However, we have learned to team with smart partners and minimize investments required in order to be able to compete with large firms. For this effort, we teamed with Fearless Solutions and Skylight Digital  and intentionally limited our total investment to 300 total man hours. We hope that the State will view our input with this context as evidence of how agile we can be, meeting demanding budget constraints, while still respecting the values and techniques of the USDS Playbook. Looking forward, we have captured several bugs and a future roadmap in our product backlog viewable at https://trello.com/b/Ww8O7aX7/adpq2018
+Agile Six is a small firm founded in response to the US Digital Service. Therefore, we plan to invest often in competitions like ADPQ and have won a few (i.e. as subs on GSA 18F and DHS Flash). However, we have learned to team with smart partners and minimize investments required in order to be able to compete with large firms. For this effort, we teamed with Fearless Solutions and Skylight Digital  and intentionally limited our total investment to 300 total man hours. We hope that the State will view our input with this context as evidence of how agile we can be, meeting demanding budget constraints, while still respecting the values and techniques of the USDS Playbook. Looking forward, we have captured several bugs and a future roadmap in our [product backlog](https://trello.com/b/Ww8O7aX7/adpq2018)
 
-The team (described under item B below) conducted a one-week Runway Sprint (infrastructure/architecture/ux discovery), where we defined and proofed the core architecture of the site as well as settled upon a number of toolsets and processes, including those we would leverage for CI, CM, Deployment, Version Control, and general communication within the team. The runway sprint was followed by a 3 day intense feature development sprint in which the feature-based user stories were implemented and tested by the team, then we followed with a usability testing and remediation sprint.
+The team (described under item B below) conducted a one-week Runway Sprint (infrastructure/architecture/ux discovery), where we defined and proofed the core architecture of the site as well as settled upon a number of toolsets and processes, including those we would leverage for CI, CM, Deployment, Version Control, and general communication within the team. The runway sprint was followed by a 3 day intense feature development sprint in which the feature-based user stories were implemented and tested by the team, then we followed with  a usability testing and remediation sprint.
 
 The team organized its work using a Trello board. We also set up a Slack Channel to facilitate quick communication among team members, as well as uber conference videoconferencing, we used Google Drive to store our internal artifacts for access until they could later be uploaded to the repo for evalutation. Please note that file dates in the subnmitted repo (e.g. for HCD artifacts) do not match creation dates in google drive.  We leveraged Google Drive as a collaborative document repository, and GitHub as a version control repository.
 
 The prototype is located at https://XXX
 
-Our team employs Domain Driven Design ithe construction of services and applications. One of the first artifacts we created, and rapidly iterated on in collaboration with users and SMEs, was a domain model (architecture/Domain%20Model%20-%20Tech%20Stack%20(2).jpeg), which helped the team gain an understanding of the concepts and real-world objects with which our users engage. The domain model droe the initial creation of entities and data objects in our services and application. This reults in close alignment between the user's understanding of their task and the entities represented in code.
+Our team employs Domain Driven Design ithe construction of services and applications. One of the first artifacts we created, and rapidly iterated on in collaboration with users and SMEs, was a [domain model](architecture/Domain%20Model%20-%20Tech%20Stack%20(2).jpeg), which helped the team gain an understanding of the concepts and real-world objects with which our users engage. The domain model droe the initial creation of entities and data objects in our services and application. This reults in close alignment between the user's understanding of their task and the entities represented in code.
 
-However, once development begins, we have found that the domain model can become stale as the application continues to evolve. In order to support agility and keep the domain model from going stale, the team has leveraged an open source modeling tool, called ERD (https://github.com/amatsuda/erd), which tightly integrates with the application; in fact it runs as part of the development build (and only the development build). With this tool and the Rails database modules (ie. versioned database migrations and ActiveRecord), we can continue to rapidly iterate on the domain model as well as its representation in code, keeping the database schema, source code and domain model all in sync. 
+However, once development begins, we have found that the domain model can become stale as the application continues to evolve. In order to support agility and keep the domain model from going stale, the team has leveraged an open source modeling tool, called [ERD](https://github.com/amatsuda/erd), which tightly integrates with the application; in fact it runs as part of the development build (and only the development build). With this tool and the Rails database modules (ie. versioned database migrations and ActiveRecord), we can continue to rapidly iterate on the domain model as well as its representation in code, keeping the database schema, source code and domain model all in sync. 
 
 One of the first decisions the team encountered in creating a basic architecture for the project was the decision whether to leverage an existing open source Knowledge Management platform as the starting point for development, or whether we should build a custom application from scratch. Whenever possible, we want to make these decisions based on empirical knowledge and experience, rather than simply making a "guess" up-front and hoping it was right. To arrive at empirical knowledge quickly, we use a technique called "Concurrent Set Based Engineering" (CSBE), by which the team pursues multiple different development approaches in parallel for one or more short timeboxes. At the end of each timebox, the team decides if it has gathered enough information to make an empirical determination of whether any approaches can be eliminated -- based on technical feasibility, alignment to evolving requirements, time-to-market, etc.
 
-In this case, we pursued two approaches in parallel for two hours: one approach leveraged an open source knowledge management platform written using Rails (https://github.com/charusat09/kms), and the other approach building a platform from scratch. After the two hour timebox, the team came back together and made a collective decision that we could eliminate the existing open source platform. The decision was based on the fact that at the end of the timebox, the team had a custom solution that aligned with our domain model (because it was built with reference to it), and leveraged an authentication mechanism that matched our requirements, while there was still substantial customization required on the open source platform to meet the application requirements.
+In this case, we pursued two approaches in parallel for two hours: one approach leveraged an open source knowledge management platform written using [Rails](https://github.com/charusat09/kms), and the other approach building a platform from scratch. After the two hour timebox, the team came back together and made a collective decision that we could eliminate the existing open source platform. The decision was based on the fact that at the end of the timebox, the team had a custom solution that aligned with our domain model (because it was built with reference to it), and leveraged an authentication mechanism that matched our requirements, while there was still substantial customization required on the open source platform to meet the application requirements.
 The team took a mobile-first approach to design. Because this was an MVP prototype with a necessarily limited budget, we were necessarily limited in the amount of progressive enhancement for larger screen sizes that we were able to accomplish.
 Technology Stack
 Our application architecture and infrastructure were anchored by a number of key principles that overlap and align with the US Digital Service Playbook. These include
@@ -31,83 +31,91 @@ Principle 4: Leverage Automated Processes. As the codebase for an application or
 See our System Overview for a graphical depiction of the technologies used in this prototype.
 
 Our approach to Human-Centered Design (HCD):
-We think of HCD as being in 3 repeating phases (read more here: Agile Six's Human Centered Design Presentation)
+We think of HCD as being in 3 repeating phases:
 
 Hear – Listen to your users in as many ways as possible
 Create – Build prototypes and MVPs based on user input
 Deliver – Launch as soon as a minimum feature set is reached and continue to iterate over time as the demands of your users change.
+
 How we handled the specific RFI Requirements
 A. Team Agile Six was lead by Product Owner/Manager Robert Rasmussen who had complete responsibility for the product as well as the team. Mr. Rasmussen is a certified Product Owner, Scrum Master, Project Manager and Scrum Coach (CSPO, CSM, PMP, CSP, PSPO2, PSM).
 
-B. Team Agile Six was cross-functional and included (see our website www.agile6.com for profiles):
+B. Team Agile Six was cross-functional and included:
 
 Robert Rasmussen (Agile Six) - Product Manager, Agile Coach
+
 Delali Dziaras (Fearless) - Agile Coach, Content Writer
+
 Dan Levenson (Agile Six) - Content Writer
+
 Brian Derfer (Agile Six)  - Technical Architect
+
 Aurora Hay (Agile Six)  - Front-end Web Developer
+
 Chris Cairns (Skylight)- Content Writer, Usability Tester
+
 Allan Schougaard (Agile Six)  - Technical Architect, DevOps Engineer & Back-end Web Developer
+
 David Gage (Fearless) - Back-end Web Developer
+
 Bethany Halteman (Fearless) -  Visual Designer, Usability Tester
+
 Edward Teeple (Agile Six)  - Security Engineer
 
-C. Agile Six included end-users from the inception of our prototype (see tests here XXX).
+C. Agile Six included end-users from the inception of our prototype , see [test videos here](../artifacts/videos)
 
 Our approach was as follows:
 
 Hear Phase:  We performed a usability study survey (ADKAR) of actual contracting professionals asking question about their Awarness, Desire, Knowledge, Ability and Reinforcement on the topic of Agile Acquisition.  We had open discussions about the app and their expectations as documented in our Empathy Map and Personas. The workshop and map focused on what the user sees, hears, thinks, says and does. Then we used this information to consider the pains and gains involved in engagement with such apps in order to maximize the value to the end user in the design.
-Create Phase: After listening to our users we created user personas [Personas](XXX), which we felt reflected a fair segmentation of our users. We then chose 4 users to represent these profiles and held a User Empathy Workshop for the entire development team.  During this workshop the four users where present to discuss the findings of their personas and took actual questions from the development team (we acknowledge that this pool is small and intentionally abbreviated for this prototype). With these personas and empathy map in hand, we met as a team to whiteboard the application flow [Sketch](XXX). Based on this experience we were ready to build our prototype. Rough sketches, which allowed the team to quickly iterate on design ideas, were followed by wireframes: XXX  During our feature sprints (1-3), we iterated on these wire frames and developed a .....
+Create Phase: After listening to our users both with interviews and surveys we created user personas [Personas](https://app.xtensio.com/folio/y0wgeokr), which we felt reflected a fair segmentation of our users. We then chose 4 users to represent these profiles and held a User Empathy Workshop for the entire development team.  During this workshop the four users where present to discuss the findings of their personas and took actual questions from the development team (we acknowledge that this pool is small and intentionally abbreviated for this prototype). With these personas and empathy map in hand, we met as a team to whiteboard the application flow [Sketch](XXX). Based on this experience we were ready to build our prototype. Rough sketches, which allowed the team to quickly iterate on design ideas, were followed by wireframes: XXX  During our feature sprints (1-3), we iterated on these wire frames and developed a .....
 Deliver Phase - If we were to proceed with this application, we would enter our 3rd phase of HCD which would include frequently adding new features in similar fashion (expose to small subset of users, analyze, slowly roll out). We never stop soliciting feedback from users, never stop improving the User Experience and we update journey maps with the users as they evolve.
-Future Backlog - The following link shows the trello board we used as both a product and sprint backlog: https://trello.com/b/Ww8O7aX7/adpq2018
+Future Backlog - The following link shows the trello board we used as both a product and sprint [backlogs] (https://trello.com/b/Ww8O7aX7/adpq2018)
 
 D. Agile Six used 4 user design techniques
 
-  [Personas](XXX)
-  [Empathy Map](XX)
-  User Testing Sessions
-  [Wireframe](XXX) 
+[Pesonas](https://app.xtensio.com/folio/y0wgeokr)
 
-E. We used only one repository located at https://github.com/agilesix/ADPQ where all code and artifacts are stored and all code commits documented.
 
-F. We have documented a subset of the Spree RESTful API in order to demonstrate our understanding of how to use Swagger to document RESTful APIs https://XXX
+E. We used only one [repository](https://github.com/agilesix/ADPQ) where all code and artifacts are stored and all code commits documented.
 
-G. We followed WCAG 2.0 as well as http://www.ca.gov/Accessibility. We also leveraged Sniffybara, a Ruby gem that adds automatic 508 accessibility compliance checks into your Capybara specs. Report screenshot can be found here 508 Report.
+F. We have documented a subset of the A2 RESTful API in order to demonstrate our understanding of how to use Swagger to [document RESTful APIs](hhttps://lightning-rails-docker.us-west-2.elasticbeanstalk.com/api-docs)
+
+G. We followed WCAG 2.0 as well as http://www.ca.gov/Accessibility. We also leveraged XXX
 
 H. We created and followed a style guide based on USWDS here: OrderIT Style Guide
 
-I. Recordings of User Testing Sessions can be found here: User Testing Sessions
+I. Recordings of User Testing Sessions can be found here: [User Testing Sessions](../artifacts/videos)
 
-J. We believe strongly in frequent iterations based on user feedback. Therefore, we focus on getting an MVP in the hands of users ASAP (usually within 30 days). In the case of this prototype we had very limited time and budget. Therefore we performed only one post production iteration based one user test sessions. User feedback that was not prioritized for our iteration was put into the prioritized product backlog for use in future releases and can be found here: https://trello.com/b/Ww8O7aX7/adpq2018
+J. We believe strongly in frequent iterations based on user feedback. Therefore, we focus on getting an MVP in the hands of users ASAP (usually within 30 days). In the case of this prototype we had very limited time and budget. Therefore we performed only one post production iteration based one user test sessions. User feedback that was not prioritized for our iteration was put into the prioritized [product backlog](https://trello.com/b/Ww8O7aX7/adpq2018) for use in future releases.  
 
-K. The user-facing features of our prototype leverage Bootstrap's grid system and employ responsive techniques, resulting in an excellent user experience regardless of the kind or size of device used. Our team utilized a mobile-first approach on the custom features we implemented, creating initial designs to work on phones and small mobile devices, then progressively enhancing this design for larger devices. We chose SpreeCommerce understanding that any choice of a third-party open source component entails trade-off decisions. In this case, Spree's admin functionality did not support responsive design, but the team felt that administrative functions would not typically be performed on mobile devices, and hence determined that the advantages gained by leveraging a pre-built component outweighed this disadvantage.
+K. The user-facing features of our prototype leverage Bootstrap's grid system and employ responsive techniques, resulting in an excellent user experience regardless of the kind or size of device used. Our team utilized a mobile-first approach on the custom features we implemented, creating initial designs to work on phones and small mobile devices, then progressively enhancing this design for larger devices. 
 
 L. Our solution is comprised entirely of modern open source technologies, including:
 
-Rails 5.0.1 as a webdevelopment language/framework - https://github.com/rails/rails
-SpreeCommerce 3.2.0 as an e-commerce platform - https://github.com/spree
-Bootstrap 3.3.7 as a responsive UI framework - https://github.com/twbs
+Rails 5.0.1 as a webdevelopment [language/framework](https://github.com/rails/rails)
+Bootstrap 3.3.7 as a responsive [UI framework](https://github.com/twbs)
 JQuery 3.1.1 as a Javascript Library - https://github.com/jquery/jquery
 Puma 3.7.1 as a web server - https://github.com/puma/puma
-Capybara 2.12.1 as a Testing Framework - https://github.com/teamcapybara/capybara
-Sniffybara 0.0.1 as a 508 Compliance Testing Framework - https://github.com/department-of-veterans-affairs/sniffybara
 PostgreSQL 9.6.2 as a relational DBMS - https://git.postgresql.org/gitweb/
 NewRelic RPM 3.18.1 as a Application Performance Monitoring Framework - https://github.com/newrelic/rpm
+
 M. We deployed the prototype on Heroku, a PaaS provider. Heroku integrates with GitHub, allowing for easy automated deployment.
 
 Hosting and Deployment: Deployment to Heroku
 
 N. We developed automated unit tests for our code using Rspec
 
-O. We used CircleCI for continuous integration and our builds can be found here: Agile Six ADPQ Builds
+O. We used CircleCI for continuous integration and our builds can be found here: https://circleci.com/gh/agilesix/ADPQ
 
 Sample report here: Sample Report. Every time we do a code checkin, reports are produced under the corresponding build in CircleCI.
 
 P. Setup or used configuration management;
 
-This was managed via GitHub https://github.com/agilesix/ADPQ/
+This was managed via [GitHub](https://github.com/agilesix/ADPQ/)
 
-Q. We used New Relic for Continous Monitoring, Error Collection & Alerting New Relic
+Q. 
+Continuous Monitoring - The team leveraged Amazon Cloud Watch to continuously monitor the availability and performance of the the application. We set up a dashboard in Cloudwatch that displayed a variety of EC2 metrics, including Network-In, Network-Out, CPU utilization, and Status Check Failures on each production web server. Because we used Elastic Beanstalk to manage our application instances, we were able to set up metrics and alarms on EB auto-scaling groups as well. We configured alarms to alert our DevOps personnel whenever the site became unavailable, as well as “self-healing” alarms to automatically add an instance whenever the in-service instance pool dropped below a certain threshold.
+
 
 R. We deployed to the LXC open source container system: https://linuxcontainers.org/
 
