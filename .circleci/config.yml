@@ -39,7 +39,6 @@ jobs:
            bundle -v
 
       - restore_cache:
-          command: cd backend/web
           keys:
             - rails-bundle-v2-{{ checksum "Gemfile.lock" }}
             - rails-bundle-v2-
@@ -51,10 +50,9 @@ jobs:
             bundle check || bundle install
 
       - save_cache:
-          command: cd backend/web
           key: rails-bundle-v2-{{ checksum "Gemfile.lock" }}
           paths:
-            - vendor/bundle
+            - backend/web/vendor/bundle
 
       - run:
           name: Wait for DB
