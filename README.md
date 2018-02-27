@@ -66,15 +66,18 @@ C. Agile Six included end-users from the inception of our prototype , see [test 
 
 Our approach was as follows:
 
-Hear Phase:  We performed a usability study survey (ADKAR) of actual contracting professionals asking question about their Awarness, Desire, Knowledge, Ability and Reinforcement on the topic of Agile Acquisition.  We had open discussions about the app and their expectations as documented in our Empathy Map and Personas. The workshop and map focused on what the user sees, hears, thinks, says and does. Then we used this information to consider the pains and gains involved in engagement with such apps in order to maximize the value to the end user in the design.
-Create Phase: After listening to our users both with interviews and surveys we created user personas [Personas](https://app.xtensio.com/folio/y0wgeokr), which we felt reflected a fair segmentation of our users. We then chose 4 users to represent these profiles and held a User Empathy Workshop for the entire development team.  During this workshop the four users where present to discuss the findings of their personas and took actual questions from the development team (we acknowledge that this pool is small and intentionally abbreviated for this prototype). With these personas and empathy map in hand, we met as a team to whiteboard the application flow [Sketch](XXX). Based on this experience we were ready to build our prototype. Rough sketches, which allowed the team to quickly iterate on design ideas, were followed by wireframes: XXX  During our feature sprints (1-3), we iterated on these wire frames and developed a .....
-Deliver Phase - If we were to proceed with this application, we would enter our 3rd phase of HCD which would include frequently adding new features in similar fashion (expose to small subset of users, analyze, slowly roll out). We never stop soliciting feedback from users, never stop improving the User Experience and we update journey maps with the users as they evolve.
+Hear Phas -  We performed a usability study survey of actual contracting professionals asking question about their Movitations, Expertise and Personality on the topic of Agile Acquisition.  We then performed User Interviews concerning thier workflows and their expectations as documented in our Empathy Map and Personas. We presented the entire development team with an overview of these findings during a workshop before we started any applicaiton design, where they could ask additional questions of the users.
+Create Phase - After listening to our users both with interviews and surveys we created [drawings](../vision) and [wirefames](../artifacts)  Based on this experience we were ready to start building our prototype with a goal of getting something in the users hands fast. R
+Deliver Phase - After the first iteration was pushed to QA environment we were able to start exposing the applciation to our users. We were quickly able to identify gaps, bugs and ideas which informed subsequent iterations of our prototype. We plan in the future to frequently add new features in similar fashion (expose to small subset of users, analyze, slowly roll out). .
 Future Backlog - The following link shows the trello board we used as both a product and sprint [backlogs] (https://trello.com/b/Ww8O7aX7/adpq2018)
 
-D. Agile Six used 4 user design techniques
+D. Agile Six used at least 4 user design techniques
 
-[Pesonas](https://app.xtensio.com/folio/y0wgeokr)
-
+[Personas & Surveys](https://app.xtensio.com/folio/y0wgeokr)
+[User Interviews](http://XXX)
+[Usability Testing](../artifacts/videos)
+[Empathy Map](../artifacts/eMap)
+[Wireframes](../artifacts)
 
 E. We used only one [repository](https://github.com/agilesix/ADPQ) where all code and artifacts are stored and all code commits documented.
 
