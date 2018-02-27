@@ -79,9 +79,9 @@ D. Agile Six used at least 4 user design techniques
 
 [Usability Testing](../artifacts/videos)
 
-[Empathy Map](../artifacts/eMap)
+[Empathy Map](../../artifacts/eMap)
 
-[Wireframes](../artifacts)
+[Wireframes](../../artifacts)
 
 E. We used only one [repository](https://github.com/agilesix/ADPQ) where all code and artifacts are stored and all code commits documented.
 
