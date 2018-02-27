@@ -17,6 +17,7 @@ export class ArticleComponent implements OnInit {
   stepId: number;
   private sub: any;
   loading: boolean;
+  error: any;
   public article;
   baseUrl: string = environment.token_auth_config.apiBase;
 
@@ -35,6 +36,14 @@ export class ArticleComponent implements OnInit {
       this.stepId = +params['stepId'];
       this.getKnowledgeArticle(this.id);
     });
+    this.modal.submission.subscribe(() => {
+      if (this.modal.modalRemove()) {
+        // TODO: improve ordering by waiting to set `submitted` until success or failure
+        if (this.modal.submitted) {
+          this.removeArticle();
+        }
+      }
+    });
   }
 
   ngOnDestroy() {
@@ -43,12 +52,16 @@ export class ArticleComponent implements OnInit {
 
   getKnowledgeArticle(id) {
     this.loading = true;
+    this.error = false;
     this.articleService.getKnowledgeArticle(id).subscribe(
       data => {
-        this.article = data.json();;
+        this.article = data.json();
         this.loading = false;
       },
-      err => console.error(err),
+      err => {
+        this.error = err;
+        console.error(err);
+      },
       () => console.log('article: ', this.article)
     );
   }
@@ -61,4 +74,10 @@ export class ArticleComponent implements OnInit {
     return userHasRole;
   }
 
+  removeArticle() {
+    console.log('delete article', this.article);
+    this.articleService.removeKnowledgeArticle(this.id).subscribe( params => {
+      console.log('article deleted', params);
+    });
+  }
 }
