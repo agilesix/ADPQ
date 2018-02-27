@@ -10,11 +10,11 @@
             </h6>
         </div>
 
-        <div *ngIf="hasRole('Admin')" class="usa-width-one-half right-align">
+        <div *ngIf="hasRole('Admin') && !loading" class="usa-width-one-half right-align">
             <a [routerLink]="['edit']" class="usa-button usa-button-tertiary"><i class="fa fa-pencil"></i> Edit</a>
             
             <!--TODO: Wire up, show materialize modal with confirmation screen "Are you sure you want to delete this knowledge article and all associated files? This is permanent and cannot be recovered." -->
-            <button class="usa-button usa-button-tertiary"><i class="fa fa-trash"></i> Delete</button>
+            <button class="usa-button usa-button-tertiary" (click)="presentModal('remove')"><i class="fa fa-trash"></i> Delete</button>
             
             <!--PHASE 2
             <button class="usa-button usa-button-tertiary"><i class="fa fa-plus"></i> Add file</button>
@@ -28,7 +28,8 @@
     </div>
 </div>
 <div class="usa-grid">
-        <div *ngIf="loading" class="loading">Loading...</div>
+        <div *ngIf="loading && !error" class="loading">Loading...</div>
+    <div *ngIf="error" class="error">The requested article could not be found.</div>
     <div *ngIf="!loading" class="usa-width-two-thirds">
         <h2>{{article.title}}</h2>
         <div class="workflow-step-description">
