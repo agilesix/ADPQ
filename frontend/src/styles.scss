@@ -78,6 +78,15 @@ ul:not(.browser-default)  {
     }
 }
 
+h1.text-sans, 
+h2.text-sans, 
+h3.text-sans, 
+h4.text-sans,  
+h5.text-sans, 
+h6.text-sans {
+    font-family: 'Source Sans Pro';
+}
+
 
 /*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -140,6 +149,42 @@ ul:not(.browser-default)  {
     .usa-grid>.card:first-child {
         margin-top: 0.5rem;
     }
+
+.usa-grid.usa-grid-max-w {
+    max-width: none;
+    padding-top: 50px;
+}
+
+.usa-grid.usa-grid-max-h {
+    min-height: 100vh;
+}
+
+@media screen and (min-width: 1200px) {
+    .usa-width-one-fifth {
+        float: left;
+        display: block;
+        margin-right: 1%;
+        width: 19%;
+    }
+    
+    .usa-width-one-fifth:last-child {
+        margin-right: 0;
+    }
+}
+
+.usa-width-one-fifth {
+    h1 {
+        border-bottom-width: 5px;
+        border-bottom-style: solid;
+        float: left;
+        padding: 0 0 10px 0;
+        margin-top: 0;
+    }
+    
+    .card-content:first-child {
+        min-height: 220px;
+    }
+}
 
 header.usa-header {
     z-index: 1000;
@@ -221,7 +266,7 @@ header.usa-header {
             a {
                 color: white;
                 float: right;
-                background: #0071bc;
+                background: #1565C0;
                 position: relative;
                 
                 > .text {
@@ -243,7 +288,7 @@ header.usa-header {
                 }
                 
                 &.active {
-                    background: #205493;
+                    background: #0D47A1;
                     
                     > .text {
                         display: inline;
@@ -252,7 +297,7 @@ header.usa-header {
                     &:after {
                         content: '';
                         position: absolute;
-                        background: #205493;
+                        background: #0D47A1;
                         top: 0;
                         left: 100%;
                         height: 100%;

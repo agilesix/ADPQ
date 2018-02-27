@@ -1,10 +1,55 @@
-<div class="usa-grid">
-    <br/><br/><br/>
-    <h2 *ngIf="(authService.userSignedIn$ | async)">
-        Hi, you are signed in.
-    </h2>
-    <h2 *ngIf="!(authService.userSignedIn$ | async)">
-        <span class="usa-hero-callout-alt">Hi,</span>
-        Login or register
-    </h2>
+<div *ngIf="hasRole('Admin')" class="usa-grid usa-grid-max-w blue darken-3">
+    <div class="usa-alert usa-alert-info usa-alert-paragraph" >
+        <div class="usa-alert-body"><h3 class="usa-alert-heading">You have 2 new files to approve</h3><p class="usa-alert-text">Lorem ipsum dolor sit amet, <a href="javascript:void(0);">consectetur adipiscing</a> elit, sed do eiusmod.</p>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="hasRole('Admin')" class="usa-grid usa-grid-max-w usa-grid-max-h blue darken-2">
+    <div class="usa-width-one-fifth card" *ngFor="let step of stepService.workflowSteps$ | async; let i = index" [attr.data-index]="i">
+        <a [routerLink]="['/step', step.id]">
+            <div class="card-content">
+                <h1 class="red-text border-tertiary text-lighten-1">{{i + 1}}</h1>
+                <h3 class="text-sans grey-text text-darken-3">{{step.name}}</h3>
+            </div>
+            <div class="card-content usa-grid-full blue darken-4">
+                <div class="usa-width-one-third blue-text text-lighten-3">
+                    <h3>33</h3>
+                    <h6><small>Articles</small></h6>
+                </div>
+                <div class="usa-width-one-third blue-text text-lighten-3">
+                    <h3>261</h3>
+                    <h6><small>Views</small></h6>
+                </div>
+                <div class="usa-width-one-third blue-text text-lighten-3">
+                    <h3>100</h3>
+                    <h6><small>Downloads</small></h6>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+<div *ngIf="hasRole('Contributor')" class="usa-grid usa-grid-max-w usa-grid-max-h blue darken-2">
+    <div class="usa-width-one-fifth card" *ngFor="let step of stepService.workflowSteps$ | async; let i = index" [attr.data-index]="i">
+        <div class="card-content">
+            <h1 class="green-text border-primary text-lighten-1">
+                <!--<i class="fa fa-square-o"></i>-->
+                <i class="fa fa-check-square"></i>
+                {{i + 1}}
+            </h1>
+            <h3 class="text-sans grey-text text-darken-3">{{step.name}}</h3>
+        </div>
+        <div class="card-content">
+            <a class="usa-button usa-button-secondary" [routerLink]="['/step', step.id]">See knowledge base</a>
+            <a class="usa-button usa-button-secondary" [routerLink]="['/step', step.id]">Create your portfolio</a>
+        </div>
+        <div class="card-content usa-grid-full blue darken-4">
+            <div class="usa-width-one-third blue-text text-lighten-3">
+                <h3>33</h3>
+                <h6><small>Articles</small></h6>
+            </div>
+        </div>
+    </div>
 </div>
