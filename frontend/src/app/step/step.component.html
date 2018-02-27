@@ -38,9 +38,9 @@
         <div class="a2-callout border-tertiary" *ngIf="hasRole('Admin')">
             <button *ngIf="!edit" (click)="toggleEdit()" class="usa-button usa-button-tertiary"><i class="fa fa-pencil"></i>  Edit</button>
             
-            <!--TODO: Wire up Save/Cancel buttons to actually Save and Cancel -->
-            <button *ngIf="edit" (click)="toggleEdit()" class="usa-button usa-button-tertiary"><i class="fa fa-close"></i> Cancel</button>
-            <button *ngIf="edit" (click)="updateStep()" class="usa-button usa-button-tertiary"><i class="fa fa-save"></i> Save</button>
+            <button *ngIf="edit" (click)="toggleEdit()" class="usa-button usa-button-secondary">Cancel edits</button>
+            <button *ngIf="edit" (click)="updateStep()" class="usa-button">Save</button>
+            <hr *ngIf="edit" />
             
             <a [routerLink]="['new/article']" class="usa-button usa-button-tertiary"><i class="fa fa-plus"></i> Add article</a>
         </div>
