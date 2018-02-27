@@ -58,8 +58,29 @@
                 <a class="usa-button" (click)="submitSuccess()">Submit</a>
             </div>
         </div>
-        
-        
+	
+	
+        <!-- MODAL: remove -->
+        <div *ngIf="modalRemove()">
+	    <div *ngIf="!submitted">
+                <div class="modal-body">
+                    <p class="text-large">Are you sure you want to delete this knowledge article and all associated files? This is permanent and cannot be recovered.</p>
+                </div>
+
+                <div class="modal-footer">
+                    <a class="usa-button usa-button-secondary" (click)="closeModal()">Cancel</a>
+                    <a class="usa-button usa-button-tertiary" (click)="submitSuccess()">Delete</a>
+                </div>
+	    </div>
+	    <div *ngIf="submitted">
+                <div class="modal-body">
+                    <p class="text-large">Article successfully removed.</p>
+                </div>
+                <div class="modal-footer">
+                    <a class="usa-button usa-button-secondary" [routerLink]="['../..']">Return to step.</a>
+		</div>
+	    </div>
+        </div>
         
     </div>
 </div>
