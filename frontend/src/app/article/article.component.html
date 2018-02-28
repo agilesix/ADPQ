@@ -5,7 +5,7 @@
                 <a *ngIf="!loading" [routerLink]="['/step', stepId]">
                   <i class="fa fa-angle-left left"></i>
                   <span class="chip"><b>{{stepId}}</b></span>
-                  <b >{{article.workflow_steps[0].name}}</b>
+                  <b>{{article.workflow_steps[0].name}}</b>
                 </a>
             </h6>
         </div>
@@ -31,6 +31,7 @@
         <div *ngIf="loading" class="loading">Loading...</div>
     <div *ngIf="!loading" class="usa-width-two-thirds">
         <h2>{{article.title}}</h2>
+        <p>{{article.description}}</p>
         <div class="workflow-step-description">
             <markdown [data]="article.body"></markdown>
         </div>
