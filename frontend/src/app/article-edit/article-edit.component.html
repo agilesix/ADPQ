@@ -16,7 +16,7 @@
         </div>
     </div>
     <div class="usa-grid">
-        <h2>Edit the <i class="blue-text">{{knowledgeArticle.title}}</i> knowledge article</h2><br/>
+        <h2>Edit the knowledge article <i class="blue-text">{{knowledgeArticle.title}}</i></h2><br/>
     
         <div *ngIf="!loading">
             <form (ngSubmit)="updateKnowledgeArticle()" #f="ngForm" class="usa-form">
@@ -41,13 +41,30 @@
                         <label for="files">Upload files</label>
                         <div class="file-field input-field">
                           <div class="btn blue">
-                            <span>File</span>
+                            <span>Files</span>
                             <input type="file" multiple>
                           </div>
                           <div class="file-path-wrapper">
                             <input class="file-path validate" type="text" placeholder="Upload one or more files">
                           </div>
                         </div>
+                        
+                        <!--TODO: Display if there are existing files:
+                        <table class="usa-table-borderless">
+                            <tbody>
+                                <tr><label>Already uploaded files</label></tr>
+                                <tr *ngFor="let attachment of knowledgeArticle.file_attachments">
+                                    <td>
+                                        <a href="{{baseUrl + attachment.attached_file}}">{{attachment.filename}}</a>
+                                    </td>
+                                    <td class="right-align">
+                                        <a class="usa-button usa-button-tertiary" title="Delete">
+                                            <i class="fa fa-trash" title="Delete" aria-label="Delete"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>-->
                     </div>
                 </fieldset>
                 <br><hr/><br>
