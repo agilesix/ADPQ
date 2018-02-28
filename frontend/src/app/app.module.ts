@@ -25,6 +25,7 @@ import { ArticleNewComponent } from './article-new/article-new.component';
 import { MarkdownModule } from 'ngx-markdown';
 import { ArticleEditComponent } from './article-edit/article-edit.component';
 import { LMarkdownEditorModule } from 'ngx-markdown-editor';
+import { LoginGuard } from './guards/login.guard';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { LMarkdownEditorModule } from 'ngx-markdown-editor';
     Angular2TokenService, 
     AuthService, 
     AuthGuard, 
+    LoginGuard,
     {provide: APP_BASE_HREF, useValue: '/'}, 
     StepService,
     ArticleService
