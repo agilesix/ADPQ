@@ -26,7 +26,9 @@ require 'rack/test'
 RSpec.describe FileAttachmentsController, type: :controller do
 
   before :each do
+    Role.create name: 'Admin'
     @user = FactoryBot.create(:user)
+    @user.add_role 'Admin'
     @auth_headers = @user.create_new_auth_token
     request.headers.merge!(@auth_headers)
     @knowledge_article = FactoryBot.create(:knowledge_article, user: @user)
