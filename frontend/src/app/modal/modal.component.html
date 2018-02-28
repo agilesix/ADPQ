@@ -9,21 +9,41 @@
         <!-- MODAL: fileSubmit -->
         <div *ngIf="modalFileSubmit()">
             <div *ngIf="!submitted">
-                <h3>Submit files to the knowledge article</h3>
+                <h3>Submit a file to the knowledge article</h3>
 
                 <div class="modal-body">
-                    <p class="text-large">Have something to add to this knowledge article? We'd love to share your thoughts or resources with this knowledge base. If you have files that enhances this article, upload them for publishing below.</p>
+                    <p class="text-large">Have something to add to this knowledge article? We'd love to share your templates, samples, or resources with this knowledge base. If you have files that enhances this article, upload them for publishing below.</p>
 
-                    <label for="files">Upload files</label>
-                    <div class="file-field input-field">
-                      <div class="btn blue">
-                        <span>File</span>
-                        <input type="file" multiple>
-                      </div>
-                      <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
-                      </div>
-                    </div>
+                    <form class="usa-form">
+                        <label for="name">Name</label>
+                        <input id="name"
+                            type="text"
+                            required
+                            name="name"
+                            class="validate" />
+                        <label for="name">Tags</label>
+                        <div class="chips chips-initial">
+                            <div class="chip">Template
+                                <i class="close fa fa-times"></i>
+                            </div>
+                            <div class="chip">Sample
+                                <i class="close fa fa-times"></i>
+                            </div>
+                            <div class="chip">Resource
+                                <i class="close fa fa-times"></i>
+                            </div>
+                        </div>
+                        <label for="files">Upload file</label>
+                        <div class="file-field input-field">
+                          <div class="btn blue">
+                            <span>File</span>
+                            <input type="file">
+                          </div>
+                          <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text" placeholder="Upload one file">
+                          </div>
+                        </div>
+                    </form>
                 </div>
 
                 <div class="modal-footer">
@@ -48,10 +68,11 @@
 
                 <div class="modal-body">
                     <p>These files are waiting for your review before they can be added to knowledge articles. Approving a file submission will add it to the knowledge article it was submitted to. Rejecting a file submission will remove it from the platform.</p>
-                    <br/><br/>
 
-                    <!--TODO: Show this header/table if they came from either workflow step or knowledge article -->
-                    <h4 class="grey-text text-darken-1">Inside this knowledge article <!--clicked from step: "Inside this workflow step" --></h4>
+                    <!--TODO: 
+                        -If admin clicked from article, show only that article's waiting submissions in this table
+                        -If admin came from step, show only that step's waiting submissions in this table
+                        -If admin came from home page, show all -->
                     <table class="usa-table-borderless">
                         <thead>
                             <tr>
@@ -79,14 +100,14 @@
                             </tr>
                         </tbody>
                     </table>
-
-                    <!--TODO: Show this header/table with the remainder of file submissions (other steps/articles), if they came from either workflow step or knowledge article -->
-                    <!--TODO: If they came from landing page, remove <h4> header and show all submissions inside the same table -->
-                    <br/><br/>
-                    <h4 class="grey-text text-darken-1">Other waiting submissions</h4>
+                </div>
+                
+                <!--TODO: Show this div/table with the remainder of waiting file submissions (from other steps/articles), if admin clicked from either workflow step or knowledge article -->
+                <div class="modal-body">
+                    <h4 class="grey-text">Other waiting submissions</h4>
                     <table class="usa-table-borderless">
                         <thead>
-                            <tr>
+                            <tr class="grey-text">
                                 <th scope="col">File</th>
                                 <th scope="col">Submitted by</th>
                                 <th scope="col">Knowledge Article</th>
@@ -145,7 +166,7 @@
             <div class="modal-body">
                 <p class="text-large">Is it ready to go? Upload it below. Still not sure how to create it? <a>Visit the knowledge base.</a></p>
 
-                <label for="files">Upload files</label>
+                <label for="files">Upload file</label>
                 <div class="file-field input-field">
                   <div class="btn blue">
                     <span>File</span>

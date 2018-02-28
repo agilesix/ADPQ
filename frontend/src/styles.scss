@@ -118,6 +118,10 @@ h1, h2, h3, h4, h5, h6 {
 
         .modal-body {
             padding: 0 0 50px 0;
+            
+            input {
+                max-width: none;
+            }
         }
 
         .modal-footer {
@@ -255,37 +259,43 @@ header.usa-header {
 
 .usa-form {
     max-width: none;
-}
 
-    .usa-form input, .usa-form textarea {
+    input, textarea {
         font-size: 1.7rem !important;
     }
 
-    .usa-form input.h2 {
+    input.h2 {
         font-size: 3rem !important;
         font-weight: 700;
         font-family: Merriweather,Georgia,Cambria,Times New Roman,Times,serif;
     }
 
-    .usa-form [type=submit] {
+    [type=submit] {
         padding: 1rem 2rem;
         margin: .5em .5em .5em 0;
         height: 37px;
     }
 
-    .usa-form select[multiple] {
+    select[multiple] {
         height: 80px;
     }
 
-.usa-form label {
-    color: #5b616b;
-    margin-bottom: .5rem;
+    label {
+        color: #5b616b;
+        margin-bottom: .5rem;
+    }
 }
 
 .usa-form-inline select {
     width: auto;
     margin-top: 20px;
     margin-left: 10px;
+}
+
+.usa-table-borderless {
+    td, th {
+        background: transparent;
+    }
 }
 
 
