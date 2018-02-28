@@ -122,5 +122,30 @@ describe('ArticleService', () => {
     });
   });
 
+  it('should remove a Knowledge Article', () => {
+    let article = {id: 1, title: 'The Greatest Article Ever Updated', description: 'The best description', body: '# Lots of markdown here', workflow_step_id: 1, user_id: 1}
+    setupConnections(backend, {
+      body: article,
+      status: 200
+    });
+
+    service.removeKnowledgeArticle(article.id).subscribe(data => {
+      expect(data.id).toBe(article.id);
+      expect(data.title).toBe(article.title);
+    });
+  });
+
+  it('should upload multiple File Attachments for a Knowledge Article', () => {
+    let fileAttachments = [{filename: 'Test.txt', filetype: 'text/plain', knowledge_article_id: 1, value: 'Tm8gbW9yZSB0ZXN0IHBpY3R1cmVzIG9mIGtpdHRlbnMgOig=\n'}]
+    setupConnections(backend, {
+      body: fileAttachments,
+      status: 200
+    });
+
+    service.uploadFileAttachments(fileAttachments).subscribe(data => {
+      expect(data).toBeTruthy();
+    });
+  });
+
 });
 

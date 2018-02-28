@@ -5,7 +5,7 @@
                 <a *ngIf="!loading" [routerLink]="['/step', stepId]">
                   <i class="fa fa-angle-left left"></i>
                   <span class="chip"><b>{{stepId}}</b></span>
-                  <b >{{article.workflow_steps[0].name}}</b>
+                  <b>{{article.workflow_steps[0].name}}</b>
                 </a>
             </h6>
         </div>
@@ -25,6 +25,7 @@
     <div *ngIf="error" class="error">The requested article could not be found.</div>
     <div *ngIf="!loading" class="usa-width-two-thirds">
         <h2>{{article.title}}</h2>
+        <p>{{article.description}}</p>
         <div class="workflow-step-description">
             <markdown [data]="article.body"></markdown>
         </div>
@@ -32,7 +33,7 @@
     <div class="usa-width-one-third">
         <div *ngIf="!loading" class="a2-callout border-primary">
             <div *ngFor="let attachment of article.file_attachments">
-                <a href="{{baseUrl + attachment.attached_file}}" *ngIf="attachment.approved" class="usa-button">
+                <a href="{{baseUrl + attachment.attached_file}}" target="_blank" *ngIf="attachment.approved" class="usa-button">
                     <span class="fa fa-download"></span> {{attachment.filename}}
                 </a>
             </div>
