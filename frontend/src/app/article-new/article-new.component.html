@@ -42,7 +42,7 @@
                             <div class="file-field input-field">
                               <div class="btn blue">
                                 <span>File</span>
-                                <input type="file" multiple>
+                                <input type="file" name="file_attachments" (change)="onFileInputChange($event)" multiple>
                               </div>
                               <div class="file-path-wrapper">
                                 <input class="file-path validate" type="text" placeholder="Upload one or more files">

@@ -28,7 +28,8 @@ export class ArticleNewComponent implements OnInit {
     body: '', 
     workflow_step_id: 0, 
     user_id: 0, 
-    published: false
+    published: false,
+    file_attachments: []
   };
 
   constructor(private router: Router, private route: ActivatedRoute, private articleService: ArticleService, private stepService: StepService, public authTokenService: Angular2TokenService) { }
@@ -52,8 +53,24 @@ export class ArticleNewComponent implements OnInit {
     this.articleService.createKnowledgeArticle(this.knowledgeArticle).subscribe(
       data => { 
         this.article = data.json();
-        this.submitting = false;
-        this.router.navigate(['/step/'+ this.stepId + '/article/' + this.article.id]);
+        
+        for (let file of this.knowledgeArticle.file_attachments) {
+          file.knowledge_article_id = this.article.id;
+        }
+
+        if (this.knowledgeArticle.file_attachments.length > 0) {
+          this.articleService.uploadFileAttachments(this.knowledgeArticle.file_attachments).subscribe(
+            data => {
+              this.submitting = false;
+              this.router.navigate(['/step/'+ this.stepId + '/article/' + this.article.id]);
+            },
+            err => console.error(err),
+            () => console.log()
+          ) 
+        } else {
+          this.submitting = false;
+          this.router.navigate(['/step/'+ this.stepId + '/article/' + this.article.id]);
+        }
       },
       err => console.error(err),
       () => console.log('article: ', this.article)
@@ -74,6 +91,30 @@ export class ArticleNewComponent implements OnInit {
   
   toggleEdit() {
     this.edit = !this.edit;
+  }
+
+  onFileInputChange(event: any) {
+    console.log(event);
+    
+    if(event.target.files && event.target.files.length > 0) {
+      let files = event.target.files;
+      
+      for (let file of files) {
+        if (file.name) {
+          let reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = () => {
+            this.knowledgeArticle.file_attachments.push(
+              {
+                filename: file.name,
+                filetype: file.type,
+                value: reader.result.split(',')[1]
+              }
+            );
+          }
+        }
+      }    
+    }
   }
 
 }

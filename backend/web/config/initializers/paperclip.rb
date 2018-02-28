@@ -1,0 +1,2 @@
+
+Paperclip::DataUriAdapter.register
