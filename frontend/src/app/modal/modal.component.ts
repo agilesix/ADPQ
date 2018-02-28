@@ -12,6 +12,7 @@ export class ModalComponent implements OnInit {
   @Input() modalContent;
 
   modalActions = new EventEmitter<string|MaterializeAction>();
+  submission = new EventEmitter();
 
   constructor() { }
 
@@ -34,9 +35,20 @@ export class ModalComponent implements OnInit {
   modalFileSubmit() {
     return this.modalContent === 'fileSubmit';
   }
-  
+
+  modalFileReview() {
+    return this.modalContent === 'fileReview';
+  }
+
+  modalRemove() {
+    return this.modalContent === 'remove';
+  }
+
   submitSuccess() {
     this.submitted = !this.submitted;
+    if (this.submitted) {
+      this.submission.emit();
+    }
   }
 
 }

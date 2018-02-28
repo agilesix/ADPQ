@@ -19,6 +19,10 @@ export class ArticleService {
     return this.authTokenService.get(resource + '/' + id + '.json')
   }
 
+  removeKnowledgeArticle(id) {
+    return this.authTokenService.delete(resource + '/' + id + '.json')
+  }
+
   createKnowledgeArticle(article: {title: string, body: string, workflow_step_id: number, user_id: number, published: boolean}) {
     return this.authTokenService.post(resource + '.json', article);
   }

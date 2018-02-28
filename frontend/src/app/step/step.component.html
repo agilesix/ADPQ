@@ -28,10 +28,10 @@
     </div>
 
     <div class="usa-width-one-third">
-        <!--<div class="a2-callout border-primary" *ngIf="hasRole('Contributor')">
-            <label>Ready to start yours?</label>
-            <button class="usa-button usa-button-secondary"(click)="presentModal('portfolio')">Create a portfolio</button>
-        </div>-->
+        <div class="a2-callout border-primary" *ngIf="hasRole('Contributor')">
+            <label>Already completed this?</label>
+            <button class="usa-button usa-button-secondary"(click)="presentModal('portfolio')">Add to your portfolio</button>
+        </div>
 
         <br/><br/>
 
@@ -43,6 +43,14 @@
             <hr *ngIf="edit" />
             
             <a [routerLink]="['new/article']" class="usa-button usa-button-tertiary"><i class="fa fa-plus"></i> Add article</a>
+            
+            <!--TODO: Wire up, only show if this Step has submitted files that have yet to be approved/rejected, show number count of only this Step's waiting files -->
+            <div class="usa-alert usa-alert-error" role="alert">
+                <div class="usa-alert-body">
+                    <p class="usa-alert-text">2 files are waiting for your review before they can be added to knowledge articles</p>
+                    <a class="usa-button usa-button-tertiary" (click)="presentModal('fileReview')">Review</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
