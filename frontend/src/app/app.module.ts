@@ -14,6 +14,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { AuthService } from './services/auth.service';
 import { StepService } from './services/step.service';
 import { AuthGuard } from './guards/auth.guard';
+import { AdminGuard } from './guards/admin.guard';
 import { APP_BASE_HREF } from '@angular/common';
 import { StepComponent } from './step/step.component';
 import { AuthComponent } from './auth/auth.component';
@@ -56,6 +57,7 @@ import { LMarkdownEditorModule } from 'ngx-markdown-editor';
     Angular2TokenService, 
     AuthService, 
     AuthGuard, 
+    AdminGuard,
     {provide: APP_BASE_HREF, useValue: '/'}, 
     StepService,
     ArticleService
