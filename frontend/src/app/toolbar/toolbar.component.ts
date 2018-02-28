@@ -3,7 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { Router, RouterLink, ActivatedRoute } from '@angular/router';
 import { Angular2TokenService } from "angular2-token";
 import { StepService } from '../services/step.service';
-import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common'
+import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common'
 
 @Component({
   selector: 'app-toolbar',

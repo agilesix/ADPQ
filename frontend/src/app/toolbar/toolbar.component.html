@@ -3,11 +3,16 @@
 <header class="a2-sidenav blue darken-2" role="banner">
     <div class="usa-logo">
         <em class="usa-logo-text">
-            <a [routerLink]="['']" href="/" title="Home" aria-label="Home">a2</a>
+            <a [routerLink]="['']" href="/" title="a2" aria-label="a2">a2</a>
         </em>
     </div>
-    <nav role="navigation" class="usa-nav" *ngIf="(authService.userSignedIn$ | async)">
+    <nav role="navigation" class="usa-nav blue darken-2" *ngIf="(authService.userSignedIn$ | async)">
         <ul *ngIf="!loading" class="usa-nav-primary usa-accordion">
+            <li>
+                <a href="/" [routerLink]="['']" title="Home" aria-label="Home">
+                    <i class="fa fa-home"></i>
+                </a>
+            </li>
             <li *ngFor="let step of stepService.workflowSteps$ | async; let i = index" [attr.data-index]="i">
                 <a class="usa-nav-link" [ngClass]="{'active': isActive(step.id)}" [routerLink]="['/step', step.id]">
                     {{i + 1}} <span class="text">{{step.name}}</span>
@@ -16,7 +21,7 @@
         </ul>
     </nav>
 
-    <div class="a2-profile center-align" *ngIf="(authService.userSignedIn$ | async)">
+    <div class="a2-profile center-align blue darken-2" *ngIf="(authService.userSignedIn$ | async)">
         <img *ngIf="authTokenService.currentUserData" src="./../../../assets/images/avatar.png" class="circle img-50" alt="John Smith">
         <p id="user-profile" *ngIf="authTokenService.currentUserData">
             <b>{{authTokenService.currentUserData.name}}</b>

@@ -36,6 +36,10 @@ export class ModalComponent implements OnInit {
     return this.modalContent === 'fileSubmit';
   }
 
+  modalFileReview() {
+    return this.modalContent === 'fileReview';
+  }
+
   modalRemove() {
     return this.modalContent === 'remove';
   }
