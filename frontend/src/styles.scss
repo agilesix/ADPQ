@@ -20,30 +20,42 @@ a {
     cursor: pointer;
 }
 
-.usa-button, .usa-button-primary, .usa-button-primary:visited, .usa-button:visited, [type=button], [type=image], [type=reset], [type=submit], button {
-    background-color: #2196f3;
-}
-
-.usa-button-primary.usa-button-secondary, .usa-button-primary:visited.usa-button-secondary, .usa-button.usa-button-secondary, .usa-button:visited.usa-button-secondary, [type=button].usa-button-secondary, [type=image].usa-button-secondary, [type=reset].usa-button-secondary, [type=submit].usa-button-secondary, button.usa-button-secondary {
-    -webkit-box-shadow: inset 0 0 0 2px #2196f3;
-    box-shadow: inset 0 0 0 2px #2196f3;
-    color: #2196f3;
-}
-
-.usa-button-tertiary {
-    color: #ef5350;
-    background-color: #fff;
-    -webkit-box-shadow: inset 0 0 0 2px #ef5350;
-    box-shadow: inset 0 0 0 2px #ef5350;
-    
-    &:hover, &:active, &:focus, 
-    &.usa-button:hover, &.usa-button:active, &.usa-button:focus {
-        color: #c62828;
-        background-color: #fff;
-        -webkit-box-shadow: inset 0 0 0 2px #c62828;
-        box-shadow: inset 0 0 0 2px #c62828;
+.usa-button {
+    .chip {
+        color: white;
+        height: auto;
+        margin: 0;
+        padding: 2px 7px;
+        line-height: inherit;
+        font-weight: bold;
     }
 }
+
+    .usa-button, .usa-button-primary, .usa-button-primary:visited, .usa-button:visited, [type=button], [type=image], [type=reset], [type=submit], button {
+        background-color: #2196f3;
+    }
+
+    .usa-button-primary.usa-button-secondary, .usa-button-primary:visited.usa-button-secondary, .usa-button.usa-button-secondary, .usa-button:visited.usa-button-secondary, [type=button].usa-button-secondary, [type=image].usa-button-secondary, [type=reset].usa-button-secondary, [type=submit].usa-button-secondary, button.usa-button-secondary {
+        -webkit-box-shadow: inset 0 0 0 2px #2196f3;
+        box-shadow: inset 0 0 0 2px #2196f3;
+        color: #2196f3;
+    }
+
+    .usa-button-tertiary,
+    a.usa-button-tertiary {
+        color: #ef5350;
+        background-color: #fff;
+        -webkit-box-shadow: inset 0 0 0 2px #ef5350;
+        box-shadow: inset 0 0 0 2px #ef5350;
+
+        &:hover, &:active, &:focus, 
+        &.usa-button:hover, &.usa-button:active, &.usa-button:focus {
+            color: #c62828;
+            background-color: #fff;
+            -webkit-box-shadow: inset 0 0 0 2px #c62828;
+            box-shadow: inset 0 0 0 2px #c62828;
+        }
+    }
 
 .border-primary {
     border-color: #2196f3;
@@ -78,13 +90,16 @@ ul:not(.browser-default)  {
     }
 }
 
-h1.text-sans, 
-h2.text-sans, 
-h3.text-sans, 
-h4.text-sans,  
-h5.text-sans, 
-h6.text-sans {
-    font-family: 'Source Sans Pro';
+h1, h2, h3, h4, h5, h6 {
+    clear: none;
+    
+    &.text-sans {
+        font-family: 'Source Sans Pro';
+    }
+    
+    &.text-flush {
+        margin: 0;
+    }
 }
 
 
@@ -94,11 +109,23 @@ h6.text-sans {
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
 
-.modal .modal-content {
-    padding: 60px;
+.modal {
+    max-height: 85%;
     
-    .modal-body {
-        padding: 0 0 50px 0;
+    .modal-content {
+        padding: 60px 60px 10px 60px;
+        background: white;
+
+        .modal-body {
+            padding: 0 0 50px 0;
+        }
+
+        .modal-footer {
+            background: white;
+            padding: 0 0 50px 0;
+            text-align: right;
+            min-height: 87px;
+        }
     }
 }
 
@@ -127,6 +154,14 @@ h6.text-sans {
                     background-color: #2196f3;
                     color: white;
                 }
+        
+                &.blue {
+                    background-color: #1976d2 !important;
+                }
+        
+                &.green {
+                    background-color: #43a047 !important;
+                }
             }
 
             > .card-content-tertiary {
@@ -144,19 +179,33 @@ h6.text-sans {
 
 .usa-grid {
     padding-bottom: 50px;
-}
 
-    .usa-grid>.card:first-child {
+    .card:first-child {
         margin-top: 0.5rem;
     }
 
-.usa-grid.usa-grid-max-w {
-    max-width: none;
-    padding-top: 50px;
-}
+    &.usa-grid-max-w {
+        max-width: none;
+        padding-top: 50px;
+        
+        > .usa-grid-max-w {
+            padding: 0;
+        }
+    }
 
-.usa-grid.usa-grid-max-h {
-    min-height: 100vh;
+    &.usa-grid-max-h {
+        min-height: 100vh;
+        padding-top: 100px;
+    }
+
+    &.usa-grid-top {
+        height: 166px;
+    }
+    
+    &.usa-grid-top + .usa-grid-max-h {
+        min-height: calc(100vh - 166px);
+        padding-top: 50px;
+    }
 }
 
 @media screen and (min-width: 1200px) {
@@ -164,15 +213,23 @@ h6.text-sans {
         float: left;
         display: block;
         margin-right: 1%;
-        width: 19%;
+        width: 19.2%;
     }
     
-    .usa-width-one-fifth:last-child {
+    .usa-width-one-fifth:last-of-type {
         margin-right: 0;
     }
 }
 
 .usa-width-one-fifth {
+    .card-content:first-of-type {
+        min-height: 220px;
+
+        &.blue, &.green {
+            min-height: 0;
+        }
+    }
+    
     h1 {
         border-bottom-width: 5px;
         border-bottom-style: solid;
@@ -181,8 +238,8 @@ h6.text-sans {
         margin-top: 0;
     }
     
-    .card-content:first-child {
-        min-height: 220px;
+    h3 {
+        margin-bottom: 0;
     }
 }
 
@@ -251,7 +308,7 @@ header.usa-header {
         float: none;
         width: 100%;
         text-align: center;
-        margin: 50px 0 20px 0;
+        margin: 50px 0 0 0;
 
         a {
             color: white;
@@ -262,8 +319,10 @@ header.usa-header {
     .usa-nav {
         float: none;
         width: 100%;
+        padding-top: 0;
+        height: auto;
         
-        > .usa-nav-primary > li {
+        > ul > li {
             display: block;
             width: 100%;
             text-align: right;
@@ -273,18 +332,23 @@ header.usa-header {
                 float: right;
                 background: #1565C0;
                 position: relative;
+                min-width: 45px;
                 
                 > .text {
                     display: none;
                 }
+
+                > i {
+                    height: auto;
+                }
                 
                 &:hover {
-                    background: #205493;
+                    background: #0D47A1;
                     
                     &:after {
                         content: '';
                         position: absolute;
-                        background: #205493;
+                        background: #0D47A1;
                         top: 0;
                         left: 100%;
                         height: 100%;
@@ -314,15 +378,19 @@ header.usa-header {
     }
     
     .a2-profile {
-        margin-top: 50px;
-        padding-top: 50px;
-        border-top: 1px solid #0288d1;
+        padding: 50px 0;
         clear: both;
         
         .chip {
             background-color: #1565c0;
             color: white;
         }
+    }
+}
+
+@media screen and (max-height: 800px) {
+    .a2-sidenav {
+        position: absolute !important;
     }
 }
 

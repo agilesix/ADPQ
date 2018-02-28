@@ -14,7 +14,6 @@
                 <div class="modal-body">
                     <p class="text-large">Have something to add to this knowledge article? We'd love to share your thoughts or resources with this knowledge base. If you have files that enhances this article, upload them for publishing below.</p>
 
-                    <!--TODO: Get a fancy file uploader that allows for multiple, wire up -->
                     <label for="files">Upload files</label>
                     <div class="file-field input-field">
                       <div class="btn blue">
@@ -28,8 +27,8 @@
                 </div>
 
                 <div class="modal-footer">
-                    <a class="usa-button usa-button-secondary" (click)="closeModal()">Close</a>
-                    <a class="usa-button" (click)="submitSuccess()">Submit</a>
+                    <a class="usa-button usa-button-secondary" (click)="closeModal()" title="Cancel" aria-label="Cancel">Cancel</a>
+                    <a class="usa-button" (click)="submitSuccess()" title="Submit" aria-label="Submit">Submit</a>
                 </div>
             </div>
             <div *ngIf="submitted">
@@ -42,45 +41,155 @@
         </div>
         
         
+        <!-- MODAL: fileReview -->
+        <div *ngIf="modalFileReview()">
+            <div *ngIf="!reviewComplete">
+                <h3>Review new file submissions</h3>
+
+                <div class="modal-body">
+                    <p>These files are waiting for your review before they can be added to knowledge articles. Approving a file submission will add it to the knowledge article it was submitted to. Rejecting a file submission will remove it from the platform.</p>
+                    <br/><br/>
+
+                    <!--TODO: Show this header/table if they came from either workflow step or knowledge article -->
+                    <h4 class="grey-text text-darken-1">Inside this knowledge article <!--clicked from step: "Inside this workflow step" --></h4>
+                    <table class="usa-table-borderless">
+                        <thead>
+                            <tr>
+                                <th scope="col">File</th>
+                                <th scope="col">Submitted by</th>
+                                <th scope="col">Knowledge Article</th>
+                                <th scope="col">Workflow Step</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a>File.docx</a></td>
+                                <td>John Smith</td>
+                                <td><a>Knowledge Article</a></td>
+                                <td><a>1. Vision Statement</a></td>
+                                <td class="right-align">
+                                    <a class="usa-button usa-button-tertiary" title="Deny">
+                                        <i class="fa fa-trash" title="Reject" aria-label="Reject"></i>
+                                    </a>
+                                    <a class="usa-button usa-button-tertiary" title="Approve" aria-label="Approve">
+                                        <i class="fa fa-check"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!--TODO: Show this header/table with the remainder of file submissions (other steps/articles), if they came from either workflow step or knowledge article -->
+                    <!--TODO: If they came from landing page, remove <h4> header and show all submissions inside the same table -->
+                    <br/><br/>
+                    <h4 class="grey-text text-darken-1">Other waiting submissions</h4>
+                    <table class="usa-table-borderless">
+                        <thead>
+                            <tr>
+                                <th scope="col">File</th>
+                                <th scope="col">Submitted by</th>
+                                <th scope="col">Knowledge Article</th>
+                                <th scope="col">Workflow Step</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a>File.docx</a></td>
+                                <td>John Smith</td>
+                                <td><a>Knowledge Article</a></td>
+                                <td><a>1. Vision Statement</a></td>
+                                <td class="right-align">
+                                    <a class="usa-button usa-button-tertiary" title="Deny">
+                                        <i class="fa fa-trash" title="Reject" aria-label="Reject"></i>
+                                    </a>
+                                    <a class="usa-button usa-button-tertiary" title="Approve" aria-label="Approve">
+                                        <i class="fa fa-check"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a>File.docx</a></td>
+                                <td>John Smith</td>
+                                <td><a>Knowledge Article</a></td>
+                                <td><a>1. Vision Statement</a></td>
+                                <td class="right-align">
+                                    <a class="usa-button usa-button-tertiary" title="Deny">
+                                        <i class="fa fa-trash" title="Reject" aria-label="Reject"></i>
+                                    </a>
+                                    <a class="usa-button usa-button-tertiary" title="Approve" aria-label="Approve">
+                                        <i class="fa fa-check"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--TODO: Show instantly when the last of the submissions are reviewed (table rows should disappear as each approve/reject button is clicked) -->
+            <div *ngIf="reviewComplete">
+                <div class="modal-body green-text lighten-1 center-align">
+                    <h1><i class="fa fa-check fa-3x"></i></h1>
+                    <h3>Great work!</h3>
+                    <p class="text-large">All file submissions have been reviewed.</p>
+                </div>
+            </div>
+        </div>
+        
+        
         <!-- MODAL: portfolio -->
         <div *ngIf="modalPortfolio()">
-            <h3>Your Portfolio</h3>
+            <h3>Add your Vision Statement to your portfolio</h3>
 
             <div class="modal-body">
-                <p class="text-large">Compile your artifacts here.</p>
+                <p class="text-large">Is it ready to go? Upload it below. Still not sure how to create it? <a>Visit the knowledge base.</a></p>
 
-                <label for="files">Upload file</label>
-                <input type="file" name="files" />
+                <label for="files">Upload files</label>
+                <div class="file-field input-field">
+                  <div class="btn blue">
+                    <span>File</span>
+                    <input type="file" multiple>
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                  </div>
+                </div>
             </div>
 
             <div class="modal-footer">
-                <a class="usa-button usa-button-secondary" (click)="closeModal()">Close</a>
-                <a class="usa-button" (click)="submitSuccess()">Submit</a>
+                <a class="usa-button usa-button-secondary" (click)="closeModal()" title="Cancel" aria-label="Cancel">Cancel</a>
+                <a class="usa-button" title="Save" aria-label="Save">Save</a>
             </div>
         </div>
 	
 	
         <!-- MODAL: remove -->
         <div *ngIf="modalRemove()">
-	    <div *ngIf="!submitted">
+            <div *ngIf="!submitted">
+                <h3>Delete article</h3>
+                
                 <div class="modal-body">
                     <p class="text-large">Are you sure you want to delete this knowledge article and all associated files? This is permanent and cannot be recovered.</p>
                 </div>
 
                 <div class="modal-footer">
-                    <a class="usa-button usa-button-secondary" (click)="closeModal()">Cancel</a>
-                    <a class="usa-button usa-button-tertiary" (click)="submitSuccess()">Delete</a>
+                    <a class="usa-button usa-button-secondary" (click)="closeModal()" title="Cancel" aria-label="Cancel">Cancel</a>
+                    <a class="usa-button usa-button-tertiary" (click)="submitSuccess()" title="Delete" aria-label="Delete">Delete</a>
                 </div>
-	    </div>
-	    <div *ngIf="submitted">
-                <div class="modal-body">
-                    <p class="text-large">Article successfully removed.</p>
+            </div>
+            <div *ngIf="submitted">
+                <div class="modal-body center-align">
+                    <h1><i class="fa fa-check fa-3x"></i></h1>
+                    <h3>Article successfully deleted.</h3>
                 </div>
                 <div class="modal-footer">
-                    <a class="usa-button usa-button-secondary" [routerLink]="['../..']">Return to step.</a>
-		</div>
-	    </div>
+                    <a class="usa-button usa-button-secondary" [routerLink]="['../..']" title="Return to step" aria-label="Return to step">Return to step</a>
+                </div>
+            </div>
         </div>
+        
+        
         
     </div>
 </div>
