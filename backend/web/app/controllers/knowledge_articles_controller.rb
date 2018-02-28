@@ -32,9 +32,6 @@ class KnowledgeArticlesController < ApplicationController
       respond_to do |format|
         if @knowledge_article.save
           WorkflowStepKnowledgeArticle.create!(workflow_step_id: @workflow_step.id, knowledge_article_id: @knowledge_article.id)
-          #process file attachments here
-
-
           format.html { redirect_to @knowledge_article, notice: 'Knowledge article was successfully created.' }
           format.json { render :show, status: :created, location: @knowledge_article }
         else

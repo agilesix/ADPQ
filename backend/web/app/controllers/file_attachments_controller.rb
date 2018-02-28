@@ -1,5 +1,6 @@
 class FileAttachmentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :current_user_is_admin?, only: [:create_multiple, :destroy]
   before_action :set_file_attachment, only: [:show, :edit, :update, :destroy]
 
   # GET /file_attachments
@@ -36,6 +37,21 @@ class FileAttachmentsController < ApplicationController
         format.json { render json: @file_attachment.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # POST /file_attachments/create/multiple
+  # POST /file_attachments/create/multiple
+  def create_multiple
+    errors = []
+    params[:_json].each do |attachment|
+      file_contents = Paperclip.io_adapters.for("data:#{attachment[:filetype]};base64,#{attachment[:value]}")
+      file_contents.original_filename = attachment[:filename]
+      new_attachment = FileAttachment.new(approved: true, filename: attachment[:filename], user_id: current_user.id, category_id: 1, file_type_id: 1, attached_file: file_contents, knowledge_article_id: attachment[:knowledge_article_id])
+      unless new_attachment.save
+        errors << {filename: attachment[:filename], base_message: "#{attachment[:filename]} did not save properly. Please check the logs for details.", messages: new_attachment.errors.full_messages}
+      end
+    end
+    render json: {status: 200, errors: errors}
   end
 
   # PATCH/PUT /file_attachments/1

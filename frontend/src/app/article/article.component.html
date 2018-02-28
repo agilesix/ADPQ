@@ -38,7 +38,7 @@
     <div class="usa-width-one-third">
         <div *ngIf="!loading" class="a2-callout border-primary">
             <div *ngFor="let attachment of article.file_attachments">
-                <a href="{{baseUrl + attachment.attached_file}}" *ngIf="attachment.approved" class="usa-button">
+                <a href="{{baseUrl + attachment.attached_file}}" target="_blank" *ngIf="attachment.approved" class="usa-button">
                     <span class="fa fa-download"></span> {{attachment.filename}}
                 </a>
             </div>

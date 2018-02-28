@@ -3,7 +3,11 @@ require "sidekiq/web"
 Rails.application.routes.draw do
   resources :file_types
   resources :categories
-  resources :file_attachments
+  resources :file_attachments do
+    collection do
+      post 'create/multiple', to: 'file_attachments#create_multiple'
+    end
+  end
   resources :knowledge_articles
   resources :workflow_steps
   resources :workflows
