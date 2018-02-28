@@ -104,6 +104,23 @@ RSpec.describe FileAttachmentsController, type: :controller do
     end
   end
 
+  describe "POST #create_multiple" do
+    context "with valid params" do
+      it "creates 2 new FileAttachments" do
+        expect {
+          post 'create_multiple', params: {_json: [{filename: 'Test.txt', filetype: 'text/plain', knowledge_article_id: 1, value: "Tm8gbW9yZSB0ZXN0IHBpY3R1cmVzIG9mIGtpdHRlbnMgOig=\n"}, {filename: 'Test2.txt', filetype: 'text/plain', knowledge_article_id: 1, value: "VGhpcyBpcyBhIHRlc3Qu\n"}]}, session: valid_session
+        }.to change(FileAttachment, :count).by(2)
+      end
+
+      it "sends back errors in the json response" do
+        expect {
+          post 'create_multiple', params: {_json: [{knowledge_article_id: 1, value: "VGhpcyBpcyBhIHRlc3Qu\n"}]}, session: valid_session
+        }.to change(FileAttachment, :count).by(0)
+        expect(response.body.as_json).to eq("{\"status\":200,\"errors\":[{\"filename\":null,\"base_message\":\" did not save properly. Please check the logs for details.\",\"messages\":[\"Filename can't be blank\"]}]}".as_json)
+      end
+    end
+  end
+
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
