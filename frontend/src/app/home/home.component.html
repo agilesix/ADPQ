@@ -6,10 +6,10 @@
             <div class="usa-grid usa-grid-max-w">
                 
                 <!--TODO: Wire up, only show if submitted files have yet to be approved/rejected, show number count of all total waiting files -->
-                <div class="usa-width-one-third">
+		<div class="usa-width-one-third" *ngIf="fileSubmissionCount > 0" >
                     <div class="usa-alert usa-alert-error" role="alert">
                         <div class="usa-alert-body">
-                            <p class="usa-alert-text">2 files are waiting for your review before they can be added to knowledge articles</p>
+				<p class="usa-alert-text">{{ fileSubmissionCount }} files are waiting for your review before they can be added to knowledge articles</p>
                             <a class="usa-button usa-button-tertiary" (click)="presentModal('fileReview')">Review</a>
                         </div>
                     </div>

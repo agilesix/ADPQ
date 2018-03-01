@@ -14,4 +14,6 @@ class FileAttachment < ApplicationRecord
   belongs_to :knowledge_article
 
   validates :attached_file, :filename, :user, :category_id, :file_type_id, :knowledge_article_id, presence: true
+
+  scope :approved, -> (approved) { where approved: approved }
 end
