@@ -9,6 +9,7 @@ import { StepComponent } from './step/step.component';
 import { ArticleComponent } from './article/article.component';
 import { ArticleNewComponent } from './article-new/article-new.component';
 import { ArticleEditComponent } from './article-edit/article-edit.component';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   {
@@ -23,7 +24,8 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: AuthComponent
+    component: AuthComponent,
+    canActivate: [LoginGuard]
   },
   {
     path: 'profile',
