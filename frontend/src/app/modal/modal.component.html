@@ -63,7 +63,7 @@
         
         <!-- MODAL: fileReview -->
         <div *ngIf="modalFileReview()">
-            <div *ngIf="!reviewComplete">
+            <div *ngIf="fileSubmissions.length > 0">
                 <h3>Review new file submissions</h3>
 
                 <div class="modal-body">
@@ -79,21 +79,21 @@
                                 <th scope="col">File</th>
                                 <th scope="col">Submitted by</th>
                                 <th scope="col">Knowledge Article</th>
-                                <th scope="col">Workflow Step</th>
+                                <!--<th scope="col">Workflow Step</th>-->
                                 <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><a>File.docx</a></td>
-                                <td>John Smith</td>
-                                <td><a>Knowledge Article</a></td>
-                                <td><a>1. Vision Statement</a></td>
+                            <tr *ngFor="let file of fileSubmissions">
+				<td><a>{{ file.filename }}</a></td>
+				<td>{{ file.user.name }}</td>
+				<td><a>{{ file.knowledge_article.title }}</a></td>
+                                <!--<td><a>1. Vision Statement</a></td>-->
                                 <td class="right-align">
-                                    <a class="usa-button usa-button-tertiary" title="Deny">
+                                    <a class="usa-button usa-button-tertiary" title="Deny" (click)="rejectFile(file.id)">
                                         <i class="fa fa-trash" title="Reject" aria-label="Reject"></i>
                                     </a>
-                                    <a class="usa-button usa-button-tertiary" title="Approve" aria-label="Approve">
+                                    <a class="usa-button usa-button-tertiary" title="Approve" aria-label="Approve" (click)="approveFile(file.id)">
                                         <i class="fa fa-check"></i>
                                     </a>
                                 </td>
@@ -103,6 +103,7 @@
                 </div>
                 
                 <!--TODO: Show this div/table with the remainder of waiting file submissions (from other steps/articles), if admin clicked from either workflow step or knowledge article -->
+<!--
                 <div class="modal-body">
                     <h4 class="grey-text">Other waiting submissions</h4>
                     <table class="usa-table-borderless">
@@ -147,9 +148,10 @@
                         </tbody>
                     </table>
                 </div>
+	-->
             </div>
             <!--TODO: Show instantly when the last of the submissions are reviewed (table rows should disappear as each approve/reject button is clicked) -->
-            <div *ngIf="reviewComplete">
+            <div *ngIf="fileSubmissions.length < 1">
                 <div class="modal-body green-text lighten-1 center-align">
                     <h1><i class="fa fa-check fa-3x"></i></h1>
                     <h3>Great work!</h3>
