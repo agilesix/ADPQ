@@ -7,6 +7,12 @@ class User < ActiveRecord::Base
           :omniauthable
   include DeviseTokenAuth::Concerns::User
 
+  before_create :set_contributor_role
+
+  def set_contributor_role
+    add_role 'Contributor'
+  end
+
   #override to get user roles in response
   def token_validation_response
     self.as_json(include: :roles, except: [

@@ -1,126 +1,126 @@
 <!--<div *ngIf="hasRole('Admin')" class="usa-grid usa-grid-max-w usa-grid-top blue darken-2"></div>-->
-
-<div *ngIf="hasRole('Admin')" class="usa-grid usa-grid-max-w usa-grid-max-h blue darken-3">
-    <div class="usa-grid usa-grid-max-w">
-        <div class="usa-width-whole card">
-            <div class="usa-grid usa-grid-max-w">
-                
-                <!--TODO: Wire up, only show if submitted files have yet to be approved/rejected, show number count of all total waiting files -->
-                <div class="usa-width-one-third">
-                    <div class="usa-alert usa-alert-error" role="alert">
-                        <div class="usa-alert-body">
-                            <p class="usa-alert-text">2 files are waiting for your review before they can be added to knowledge articles</p>
-                            <a class="usa-button usa-button-tertiary" (click)="presentModal('fileReview')">Review</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="usa-width-one-sixth">
-                    <br/><h1 class="blue-text text-sans text-flush">119</h1>
-                    <h6>Knowledge Articles</h6>
-                </div>
-                <div class="usa-width-one-sixth">
-                    <br/><h1 class="blue-text text-sans text-flush">255</h1>
-                    <h6>Files</h6>
-                </div>
-                <div class="usa-width-one-sixth">
-                    <br/><h1 class="blue-text text-sans text-flush">14</h1>
-                    <h6>File submissions</h6>
-                </div>
-                <div class="usa-width-one-sixth">
-                    <br/><h1 class="blue-text text-sans text-flush">9</h1>
-                    <h6>Users</h6>
-                </div>
-            </div>
-        </div>
-    </div>
-    <br/>
-    <div class="usa-grid usa-grid-max-w">
-        <div class="usa-width-one-fifth card" *ngFor="let step of stepService.workflowSteps$ | async; let i = index" [attr.data-index]="i">
-            <a [routerLink]="['/step', step.id]">
-                <div class="card-content">
-                    <h1 class="red-text border-tertiary text-lighten-1">{{i + 1}}</h1>
-                    <h3 class="text-sans clearfix">{{step.name}}</h3>
-                </div>
-                <div class="card-content usa-grid-full blue darken-4">
-                    <div class="usa-width-one-third blue-text text-lighten-3">
-                        <h3>33</h3>
-                        <h6><small>Articles</small></h6>
-                    </div>
-                    <div class="usa-width-one-third blue-text text-lighten-3">
-                        <h3>76</h3>
-                        <h6><small>Files</small></h6>
-                    </div>
-                    <div class="usa-width-one-third blue-text text-lighten-3">
-                        <h3>28</h3>
-                        <h6><small>Submissions</small></h6>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-</div>
-
-<div *ngIf="hasRole('Contributor')" class="usa-grid usa-grid-max-w usa-grid-max-h blue darken-3">
-    <div class="usa-grid usa-grid-max-w">
-        <div class="usa-width-whole card">
-            <div class="usa-grid usa-grid-max-w">
-                <div class="usa-width-one-half">
-                    <div class="usa-alert usa-alert-info" role="alert">
-                        <div class="usa-alert-body">
-                            <h3 class="usa-alert-heading">Not sure where to start?</h3>
-                            <p class="usa-alert-text">There are five steps to a solid agile aquisition workflow. Before you assemble your portfolio, check out each step's knowledge base to learn more and explore available resources.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="usa-width-one-half">
-                    <h6 class="text-flush">Your portfolio</h6>
-                    <h1 class="text-sans text-flush">0% <small>assembled</small></h1>
-                    <!--Show only when NOT completed-->
-                    <p>You have 5 more steps to complete!</p>
-                    <!--TODO: Show when 5/5 complete:
-                    <a class="usa-button">Download completed portfolio</a>-->
-                </div>
-            </div>
-        </div>
-    </div>
-    <br/>
-    <div class="usa-grid usa-grid-max-w">
-        <div class="usa-width-one-fifth card" *ngFor="let step of stepService.workflowSteps$ | async; let i = index" [attr.data-index]="i">
-            <a [routerLink]="['/step', step.id]">
-                <div class="card-content usa-grid-full green lighten-1 white-text">
-                    <div class="usa-width-one-third">
-                        <h3>133</h3>
-                        <p><small>Articles</small></p>
-                    </div>
-                    <div class="usa-width-two-thirds">
-                        <h5 class="text-sans">
-                            <i class="fa fa-angle-right fa-3x right"></i>Knowledge Base
-                        </h5>
-                    </div>
-                </div>
-            </a>
-            <div class="card-content">
-                <h1 class="border-primary">
-                    <i class="fa fa-square-o"></i>
-                    <!--TODO: Wire up to show when completed: 
-                    <i class="fa fa-check-square green-text text-lighten-1"></i>-->
+<div *ngIf="(authService.userSignedIn$ | async)">
+    <div *ngIf="hasRole('Admin')" class="usa-grid usa-grid-max-w usa-grid-max-h blue darken-3">
+        <div class="usa-grid usa-grid-max-w">
+            <div class="usa-width-whole card">
+                <div class="usa-grid usa-grid-max-w">
                     
-                    {{i + 1}}
-                </h1>
-                <h3 class="text-sans grey-text text-darken-3 clearfix">{{step.name}}</h3>
+                    <!--TODO: Wire up, only show if submitted files have yet to be approved/rejected, show number count of all total waiting files -->
+                    <div class="usa-width-one-third">
+                        <div class="usa-alert usa-alert-error" role="alert">
+                            <div class="usa-alert-body">
+                                <p class="usa-alert-text">2 files are waiting for your review before they can be added to knowledge articles</p>
+                                <a class="usa-button usa-button-tertiary" (click)="presentModal('fileReview')">Review</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="usa-width-one-sixth">
+                        <br/><h1 class="blue-text text-sans text-flush">{{metrics.knowledgeArticlesCount}}</h1>
+                        <h6>Knowledge Article{{metrics.knowledgeArticlesCount == 1 ? '': 's'}}</h6>
+                    </div>
+                    <div class="usa-width-one-sixth">
+                        <br/><h1 class="blue-text text-sans text-flush">{{metrics.filesCount}}</h1>
+                        <h6>File{{metrics.filesCount == 1 ? '': 's'}}</h6>
+                    </div>
+                    <div class="usa-width-one-sixth">
+                        <br/><h1 class="blue-text text-sans text-flush">{{metrics.fileSubmissionsCount}}</h1>
+                        <h6>File submission{{metrics.fileSubmissionsCount == 1 ? '': 's'}}</h6>
+                    </div>
+                    <div class="usa-width-one-sixth">
+                        <br/><h1 class="blue-text text-sans text-flush">{{metrics.usersCount}}</h1>
+                        <h6>User{{metrics.usersCount == 1 ? '': 's'}}</h6>
+                    </div>
+                </div>
             </div>
-            <div class="card-content">
-                <p class="grey-text text-darken-1"><i>Already completed this?</i></p>
-                <a class="usa-button usa-button-secondary"(click)="presentModal('portfolio')">Add to porfolio</a>
+        </div>
+        <br/>
+        <div class="usa-grid usa-grid-max-w" *ngIf="!loading">
+            <div class="usa-width-one-fifth card" *ngFor="let step of workflow.workflow_steps; let i = index" [attr.data-index]="i">
+                <a [routerLink]="['/step', step.id]">
+                    <div class="card-content">
+                        <h1 class="red-text border-tertiary text-lighten-1">{{i + 1}}</h1>
+                        <h3 class="text-sans clearfix">{{step.name}}</h3>
+                    </div>
+                    <div class="card-content usa-grid-full blue darken-4">
+                        <div class="usa-width-one-third blue-text text-lighten-3">
+                            <h3>{{step.knowledge_articles.length}}</h3>
+                            <h6><small>Article{{step.knowledge_articles.length == 1 ? '': 's'}}</small></h6>
+                        </div>
+                        <div class="usa-width-one-third blue-text text-lighten-3">
+                            <h3>{{step.files_count}}</h3>
+                            <h6><small>File{{step.files_count == 1 ? '': 's'}}</small></h6>
+                        </div>
+                        <div class="usa-width-one-third blue-text text-lighten-3">
+                            <h3>{{step.file_submissions_count}}</h3>
+                            <h6><small>Submission{{step.file_submissions_count == 1 ? '': 's'}}</small></h6>
+                        </div>
+                    </div>
+                </a>
             </div>
-            
-            <!--TODO: Wire up to display when complete
-            <div class="card-content">
-                <p class="grey-text text-darken-1"><i>Great work! You've completed this workflow step.</i></p>
-                <a class="usa-button usa-button-secondary"(click)="presentModal('portfolio')">Edit</a>
-            </div>-->
+        </div>
+    </div>
+
+    <div *ngIf="hasRole('Contributor')" class="usa-grid usa-grid-max-w usa-grid-max-h blue darken-3">
+        <div class="usa-grid usa-grid-max-w">
+            <div class="usa-width-whole card">
+                <div class="usa-grid usa-grid-max-w">
+                    <div class="usa-width-one-half">
+                        <div class="usa-alert usa-alert-info" role="alert">
+                            <div class="usa-alert-body">
+                                <h3 class="usa-alert-heading">Not sure where to start?</h3>
+                                <p class="usa-alert-text">There are five steps to a solid agile aquisition workflow. Before you assemble your portfolio, check out each step's knowledge base to learn more and explore available resources.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="usa-width-one-half">
+                        <h6 class="text-flush">Your portfolio</h6>
+                        <h1 class="text-sans text-flush">0% <small>assembled</small></h1>
+                        <!--Show only when NOT completed-->
+                        <p>You have 5 more steps to complete!</p>
+                        <!--TODO: Show when 5/5 complete:
+                        <a class="usa-button">Download completed portfolio</a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="usa-grid usa-grid-max-w" *ngIf="!loading">
+            <div class="usa-width-one-fifth card" *ngFor="let step of workflow.workflow_steps; let i = index" [attr.data-index]="i">
+                <a [routerLink]="['/step', step.id]">
+                    <div class="card-content usa-grid-full green lighten-1 white-text">
+                        <div class="usa-width-one-third">
+                            <h3>{{step.knowledge_articles.length}}</h3>
+                            <p><small>Article{{step.knowledge_articles.length == 1 ? '': 's'}}</small></p>
+                        </div>
+                        <div class="usa-width-two-thirds">
+                            <h5 class="text-sans">
+                                <i class="fa fa-angle-right fa-3x right"></i>Knowledge Base
+                            </h5>
+                        </div>
+                    </div>
+                </a>
+                <div class="card-content">
+                    <h1 class="border-primary">
+                        <i class="fa fa-square-o"></i>
+                        <!--TODO: Wire up to show when completed: 
+                        <i class="fa fa-check-square green-text text-lighten-1"></i>-->
+                        
+                        {{i + 1}}
+                    </h1>
+                    <h3 class="text-sans grey-text text-darken-3 clearfix">{{step.name}}</h3>
+                </div>
+                <div class="card-content">
+                    <p class="grey-text text-darken-1"><i>Already completed this?</i></p>
+                    <a class="usa-button usa-button-secondary"(click)="presentModal('portfolio')">Add to porfolio</a>
+                </div>
+                
+                <!--TODO: Wire up to display when complete
+                <div class="card-content">
+                    <p class="grey-text text-darken-1"><i>Great work! You've completed this workflow step.</i></p>
+                    <a class="usa-button usa-button-secondary"(click)="presentModal('portfolio')">Edit</a>
+                </div>-->
+            </div>
         </div>
     </div>
 </div>
-
 <app-modal #modal ></app-modal>

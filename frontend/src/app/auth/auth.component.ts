@@ -22,8 +22,8 @@ export class AuthComponent implements OnInit {
   }
 
   onRegisterFormResult(e) {
-    if (e.signedUp) {
-      this.router.navigate(['/home']);
+    if (e.signedUp) {      
+      location.reload();
     } else {
       alert(e.err.json()['errors']['full_messages'][0]);
     }

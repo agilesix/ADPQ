@@ -27,6 +27,7 @@ import { MarkdownModule } from 'ngx-markdown';
 import { ArticleEditComponent } from './article-edit/article-edit.component';
 import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 import { LoginGuard } from './guards/login.guard';
+import { WorkflowService } from './services/workflow.service';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { LoginGuard } from './guards/login.guard';
     LoginGuard,
     {provide: APP_BASE_HREF, useValue: '/'},
     StepService,
-    ArticleService
+    ArticleService,
+    WorkflowService
   ],
   bootstrap: [AppComponent]
 })

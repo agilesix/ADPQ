@@ -1,7 +1,7 @@
 import { TestBed, inject, getTestBed, async } from '@angular/core/testing';
 import {fakeAsync, tick} from '@angular/core/testing';
 
-import { StepService } from './step.service';
+import { WorkflowService } from './workflow.service';
 import { Angular2TokenService } from 'angular2-token';
 import {
   BaseRequestOptions,
@@ -16,7 +16,7 @@ import {
   MockConnection
 } from '@angular/http/testing';
 
-describe('StepService', () => {
+describe('WorkflowService', () => {
   let service;
   let authTokenService;
   let backend;
@@ -24,7 +24,7 @@ describe('StepService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        StepService, 
+        WorkflowService,
         Angular2TokenService,
         BaseRequestOptions,
         MockBackend,
@@ -43,10 +43,9 @@ describe('StepService', () => {
 
     const testBed = getTestBed();
     backend = testBed.get(MockBackend);
-    service = testBed.get(StepService);
+    service = testBed.get(WorkflowService);
     authTokenService = testBed.get(Angular2TokenService);   
-    authTokenService.init({apiPath: 'testApi'})
-
+    authTokenService.init({apiPath: 'testApi'});
   });
 
   function setupConnections(backend: MockBackend, options: any) {
@@ -59,24 +58,9 @@ describe('StepService', () => {
         }
     });
   }
-    
-  it('should be created', inject([StepService], (service: StepService) => {
+
+  it('should be created', inject([WorkflowService], (service: WorkflowService) => {
     expect(service).toBeTruthy();
-  }));
-
-  it('should get Workflow Steps', fakeAsync(() => {      
-    setupConnections(backend, {
-      body: [
-        {
-          id: 1,
-          name: 'Step 1',
-          description: 'The description of the article'
-        },
-      ],
-      status: 200
-    });    
-
-    service.getWorkflowSteps();
   }));
 
   it('should get a Workflow Step', () => {
@@ -84,29 +68,15 @@ describe('StepService', () => {
       body: 
         {
           id: 1,
-          name: 'Step 1',
-          description: 'The description of the article'
+          name: 'Agile Acquisition Workflow',
+          description: 'The description of the workflow'
         },
       status: 200
     });
 
-    service.getWorkflowStep(1).subscribe(data => {
+    service.getWorkflow(1).subscribe(data => {
       expect(data.id).toBe(1);
-      expect(data.name).toBe('Step 1');
+      expect(data.name).toBe('Agile Acquisition Workflow');
     });
   });
-
-  it('should update a Workflow Step', () => {
-    let step = {id: 1, name: 'Step 1 Updated', description: 'The description of the article updated'}
-    setupConnections(backend, {
-      body: step,
-      status: 200
-    });
-
-    service.updateWorkflowStep(step).subscribe(data => {
-      expect(data.id).toBe(step.id);
-      expect(data.name).toBe(step.name);
-    });
-  });
-
 });
