@@ -40,7 +40,16 @@ export class ArticleService {
   }
 
   approveFileAttachment(file_attachment: {file_attachment_id: number}) {
+    return this.authTokenService.put('file_attachments/' + file_attachment.file_attachment_id + '.json', {approved: true});
+  }
+  
+  removeFileAttachment(file_attachment: {file_attachment_id: number}) {
+    return this.authTokenService.delete('file_attachments/' + file_attachment.file_attachment_id + '.json');
+  }
 
+  // split out inot a seprate service
+  getFileSubmissions() {
+    return this.authTokenService.get('file_attachments.json', {params: {approved: false}});
   }
 
 }

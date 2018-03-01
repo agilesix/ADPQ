@@ -12,6 +12,7 @@ export class ModalComponent implements OnInit {
   @Input() modalContent;
 
   modalActions = new EventEmitter<string|MaterializeAction>();
+  fileActions = new EventEmitter<{file_attachment_id: number, action: string}>();
   submission = new EventEmitter();
 
   constructor() { }
@@ -39,6 +40,15 @@ export class ModalComponent implements OnInit {
   modalFileReview() {
     return this.modalContent === 'fileReview';
   }
+
+  approveFile(file_id) {
+    this.fileActions.emit({file_attachment_id: file_id, action: 'approve'});
+  }
+
+  rejectFile(file_id) {
+    this.fileActions.emit({file_attachment_id: file_id, action: 'reject'});
+  }
+
 
   modalRemove() {
     return this.modalContent === 'remove';
