@@ -69,17 +69,13 @@
                 <div class="modal-body">
                     <p>These files are waiting for your review before they can be added to knowledge articles. Approving a file submission will add it to the knowledge article it was submitted to. Rejecting a file submission will remove it from the platform.</p>
 
-                    <!--TODO: 
-                        -If admin clicked from article, show only that article's waiting submissions in this table
-                        -If admin came from step, show only that step's waiting submissions in this table
-                        -If admin came from home page, show all -->
                     <table class="usa-table-borderless">
                         <thead>
                             <tr>
                                 <th scope="col">File</th>
                                 <th scope="col">Submitted by</th>
                                 <th scope="col">Knowledge Article</th>
-                                <!--<th scope="col">Workflow Step</th>-->
+				<th scope="col">Workflow Step</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
@@ -87,8 +83,8 @@
                             <tr *ngFor="let file of fileSubmissions">
 				<td><a>{{ file.filename }}</a></td>
 				<td>{{ file.user.name }}</td>
-				<td><a>{{ file.knowledge_article.title }}</a></td>
-                                <!--<td><a>1. Vision Statement</a></td>-->
+				<td><a [routerLink]="['/step', file.workflow_steps[0].id, 'article', file.knowledge_article.id]">{{ file.knowledge_article.title }}</a></td>
+				<td><a [routerLink]="['/step', file.workflow_steps[0].id]">{{ file.workflow_steps[0].name }}</a></td>
                                 <td class="right-align">
                                     <a class="usa-button usa-button-tertiary" title="Deny" (click)="rejectFile(file.id)">
                                         <i class="fa fa-trash" title="Reject" aria-label="Reject"></i>
