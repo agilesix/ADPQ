@@ -6,8 +6,7 @@ class FileAttachmentsController < ApplicationController
   # GET /file_attachments
   # GET /file_attachments.json
   def index
-    @file_attachments = FileAttachment.all
-    @file_attachments = FileAttachment.approved(params[:approved]) if params[:approved].present?
+    @file_attachments = params[:approved].present? ? FileAttachment.approved(params[:approved]) : FileAttachment.all
   end
 
   # GET /file_attachments/1

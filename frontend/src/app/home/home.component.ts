@@ -39,8 +39,8 @@ export class HomeComponent implements OnInit {
 
   refreshFileSubmissions() {
     this.articleService.getFileSubmissions().subscribe(data => {
-      this.modal.fileSubmissions = data.json();
-      this.fileSubmissionCount = this.modal.fileSubmissions.length;
+      this.modal['fileSubmissions'] = data.json();
+      this.fileSubmissionCount = this.modal['fileSubmissions'].length;
     })
   }
 
@@ -82,7 +82,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-   hasRole(roleName) {
+  hasRole(roleName) {
     let userHasRole = false;
     if (this.authTokenService.currentUserData && this.authTokenService.currentUserData['roles'].length != 0) {
       userHasRole = this.authTokenService.currentUserData['roles'].some(r => r.name == roleName);

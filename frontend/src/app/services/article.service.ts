@@ -47,7 +47,7 @@ export class ArticleService {
     return this.authTokenService.delete('file_attachments/' + file_attachment.file_attachment_id + '.json');
   }
 
-  // split out inot a seprate service
+  // split out into a seprate service
   getFileSubmissions() {
     return this.authTokenService.get('file_attachments.json', {params: {approved: false}});
   }
