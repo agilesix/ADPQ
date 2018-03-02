@@ -35,6 +35,7 @@ export class ArticleComponent implements OnInit {
       this.id = +params['id'];
       this.stepId = +params['stepId'];
       this.getKnowledgeArticle(this.id);
+      this.initModal();
     });
     this.modal.submission.subscribe(() => {
       if (this.modal.modalRemove()) {
@@ -71,12 +72,39 @@ export class ArticleComponent implements OnInit {
     this.sub.unsubscribe();
   }
 
+  initModal() {
+    this.modal.fileActions.subscribe(evt => {
+      switch (evt.action) {
+        case 'approve': {
+          this.articleService.approveFileAttachment(evt).subscribe(() => {
+            this.getKnowledgeArticle(this.article.id);
+          });
+          break;
+        }
+        case 'reject': {
+          this.articleService.removeFileAttachment(evt).subscribe(() => {
+            this.getKnowledgeArticle(this.article.id);
+          });
+          break;
+        }
+      }
+    });
+  }
+
+  refreshModal() {
+    this.modal.fileSubmissions = this.article.file_attachments.filter( file => !file.approved ).map( file => {
+      file.workflow_steps = this.article.workflow_steps;
+      return file;
+    });
+  }
+
   getKnowledgeArticle(id) {
     this.loading = true;
     this.error = false;
     this.articleService.getKnowledgeArticle(id).subscribe(
       data => {
         this.article = data.json();
+        this.refreshModal();
         this.loading = false;
       },
       err => {

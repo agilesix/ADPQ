@@ -6,7 +6,7 @@
                 <div class="usa-grid usa-grid-max-w">
 
                     <!--TODO: Wire up, only show if submitted files have yet to be approved/rejected, show number count of all total waiting files -->
-                    <div class="usa-width-one-third">
+		    <div class="usa-width-one-third" *ngIf="fileSubmissionCount > 0">
                         <div class="usa-alert usa-alert-error" role="alert">
                             <div class="usa-alert-body">
                                 <p class="usa-alert-text">{{ fileSubmissionCount }}  files are waiting for your review before they can be added to knowledge articles</p>
