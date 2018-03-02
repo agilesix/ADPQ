@@ -13,7 +13,15 @@ export class ModalComponent implements OnInit {
 
   modalActions = new EventEmitter<string|MaterializeAction>();
   fileActions = new EventEmitter<{file_attachment_id: number, action: string}>();
+  fileSubmit = new EventEmitter<{filename: string, category_id: number, file_contents: any}>();
   submission = new EventEmitter();
+
+  public submitFile = {
+    fileName: '',
+    fileCategory: 1,
+    fileContents: null,
+    fileInput: null
+  }
 
   constructor() { }
 
@@ -35,6 +43,29 @@ export class ModalComponent implements OnInit {
 
   modalFileSubmit() {
     return this.modalContent === 'fileSubmit';
+  }
+
+  onFileInputChange(event: any) {
+    console.log(event);
+    
+    if(event.target.files && event.target.files.length > 0) {
+      let file = event.target.files[0];
+      let reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.submitFile.fileContents =
+          {
+            filename: file.name,
+            filetype: file.type,
+            value: reader.result.split(',')[1]
+          }           
+      }
+    }
+  }
+
+  submitFileSubmission() {
+    console.log(this.submitFile);
+    this.fileSubmit.emit({filename: this.submitFile.fileName, category_id: this.submitFile.fileCategory, file_contents: this.submitFile.fileContents});
   }
 
   modalFileReview() {

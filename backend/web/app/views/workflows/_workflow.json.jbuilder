@@ -35,11 +35,9 @@ json.workflow_steps workflow.workflow_steps do |wfs|
     files_count += file_attachments.count
     ws_files_count += file_attachments.count
 
-    User.with_role 'Contributor' do |u|
-      submissions_count = u.file_attachments.where(knowledge_article_id: ka.id).count
-      file_submissions_count += submissions_count.count
-      ws_file_submissions_count += submissions_count.count
-    end
+    submissions_count = file_attachments.where(submitted: true).count
+    file_submissions_count += submissions_count
+    ws_file_submissions_count += submissions_count
   end
 
   json.files_count ws_files_count if current_user.has_role? 'Admin'

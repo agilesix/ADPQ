@@ -44,6 +44,27 @@ export class ArticleComponent implements OnInit {
         }
       }
     });
+
+    this.modal.fileSubmit.subscribe(submitFileData => {
+      let fileAttachmentData = {
+        filename: submitFileData.filename, 
+        knowledge_article_id: this.id, 
+        file_type_id: 1, 
+        category_id: submitFileData.category_id, 
+        file_contents: submitFileData.file_contents
+      }
+      console.log(fileAttachmentData)
+      this.articleService.submitFileAttachment(fileAttachmentData).subscribe(
+        data => {
+          this.modal.submitSuccess();
+        },
+        err => {
+          this.error = err;
+          console.error(err);
+        }
+      );
+    });
+
   }
 
   ngOnDestroy() {

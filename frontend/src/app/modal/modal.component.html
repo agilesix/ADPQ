@@ -12,17 +12,23 @@
                 <h3>Submit a file to the knowledge article</h3>
 
                 <div class="modal-body">
-                    <p class="text-large">Have something to add to this knowledge article? We'd love to share your templates, samples, or resources with this knowledge base. If you have files that enhances this article, upload them for publishing below.</p>
+                    <p class="text-large">Have something to add to this knowledge article? We'd love to share your templates, samples, or resources with this knowledge base. If you have files that enhance this article, upload them for publishing below.</p>
 
-                    <form class="usa-form">
-                        <label for="name">Name</label>
-                        <input id="name"
+                    <form class="usa-form" #submitFileForm="ngForm" (ngSubmit)="submitFileSubmission()">
+                        <label for="fileName">File Name</label>
+                        <input id="fileName"
                             type="text"
                             required
-                            name="name"
+                            name="fileName"
+                            [(ngModel)]="submitFile.fileName"
                             class="validate" />
-                        <label for="name">Tags</label>
-                        <div class="chips chips-initial">
+                        <label for="category">Category</label>
+                        <select required id="category" name="fileCategory" [(ngModel)]="submitFile.fileCategory">
+                            <option value="1">Template</option>
+                            <option value="2">Sample</option>
+                            <option value="3">Resource</option>
+                        </select>
+                        <!-- <div class="chips chips-initial">
                             <div class="chip">Template
                                 <i class="close fa fa-times"></i>
                             </div>
@@ -32,25 +38,24 @@
                             <div class="chip">Resource
                                 <i class="close fa fa-times"></i>
                             </div>
-                        </div>
-                        <label for="files">Upload file</label>
+                        </div> -->
+                        <label for="fileInput">Upload file</label>
                         <div class="file-field input-field">
                           <div class="btn blue">
                             <span>File</span>
-                            <input type="file">
+                            <input (change)="onFileInputChange($event)" id="fileInput" name="fileInput" [(ngModel)]="submitFile.fileInput" required type="file">
                           </div>
                           <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text" placeholder="Upload one file">
+                            <input class="file-path validate" type="text" required placeholder="Upload one file">
                           </div>
                         </div>
+                        <div class="modal-footer">
+                            <button class="usa-button usa-button-secondary" (click)="closeModal()" title="Cancel" aria-label="Cancel">Cancel</button>
+                            <input type="submit" class="usa-button" [disabled]="!(submitFileForm.valid)" value="Submit" aria-label="Submit"/>
+                        </div>
                     </form>
-                </div>
-
-                <div class="modal-footer">
-                    <a class="usa-button usa-button-secondary" (click)="closeModal()" title="Cancel" aria-label="Cancel">Cancel</a>
-                    <a class="usa-button" (click)="submitSuccess()" title="Submit" aria-label="Submit">Submit</a>
-                </div>
-            </div>
+                </div>                
+            </div>            
             <div *ngIf="submitted">
                 <div class="modal-body green-text lighten-1 center-align">
                     <h1><i class="fa fa-check fa-3x"></i></h1>
@@ -85,9 +90,9 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let file of fileSubmissions">
-				<td><a>{{ file.filename }}</a></td>
-				<td>{{ file.user.name }}</td>
-				<td><a>{{ file.knowledge_article.title }}</a></td>
+                                <td><a>{{ file.filename }}</a></td>
+                                <td>{{ file.user.name }}</td>
+                                <td><a>{{ file.knowledge_article.title }}</a></td>
                                 <!--<td><a>1. Vision Statement</a></td>-->
                                 <td class="right-align">
                                     <a class="usa-button usa-button-tertiary" title="Deny" (click)="rejectFile(file.id)">
