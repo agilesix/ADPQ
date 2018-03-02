@@ -19,12 +19,20 @@ json.knowledge_articles workflow_step.knowledge_articles do |ka|
 
   file_attachments = ka.file_attachments.where(approved: true)
   json.file_attachments file_attachments
+  file_submissions = ka.file_attachments.where(approved: false)
+  json.file_submissions file_submissions do |file_attachment|
+    json.extract! file_attachment, :id, :approved, :filename, :user, :category, :file_type,
+      		  :created_at, :updated_at,
+                  :attached_file,
+                  :attached_file_file_name,
+                  :attached_file_content_type,
+                  :attached_file_file_size,
+                  :attached_file_updated_at
+  end
 
 
   files_count += file_attachments.count
-  User.with_role 'Contributor' do |u|
-    file_submissions_count += u.file_attachments.where(knowledge_article_id: ka.id).count
-  end
+  file_submissions_count += file_submissions.count
 
 end
 

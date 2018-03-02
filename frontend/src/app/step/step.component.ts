@@ -3,6 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { Angular2TokenService } from "angular2-token";
 import { ModalComponent } from '../modal/modal.component';
 import { StepService } from '../services/step.service';
+import { ArticleService } from '../services/article.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -31,7 +32,7 @@ export class StepComponent implements OnInit {
     this.modal.openModal(mode);
   }
 
-  constructor(public authTokenService:Angular2TokenService, private stepService: StepService, private route: ActivatedRoute, private router: Router) { }
+  constructor(public authTokenService:Angular2TokenService, private stepService: StepService, private articleService: ArticleService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
      window.scrollTo(0, 0);
@@ -39,6 +40,37 @@ export class StepComponent implements OnInit {
         this.id = +params['id'];
         this.getStep(this.id);
       });
+     this.initModal()
+  }
+
+  initModal() {
+    this.modal.fileActions.subscribe(evt => {
+      switch (evt.action) {
+        case 'approve': {
+          this.articleService.approveFileAttachment(evt).subscribe(() => {
+            this.getStep(this.workflowStep.id);
+          });
+          break;
+        }
+        case 'reject': {
+          this.articleService.removeFileAttachment(evt).subscribe(() => {
+            this.getStep(this.workflowStep.id);
+          });
+          break;
+        }
+      }
+    });
+  }
+
+  refreshModal() {
+    this.modal.fileSubmissions = this.step.knowledge_articles.reduce( (subs, article) => {
+      subs = subs.concat(article.file_submissions.map( file => {
+        file.knowledge_article = article;
+        file.workflow_steps = [this.step];
+        return file;
+      }));
+      return subs;
+    }, []);
   }
 
   hasRole(roleName) {
@@ -58,6 +90,7 @@ export class StepComponent implements OnInit {
         this.workflowStep.description = this.step.description;
         this.workflowStep.id = this.step.id;
         this.loading = false;
+        this.refreshModal()
       },
       err => console.error(err),
       () => console.log('step: ', this.step)
