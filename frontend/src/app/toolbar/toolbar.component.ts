@@ -28,11 +28,13 @@ export class ToolbarComponent {
   }  
 
   isActive(stepId) {
-   if (this.location.path().indexOf('step') > 0) {     
-    let paramId = +this.location.path().split('/')[2];
+    if (this.location.path().indexOf('home') > 0 && stepId == 0) {
+      return true;
+    } else if (this.location.path().indexOf('step') > 0) {     
+      let paramId = +this.location.path().split('/')[2];
 
-    return stepId == paramId;    
-   }
+      return stepId == paramId;    
+    }
 
     return false;
   }

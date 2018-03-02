@@ -1,5 +1,8 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {AuthService} from '../services/auth.service';
+import { StepService } from '../services/step.service';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-register-form',
@@ -17,7 +20,7 @@ export class RegisterFormComponent implements OnInit {
 
   @Output() onFormResult = new EventEmitter<any>();
 
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService, public stepService: StepService, private router: Router, private location: Location) {}
 
   ngOnInit() {}
 
@@ -25,7 +28,7 @@ export class RegisterFormComponent implements OnInit {
 
     this.authService.registerUser(this.signUpUser).subscribe(
         res => {
-          if (res.status === 200) {
+          if (res.status === 200) {            
             this.onFormResult.emit({signedUp: true, res});
           }
         },
