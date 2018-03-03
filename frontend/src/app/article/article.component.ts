@@ -54,9 +54,14 @@ export class ArticleComponent implements OnInit {
         category_id: submitFileData.category_id, 
         file_contents: submitFileData.file_contents
       }
-      console.log(fileAttachmentData)
       this.articleService.submitFileAttachment(fileAttachmentData).subscribe(
         data => {
+          this.modal['submitFile'] = {
+            fileName: '',
+            fileCategory: 1,
+            fileContents: null,
+            fileInput: null
+          }
           this.modal.submitSuccess();
         },
         err => {
@@ -92,7 +97,7 @@ export class ArticleComponent implements OnInit {
   }
 
   refreshModal() {
-    this.modal.fileSubmissions = this.article.file_attachments.filter( file => !file.approved ).map( file => {
+    this.modal['fileSubmissions'] = this.article.file_attachments.filter( file => !file.approved ).map( file => {
       file.workflow_steps = this.article.workflow_steps;
       return file;
     });

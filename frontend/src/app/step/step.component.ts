@@ -63,7 +63,7 @@ export class StepComponent implements OnInit {
   }
 
   refreshModal() {
-    this.modal.fileSubmissions = this.step.knowledge_articles.reduce( (subs, article) => {
+    this.modal['fileSubmissions'] = this.step.knowledge_articles.reduce( (subs, article) => {
       subs = subs.concat(article.file_submissions.map( file => {
         file.knowledge_article = article;
         file.workflow_steps = [this.step];

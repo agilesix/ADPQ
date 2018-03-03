@@ -35,7 +35,7 @@ json.workflow_steps workflow.workflow_steps do |wfs|
     files_count += file_attachments.count
     ws_files_count += file_attachments.count
 
-    submissions_count = file_attachments.where(submitted: true).count
+    submissions_count = ka.file_attachments.where(submitted: true).count
     file_submissions_count += submissions_count
     ws_file_submissions_count += submissions_count
   end

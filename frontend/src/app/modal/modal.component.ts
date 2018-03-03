@@ -45,9 +45,7 @@ export class ModalComponent implements OnInit {
     return this.modalContent === 'fileSubmit';
   }
 
-  onFileInputChange(event: any) {
-    console.log(event);
-    
+  onFileInputChange(event: any) {    
     if(event.target.files && event.target.files.length > 0) {
       let file = event.target.files[0];
       let reader = new FileReader();
@@ -64,7 +62,6 @@ export class ModalComponent implements OnInit {
   }
 
   submitFileSubmission() {
-    console.log(this.submitFile);
     this.fileSubmit.emit({filename: this.submitFile.fileName, category_id: this.submitFile.fileCategory, file_contents: this.submitFile.fileContents});
   }
 
@@ -79,7 +76,6 @@ export class ModalComponent implements OnInit {
   rejectFile(file_id) {
     this.fileActions.emit({file_attachment_id: file_id, action: 'reject'});
   }
-
 
   modalRemove() {
     return this.modalContent === 'remove';

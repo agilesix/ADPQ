@@ -93,9 +93,7 @@ export class ArticleNewComponent implements OnInit {
     this.edit = !this.edit;
   }
 
-  onFileInputChange(event: any) {
-    console.log(event);
-    
+  onFileInputChange(event: any) {    
     if(event.target.files && event.target.files.length > 0) {
       let files = event.target.files;
       

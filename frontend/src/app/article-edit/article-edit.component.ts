@@ -109,9 +109,7 @@ export class ArticleEditComponent implements OnInit {
     );
   }
 
-  onFileInputChange(event: any) {
-    console.log(event);
-    
+  onFileInputChange(event: any) {    
     if(event.target.files && event.target.files.length > 0) {
       let files = event.target.files;
       
@@ -146,9 +144,7 @@ export class ArticleEditComponent implements OnInit {
         // this.patchContentBlocks();
 
         this.knowledgeArticle.title = this.article.title;
-        console.log('article description', this.article.description);
         this.knowledgeArticle.description = this.article.description;
-        console.log('knowledgeArticle description', this.knowledgeArticle.description);
         this.knowledgeArticle.body = this.article.body;
         this.knowledgeArticle.published = this.article.published;
         this.roles = this.article.roles;
