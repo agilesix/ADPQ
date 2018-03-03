@@ -86,19 +86,25 @@ RSpec.describe FileAttachmentsController, type: :controller do
     context "with valid params" do
       it "creates a new FileAttachment" do
         expect {
-          post :create, params: {file_attachment: valid_attributes}, session: valid_session
+          post :create, params: {file_attachment: valid_attributes, file_contents: {filename: 'Test', category_id: 1, filetype: 'text/plain', value: 'Tm8gbW9yZSB0ZXN0IHBpY3R1cmVzIG9mIGtpdHRlbnMgOig=\n'}}, session: valid_session
         }.to change(FileAttachment, :count).by(1)
       end
 
+      it "does not create a new FileAttachment when missing crucial params" do
+        expect {
+          post :create, params: {file_attachment: valid_attributes}, session: valid_session
+        }.to change(FileAttachment, :count).by(0)
+      end
+
       it "redirects to the created file_attachment" do
-        post :create, params: {file_attachment: valid_attributes}, session: valid_session
+        post :create, params: {file_attachment: valid_attributes, file_contents: {filename: 'Test', category_id: 1, filetype: 'text/plain', value: 'Tm8gbW9yZSB0ZXN0IHBpY3R1cmVzIG9mIGtpdHRlbnMgOig=\n'}}, session: valid_session
         expect(response).to redirect_to(FileAttachment.last)
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: {file_attachment: invalid_attributes}, session: valid_session
+        post :create, params: {file_attachment: invalid_attributes, file_contents: {filename: 'Test', category_id: 1, filetype: 'text/plain', value: 'Tm8gbW9yZSB0ZXN0IHBpY3R1cmVzIG9mIGtpdHRlbnMgOig=\n'}}, session: valid_session
         expect(response).to be_success
       end
     end
