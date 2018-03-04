@@ -144,6 +144,6 @@ and many more.
 
 **R.** We deployed our **Docker** containers using **AWS ELB's infrastructure as code**.
 
-**S.** Instructions can be found here: [Setup Instructions](https://github.com/agilesix/ADPQ/wiki/Development-Environment-Setup-Instructions).
+**S.** [Setup instructions can be found here](https://github.com/agilesix/ADPQ/wiki/Development-Environment-Setup-Instructions).
 
 **T.** Our entire software stack is [open source](https://opensource.org/) and provided *free of charge*.
