@@ -98,7 +98,7 @@ Our approach was as follows:
 
 **E.** We used only one [repository](https://github.com/agilesix/ADPQ) where all code and artifacts are stored and all code commits documented.
 
-**F.** We have documented a subset of the **A2 RESTful API** in order to demonstrate our understanding of how to use Swagger to [document RESTful APIs](https://https://prod-agilesix-adpq-2018-backend.us-west-2.elasticbeanstalk.com/api-docs).
+**F.** We have documented a subset of the **A2 RESTful API** in order to demonstrate our understanding of how to use Swagger to [document RESTful APIs](https://prod-agilesix-adpq-2018-backend.us-west-2.elasticbeanstalk.com/api-docs).
 
 **G.** We followed WCAG 2.0 as well as http://www.ca.gov/Accessibility. We also leveraged XXX
 
