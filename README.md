@@ -10,7 +10,7 @@ The team organized its work using a [Trello board](https://trello.com/b/Ww8O7aX7
 
 The prototype is located at https://a2.agile6.com.
 
-Our team employs ***Domain Driven Design*** in the construction of services and applications. One of the first artifacts we created, and rapidly iterated on in collaboration with users and SMEs, was a [domain model](architecture/Domain%20Model%20-%20Tech%20Stack%20(2).jpeg), which helped the team gain an understanding of the concepts and real-world objects with which our users engage. The domain model droe the initial creation of entities and data objects in our services and application. This reults in close alignment between the user's understanding of their task and the entities represented in code.
+Our team employs ***Domain Driven Design*** in the construction of services and applications. One of the first artifacts we created, and rapidly iterated on in collaboration with users and SMEs, was a [domain model](architecture/Domain%20Model%20-%20Domain%20Model.png), which helped the team gain an understanding of the concepts and real-world objects with which our users engage. The domain model droe the initial creation of entities and data objects in our services and application. This reults in close alignment between the user's understanding of their task and the entities represented in code.
 
 However, once development begins, we have found that the domain model can become stale as the application continues to evolve. In order to support agility and keep the domain model from going stale, the team has leveraged an open source modeling tool, called [ERD](https://github.com/amatsuda/erd), which tightly integrates with the application; in fact it runs as part of the development build (and only the development build). With this tool and the Rails database modules (ie. versioned database migrations and ActiveRecord), we can continue to rapidly iterate on the domain model as well as its representation in code, keeping the database schema, source code and domain model all in sync. 
 
@@ -25,13 +25,13 @@ Our application architecture and infrastructure were anchored by a number of key
 
 These include:
 
-**Principle 1:** Leverage a modern, open source technology stack. Using a modern technology stack supported by a thriving open source community mitigates a number of technical risks, including reduced security vulnerabilities, increased availability of technical resources familiar with the technologies, alignment with modern devices and usage scenarios, and the ability to leverage a large ecosystem of pre-built components based on these toolsets. Our technology stack is comprised entirely of open source frameworks and components, including Ruby on Rails, JQuery, Bootstrap, Puma, PostgreSQL, Capybara, Sniffybara, and NewRelic (see System Overview below).
+**Principle 1:** Leverage a modern, open source technology stack. Using a modern technology stack supported by a thriving open source community mitigates a number of technical risks, including reduced security vulnerabilities, increased availability of technical resources familiar with the technologies, alignment with modern devices and usage scenarios, and the ability to leverage a large ecosystem of pre-built components based on these toolsets. [Our technology stack](architecture/Domain%20Model%20-%20Tech%20Stack.jpeg) is comprised entirely of open source frameworks and components.
 
 **Principle 2:** Leverage pre-built components. In our view, it always makes sense to weigh the cost of building features from scratch against leveraging a suitable COTS and Open-Source components available. In this case, we decided to build the application from scratch.
 
-**Principle 3:** Design for and Deploy to the Cloud. An application that makes no assumptions about where and how it is hosted enables it to leverage Cloud-based infrastructures such as AWS and Heroku, and scale on demand as usage patterns change. Our OrderIT application runs in a virtual LXC container that can be hosted on any Linux environment, and is deployed to a Heroku Cloud environment that can be scaled on demand as needed.
+**Principle 3:** Design for and Deploy to the Cloud. An application that makes no assumptions about where and how it is hosted enables it to leverage Cloud-based infrastructures such as AWS, and scale on demand as usage patterns change. Our ***a2*** application runs in Docker containers that can be hosted on any Linux environment, and is deployed to an AWS  environment that can be scaled on demand as needed.
 
-**Principle 4:** Leverage Automated Processes. As the codebase for an application or system grows, it it essential to have an automated build, test, deployment, and monitoring infrastructure in place. Automated processes allow the team to focus on forward-looking feature development, and not on basic maintenance, testing, and infrastructure tasks. For OrderIT our team leverages the open source Capybara and Sniffybara testing frameworks for automated testing, CircleCI for continuous integration and automated builds, Heroku for automated deployments, and NewRelic for performance monitoring.
+**Principle 4:** Leverage Automated Processes. As the codebase for an application or system grows, it it essential to have an automated build, test, deployment, and monitoring infrastructure in place. Automated processes allow the team to focus on forward-looking feature development, and not on basic maintenance, testing, and infrastructure tasks. For ***a2***, our team leverages open source testing frameworks for automated testing, CircleCI for continuous integration and continuous deployment, and Amazon CloudWatch for performance monitoring.
 
 See our System Overview for a graphical depiction of the technologies used in this prototype.
 
@@ -39,9 +39,9 @@ See our System Overview for a graphical depiction of the technologies used in th
 ---
 We think of HCD as being in **3** repeating phases:
 
-1. ***Hear*** – Listen to your users in as many ways as possible
+1. ***Hear*** – Listen to your users in as many ways as possible.
 
-2. ***Create*** – Build prototypes and MVPs based on user input
+2. ***Create*** – Build prototypes and MVPs based on user input.
 
 3. ***Deliver*** – Launch as soon as a minimum feature set is reached and continue to iterate over time as the demands of your users change.
 
@@ -52,37 +52,37 @@ We think of HCD as being in **3** repeating phases:
 
 **B.** Team Agile Six was cross-functional and included:
 
-**Robert Rasmussen** (Agile Six) - *Product Manager, Agile Coach*
+- **Robert Rasmussen** (Agile Six) - *Product Manager, Agile Coach*
 
-**Delali Dziaras** (Fearless) - *Agile Coach, Content Writer*
+- **Delali Dziaras** (Fearless) - *Agile Coach, Content Writer*
 
-**Dan Levenson** (Agile Six) - *Content Writer*
+- **Dan Levenson** (Agile Six) - *Content Writer*
 
-**Brian Derfer** (Agile Six)  - *Technical Architect*
+- **Brian Derfer** (Agile Six)  - *Technical Architect*
 
-**Aurora Hay** (Agile Six)  - *Fullstack Web Developer, DevOps Engineer*
+- **Aurora Hay** (Agile Six)  - *Fullstack Web Developer, DevOps Engineer*
 
-**Chris Cairns** (Skylight)- *Content Writer, Usability Tester*
+- **Chris Cairns** (Skylight)- *Content Writer, Usability Tester*
 
-**Allan Schougaard** (Agile Six)  - *Technical Architect, Back-end Web Developer*
+- **Allan Schougaard** (Agile Six)  - *Technical Architect, Back-end Web Developer*
 
-**David Gage** (Fearless) - *Fullstack Web Developer*
+- **David Gage** (Fearless) - *Fullstack Web Developer*
 
-**Bethany Halteman** (Fearless) -  *Visual Designer, Usability Designer*
+- **Bethany Halteman** (Fearless) -  *Visual Designer, Usability Designer*
 
-**Edward Teeple** (Agile Six)  - *Security Engineer*
+- **Edward Teeple** (Agile Six)  - *Security Engineer*
 
-**C.** Agile Six included end-users from the inception of our prototype , see [test videos here](../artifacts/videos)
+**C.** Agile Six included end-users from the inception of our prototype , see [test videos here](../artifacts/videos).
 
 Our approach was as follows:
 
-***Hear Phase*** -  We performed a usability study survey of actual contracting professionals asking question about their Movitations, Expertise and Personality on the topic of Agile Acquisition.  We then performed User Interviews concerning thier workflows and their expectations as documented in our Empathy Map and Personas. We presented the entire development team with an overview of these findings during a workshop before we started any applicaiton design, where they could ask additional questions of the users.
+- ***Hear Phase*** -  We performed a usability study survey of actual contracting professionals asking question about their Movitations, Expertise and Personality on the topic of Agile Acquisition.  We then performed User Interviews concerning thier workflows and their expectations as documented in our Empathy Map and Personas. We presented the entire development team with an overview of these findings during a workshop before we started any applicaiton design, where they could ask additional questions of the users.
 
-***Create Phase*** - After listening to our users both with interviews and surveys we created [drawings](../vision) and [wirefames](../artifacts)  Based on this experience we were ready to start building our prototype with a goal of getting something in the users hands fast. 
+- ***Create Phase*** - After listening to our users both with interviews and surveys we created [drawings](../vision) and [wirefames](../artifacts)  Based on this experience we were ready to start building our prototype with a goal of getting something in the users hands fast. 
 
-***Deliver Phas*e** - After the first iteration was pushed to QA environment we were able to start exposing the applciation to our users. We were quickly able to identify gaps, bugs and ideas which informed subsequent iterations of our prototype. We plan in the future to frequently add new features in similar fashion (expose to small subset of users, analyze, slowly roll out).
+- ***Deliver Phas*e** - After the first iteration was pushed to QA environment we were able to start exposing the applciation to our users. We were quickly able to identify gaps, bugs and ideas which informed subsequent iterations of our prototype. We plan in the future to frequently add new features in similar fashion (expose to small subset of users, analyze, slowly roll out).
 
-***Future Backlog*** - The following link shows the trello board we used as both a product and sprint [backlogs](https://trello.com/b/Ww8O7aX7/adpq2018)
+- ***Future Backlog*** - The following link shows the trello board we used as both a product and sprint [backlogs](https://trello.com/b/Ww8O7aX7/adpq2018).
 
 **D.** Agile Six used at least 4 user design techniques
 
@@ -140,9 +140,9 @@ and many more.
 
 **P.** [AWSELB](https://aws.amazon.com/elasticbeanstalk/) provides configuration management.
 
-**Q.** **Continuous Monitoring** - The team leveraged **Amazon Cloud Watch** to continuously monitor the availability and performance of the the application. We set up a dashboard in **Cloudwatch** that displayed a variety of **EC2 metrics**, including Network-In, Network-Out, CPU utilization, and Status Check Failures on each production web server. Because we used **Elastic Beanstalk** to manage our application instances, we were able to set up metrics and alarms on EB auto-scaling groups as well. We configured alarms to alert our DevOps personnel whenever the site became unavailable, as well as “self-healing” alarms to automatically add an instance whenever the in-service instance pool dropped below a certain threshold.
+**Q.** **Continuous Monitoring** - The team leveraged **[Amazon Cloud Watch](https://aws.amazon.com/cloudwatch/)** to continuously monitor the availability and performance of the the application. We set up a dashboard in **Cloudwatch** that displayed a variety of **EC2 metrics**, including Network-In, Network-Out, CPU utilization, and Status Check Failures on each production web server. Because we used **Elastic Beanstalk** to manage our application instances, we were able to set up metrics and alarms on EB auto-scaling groups as well. We configured alarms to alert our DevOps personnel whenever the site became unavailable, as well as “self-healing” alarms to automatically add an instance whenever the in-service instance pool dropped below a certain threshold.
 
-**R.** We deployed our Docker containers using **AWS ELB's infrastructure as code**.
+**R.** We deployed our **Docker** containers using **AWS ELB's infrastructure as code**.
 
 **S.** Instructions can be found here: [Setup Instructions](https://github.com/agilesix/ADPQ/wiki/Development-Environment-Setup-Instructions).
 
