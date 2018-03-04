@@ -109,3 +109,7 @@ gem 'rswag-ui'
 # DB utilities
 gem 'activerecord-nulldb-adapter'
 gem 'paperclip', '5.2.1'
+
+#AWS SDK
+# There is a bug with aws-sdk version 3. please use version 2 until they fix it
+gem 'aws-sdk', '2.10.52'
