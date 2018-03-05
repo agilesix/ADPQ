@@ -37,6 +37,10 @@ export class ModalComponent implements OnInit {
     this.modalActions.emit({action: 'modal', params: ['close']});
   }
 
+  modalComingSoon() {
+    return this.modalContent === 'comingSoon';
+  }
+
   modalPortfolio() {
     return this.modalContent === 'portfolio';
   }

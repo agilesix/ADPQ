@@ -15,7 +15,8 @@
             </li>
             <li *ngFor="let step of stepService.workflowSteps$ | async; let i = index" [attr.data-index]="i">
                 <a class="usa-nav-link" [ngClass]="{'active': isActive(step.id)}" [routerLink]="['/step', step.id]">
-                    {{i + 1}} <span class="text">{{step.name}}</span>
+                    <b>Step {{i + 1}}</b> 
+                    <span class="text">{{step.name}}</span>
                 </a>
             </li>
         </ul>
@@ -27,9 +28,9 @@
             <b>{{authTokenService.currentUserData.name}}</b>
             <br/><small>{{authTokenService.currentUserData.email}}</small>
         </p>
-        <p id="user-roles" *ngIf="authTokenService.currentUserData && authTokenService.currentUserData.roles.length != 0">
+        <div id="user-roles" *ngIf="authTokenService.currentUserData && authTokenService.currentUserData.roles.length != 0">
             <span class="chip" *ngFor="let role of authTokenService.currentUserData.roles">{{role.name}}</span>
-        </p>
+        </div>
         <button class="usa-button" (click)="logOut()">Logout</button>
     </div>
 </header>

@@ -4,13 +4,20 @@
         <div class="usa-grid usa-grid-max-w">
             <div class="usa-width-whole card">
                 <div class="usa-grid usa-grid-max-w">
-
-                    <!--TODO: Wire up, only show if submitted files have yet to be approved/rejected, show number count of all total waiting files -->
-		    <div class="usa-width-one-third" *ngIf="fileSubmissionCount > 0">
+		                <div class="usa-width-one-third" *ngIf="fileSubmissionCount > 0">
                         <div class="usa-alert usa-alert-error" role="alert">
                             <div class="usa-alert-body">
+                                <h3 class="usa-alert-heading">Review files</h3>
                                 <p class="usa-alert-text">{{ fileSubmissionCount }}  files are waiting for your review before they can be added to knowledge articles</p>
                                 <a class="usa-button usa-button-tertiary" (click)="presentModal('fileReview')">Review</a>
+                            </div>
+                        </div>
+                    </div>
+		                <div class="usa-width-one-third" *ngIf="fileSubmissionCount == 0">
+                        <div class="usa-alert usa-alert-info" role="alert">
+                            <div class="usa-alert-body">
+                                <h3 class="usa-alert-heading">Add more content</h3>
+                                <p class="usa-alert-text">You have a great start! Continue to build out each workflow step by adding knowledge articles or uploading additional files.</p>
                             </div>
                         </div>
                     </div>
@@ -68,12 +75,12 @@
                         <div class="usa-alert usa-alert-info" role="alert">
                             <div class="usa-alert-body">
                                 <h3 class="usa-alert-heading">Not sure where to start?</h3>
-                                <p class="usa-alert-text">There are five steps to a solid agile aquisition workflow. Before you assemble your portfolio, check out each step's knowledge base to learn more and explore available resources.</p>
+                                <p class="usa-alert-text">There are five steps to a solid agile aquisition workflow. Before you assemble your solicitation package, check out each step's knowledge base to learn more and explore available resources.</p>
                             </div>
                         </div>
                     </div>
                     <div class="usa-width-one-half">
-                        <h6 class="text-flush">Your portfolio</h6>
+                        <h6 class="text-flush">Your solicitation package</h6>
                         <h1 class="text-sans text-flush">0% <small>assembled</small></h1>
                         <!--Show only when NOT completed-->
                         <p>You have 5 more steps to complete!</p>
@@ -111,7 +118,7 @@
                 </div>
                 <div class="card-content">
                     <p class="grey-text text-darken-1"><i>Already completed this?</i></p>
-                    <a class="usa-button usa-button-secondary"(click)="presentModal('portfolio')">Add to porfolio</a>
+                    <a class="usa-button usa-button-secondary"(click)="presentModal('comingSoon')">Add to solicitation package</a>
                 </div>
 
                 <!--TODO: Wire up to display when complete

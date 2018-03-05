@@ -199,7 +199,7 @@ h1, h2, h3, h4, h5, h6 {
 
     &.usa-grid-max-h {
         min-height: 100vh;
-        padding-top: 100px;
+        padding-top: 70px;
     }
 
     &.usa-grid-top {
@@ -332,55 +332,64 @@ header.usa-header {
         padding-top: 0;
         height: auto;
         
-        > ul > li {
+        > ul {
+            margin: 10px 0 0 0;
             display: block;
-            width: 100%;
-            text-align: right;
-            
-            a {
-                color: white;
-                float: right;
-                background: #1565C0;
-                position: relative;
-                min-width: 45px;
-                
-                > .text {
-                    display: none;
-                }
 
-                > i {
-                    height: auto;
-                }
-                
-                &:hover {
-                    background: #0D47A1;
-                    
-                    &:after {
-                        content: '';
-                        position: absolute;
-                        background: #0D47A1;
-                        top: 0;
-                        left: 100%;
-                        height: 100%;
-                        width: 15px;
-                    }
-                }
-                
-                &.active {
-                    background: #0D47A1;
-                    
+            > li {
+                display: block;
+                width: 100%;
+
+                a {
+                    color: white;
+                    float: right;
+                    background: #1565C0;
+                    position: relative;
+                    min-width: 45px;
+
                     > .text {
                         display: inline;
+                        font-weight: normal;
                     }
-                    
-                    &:after {
-                        content: '';
-                        position: absolute;
+
+                    > i {
+                        height: auto;
+                    }
+
+                    &:hover {
                         background: #0D47A1;
-                        top: 0;
-                        left: 100%;
-                        height: 100%;
-                        width: 15px;
+                        
+                        span {
+                            border: none;
+                        }
+
+                        &:after {
+                            content: '';
+                            position: absolute;
+                            background: #0D47A1;
+                            top: 0;
+                            left: 100%;
+                            height: 100%;
+                            width: 15px;
+                        }
+                    }
+
+                    &.active {
+                        background: #0D47A1;
+
+                        > .text {
+                            display: inline;
+                        }
+
+                        &:after {
+                            content: '';
+                            position: absolute;
+                            background: #0D47A1;
+                            top: 0;
+                            left: 100%;
+                            height: 100%;
+                            width: 15px;
+                        }
                     }
                 }
             }
