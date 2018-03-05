@@ -19,7 +19,7 @@ json.knowledge_articles workflow_step.knowledge_articles do |ka|
 
   file_attachments = ka.file_attachments.where(approved: true)
   json.file_attachments file_attachments
-  file_submissions = ka.file_attachments.where(approved: false)
+  file_submissions = ka.file_attachments.where(approved: false, submitted: true)
   json.file_submissions file_submissions do |file_attachment|
     json.extract! file_attachment, :id, :approved, :filename, :user, :category, :file_type,
       		  :created_at, :updated_at,

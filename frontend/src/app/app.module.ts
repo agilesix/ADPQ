@@ -28,6 +28,7 @@ import { ArticleEditComponent } from './article-edit/article-edit.component';
 import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 import { LoginGuard } from './guards/login.guard';
 import { WorkflowService } from './services/workflow.service';
+import { Ng2FileRequiredModule } from 'ng2-file-required';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { WorkflowService } from './services/workflow.service';
     HttpClientModule,
     ReactiveFormsModule,
     MarkdownModule.forRoot(),
-    LMarkdownEditorModule
+    LMarkdownEditorModule,
+    Ng2FileRequiredModule
   ],
   providers: [
     Angular2TokenService,

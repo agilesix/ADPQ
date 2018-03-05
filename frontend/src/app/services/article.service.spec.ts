@@ -98,7 +98,7 @@ describe('ArticleService', () => {
   });
 
   it('should create a Knowledge Article', () => {
-    let article = {title: 'The Greatest Article Ever Created', description: 'The best description', body: '# Lots of markdown here', workflow_step_id: 1, user_id: 1}
+    let article = {title: 'The Greatest Article Ever Created', description: 'The best description', body: '# Lots of markdown here', workflow_step_id: 1, user_id: 1};
     setupConnections(backend, {
       body: article,
       status: 200
@@ -110,7 +110,7 @@ describe('ArticleService', () => {
   });
 
   it('should update a Knowledge Article', () => {
-    let article = {id: 1, title: 'The Greatest Article Ever Updated', description: 'The best description', body: '# Lots of markdown here', workflow_step_id: 1, user_id: 1}
+    let article = {id: 1, title: 'The Greatest Article Ever Updated', description: 'The best description', body: '# Lots of markdown here', workflow_step_id: 1, user_id: 1};
     setupConnections(backend, {
       body: article,
       status: 200
@@ -123,7 +123,7 @@ describe('ArticleService', () => {
   });
 
   it('should remove a Knowledge Article', () => {
-    let article = {id: 1, title: 'The Greatest Article Ever Updated', description: 'The best description', body: '# Lots of markdown here', workflow_step_id: 1, user_id: 1}
+    let article = {id: 1, title: 'The Greatest Article Ever Updated', description: 'The best description', body: '# Lots of markdown here', workflow_step_id: 1, user_id: 1};
     setupConnections(backend, {
       body: article,
       status: 200
@@ -136,7 +136,7 @@ describe('ArticleService', () => {
   });
 
   it('should upload multiple File Attachments for a Knowledge Article', () => {
-    let fileAttachments = [{filename: 'Test.txt', filetype: 'text/plain', knowledge_article_id: 1, value: 'Tm8gbW9yZSB0ZXN0IHBpY3R1cmVzIG9mIGtpdHRlbnMgOig=\n'}]
+    let fileAttachments = [{filename: 'Test.txt', filetype: 'text/plain', knowledge_article_id: 1, value: 'Tm8gbW9yZSB0ZXN0IHBpY3R1cmVzIG9mIGtpdHRlbnMgOig=\n'}];
     setupConnections(backend, {
       body: fileAttachments,
       status: 200
@@ -147,5 +147,84 @@ describe('ArticleService', () => {
     });
   });
 
+  it('should submit a File Attachment for a Knowledge Article', () => {
+    let fileAttachment = {
+      filename: 'Test', 
+      file_type_id: 1, 
+      category_id: 1, 
+      knowledge_article_id: 1, 
+      file_contents: 
+      {
+        filename: 'Test.txt',
+        filetypr: 'text/plain',
+        value: 'Tm8gbW9yZSB0ZXN0IHBpY3R1cmVzIG9mIGtpdHRlbnMgOig=\n'}
+      };
+    setupConnections(backend, {
+      body: fileAttachment,
+      status: 200
+    });
+
+    service.submitFileAttachment(fileAttachment).subscribe(data => {
+      expect(data).toBeTruthy();
+    });
+  });
+
+  it('should approve a File Attachment for a Knowledge Article', () => {
+    let fileAttachment = {
+      filename: 'Test', 
+      file_type_id: 1, 
+      category_id: 1, 
+      knowledge_article_id: 1,
+      file_attachment: {}
+    }
+
+    setupConnections(backend, {
+      body: fileAttachment,
+      status: 200
+    });
+
+    service.approveFileAttachment({file_attachment_id: 1}).subscribe(data => {
+      expect(data).toBeTruthy();
+    });
+  });
+
+  it('should remove a File Attachment from a Knowledge Article', () => {
+    let fileAttachment = {
+      filename: 'Test', 
+      file_type_id: 1, 
+      category_id: 1, 
+      knowledge_article_id: 1,
+      file_attachment: {}
+    }
+
+    setupConnections(backend, {
+      body: fileAttachment,
+      status: 200
+    });
+
+    service.removeFileAttachment({file_attachment_id: 1}).subscribe(data => {
+      expect(data).toBeTruthy();
+    });
+  });
+
+  it('should get File Attachment Submissions', () => {
+    let fileAttachments = [{
+      filename: 'Test', 
+      file_type_id: 1, 
+      category_id: 1, 
+      knowledge_article_id: 1,
+      approved: false,
+      file_attachment: {}
+    }]
+
+    setupConnections(backend, {
+      body: fileAttachments,
+      status: 200
+    });
+
+    service.getFileSubmissions().subscribe(data => {
+      expect(data).toBeTruthy();
+    });
+  });
 });
 
