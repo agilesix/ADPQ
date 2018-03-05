@@ -45,6 +45,32 @@ export class ArticleComponent implements OnInit {
         }
       }
     });
+
+    this.modal.fileSubmit.subscribe(submitFileData => {
+      let fileAttachmentData = {
+        filename: submitFileData.filename, 
+        knowledge_article_id: this.id, 
+        file_type_id: 1, 
+        category_id: submitFileData.category_id, 
+        file_contents: submitFileData.file_contents
+      }
+      this.articleService.submitFileAttachment(fileAttachmentData).subscribe(
+        data => {
+          this.modal['submitFile'] = {
+            fileName: '',
+            fileCategory: 1,
+            fileContents: null,
+            fileInput: null
+          }
+          this.modal.submitSuccess();
+        },
+        err => {
+          this.error = err;
+          console.error(err);
+        }
+      );
+    });
+
   }
 
   ngOnDestroy() {
@@ -71,7 +97,7 @@ export class ArticleComponent implements OnInit {
   }
 
   refreshModal() {
-    this.modal.fileSubmissions = this.article.file_attachments.filter( file => !file.approved ).map( file => {
+    this.modal['fileSubmissions'] = this.article.file_attachments.filter( file => !file.approved ).map( file => {
       file.workflow_steps = this.article.workflow_steps;
       return file;
     });

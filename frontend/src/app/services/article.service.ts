@@ -35,8 +35,8 @@ export class ArticleService {
     return this.authTokenService.post('file_attachments/create/multiple.json', file_attachments);
   }
 
-  submitFileAttachment(file_attachment: {filename: string, knowledge_article_id: number, file_type_id: number, category_id: number, approved: boolean}) {
-
+  submitFileAttachment(file_attachment: {filename: string, knowledge_article_id: number, file_type_id: number, category_id: number, file_contents: any}) {
+    return this.authTokenService.post('file_attachments.json', file_attachment);
   }
 
   approveFileAttachment(file_attachment: {file_attachment_id: number}) {

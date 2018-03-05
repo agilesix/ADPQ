@@ -28,6 +28,7 @@
     "hammerjs": "^2.0.8",
     "jquery": "^2.2.4",
     "materialize-css": "^0.100.2",
+    "ng2-file-required": "^1.0.10",
     "ngx-markdown": "^1.5.1",
     "ngx-markdown-editor": "^1.1.6",
     "prismjs": "^1.11.0",
