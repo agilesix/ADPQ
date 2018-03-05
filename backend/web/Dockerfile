@@ -16,6 +16,12 @@ WORKDIR /app
 RUN (bundle check || bundle install --without development test)
 
 ARG DEVISE_SECRET_KEY
+ARG PAPER_CLIP_S3_HOST_NAME
+ARG PAPER_CLIP_S3_BUCKET_NAME
+ARG PAPER_CLIP_AWS_ACCESS_KEY_ID
+ARG PAPER_CLIP_AWS_SECRET_ACCESS_KEY
+ARG PAPER_CLIP_AWS_REGION
+
 RUN DB_ADAPTER=nulldb RAILS_ENV=production bundle exec rake assets:precompile
 
 CMD bash script/start_server.sh
