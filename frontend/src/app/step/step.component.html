@@ -5,7 +5,7 @@
     <div class="usa-width-two-thirds">
         <div *ngIf="!loading">
             <div *ngIf="!edit">
-                <h2>{{step.name}}</h2>
+                <h2><small class="grey-text">Step {{step.id}}</small><br/>{{step.name}}</h2>
                 <div class="workflow-step-description">
                     <markdown [data]="step.description"></markdown>
                 </div>
@@ -30,7 +30,7 @@
     <div class="usa-width-one-third">
         <div class="a2-callout border-primary" *ngIf="hasRole('Contributor')">
             <label>Already completed this?</label>
-            <button class="usa-button usa-button-secondary"(click)="presentModal('portfolio')">Add to your portfolio</button>
+            <button class="usa-button usa-button-secondary"(click)="presentModal('comingSoon')">Add to your solicitation package</button>
         </div>
 
         <br/><br/>
@@ -61,8 +61,8 @@
             <br/>
             <div role="search">
                 <form class="usa-search usa-search-big">
-                    <input id="search-field" type="search" name="search" class="browser-default">
-                    <button type="submit" class="usa-button usa-button-secondary">
+                    <input id="search-field" type="search" name="search" class="browser-default" (click)="presentModal('comingSoon')">
+                    <button type="submit" class="usa-button usa-button-secondary" (click)="presentModal('comingSoon')">
                         <span class="usa-search-submit-text"><i class="fa fa-search"></i></span>
                     </button>
                 </form>
@@ -70,7 +70,7 @@
         </div>
         <div class="usa-width-one-half align-right">
             <form class="usa-form usa-form-inline">
-                <select name="options" class="right">
+                <select name="options" class="right" (click)="presentModal('comingSoon')">
                     <option value="value1">Newest</option>
                     <option value="value2">Title</option>
                     <option value="value3">Largest number of files</option>

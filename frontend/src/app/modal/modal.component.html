@@ -51,7 +51,7 @@
                         </div>
                         <div class="modal-footer">
                             <button class="usa-button usa-button-secondary" (click)="closeModal()" title="Cancel" aria-label="Cancel">Cancel</button>
-                            <input type="submit" class="usa-button" [disabled]="!(submitFileForm.valid)" value="Submit" aria-label="Submit"/>
+                            <input type="submit" class="usa-button right" [disabled]="!(submitFileForm.valid)" value="Submit" aria-label="Submit"/>
                         </div>
                     </form>
                 </div>
@@ -59,7 +59,7 @@
             <div *ngIf="submitted">
                 <div class="modal-body green-text lighten-1 center-align">
                     <h1><i class="fa fa-check fa-3x"></i></h1>
-                    <h3>File submitted!</h3>
+                    <h2 class="text-sans">File submitted!</h2>
                     <p class="text-large">Thanks for contributing your work.</p>
                     <a (click)="submitSuccess()">Have something else to contribute?</a>
                 </div>
@@ -81,16 +81,16 @@
                                 <th scope="col">File</th>
                                 <th scope="col">Submitted by</th>
                                 <th scope="col">Knowledge Article</th>
-				<th scope="col">Workflow Step</th>
+				                        <th scope="col">Workflow Step</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let file of fileSubmissions">
-				<td><a>{{ file.filename }}</a></td>
-				<td>{{ file.user.name }}</td>
-				<td><a [routerLink]="['/step', file.workflow_steps[0].id, 'article', file.knowledge_article.id]">{{ file.knowledge_article.title }}</a></td>
-				<td><a [routerLink]="['/step', file.workflow_steps[0].id]">{{ file.workflow_steps[0].name }}</a></td>
+                                <td><a>{{ file.filename }}</a></td>
+                                <td>{{ file.user.name }}</td>
+                                <td><a [routerLink]="['/step', file.workflow_steps[0].id, 'article', file.knowledge_article.id]">{{ file.knowledge_article.title }}</a></td>
+                                <td><a [routerLink]="['/step', file.workflow_steps[0].id]">{{ file.workflow_steps[0].name }}</a></td>
                                 <td class="right-align">
                                     <a class="usa-button usa-button-tertiary" title="Deny" (click)="rejectFile(file.id)">
                                         <i class="fa fa-trash" title="Reject" aria-label="Reject"></i>
@@ -156,16 +156,24 @@
             <div *ngIf="fileSubmissions.length < 1">
                 <div class="modal-body green-text lighten-1 center-align">
                     <h1><i class="fa fa-check fa-3x"></i></h1>
-                    <h3>Great work!</h3>
+                    <h2 class="text-sans">Great work!</h2>
                     <p class="text-large">All file submissions have been reviewed.</p>
                 </div>
             </div>
         </div>
 
+        <!-- MODAL: portfolio -->
+        <div *ngIf="modalComingSoon()">
+            <div class="modal-body blue-text lighten-1 center-align">
+                <h1><i class="fa fa-paper-plane-o fa-3x"></i></h1>
+                <h2 class="text-sans">Coming soon</h2>
+                <p class="text-large">That feature is still on its way!</p>
+            </div>
+        </div>
 
         <!-- MODAL: portfolio -->
         <div *ngIf="modalPortfolio()">
-            <h3>Add your Vision Statement to your portfolio</h3>
+            <h3>Add your Vision Statement to your solicitation package</h3>
 
             <div class="modal-body">
                 <p class="text-large">Is it ready to go? Upload it below. Still not sure how to create it? <a>Visit the knowledge base.</a></p>
@@ -206,7 +214,7 @@
             <div *ngIf="submitted">
                 <div class="modal-body center-align">
                     <h1><i class="fa fa-check fa-3x"></i></h1>
-                    <h3>Article successfully deleted.</h3>
+                    <h2 class="text-sans">Article successfully deleted.</h2>
                 </div>
                 <div class="modal-footer">
                     <a class="usa-button usa-button-secondary" [routerLink]="['../..']" title="Return to step" aria-label="Return to step">Return to step</a>
