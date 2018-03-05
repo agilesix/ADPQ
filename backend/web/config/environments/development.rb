@@ -48,15 +48,4 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.serve_static_assets = true
-
-  config.paperclip_defaults = {
-      storage: :s3,
-      s3_region: ENV.fetch('PAPER_CLIP_AWS_REGION'),
-      s3_host_name: ENV.fetch('PAPER_CLIP_S3_HOST_NAME'),
-      s3_credentials: {
-          bucket: ENV.fetch('PAPER_CLIP_S3_BUCKET_NAME'),
-          access_key_id: ENV.fetch('PAPER_CLIP_AWS_ACCESS_KEY_ID'),
-          secret_access_key: ENV.fetch('PAPER_CLIP_AWS_SECRET_ACCESS_KEY')
-      }
-  }
 end
