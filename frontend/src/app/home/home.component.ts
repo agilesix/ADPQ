@@ -62,13 +62,15 @@ export class HomeComponent implements OnInit {
       switch (evt.action) {
         case 'approve': {
           this.articleService.approveFileAttachment(evt).subscribe(() => {
-            this.refreshFileSubmissions()
+            this.refreshFileSubmissions();
+            this.getWorkflow(1);
           });
           break;
         }
         case 'reject': {
           this.articleService.removeFileAttachment(evt).subscribe(() => {
-            this.refreshFileSubmissions()
+            this.refreshFileSubmissions();
+            this.getWorkflow(1);
           });
           break;
         }
