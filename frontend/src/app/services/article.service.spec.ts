@@ -222,7 +222,7 @@ describe('ArticleService', () => {
       status: 200
     });
 
-    service.getFileSubmissions().subscribe(data => {
+    service.getFileAttachments().subscribe(data => {
       expect(data).toBeTruthy();
     });
   });
