@@ -3,7 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { Angular2TokenService } from "angular2-token";
 import { Router, RouterLink } from '@angular/router';
 import { StepService } from '../services/step.service';
-import { ArticleService} from '../services/article.service';
+import { ArticleService } from '../services/article.service';
 import { ModalComponent } from '../modal/modal.component';
 import { WorkflowService } from '../services/workflow.service';
 

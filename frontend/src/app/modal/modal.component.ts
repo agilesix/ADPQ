@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { MaterializeAction } from 'angular2-materialize';
+import { ArticleService } from '../services/article.service';
 
 @Component({
   selector: 'app-modal',
@@ -23,9 +24,23 @@ export class ModalComponent implements OnInit {
     fileInput: null
   }
 
-  constructor() { }
+  public fileSubmissionCount;
+  public workflow;
+  public loading: boolean = true;
+  public user = {
+    filesLoading: true,
+    fileAttachments:  {
+      approved: [],
+      unapproved: []
+    }
+  }
+
+  constructor(public articleService: ArticleService) {}
+
 
   ngOnInit() {
+    this.refreshFileSubmissions();
+    this.getUserFileAttachments();
   }
 
   openModal(mode) {
@@ -73,6 +88,10 @@ export class ModalComponent implements OnInit {
     return this.modalContent === 'fileReview';
   }
 
+  modalFileManage() {
+    return this.modalContent === 'fileManage';
+  }
+
   approveFile(file_id) {
     this.fileActions.emit({file_attachment_id: file_id, action: 'approve'});
   }
@@ -90,6 +109,37 @@ export class ModalComponent implements OnInit {
     if (this.submitted) {
       this.submission.emit();
     }
+  }
+
+  //get the user's specific submitted files
+  getUserFileAttachments() {
+    this.articleService.getFileAttachments({user: true}).subscribe(
+      data => {
+        this.user.filesLoading = false;
+        let attachments = data.json();
+        this.user.fileAttachments.approved = attachments.filter(a => a.approved == true);
+        this.user.fileAttachments.unapproved = attachments.filter(a => a.approved == false);
+      },
+      err => console.error(err)
+    );
+  }
+
+  removeFileAttachment(id) {
+    if (confirm("Are you sure you want to delete this uploaded file? This cannot be undone.")) {
+      this.articleService.removeFileAttachment({file_attachment_id: id}).subscribe(
+        data => {
+          this.getUserFileAttachments();
+        },
+        err => console.error(err)
+      );
+    }
+  }
+
+  refreshFileSubmissions() {
+    this.articleService.getFileAttachments({approved: false}).subscribe(data => {
+      this['fileSubmissions'] = data.json();
+      this.fileSubmissionCount = this['fileSubmissions'].length;
+    });
   }
 
 }
