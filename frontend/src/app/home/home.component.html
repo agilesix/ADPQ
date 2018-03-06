@@ -1,5 +1,9 @@
 <!--<div *ngIf="hasRole('Admin')" class="usa-grid usa-grid-max-w usa-grid-top blue darken-2"></div>-->
 <div *ngIf="(authService.userSignedIn$ | async)">
+    
+    
+    <!-- ADMIN HOMEPAGE -->
+    
     <div *ngIf="hasRole('Admin')" class="usa-grid usa-grid-max-w usa-grid-max-h blue darken-3">
         <div class="usa-grid usa-grid-max-w">
             <div class="usa-width-whole card">
@@ -67,6 +71,9 @@
         </div>
     </div>
 
+    
+    <!-- CONTRIBUTOR HOMEPAGE -->
+    
     <div *ngIf="hasRole('Contributor')" class="usa-grid usa-grid-max-w usa-grid-max-h blue darken-3">
         <div class="usa-grid usa-grid-max-w">
             <div class="usa-width-whole card">
@@ -79,13 +86,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="usa-width-one-half">
+                    <div class="usa-width-one-fourth">
                         <h6 class="text-flush">Your solicitation package</h6>
                         <h1 class="text-sans text-flush">0% <small>assembled</small></h1>
                         <!--Show only when NOT completed-->
                         <p>You have 5 more steps to complete!</p>
                         <!--TODO: Show when 5/5 complete:
                         <a class="usa-button">Download completed portfolio</a>-->
+                    </div>
+                    <div class="usa-width-one-fourth" *ngIf="user.fileAttachments.approved.length > 0 || user.fileAttachments.unapproved.length > 0">
+                        <h6 class="text-flush">Your knowledge article submissions</h6>
+                        <h1 class="text-sans text-flush"><small>{{user.fileAttachments.approved.length ++ user.fileAttachments.unapproved.length}} submission<span *ngIf="user.fileAttachments.approved.length ++ user.fileAttachments.unapproved.length > 1">s</span></small></h1>
+                        <a class="usa-button usa-button-secondary" (click)="presentModal('fileManage')">View submissions</a>
                     </div>
                 </div>
             </div>
@@ -126,70 +138,6 @@
                     <p class="grey-text text-darken-1"><i>Great work! You've completed this workflow step.</i></p>
                     <a class="usa-button usa-button-secondary"(click)="presentModal('portfolio')">Edit</a>
                 </div>-->
-            </div>
-        </div>
-
-        <h2>Manage File Submissions</h2>
-        <p *ngIf="user.fileAttachments.approved.length == 0 && user.fileAttachments.unapproved.length == 0">There are no file submissions to manage at this time.</p>
-        <div id="user-files" *ngIf="!user.filesLoading">
-            <div *ngIf="user.fileAttachments.unapproved.length > 0">
-                <h3>Unapproved File Submissions</h3>
-                <table class="usa-table-borderless">
-                    <thead>
-                        <tr>
-                            <th scope="col">File</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Knowledge Article</th>
-                            <th scope="col">Workflow Step</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let attachment of user.fileAttachments.unapproved">
-                            <td>
-                                <a href="{{attachment.attached_file}}" target="_blank"><i class="fa fa-download"></i> {{attachment.filename}}</a>
-                            </td>
-                            <td>{{attachment.category.name}}</td>
-                            <td><a [routerLink]="['/step', attachment.workflow_steps[0].id, 'article', attachment.knowledge_article.id]">{{ attachment.knowledge_article.title }}</a></td>
-                            <td><a [routerLink]="['/step', attachment.workflow_steps[0].id]">{{ attachment.workflow_steps[0].name }}</a></td>
-                            <td class="right-align">
-                                <button type="button" (click)="removeFileAttachment(attachment.id)" class="usa-button usa-button-tertiary" title="Delete">
-                                    <i class="fa fa-trash" title="Delete" aria-label="Delete"></i>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div *ngIf="user.fileAttachments.approved.length > 0">
-                <h3>Approved File Submissions</h3>
-                <table class="usa-table-borderless">
-                    <thead>
-                        <tr>
-                            <th scope="col">File</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Knowledge Article</th>
-                            <th scope="col">Workflow Step</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let attachment of user.fileAttachments.approved">
-                            <td>
-                                <a href="{{attachment.attached_file}}" target="_blank"><i class="fa fa-download"></i> {{attachment.filename}}</a>
-                            </td>
-                            <td>{{attachment.category.name}}</td>
-                            <td><a [routerLink]="['/step', attachment.workflow_steps[0].id, 'article', attachment.knowledge_article.id]">{{ attachment.knowledge_article.title }}</a></td>
-                            <td><a [routerLink]="['/step', attachment.workflow_steps[0].id]">{{ attachment.workflow_steps[0].name }}</a></td>
-                            <td class="right-align">
-                                <button type="button" (click)="removeFileAttachment(attachment.id)" class="usa-button usa-button-tertiary" title="Delete">
-                                    <i class="fa fa-trash" title="Delete" aria-label="Delete"></i>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>
