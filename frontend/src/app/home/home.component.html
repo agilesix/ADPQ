@@ -129,16 +129,29 @@
             </div>
         </div>
 
+        <h2>Manage File Submissions</h2>
+        <p *ngIf="user.fileAttachments.approved.length == 0 && user.fileAttachments.unapproved.length == 0">There are no file submissions to manage at this time.</p>
         <div id="user-files" *ngIf="!user.filesLoading">
             <div *ngIf="user.fileAttachments.unapproved.length > 0">
                 <h3>Unapproved File Submissions</h3>
                 <table class="usa-table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col">File</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Knowledge Article</th>
+                            <th scope="col">Workflow Step</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
                     <tbody>
                         <tr *ngFor="let attachment of user.fileAttachments.unapproved">
                             <td>
                                 <a href="{{attachment.attached_file}}" target="_blank"><i class="fa fa-download"></i> {{attachment.filename}}</a>
                             </td>
-                            <td>{{attachment.approved ? 'Approved' : ''}}</td>
+                            <td>{{attachment.category.name}}</td>
+                            <td><a [routerLink]="['/step', attachment.workflow_steps[0].id, 'article', attachment.knowledge_article.id]">{{ attachment.knowledge_article.title }}</a></td>
+                            <td><a [routerLink]="['/step', attachment.workflow_steps[0].id]">{{ attachment.workflow_steps[0].name }}</a></td>
                             <td class="right-align">
                                 <button type="button" (click)="removeFileAttachment(attachment.id)" class="usa-button usa-button-tertiary" title="Delete">
                                     <i class="fa fa-trash" title="Delete" aria-label="Delete"></i>
@@ -152,12 +165,23 @@
             <div *ngIf="user.fileAttachments.approved.length > 0">
                 <h3>Approved File Submissions</h3>
                 <table class="usa-table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col">File</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Knowledge Article</th>
+                            <th scope="col">Workflow Step</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
                     <tbody>
                         <tr *ngFor="let attachment of user.fileAttachments.approved">
                             <td>
                                 <a href="{{attachment.attached_file}}" target="_blank"><i class="fa fa-download"></i> {{attachment.filename}}</a>
                             </td>
-                            <td>{{attachment.approved ? 'Approved' : ''}}</td>
+                            <td>{{attachment.category.name}}</td>
+                            <td><a [routerLink]="['/step', attachment.workflow_steps[0].id, 'article', attachment.knowledge_article.id]">{{ attachment.knowledge_article.title }}</a></td>
+                            <td><a [routerLink]="['/step', attachment.workflow_steps[0].id]">{{ attachment.workflow_steps[0].name }}</a></td>
                             <td class="right-align">
                                 <button type="button" (click)="removeFileAttachment(attachment.id)" class="usa-button usa-button-tertiary" title="Delete">
                                     <i class="fa fa-trash" title="Delete" aria-label="Delete"></i>
