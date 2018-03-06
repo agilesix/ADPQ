@@ -118,6 +118,7 @@ export class HomeComponent implements OnInit {
       this.articleService.removeFileAttachment({file_attachment_id: id}).subscribe(
         data => {
           this.getUserFileAttachments();
+          this.getWorkflow(1);
         },
         err => console.error(err)
       );
