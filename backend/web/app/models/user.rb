@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :file_attachments
   rolify
   # Include default devise modules.
   devise :database_authenticatable, :registerable,

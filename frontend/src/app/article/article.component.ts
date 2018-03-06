@@ -115,8 +115,7 @@ export class ArticleComponent implements OnInit {
       err => {
         this.error = err;
         console.error(err);
-      },
-      () => console.log('article: ', this.article)
+      }
     );
   }
 
@@ -129,9 +128,7 @@ export class ArticleComponent implements OnInit {
   }
 
   removeArticle() {
-    console.log('delete article', this.article);
     this.articleService.removeKnowledgeArticle(this.id).subscribe( params => {
-      console.log('article deleted', params);
     });
   }
 }

@@ -6,7 +6,15 @@ class FileAttachmentsController < ApplicationController
   # GET /file_attachments
   # GET /file_attachments.json
   def index
-    @file_attachments = params[:approved].present? ? FileAttachment.approved(params[:approved]) : FileAttachment.all
+    @file_attachments = FileAttachment.all
+
+    if params[:approved].present?
+      #filter by approved
+      @file_attachments = FileAttachment.approved(params[:approved])
+    elsif params[:user].present?
+      #filter by the current user
+      @file_attachments = FileAttachment.where(user: current_user)
+    end
   end
 
   # GET /file_attachments/1

@@ -13,7 +13,7 @@
         <div *ngIf="hasRole('Admin') && !loading" class="usa-width-one-half right-align">
         
             <!--TODO: Wire up, only show if this Article has submitted files that have yet to be approved/rejected, show number count of only this Article's waiting files -->
-	    <a *ngIf="modal.fileSubmissions.length > 0" class="usa-button usa-button-tertiary" (click)="presentModal('fileReview')">Review <div class="chip red lighten-1">{{ modal.fileSubmissions.length }}</div> submitted files</a>
+	    <a *ngIf="modal.fileSubmissions.length > 0" class="usa-button usa-button-tertiary" (click)="presentModal('fileReview')">Review <div class="chip red lighten-1">{{ modal.fileSubmissions.length }}</div> submitted file{{modal.fileSubmissions.length == 1 ? ' ': 's'}}</a>
             
             <a [routerLink]="['edit']" class="usa-button usa-button-tertiary"><i class="fa fa-pencil"></i> Edit</a>
             <button class="usa-button usa-button-tertiary" (click)="presentModal('remove')"><i class="fa fa-trash"></i> Delete</button>

@@ -25,8 +25,8 @@
                         <label for="category">Category</label>
                         <select required id="category" name="fileCategory" [(ngModel)]="submitFile.fileCategory">
                             <option value="1">Template</option>
-                            <option value="2">Sample</option>
-                            <option value="3">Resource</option>
+                            <option value="2">Example</option>
+                            <option value="3">Knowledge Reference</option>
                         </select>
                         <!-- <div class="chips chips-initial">
                             <div class="chip">Template
@@ -79,23 +79,25 @@
                         <thead>
                             <tr>
                                 <th scope="col">File</th>
+                                <th scope="col">Category</th>
                                 <th scope="col">Submitted by</th>
                                 <th scope="col">Knowledge Article</th>
-				                        <th scope="col">Workflow Step</th>
+                                <th scope="col">Workflow Step</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let file of fileSubmissions">
-                                <td><a>{{ file.filename }}</a></td>
-                                <td>{{ file.user.name }}</td>
+                                <td><a href="{{file.attached_file}}" target="_blank"><i class="fa fa-download"></i> {{ file.filename }}</a></td>
+                                <td>{{ file.category.name }}</td>
+                                <td><div>{{ file.user.name }}</div> <div>({{ file.user.email }})</div></td>
                                 <td><a [routerLink]="['/step', file.workflow_steps[0].id, 'article', file.knowledge_article.id]">{{ file.knowledge_article.title }}</a></td>
                                 <td><a [routerLink]="['/step', file.workflow_steps[0].id]">{{ file.workflow_steps[0].name }}</a></td>
                                 <td class="right-align">
                                     <a class="usa-button usa-button-tertiary" title="Deny" (click)="rejectFile(file.id)">
                                         <i class="fa fa-trash" title="Reject" aria-label="Reject"></i>
                                     </a>
-                                    <a class="usa-button usa-button-tertiary" title="Approve" aria-label="Approve" (click)="approveFile(file.id)">
+                                    <a class="usa-button usa-button-tertiary green-text approve" title="Approve" aria-label="Approve" (click)="approveFile(file.id)">
                                         <i class="fa fa-check"></i>
                                     </a>
                                 </td>

@@ -1,0 +1,7 @@
+.approve {
+    box-shadow: inset 0 0 0 2px #4CAF50 !important;
+
+    &:hover {
+        box-shadow: inset 0 0 0 2px green !important;
+    }
+}
