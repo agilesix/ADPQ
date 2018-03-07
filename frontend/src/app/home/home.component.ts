@@ -74,6 +74,10 @@ export class HomeComponent implements OnInit {
           });
           break;
         }
+        case 'contributorDelete': {
+          this.getUserFileAttachments();
+          break;
+        }
       }
     });
     this.getWorkflow(1);
@@ -120,7 +124,10 @@ export class HomeComponent implements OnInit {
           this.getUserFileAttachments();
           this.getWorkflow(1);
         },
-        err => console.error(err)
+        err => {
+          console.error('there is an error here');
+          this.modal.error = err;
+        }
       );
     }
   }

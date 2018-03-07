@@ -63,14 +63,3 @@ ft3 = FileType.create!(name: 'PDF') unless FileType.exists?(name: 'PDF')
 cat1 = Category.create!(name: 'Template') unless Category.exists?(name: 'Template')
 cat2 = Category.create!(name: 'Example') unless Category.exists?(name: 'Example')
 cat3 = Category.create!(name: 'Knowledge Reference') unless Category.exists?(name: 'Knowledge Reference')
-
-def seed_file(file_name)
-  File.new(File.join(Rails.root, "/app/assets/files/seed/#{file_name}"))
-end
-
-#Create File Attachments for Knowledge Article
-
-if dan.present? && ka1.present? && ft1.present? && cat1.present? && cat2.present?
-  FileAttachment.create!(filename: 'Vision Statement Template', approved: true, user: dan, category: cat1, file_type: ft1, knowledge_article: ka1, attached_file: seed_file('VisionStatementTemplate.docx'))
-  FileAttachment.create!(filename: 'Sample Vision Statement', approved: true, user: dan, category: cat2, file_type: ft1, knowledge_article: ka1, attached_file: seed_file('SampleVisionStatement.docx'))
-end

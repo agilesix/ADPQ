@@ -35,8 +35,9 @@ export class ModalComponent implements OnInit {
     }
   }
 
-  constructor(public articleService: ArticleService) {}
+  public error = null;
 
+  constructor(public articleService: ArticleService) {}
 
   ngOnInit() {
     this.refreshFileSubmissions();
@@ -78,7 +79,7 @@ export class ModalComponent implements OnInit {
           }           
       }
     }
-  }
+  }  
 
   submitFileSubmission() {
     this.fileSubmit.emit({filename: this.submitFile.fileName, category_id: this.submitFile.fileCategory, file_contents: this.submitFile.fileContents});
@@ -120,7 +121,10 @@ export class ModalComponent implements OnInit {
         this.user.fileAttachments.approved = attachments.filter(a => a.approved == true);
         this.user.fileAttachments.unapproved = attachments.filter(a => a.approved == false);
       },
-      err => console.error(err)
+      err => { 
+        console.error(err);
+        this.error = err;
+      }
     );
   }
 
@@ -128,18 +132,28 @@ export class ModalComponent implements OnInit {
     if (confirm("Are you sure you want to delete this uploaded file? This cannot be undone.")) {
       this.articleService.removeFileAttachment({file_attachment_id: id}).subscribe(
         data => {
+          this.fileActions.emit({file_attachment_id: id, action: 'contributorDelete'});
           this.getUserFileAttachments();
         },
-        err => console.error(err)
+        err => { 
+          console.error(err);
+          this.error = err;
+        }
       );
     }
   }
 
   refreshFileSubmissions() {
-    this.articleService.getFileAttachments({approved: false}).subscribe(data => {
-      this['fileSubmissions'] = data.json();
-      this.fileSubmissionCount = this['fileSubmissions'].length;
-    });
+    this.articleService.getFileAttachments({approved: false}).subscribe(
+      data => {
+        this['fileSubmissions'] = data.json();
+        this.fileSubmissionCount = this['fileSubmissions'].length;
+      },
+      err => { 
+        console.error(err);
+        this.error = err;
+      }
+    );
   }
 
 }

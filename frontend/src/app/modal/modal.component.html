@@ -4,19 +4,17 @@
             <i class="fa fa-times"(click)="closeModal()" aria-hidden="true"></i>
         </span>
 
-
-
         <!-- MODAL: fileSubmit -->
         <div *ngIf="modalFileSubmit()">
             <div *ngIf="!submitted">
                 <h3>Submit a file to the knowledge article</h3>
-
+                
                 <div class="modal-body">
                     <p class="text-large">Have something to add to this knowledge article? We'd love to share your templates, samples, or resources with this knowledge base. If you have files that enhance this article, upload them for publishing below.</p>
 
                     <form class="usa-form" #submitFileForm="ngForm" (ngSubmit)="submitFileSubmission()">
                         <label for="fileName">File Name</label>
-                        <input id="fileName"
+                        <input id="fileName"                            
                             type="text"
                             required
                             name="fileName"
@@ -26,7 +24,7 @@
                         <select required id="category" name="fileCategory" [(ngModel)]="submitFile.fileCategory">
                             <option value="1">Template</option>
                             <option value="2">Example</option>
-                            <option value="3">Knowledge Reference</option>
+                            <option value="3">Reference</option>
                         </select>
                         <!-- <div class="chips chips-initial">
                             <div class="chip">Template
@@ -43,7 +41,12 @@
                         <div class="file-field input-field">
                           <div class="btn blue">
                             <span>File</span>
-                            <input (change)="onFileInputChange($event)" id="fileInput" name="fileInput" [(ngModel)]="submitFile.fileInput" required type="file">
+                            <input (change)="onFileInputChange($event)"
+                                accept=".doc, .docx, .xls, .xlsx, application/pdf, .txt, .csv, .rtf, .htm, .msg, .ppt, .pptx, .tif, .xlsb, .jpg, .jpeg, .png"
+                                id="fileInput" 
+                                name="fileInput" 
+                                [(ngModel)]="submitFile.fileInput" 
+                                required type="file">
                           </div>
                           <div class="file-path-wrapper">
                             <input class="file-path validate" type="text" required placeholder="Upload one file">
@@ -61,7 +64,7 @@
                     <h1><i class="fa fa-check fa-3x"></i></h1>
                     <h2 class="text-sans">File submitted!</h2>
                     <p class="text-large">Thanks for contributing your work.</p>
-                    <p>You can manage your file submissions from the <a [routerLink]="['']">home page</a>.</p>
+                    <p>You can manage your file submissions from the <a (click)="closeModal()" [routerLink]="['']">home page</a>.</p>
                     <a (click)="submitSuccess()">Have something else to contribute?</a>
                 </div>
             </div>
@@ -72,7 +75,12 @@
         <div *ngIf="modalFileReview()">
             <div *ngIf="fileSubmissions.length > 0">
                 <h3>Review new file submissions</h3>
-
+                <div *ngIf="error" class="usa-alert usa-alert-warning" >
+                    <div class="usa-alert-body">
+                        <h3 class="usa-alert-heading">Warning Status</h3>
+                        <p class="usa-alert-text">{{error}}</p>
+                    </div>
+                </div>
                 <div class="modal-body">
                     <p>These files are waiting for your review before they can be added to knowledge articles. Approving a file submission will add it to the knowledge article it was submitted to. Rejecting a file submission will remove it from the platform.</p>
 
@@ -80,7 +88,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">File</th>
-                                <th scope="col">Category</th>
+                                <th scope="col">Type</th>
                                 <th scope="col">Submitted by</th>
                                 <th scope="col">Knowledge Article</th>
                                 <th scope="col">Workflow Step</th>
@@ -90,10 +98,10 @@
                         <tbody>
                             <tr *ngFor="let file of fileSubmissions">
                                 <td><a href="{{file.attached_file}}" target="_blank"><i class="fa fa-download"></i> {{ file.filename }}</a></td>
-                                <td>{{ file.category.name }}</td>
+                                <td><span class="chip">{{ file.category.name == 'Knowledge Reference' ? 'Reference' : file.category.name }}</span></td>
                                 <td><div>{{ file.user.name }}</div> <div>({{ file.user.email }})</div></td>
-                                <td><a [routerLink]="['/step', file.workflow_steps[0].id, 'article', file.knowledge_article.id]">{{ file.knowledge_article.title }}</a></td>
-                                <td><a [routerLink]="['/step', file.workflow_steps[0].id]">{{ file.workflow_steps[0].name }}</a></td>
+                                <td><a (click)="closeModal()" [routerLink]="['/step', file.workflow_steps[0].id, 'article', file.knowledge_article.id]">{{ file.knowledge_article.title }}</a></td>
+                                <td><a (click)="closeModal()" [routerLink]="['/step', file.workflow_steps[0].id]">{{ file.workflow_steps[0].name }}</a></td>
                                 <td class="right-align">
                                     <a class="usa-button usa-button-tertiary" title="Deny" (click)="rejectFile(file.id)">
                                         <i class="fa fa-trash" title="Reject" aria-label="Reject"></i>
@@ -168,7 +176,7 @@
 
         <!-- MODAL: fileManage -->
         <div *ngIf="modalFileManage()">
-            <h3>View files you have submitted to knowledge articles</h3>
+            <h3>Manage files you have submitted to knowledge articles</h3>
 
             <div class="modal-body">
                 <p>Thanks for contributing your resources to our knowledge base! If you want to make changes to a submitted file that has not yet been approved, you may remove it and later re-add a new version from the knowledge article.</p>
@@ -187,11 +195,11 @@
                         <tbody>
                             <tr *ngFor="let attachment of user.fileAttachments.unapproved">
                                 <td>
-                                    <a href="{{attachment.attached_file}}" target="_blank">{{attachment.filename}}</a>
+                                    <a href="{{attachment.attached_file}}" target="_blank"><i class="fa fa-download"></i> {{attachment.filename}}</a>
                                 </td>
-                                <td><span class="chip">{{attachment.category.name}}</span></td>
-                                <td><a [routerLink]="['/step', attachment.workflow_steps[0].id, 'article', attachment.knowledge_article.id]">{{ attachment.knowledge_article.title }}</a></td>
-                                <td><a [routerLink]="['/step', attachment.workflow_steps[0].id]">{{ attachment.workflow_steps[0].name }}</a></td>
+                                <td><span class="chip">{{attachment.category.name == 'Knowledge Reference' ? 'Reference' : attachment.category.name}}</span></td>
+                                <td><a (click)="closeModal()" [routerLink]="['/step', attachment.workflow_steps[0].id, 'article', attachment.knowledge_article.id]">{{ attachment.knowledge_article.title }}</a></td>
+                                <td><a (click)="closeModal()" [routerLink]="['/step', attachment.workflow_steps[0].id]">{{ attachment.workflow_steps[0].name }}</a></td>
                                 <td class="right-align">
                                     <button type="button" (click)="removeFileAttachment(attachment.id)" class="usa-button usa-button-tertiary" title="Delete">
                                         <i class="fa fa-trash" title="Delete" aria-label="Delete"></i>
@@ -200,11 +208,11 @@
                             </tr>
                             <tr *ngFor="let attachment of user.fileAttachments.approved">
                                 <td>
-                                    <a href="{{attachment.attached_file}}" target="_blank">{{attachment.filename}}</a>
+                                    <a href="{{attachment.attached_file}}" target="_blank"><i class="fa fa-download"></i> {{attachment.filename}}</a>
                                 </td>
-                                <td><span class="chip">{{attachment.category.name}}</span></td>
-                                <td><a [routerLink]="['/step', attachment.workflow_steps[0].id, 'article', attachment.knowledge_article.id]">{{ attachment.knowledge_article.title }}</a></td>
-                                <td><a [routerLink]="['/step', attachment.workflow_steps[0].id]">{{ attachment.workflow_steps[0].name }}</a></td>
+                                <td><span class="chip">{{attachment.category.name == 'Knowledge Reference' ? 'Reference' : attachment.category.name}}</span></td>
+                                <td><a (click)="closeModal()" [routerLink]="['/step', attachment.workflow_steps[0].id, 'article', attachment.knowledge_article.id]">{{ attachment.knowledge_article.title }}</a></td>
+                                <td><a (click)="closeModal()" [routerLink]="['/step', attachment.workflow_steps[0].id]">{{ attachment.workflow_steps[0].name }}</a></td>
                                 <td><span class="chip green lighten-1">Published</span></td>
                             </tr>
                         </tbody>
@@ -260,8 +268,8 @@
                 </div>
 
                 <div class="modal-footer">
-                    <a class="usa-button usa-button-secondary" (click)="closeModal()" title="Cancel" aria-label="Cancel">Cancel</a>
-                    <a class="usa-button usa-button-tertiary" (click)="submitSuccess()" title="Delete" aria-label="Delete">Delete</a>
+                    <a class="usa-button usa-button-secondary" (click)="closeModal()" title="Cancel" aria-label="Cancel"><i class="fa fa-times"></i> Cancel</a>
+                    <a class="usa-button usa-button-tertiary" (click)="submitSuccess()" title="Delete" aria-label="Delete"><i class="fa fa-trash"></i> Delete</a>
                 </div>
             </div>
             <div *ngIf="submitted">
@@ -270,7 +278,7 @@
                     <h2 class="text-sans">Article successfully deleted.</h2>
                 </div>
                 <div class="modal-footer">
-                    <a class="usa-button usa-button-secondary" [routerLink]="['../..']" title="Return to step" aria-label="Return to step">Return to step</a>
+                    <a class="usa-button usa-button-secondary" (click)="closeModal()" [routerLink]="['../..']" title="Return to step" aria-label="Return to step">Return to step</a>
                 </div>
             </div>
         </div>

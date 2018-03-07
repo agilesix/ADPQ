@@ -90,10 +90,10 @@
                 name="user_id" [(ngModel)]="knowledgeArticle.userId" [value]="authTokenService.currentUserData.id" />
             
             <fieldset>
-                <input type="submit" 
+                <button type="submit" 
                     [disabled]="!(f.valid)" 
                     value="Publish knowledge article" 
-                    class="usa-button right" />
+                    class="usa-button right" ><i class="fa fa-save"></i> Publish knowledge article</button>
                 <button class="usa-button usa-button-secondary right" [routerLink]="['/step', stepId]">Cancel</button>
                 <br/><br/><br/><br/>
             </fieldset>

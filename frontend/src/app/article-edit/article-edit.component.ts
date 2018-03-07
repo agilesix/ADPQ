@@ -84,7 +84,6 @@ export class ArticleEditComponent implements OnInit {
     this.knowledgeArticle.id = this.id;
     this.knowledgeArticle.user_id = this.authTokenService.currentUserData.id;
     this.knowledgeArticle.workflow_step_id = this.stepId;
-    console.log(this.knowledgeArticle.file_attachments);
     this.articleService.updateKnowledgeArticle(this.knowledgeArticle).subscribe(
       data => { 
         this.article = data.json();

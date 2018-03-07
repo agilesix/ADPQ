@@ -42,7 +42,11 @@
                         <div class="file-field input-field">
                           <div class="btn blue">
                             <span>Files</span>
-                            <input type="file" name="file_attachments" (change)="onFileInputChange($event)" multiple>
+                            <input type="file"
+                                name="file_attachments"
+                                (change)="onFileInputChange($event)"
+                                accept=".doc, .docx, .xls, .xlsx, application/pdf, .txt, .csv, .rtf, .htm, .msg, .ppt, .pptx, .tif, .xlsb, .jpg, .jpeg, .png"
+                                multiple>
                           </div>
                           <div class="file-path-wrapper">
                             <input class="file-path validate" type="text" placeholder="Upload one or more files">
@@ -53,7 +57,7 @@
                                 <tr><label>Already uploaded files</label></tr>
                                 <tr *ngFor="let attachment of article.file_attachments">
                                     <td>
-                                        <a href="{{attachment.attached_file}}" target="_blank">{{attachment.filename}}</a>
+                                        <a href="{{attachment.attached_file}}" target="_blank"><i class="fa fa-download"></i> {{attachment.filename}}</a>
                                     </td>
                                     <td class="right-align">
                                         <button type="button" (click)="removeFileAttachment(attachment.id)" class="usa-button usa-button-tertiary" title="Delete">
@@ -97,10 +101,10 @@
                 <label for="published">Publish?</label> -->
     
                 <fieldset>
-                    <input type="submit"
+                    <button type="submit"
                         [disabled]="!(f.valid)"
                         value="Update knowledge article"
-                        class="usa-button right" />
+                        class="usa-button right"><i class="fa fa-save"></i> Update knowledge article</button>
                         <a class="right usa-button usa-button-secondary" *ngIf="!stepLoading" [routerLink]="['/step', stepId, 'article', article.id]"><i class="fa fa-times" title="Delete" aria-label="Cancel edits"></i> Cancel edits</a>
                     <br/><br/><br/><br/>
                 </fieldset>
