@@ -176,7 +176,7 @@
 
         <!-- MODAL: fileManage -->
         <div *ngIf="modalFileManage()">
-            <h3>Manage files you have submitted to knowledge articles</h3>
+            <h3>View files you have submitted to knowledge articles</h3>
 
             <div class="modal-body">
                 <p>Thanks for contributing your resources to our knowledge base! If you want to make changes to a submitted file that has not yet been approved, you may remove it and later re-add a new version from the knowledge article.</p>
@@ -189,17 +189,19 @@
                                 <th scope="col">Type</th>
                                 <th scope="col">Knowledge Article</th>
                                 <th scope="col">Workflow Step</th>
+                                <th scope="col">Status</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let attachment of user.fileAttachments.unapproved">
                                 <td>
-                                    <a href="{{attachment.attached_file}}" target="_blank"><i class="fa fa-download"></i> {{attachment.filename}}</a>
+                                    <a href="{{attachment.attached_file}}" target="_blank">{{attachment.filename}}</a>
                                 </td>
-                                <td><span class="chip">{{attachment.category.name == 'Knowledge Reference' ? 'Reference' : attachment.category.name}}</span></td>
+                                <td>{{attachment.category.name == 'Knowledge Reference' ? 'Reference' : attachment.category.name}}</td>
                                 <td><a (click)="closeModal()" [routerLink]="['/step', attachment.workflow_steps[0].id, 'article', attachment.knowledge_article.id]">{{ attachment.knowledge_article.title }}</a></td>
                                 <td><a (click)="closeModal()" [routerLink]="['/step', attachment.workflow_steps[0].id]">{{ attachment.workflow_steps[0].name }}</a></td>
+                                <td><span class="chip">Pending</span></td>
                                 <td class="right-align">
                                     <button type="button" (click)="removeFileAttachment(attachment.id)" class="usa-button usa-button-tertiary" title="Delete">
                                         <i class="fa fa-trash" title="Delete" aria-label="Delete"></i>
@@ -208,12 +210,13 @@
                             </tr>
                             <tr *ngFor="let attachment of user.fileAttachments.approved">
                                 <td>
-                                    <a href="{{attachment.attached_file}}" target="_blank"><i class="fa fa-download"></i> {{attachment.filename}}</a>
+                                    <a href="{{attachment.attached_file}}" target="_blank">{{attachment.filename}}</a>
                                 </td>
-                                <td><span class="chip">{{attachment.category.name == 'Knowledge Reference' ? 'Reference' : attachment.category.name}}</span></td>
+                                <td>{{attachment.category.name == 'Knowledge Reference' ? 'Reference' : attachment.category.name}}</td>
                                 <td><a (click)="closeModal()" [routerLink]="['/step', attachment.workflow_steps[0].id, 'article', attachment.knowledge_article.id]">{{ attachment.knowledge_article.title }}</a></td>
                                 <td><a (click)="closeModal()" [routerLink]="['/step', attachment.workflow_steps[0].id]">{{ attachment.workflow_steps[0].name }}</a></td>
                                 <td><span class="chip green lighten-1">Published</span></td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>
