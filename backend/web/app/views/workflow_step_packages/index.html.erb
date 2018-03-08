@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Workflow Step Packages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Workflow package</th>
+      <th>Workflow step</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @workflow_step_packages.each do |workflow_step_package| %>
+      <tr>
+        <td><%= workflow_step_package.workflow_package %></td>
+        <td><%= workflow_step_package.workflow_step %></td>
+        <td><%= workflow_step_package.user %></td>
+        <td><%= link_to 'Show', workflow_step_package %></td>
+        <td><%= link_to 'Edit', edit_workflow_step_package_path(workflow_step_package) %></td>
+        <td><%= link_to 'Destroy', workflow_step_package, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Workflow Step Package', new_workflow_step_package_path %>

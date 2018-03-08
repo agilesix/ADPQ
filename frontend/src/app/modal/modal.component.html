@@ -41,7 +41,7 @@
                         <div class="file-field input-field">
                           <div class="btn blue">
                             <span>File</span>
-                            <input (change)="onFileInputChange($event)"
+                            <input (change)="onFileInputChange($event, 'submitFile')"
                                 accept=".doc, .docx, .xls, .xlsx, application/pdf, .txt, .csv, .rtf, .htm, .msg, .ppt, .pptx, .tif, .xlsb, .jpg, .jpeg, .png"
                                 id="fileInput" 
                                 name="fileInput" 
@@ -53,8 +53,8 @@
                           </div>
                         </div>
                         <div class="modal-footer">
-                            <button class="usa-button usa-button-secondary" (click)="closeModal()" title="Cancel" aria-label="Cancel">Cancel</button>
-                            <input type="submit" class="usa-button right" [disabled]="!(submitFileForm.valid)" value="Submit" aria-label="Submit"/>
+                            <button type="button" class="usa-button usa-button-secondary" (click)="closeModal()" title="Cancel" aria-label="Cancel">Cancel</button>
+                            <button type="submit" class="usa-button right" [disabled]="!(submitFileForm.valid)" value="Submit" aria-label="Submit"><i class="fa fa-download"></i> Submit</button>
                         </div>
                     </form>
                 </div>
@@ -237,26 +237,53 @@
 
         <!-- MODAL: portfolio -->
         <div *ngIf="modalPortfolio()">
-            <h3>Add your Vision Statement to your solicitation package</h3>
+            <h3>Add your {{data.workflow_step.name}} to your {{data.workflow.package_name}} Package</h3>
+            <div *ngIf="!submitted">
+                <form class="usa-form" #submitPackageFileForm="ngForm" (ngSubmit)="submitPackageFileAttachment()">
+                    <div class="modal-body">
+                        <p class="text-large">Is it ready to go? Upload it below. Still not sure how to create it? <a (click)="closeModal()" [routerLink]="['/step', data.workflow_step.id]">Visit the {{data.workflow_step.name}} knowledge base.</a></p>
+                        <label for="packageFileName">File Name</label>
+                        <input id="packageFileName"                            
+                            type="text"
+                            required
+                            name="packageFileName"
+                            [(ngModel)]="packageFileAttachment.fileName"
+                            class="validate" />
 
-            <div class="modal-body">
-                <p class="text-large">Is it ready to go? Upload it below. Still not sure how to create it? <a>Visit the knowledge base.</a></p>
+                        <label for="packageFileAttachmentInput">Upload file</label>
+                        <div class="file-field input-field">
+                            <div class="btn blue">
+                                <span>File</span>
+                                <input 
+                                    required
+                                    class="validate"
+                                    type="file" 
+                                    id="packageFileAttachmentInput"
+                                    name="packageFileAttachmentInput" 
+                                    [(ngModel)]="packageFileAttachment.fileInput" 
+                                    (change)="onFileInputChange($event, 'packageFileAttachment')"
+                                    accept=".doc, .docx, .xls, .xlsx, application/pdf, .txt, .csv, .rtf, .htm, .msg, .ppt, .pptx, .tif, .xlsb, .jpg, .jpeg, .png"
+                                >
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text" placeholder="Upload one file">
+                            </div>
+                        </div>
+                        <input type="hidden" name="workflowStepPackageId" id="workflowStepPackageId" [(ngModel)]="packageFileAttachment.workflowStepPackageId" (input)="packageFileAttachment.workflowStepPackageId = data.id" />
+                    </div>
 
-                <label for="files">Upload file</label>
-                <div class="file-field input-field">
-                  <div class="btn blue">
-                    <span>File</span>
-                    <input type="file" multiple>
-                  </div>
-                  <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text" placeholder="Upload one or more files">
-                  </div>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="usa-button usa-button-secondary" (click)="closeModal()" title="Cancel" aria-label="Cancel"><i class="fa fa-times"></i> Cancel</button>
+                        <button type="submit" class="usa-button" title="Save" aria-label="Save" [disabled]="!(submitPackageFileForm.valid)"><i class="fa fa-upload"></i> Save</button>
+                    </div>
+                </form>
             </div>
-
-            <div class="modal-footer">
-                <a class="usa-button usa-button-secondary" (click)="closeModal()" title="Cancel" aria-label="Cancel">Cancel</a>
-                <a class="usa-button" title="Save" aria-label="Save">Save</a>
+            <div *ngIf="submitted">
+                <div class="modal-body green-text lighten-1 center-align">
+                    <h1><i class="fa fa-check fa-3x"></i></h1>
+                    <h2 class="text-sans">File uploaded!</h2>
+                    <p class="text-large">You are one step closer to completing your {{data.workflow.package_name}} Package.</p>
+                </div>
             </div>
         </div>
 
@@ -285,8 +312,6 @@
                 </div>
             </div>
         </div>
-
-
 
     </div>
 </div>

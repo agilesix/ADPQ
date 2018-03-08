@@ -6,6 +6,9 @@ import { StepService } from '../services/step.service';
 import { ArticleService } from '../services/article.service';
 import { ModalComponent } from '../modal/modal.component';
 import { WorkflowService } from '../services/workflow.service';
+import { WorkflowPackageService } from '../services/workflow-package.service';
+import { WorkflowStepPackageService } from '../services/workflow-step-package.service';
+import { PackageFileAttachmentService } from '../services/package-file-attachment.service';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +24,11 @@ export class HomeComponent implements OnInit {
     fileAttachments:  {
       approved: [],
       unapproved: []
-    }
+    },
+    workflowPackage: {},
+    workflowStepPackages: [],
+    completedSteps: 0,
+    percentageCompleted: 0
   }
 
   constructor(private cdr: ChangeDetectorRef,
@@ -29,12 +36,16 @@ export class HomeComponent implements OnInit {
     public authService: AuthService,
     public stepService: StepService,
     public articleService: ArticleService,
-    public workflowService: WorkflowService) {}
+    public workflowService: WorkflowService,
+    public workflowPackageService: WorkflowPackageService,
+    public workflowStepPackageService: WorkflowStepPackageService,
+    public packageFileAttachmentService: PackageFileAttachmentService
+  ) {}
 
   @ViewChild('modal') modal: ModalComponent;
 
-  presentModal(mode) {
-    this.modal.openModal(mode);
+  presentModal(mode, data) {
+    this.modal.openModal(mode, data);
   }
 
   metrics = {
@@ -80,12 +91,23 @@ export class HomeComponent implements OnInit {
         }
       }
     });
+
+    this.modal.packageFileSubmit.subscribe(
+      packageFileAttachmentData => {
+        this.packageFileAttachmentService.createPackageFileAttachment(packageFileAttachmentData).subscribe(
+          data => {
+            this.getWorkflowPackage(this.workflow.id);
+            this.modal.submitSuccess();
+          },
+          err => console.log(err)
+        );
+      }
+    )
     this.getWorkflow(1);
   }
 
   getWorkflow(id) {
     this.workflowService.getWorkflow(id).subscribe(data => {
-      this.loading = false;
       this.workflow = data.json();
       if (this.hasRole('Admin')) {
         this.metrics.knowledgeArticlesCount = this.workflow.knowledge_articles_count;
@@ -93,7 +115,40 @@ export class HomeComponent implements OnInit {
         this.metrics.fileSubmissionsCount = this.workflow.file_submissions_count;
         this.metrics.usersCount = this.workflow.users_count;
       }
+      this.getWorkflowPackage(this.workflow.id);
     });
+  }
+
+  //eventually, this will be plural
+  getWorkflowPackage(workflow_id) {
+    this.workflowPackageService.getWorkflowPackages(workflow_id).subscribe(
+      data => {
+        this.user.workflowPackage = data.json()[0];
+        this.getWorkflowStepPackages(this.user.workflowPackage['id']);
+      }
+    )
+  }
+
+  getWorkflowStepPackages(workflow_package_id) {
+    this.workflowStepPackageService.getWorkflowStepPackages(workflow_package_id).subscribe(
+      data => {
+        this.loading = false;
+        this.user.workflowStepPackages = data.json();
+        this.workflowPackagePercentageCompleted();
+      }
+    )
+  }
+
+  precisionRound(number, precision) {
+    var factor = Math.pow(10, precision);
+    return Math.round(number * factor) / factor;
+  }
+
+  workflowPackagePercentageCompleted() {
+    let total = this.user.workflowStepPackages.length;
+    let completedSteps = this.user.workflowStepPackages.filter(wsp => wsp.package_file_attachments.length > 0);
+    this.user.completedSteps = completedSteps.length;
+    this.user.percentageCompleted = this.precisionRound(this.user.completedSteps/total, 2) * 100;
   }
 
   hasRole(roleName) {

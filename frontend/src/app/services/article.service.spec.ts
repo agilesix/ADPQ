@@ -44,7 +44,7 @@ describe('ArticleService', () => {
     backend = testBed.get(MockBackend);
     service = testBed.get(ArticleService);
     authTokenService = testBed.get(Angular2TokenService);   
-    authTokenService.init({apiPath: 'testApi'})
+    authTokenService.init({apiPath: 'testApi'});
   });
 
   function setupConnections(backend: MockBackend, options: any) {
@@ -157,8 +157,9 @@ describe('ArticleService', () => {
       {
         filename: 'Test.txt',
         filetypr: 'text/plain',
-        value: 'Tm8gbW9yZSB0ZXN0IHBpY3R1cmVzIG9mIGtpdHRlbnMgOig=\n'}
-      };
+        value: 'Tm8gbW9yZSB0ZXN0IHBpY3R1cmVzIG9mIGtpdHRlbnMgOig=\n'
+      }
+    };
     setupConnections(backend, {
       body: fileAttachment,
       status: 200
