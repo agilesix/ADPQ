@@ -418,7 +418,13 @@ h1, h2, h3, h4, h5, h6 {
             .usa-logo {
                 float: left;
                 width: 20%;
-                margin: 10px 0;
+                margin: 15px 0;
+                
+                a > img {
+                    height: 30px;
+                    display: block;
+                    margin-left: 3rem;
+                }
             }
 
             nav {
@@ -485,6 +491,16 @@ h1, h2, h3, h4, h5, h6 {
         }
     }
 
+    @media screen and (max-width: 600px) {
+        .a2-sidenav {
+            .usa-logo {
+                a > img {
+                    margin-left: 1.5rem;
+                }
+            }
+        }
+    }
+
     @media screen and (max-height: 800px) {
         .a2-sidenav {
             position: absolute !important;
@@ -492,7 +508,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
 .a2-content {
-    margin-left: 200px;
+    border-left: 200px solid #1976D2;
 }
 
 .a2-callout {
@@ -505,6 +521,7 @@ h1, h2, h3, h4, h5, h6 {
     @media screen and (max-width: 1200px) {
         .a2-content {
             margin: 120px 0 0 0;
+            border: none;
         }
         
         .a2-callout {

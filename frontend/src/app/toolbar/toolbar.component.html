@@ -1,9 +1,10 @@
 <!--Navigation-->
 
+<a class="usa-skipnav" href="#main-content">Skip to main content</a>
 <header class="a2-sidenav blue darken-2" role="banner">
     <div class="usa-logo">
         <em class="usa-logo-text">
-            <a [routerLink]="['']" href="/" title="a2" aria-label="a2"><img src="../../assets/images/a2-logo-w.png" alt="a2"><span class="usa-sr-only">a2</span></a>
+            <a [routerLink]="['']" href="/" title="a2" aria-label="a2"><img src="../../assets/images/a2-logo-w.png" alt="a2"><h1 class="usa-sr-only">a2</h1></a>
         </em>
     </div>
     <nav role="navigation" class="blue darken-2" *ngIf="(authService.userSignedIn$ | async)">
@@ -34,43 +35,3 @@
         <button class="usa-button" (click)="logOut()">Logout</button>
     </div>
 </header>
-
-
-
-<!--
-<a class="usa-skipnav" href="#main-content">Skip to main content</a>
-<header class="usa-header usa-header-basic" role="banner">
-    <div class="usa-nav-container">
-        <div class="usa-navbar">
-            <div class="usa-logo" id="basic-logo">
-                <em class="usa-logo-text">
-                    <a [routerLink]="['']" href="/" title="Home" aria-label="Home">a2</a>
-                </em>
-            </div>
-            <button class="usa-menu-btn">Menu</button>
-        </div>
-        <nav role="navigation" class="usa-nav">
-            <button class="usa-nav-close">
-                <img src="/assets/img/close.svg" alt="close">
-            </button>
-            <ul class="usa-nav-primary usa-accordion">
-                <li *ngIf="!(authService.userSignedIn$ | async)">
-                    <a class="usa-nav-link" [routerLink]="['/login']">Login</a>
-                </li>
-                <li *ngIf="(authService.userSignedIn$ | async)">
-                    <a class="usa-nav-link" [routerLink]="['/profile']">Profile</a>
-                </li>
-                <li *ngIf="(authService.userSignedIn$ | async)">
-                    <a class="usa-nav-link" [routerLink]="['/step']">Step</a>
-                </li>
-                <li *ngIf="(authService.userSignedIn$ | async)">
-                    <a class="usa-nav-link" [routerLink]="['/article']">Article</a>
-                </li>
-                <li *ngIf="(authService.userSignedIn$ | async)">
-                    <a class="usa-nav-link" (click)="logOut()">Logout</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-</header>
--->

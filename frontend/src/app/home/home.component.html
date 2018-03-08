@@ -108,16 +108,10 @@
         <div class="usa-grid usa-grid-max-w" *ngIf="!loading">
             <div class="usa-width-one-fifth card" *ngFor="let step of workflow.workflow_steps; let i = index" [attr.data-index]="i">
                 <a [routerLink]="['/step', step.id]">
-                    <div class="card-content usa-grid-full green lighten-1 white-text">
-                        <div class="usa-width-one-third">
-                            <h3>{{step.knowledge_articles.length}}</h3>
-                            <p><small>Article{{step.knowledge_articles.length == 1 ? '': 's'}}</small></p>
-                        </div>
-                        <div class="usa-width-two-thirds">
-                            <h5 class="text-sans">
-                                <i class="fa fa-angle-right fa-3x right"></i>Knowledge Base
-                            </h5>
-                        </div>
+                    <div class="card-content green lighten-1 white-text">
+                        <i class="fa fa-arrow-right fa-2x right"></i>
+                        <p class="text-sans text-large"><b>Read {{step.knowledge_articles.length}} article{{step.knowledge_articles.length == 1 ? '': 's'}}
+                        </b></p>
                     </div>
                 </a>
                 <div class="card-content">
