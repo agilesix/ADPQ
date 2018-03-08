@@ -136,7 +136,7 @@
                 
                 <div *ngIf="step.package_file_attachments.length > 0" class="card-content">
                     <p class="grey-text text-darken-1"><i>Great work! You've completed this workflow step.</i></p>
-                    <a href="{{step.package_file_attachments[0].attached_file}}"><i class="fa fa-download"></i> {{step.package_file_attachments[0].filename}}</a>
+                    <a href="{{step.package_file_attachments[0].attached_file}}" target="_blank"><i class="fa fa-download"></i> {{step.package_file_attachments[0].filename}}</a>
                     <div>
                         <button type="button" class="usa-button usa-button-secondary"(click)="presentModal('comingSoon')"><i class="fa fa-pencil"></i> Edit</button>
                     </div>

@@ -11,7 +11,7 @@
         </div>
         
         <div class="usa-width-one-half right-align">            
-            <button class="right usa-button usa-button-secondary" [routerLink]="['/step', stepId]">Cancel</button>
+            <button class="right usa-button usa-button-secondary" [routerLink]="['/step', stepId]"><i class="fa fa-times"></i> Cancel</button>
         </div>
     </div>
 </div>    
@@ -94,7 +94,7 @@
                     [disabled]="!(f.valid)" 
                     value="Publish knowledge article" 
                     class="usa-button right" ><i class="fa fa-save"></i> Publish knowledge article</button>
-                <button class="usa-button usa-button-secondary right" [routerLink]="['/step', stepId]">Cancel</button>
+                <button class="usa-button usa-button-secondary right" [routerLink]="['/step', stepId]"><i class="fa fa-times"></i> Cancel</button>
                 <br/><br/><br/><br/>
             </fieldset>
         </form>       

@@ -53,8 +53,8 @@
                           </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="usa-button usa-button-secondary" (click)="closeModal()" title="Cancel" aria-label="Cancel">Cancel</button>
-                            <button type="submit" class="usa-button right" [disabled]="!(submitFileForm.valid)" value="Submit" aria-label="Submit"><i class="fa fa-download"></i> Submit</button>
+                            <button type="button" class="usa-button usa-button-secondary" (click)="closeModal()" title="Cancel" aria-label="Cancel"><i class="fa fa-times"></i> Cancel</button>
+                            <button type="submit" class="usa-button right" [disabled]="!(submitFileForm.valid)" value="Submit" aria-label="Submit"><i class="fa fa-upload"></i> Submit</button>
                         </div>
                     </form>
                 </div>
@@ -273,8 +273,8 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="usa-button usa-button-secondary" (click)="closeModal()" title="Cancel" aria-label="Cancel">Cancel</button>
-                        <button type="submit" class="usa-button right" title="Save" aria-label="Save" [disabled]="!(submitPackageFileForm.valid)">Save</button>
+                        <button type="button" class="usa-button usa-button-secondary" (click)="closeModal()" title="Cancel" aria-label="Cancel"><i class="fa fa-times"></i> Cancel</button>
+                        <button type="submit" class="usa-button right" title="Save" aria-label="Save" [disabled]="!(submitPackageFileForm.valid)"><i class="fa fa-upload"></i> Save</button>
                     </div>
                 </form>
             </div>
