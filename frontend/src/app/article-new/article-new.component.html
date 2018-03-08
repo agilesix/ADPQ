@@ -11,7 +11,7 @@
         </div>
         
         <div class="usa-width-one-half right-align">            
-            <button class="right usa-button usa-button-secondary" [routerLink]="['/step', stepId]">Cancel</button>
+            <button class="right usa-button usa-button-secondary" [routerLink]="['/step', stepId]"><i class="fa fa-times" title="Cancel edits" aria-label="Cancel edits"></i> Cancel</button>
         </div>
     </div>
 </div>    
@@ -22,7 +22,7 @@
         <form (ngSubmit)="createKnowledgeArticle()" #f="ngForm" class="usa-form">
                 <fieldset>
                         <div class="usa-width-one-half">
-                            <label for="title">Title</label>
+                            <label for="title">Title <span class="red-text text-lighten-1">(*Required)</span></label>
                             <input id="title"
                                 type="text"
                                 required
@@ -30,7 +30,7 @@
                                 [(ngModel)]="knowledgeArticle.title"
                                 class="validate" />
         
-                            <label for="description">Description</label>
+                            <label for="description">Description <span class="red-text text-lighten-1">(*Required)</span></label>
                             <div class="input-field">
                                 <textarea [(ngModel)]="knowledgeArticle.description" id="description" name="description" required class="validate materialize-textarea" data-length="250"></textarea>
                             </div>
@@ -59,7 +59,7 @@
                                     </h3> 
         
                                     <div *ngIf="edit">
-                                        <label for="body">Content</label>
+                                        <label for="body">Content <span class="red-text text-lighten-1">(*Required)</span></label>
                                         <md-editor id="body" name="body" [(ngModel)]="knowledgeArticle.body"></md-editor>
                                     </div>
                                     <div *ngIf="!edit">
@@ -73,7 +73,7 @@
                     </fieldset>
                     <br/>
                     <fieldset>
-                        <button (click)="toggleEdit()" type="button" class="usa-button usa-button-secondary">{{edit ? 'Preview content' : 'Back to editing mode'}}</button>
+                        <button (click)="toggleEdit()" type="button" class="usa-button usa-button-secondary"><i class="fa fa-eye"></i> {{edit ? 'Preview content' : 'Back to editing mode'}}</button>
                     </fieldset>
                     <br><hr/><br>
 
@@ -93,8 +93,8 @@
                 <button type="submit" 
                     [disabled]="!(f.valid)" 
                     value="Publish knowledge article" 
-                    class="usa-button right" ><i class="fa fa-save"></i> Publish knowledge article</button>
-                <button class="usa-button usa-button-secondary right" [routerLink]="['/step', stepId]">Cancel</button>
+                    class="usa-button right" ><i class="fa fa-arrow-right"></i> Publish knowledge article</button>
+                <button class="usa-button usa-button-secondary right" [routerLink]="['/step', stepId]"><i class="fa fa-times" title="Cancel edits" aria-label="Cancel edits"></i> Cancel</button>
                 <br/><br/><br/><br/>
             </fieldset>
         </form>       

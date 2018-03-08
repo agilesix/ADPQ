@@ -13,7 +13,7 @@
                     <p class="text-large">Have something to add to this knowledge article? We'd love to share your templates, samples, or resources with this knowledge base. If you have files that enhance this article, upload them for publishing below.</p>
 
                     <form class="usa-form" #submitFileForm="ngForm" (ngSubmit)="submitFileSubmission()">
-                        <label for="fileName">File Name</label>
+                        <label for="fileName">File name <span class="red-text text-lighten-1">(*Required)</span></label>
                         <input id="fileName"                            
                             type="text"
                             required
@@ -37,7 +37,7 @@
                                 <i class="close fa fa-times"></i>
                             </div>
                         </div> -->
-                        <label for="fileInput">Upload file</label>
+                        <label for="fileInput">Upload file <span class="red-text text-lighten-1">(*Required)</span></label>
                         <div class="file-field input-field">
                           <div class="btn blue">
                             <span>File</span>
@@ -242,7 +242,7 @@
             <div class="modal-body">
                 <p class="text-large">Is it ready to go? Upload it below. Still not sure how to create it? <a>Visit the knowledge base.</a></p>
 
-                <label for="files">Upload file</label>
+                <label for="files">Upload file <span class="red-text text-lighten-1">(*Required)</span></label>
                 <div class="file-field input-field">
                   <div class="btn blue">
                     <span>File</span>
