@@ -1,12 +1,20 @@
 class FileAttachmentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :current_user_is_admin?, only: [:create_multiple, :destroy]
+  before_action :current_user_is_admin?, only: [:create_multiple]
   before_action :set_file_attachment, only: [:show, :edit, :update, :destroy]
 
   # GET /file_attachments
   # GET /file_attachments.json
   def index
-    @file_attachments = params[:approved].present? ? FileAttachment.approved(params[:approved]) : FileAttachment.all
+    @file_attachments = FileAttachment.all
+
+    if params[:approved].present?
+      #filter by approved
+      @file_attachments = FileAttachment.approved(params[:approved])
+    elsif params[:user].present?
+      #filter by the current user
+      @file_attachments = FileAttachment.where(user: current_user)
+    end
   end
 
   # GET /file_attachments/1
@@ -85,7 +93,11 @@ class FileAttachmentsController < ApplicationController
   # DELETE /file_attachments/1
   # DELETE /file_attachments/1.json
   def destroy
-    @file_attachment.destroy
+    if current_user.has_role? 'Admin'
+      @file_attachment.destroy
+    else
+      @file_attachment.destroy if @file_attachment.user == current_user
+    end
     respond_to do |format|
       format.html { redirect_to file_attachments_url, notice: 'File attachment was successfully destroyed.' }
       format.json { head :no_content }

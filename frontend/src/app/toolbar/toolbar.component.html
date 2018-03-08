@@ -6,8 +6,8 @@
             <a [routerLink]="['']" href="/" title="a2" aria-label="a2">a2</a>
         </em>
     </div>
-    <nav role="navigation" class="usa-nav blue darken-2" *ngIf="(authService.userSignedIn$ | async)">
-        <ul *ngIf="!loading" class="usa-nav-primary usa-accordion">
+    <nav role="navigation" class="blue darken-2" *ngIf="(authService.userSignedIn$ | async)">
+        <ul *ngIf="!loading">
             <li>
                 <a href="/" [routerLink]="['']" [ngClass]="{'active': isActive(0)}" title="Home" aria-label="Home">
                     <i class="fa fa-home"></i>

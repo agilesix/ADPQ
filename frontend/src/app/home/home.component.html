@@ -1,41 +1,45 @@
 <!--<div *ngIf="hasRole('Admin')" class="usa-grid usa-grid-max-w usa-grid-top blue darken-2"></div>-->
 <div *ngIf="(authService.userSignedIn$ | async)">
+    
+    
+    <!-- ADMIN HOMEPAGE -->
+    
     <div *ngIf="hasRole('Admin')" class="usa-grid usa-grid-max-w usa-grid-max-h blue darken-3">
         <div class="usa-grid usa-grid-max-w">
             <div class="usa-width-whole card">
                 <div class="usa-grid usa-grid-max-w">
-		                <div class="usa-width-one-third" *ngIf="fileSubmissionCount > 0">
-                        <div class="usa-alert usa-alert-error" role="alert">
+		                <div class="usa-width-one-half">
+                        <div class="usa-alert usa-alert-error" role="alert" *ngIf="fileSubmissionCount > 0">
                             <div class="usa-alert-body">
                                 <h3 class="usa-alert-heading">Review files</h3>
-                                <p class="usa-alert-text">{{ fileSubmissionCount }}  files are waiting for your review before they can be added to knowledge articles</p>
+                                <p class="usa-alert-text">{{ fileSubmissionCount }}  file{{ fileSubmissionCount == 1 ? ' is' : 's are' }} waiting for your review before {{ fileSubmissionCount == 1 ? 'it' : 'they' }} can be added to knowledge articles</p>
                                 <a class="usa-button usa-button-tertiary" (click)="presentModal('fileReview')">Review</a>
                             </div>
                         </div>
-                    </div>
-		                <div class="usa-width-one-third" *ngIf="fileSubmissionCount == 0">
-                        <div class="usa-alert usa-alert-info" role="alert">
+                        <div class="usa-alert usa-alert-info" role="alert" *ngIf="fileSubmissionCount == 0">
                             <div class="usa-alert-body">
                                 <h3 class="usa-alert-heading">Add more content</h3>
                                 <p class="usa-alert-text">You have a great start! Continue to build out each workflow step by adding knowledge articles or uploading additional files.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="usa-width-one-sixth">
-                        <br/><h1 class="blue-text text-sans text-flush">{{metrics.knowledgeArticlesCount}}</h1>
-                        <h6>Knowledge Article{{metrics.knowledgeArticlesCount == 1 ? '': 's'}}</h6>
-                    </div>
-                    <div class="usa-width-one-sixth">
-                        <br/><h1 class="blue-text text-sans text-flush">{{metrics.filesCount}}</h1>
-                        <h6>File{{metrics.filesCount == 1 ? '': 's'}}</h6>
-                    </div>
-                    <div class="usa-width-one-sixth">
-                        <br/><h1 class="blue-text text-sans text-flush">{{metrics.fileSubmissionsCount}}</h1>
-                        <h6>File submission{{metrics.fileSubmissionsCount == 1 ? '': 's'}}</h6>
-                    </div>
-                    <div class="usa-width-one-sixth">
-                        <br/><h1 class="blue-text text-sans text-flush">{{metrics.usersCount}}</h1>
-                        <h6>User{{metrics.usersCount == 1 ? '': 's'}}</h6>
+                    <div class="usa-width-one-half">
+                        <div class="usa-width-one-fourth">
+                            <br/><h1 class="blue-text text-sans text-flush">{{metrics.knowledgeArticlesCount}}</h1>
+                            <h6>Knowledge Article{{metrics.knowledgeArticlesCount == 1 ? '': 's'}}</h6>
+                        </div>
+                        <div class="usa-width-one-fourth">
+                            <br/><h1 class="blue-text text-sans text-flush">{{metrics.filesCount}}</h1>
+                            <h6>File{{metrics.filesCount == 1 ? '': 's'}}</h6>
+                        </div>
+                        <div class="usa-width-one-fourth">
+                            <br/><h1 class="blue-text text-sans text-flush">{{metrics.fileSubmissionsCount}}</h1>
+                            <h6>File submission{{metrics.fileSubmissionsCount == 1 ? '': 's'}}</h6>
+                        </div>
+                        <div class="usa-width-one-fourth">
+                            <br/><h1 class="blue-text text-sans text-flush">{{metrics.usersCount}}</h1>
+                            <h6>User{{metrics.usersCount == 1 ? '': 's'}}</h6>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -67,6 +71,9 @@
         </div>
     </div>
 
+    
+    <!-- CONTRIBUTOR HOMEPAGE -->
+    
     <div *ngIf="hasRole('Contributor')" class="usa-grid usa-grid-max-w usa-grid-max-h blue darken-3">
         <div class="usa-grid usa-grid-max-w">
             <div class="usa-width-whole card">
@@ -78,14 +85,21 @@
                                 <p class="usa-alert-text">There are five steps to a solid agile aquisition workflow. Before you assemble your solicitation package, check out each step's knowledge base to learn more and explore available resources.</p>
                             </div>
                         </div>
+                        <br/>
                     </div>
-                    <div class="usa-width-one-half">
+                    <div class="usa-width-one-fourth">
                         <h6 class="text-flush">Your solicitation package</h6>
                         <h1 class="text-sans text-flush">0% <small>assembled</small></h1>
                         <!--Show only when NOT completed-->
                         <p>You have 5 more steps to complete!</p>
                         <!--TODO: Show when 5/5 complete:
                         <a class="usa-button">Download completed portfolio</a>-->
+                        <br/>
+                    </div>
+                    <div class="usa-width-one-fourth" *ngIf="user.fileAttachments.approved.length > 0 || user.fileAttachments.unapproved.length > 0">
+                        <h6 class="text-flush">Your knowledge base contributions</h6>
+                        <h1 class="text-sans text-flush"><small>{{user.fileAttachments.approved.length ++ user.fileAttachments.unapproved.length}} submission{{user.fileAttachments.approved.length ++ user.fileAttachments.unapproved.length == 1 ? '': 's'}}</small></h1>
+                        <a class="usa-button usa-button-secondary" (click)="presentModal('fileManage')">View submissions</a>
                     </div>
                 </div>
             </div>

@@ -80,12 +80,10 @@ export class ArticleEditComponent implements OnInit {
   }
 
   updateKnowledgeArticle(form) {
-    //console.log(form);
     this.submitting = true;
     this.knowledgeArticle.id = this.id;
     this.knowledgeArticle.user_id = this.authTokenService.currentUserData.id;
     this.knowledgeArticle.workflow_step_id = this.stepId;
-    console.log(this.knowledgeArticle.file_attachments);
     this.articleService.updateKnowledgeArticle(this.knowledgeArticle).subscribe(
       data => { 
         this.article = data.json();
@@ -104,8 +102,7 @@ export class ArticleEditComponent implements OnInit {
           this.router.navigate(['/step/'+ this.stepId + '/article/' + this.article.id]);
         }
       },
-      err => console.error(err),
-      () => console.log('article: ', this.article)
+      err => console.error(err)
     );
   }
 
@@ -150,17 +147,16 @@ export class ArticleEditComponent implements OnInit {
         this.roles = this.article.roles;
         this.loading = false;
       },
-      err => console.error(err),
-      () => console.log('article: ', this.article)
+      err => console.error(err)
     );
   }
 
   patchContentBlocks() {
     let control = <FormArray>this.form.controls.contentBlocks;
     this.article.content_blocks.forEach(cb => {
-      let roles = []
-      cb.roles.forEach(r => {return r.id})
-      control.push(this.fb.group({id: cb.id, roles: roles, content: cb.content}))
+      let roles = [];
+      cb.roles.forEach(r => {return r.id});
+      control.push(this.fb.group({id: cb.id, roles: roles, content: cb.content}));
     });
   }
 
@@ -168,16 +164,26 @@ export class ArticleEditComponent implements OnInit {
     this.stepLoading = true;
     this.stepService.getWorkflowStep(this.stepId).subscribe(
       data => { 
-        this.step = data.json();;
+        this.step = data.json();
         this.stepLoading = false;
       },
-      err => console.error(err),
-      () => console.log('step: ', this.step)
+      err => console.error(err)
     );
   } 
   
   toggleEdit() {
     this.edit = !this.edit;
+  }
+
+  removeFileAttachment(id) {
+    if (confirm("Are you sure you want to delete this uploaded file? This cannot be undone.")) {
+      this.articleService.removeFileAttachment({file_attachment_id: id}).subscribe(
+        data => {
+          this.getKnowledgeArticle();
+        },
+        err => console.error(err)
+      );
+    }
   }
 
 }

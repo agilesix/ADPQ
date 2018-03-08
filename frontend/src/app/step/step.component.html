@@ -1,4 +1,4 @@
-<br/><br/><br/>
+<br/><br/>
 
 <div class="usa-grid">
     <div *ngIf="loading" class="loading">Loading...</div>
@@ -28,29 +28,29 @@
     </div>
 
     <div class="usa-width-one-third">
-        <div class="a2-callout border-primary" *ngIf="hasRole('Contributor')">
-            <label>Already completed this?</label>
-            <button class="usa-button usa-button-secondary"(click)="presentModal('comingSoon')">Add to your solicitation package</button>
-        </div>
-
-        <br/><br/>
-
         <div class="a2-callout border-tertiary" *ngIf="hasRole('Admin')">
             <button *ngIf="!edit" (click)="toggleEdit()" class="usa-button usa-button-tertiary"><i class="fa fa-pencil"></i>  Edit</button>
             
-            <button *ngIf="edit" (click)="toggleEdit()" class="usa-button usa-button-secondary">Cancel edits</button>
-            <button *ngIf="edit" (click)="updateStep()" class="usa-button">Save</button>
+            <button *ngIf="edit" (click)="toggleEdit()" class="usa-button usa-button-secondary"><i class="fa fa-times"></i> Cancel edits</button>
+            <button *ngIf="edit" (click)="updateStep()" class="usa-button"><i class="fa fa-save"></i> Save</button>
             <hr *ngIf="edit" />
             
             <a [routerLink]="['new/article']" class="usa-button usa-button-tertiary"><i class="fa fa-plus"></i> Add article</a>
             
             <!--TODO: Wire up, only show if this Step has submitted files that have yet to be approved/rejected, show number count of only this Step's waiting files -->
-	    <div class="usa-alert usa-alert-error" role="alert" *ngIf="!loading && step.file_submissions_count > 0">
+	          <div class="usa-alert usa-alert-error" role="alert" *ngIf="!loading && step.file_submissions_count > 0">
                 <div class="usa-alert-body">
-                    <p class="usa-alert-text">{{ step.file_submissions_count }} files are waiting for your review before they can be added to knowledge articles</p>
+                    <p class="usa-alert-text">{{ step.file_submissions_count }} file{{step.file_submissions_count == 1 ? ' is': 's are'}} waiting for your review before {{step.file_submissions_count == 1 ? 'it': 'they'}} can be added to knowledge articles</p>
                     <a class="usa-button usa-button-tertiary" (click)="presentModal('fileReview')">Review</a>
                 </div>
             </div>
+        </div>
+        
+        <br/><br/>
+        
+        <div class="a2-callout border-primary" *ngIf="hasRole('Contributor')">
+            <label>Already completed this?</label>
+            <button class="usa-button usa-button-secondary"(click)="presentModal('comingSoon')">Add to your solicitation package</button>
         </div>
     </div>
 </div>

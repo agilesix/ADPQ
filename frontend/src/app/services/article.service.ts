@@ -31,6 +31,7 @@ export class ArticleService {
     return this.authTokenService.put(resource + '/' + article.id + '.json', article);
   }
 
+  // split out into a seprate service
   uploadFileAttachments(file_attachments: Array<{filename: string, filetype: string, knowledge_article_id: number, value: any}>) {
     return this.authTokenService.post('file_attachments/create/multiple.json', file_attachments);
   }
@@ -46,10 +47,9 @@ export class ArticleService {
   removeFileAttachment(file_attachment: {file_attachment_id: number}) {
     return this.authTokenService.delete('file_attachments/' + file_attachment.file_attachment_id + '.json');
   }
-
-  // split out into a seprate service
-  getFileSubmissions() {
-    return this.authTokenService.get('file_attachments.json', {params: {approved: false}});
+  
+  getFileAttachments(params) {
+    return this.authTokenService.get('file_attachments.json', {params: params});
   }
 
 }

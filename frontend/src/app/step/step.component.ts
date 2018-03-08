@@ -40,7 +40,7 @@ export class StepComponent implements OnInit {
         this.id = +params['id'];
         this.getStep(this.id);
       });
-     this.initModal()
+     this.initModal();
   }
 
   initModal() {
@@ -90,10 +90,9 @@ export class StepComponent implements OnInit {
         this.workflowStep.description = this.step.description;
         this.workflowStep.id = this.step.id;
         this.loading = false;
-        this.refreshModal()
+        this.refreshModal();
       },
-      err => console.error(err),
-      () => console.log('step: ', this.step)
+      err => console.error(err)
     );
   }
 
@@ -106,8 +105,7 @@ export class StepComponent implements OnInit {
         this.stepService.getWorkflowSteps();
         this.edit = false;
       },
-      err => console.error(err),
-      () => console.log('article: ', this.step)
+      err => console.error(err)
     );
   }
 
