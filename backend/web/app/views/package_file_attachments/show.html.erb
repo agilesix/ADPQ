@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Workflow step package:</strong>
+  <%= @package_file_attachment.workflow_step_package %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @package_file_attachment.user %>
+</p>
+
+<%= link_to 'Edit', edit_package_file_attachment_path(@package_file_attachment) %> |
+<%= link_to 'Back', package_file_attachments_path %>

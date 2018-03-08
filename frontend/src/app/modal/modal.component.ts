@@ -15,11 +15,19 @@ export class ModalComponent implements OnInit {
   modalActions = new EventEmitter<string|MaterializeAction>();
   fileActions = new EventEmitter<{file_attachment_id: number, action: string}>();
   fileSubmit = new EventEmitter<{filename: string, category_id: number, file_contents: any}>();
+  packageFileSubmit = new EventEmitter<{filename: string, workflow_step_package_id: number, file_contents: any}>();
   submission = new EventEmitter();
 
   public submitFile = {
     fileName: '',
     fileCategory: 1,
+    fileContents: null,
+    fileInput: null
+  }
+
+  public packageFileAttachment = {
+    fileName: '',
+    workflowStepPackageId: 0,
     fileContents: null,
     fileInput: null
   }
@@ -35,6 +43,8 @@ export class ModalComponent implements OnInit {
     }
   }
 
+  public data: any;
+
   public error = null;
 
   constructor(public articleService: ArticleService) {}
@@ -44,9 +54,10 @@ export class ModalComponent implements OnInit {
     this.getUserFileAttachments();
   }
 
-  openModal(mode) {
+  openModal(mode, data?) {
     this.modalContent = mode;
     this.modalActions.emit({action: 'modal', params: ['open']});
+    this.data = data;
   }
 
   closeModal() {
@@ -65,13 +76,13 @@ export class ModalComponent implements OnInit {
     return this.modalContent === 'fileSubmit';
   }
 
-  onFileInputChange(event: any) {    
+  onFileInputChange(event: any, fileInputModel) {    
     if(event.target.files && event.target.files.length > 0) {
       let file = event.target.files[0];
       let reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {
-        this.submitFile.fileContents =
+        this[fileInputModel].fileContents =
           {
             filename: file.name,
             filetype: file.type,
@@ -83,6 +94,11 @@ export class ModalComponent implements OnInit {
 
   submitFileSubmission() {
     this.fileSubmit.emit({filename: this.submitFile.fileName, category_id: this.submitFile.fileCategory, file_contents: this.submitFile.fileContents});
+  }
+
+  submitPackageFileAttachment() {
+    //data is the workflow step package
+    this.packageFileSubmit.emit({filename: this.packageFileAttachment.fileName, workflow_step_package_id: this.data.id, file_contents: this.packageFileAttachment.fileContents});
   }
 
   modalFileReview() {

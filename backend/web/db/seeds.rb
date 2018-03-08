@@ -28,7 +28,7 @@ tanya.add_role 'Contributor' unless tanya.blank? || tanya.has_role?('Contributor
 workflow_type = WorkflowType.create!(name: 'Acquisition Workflow Type', description: 'The workflow to acquire agile.') unless WorkflowType.exists? name: 'Acquisition Workflow Type'
 
 #Create Workflow
-workflow = Workflow.create!(workflow_type: workflow_type, name: 'Agile Acquisition Workflow') unless workflow_type.blank? || Workflow.exists?(name: 'Agile Acquisition Workflow')
+workflow = Workflow.create!(workflow_type: workflow_type, name: 'Agile Acquisition Workflow', package_name: 'Solicitation') unless workflow_type.blank? || Workflow.exists?(name: 'Agile Acquisition Workflow')
 
 #Create Workflow Step(s)
 vision_statement_description = "---
@@ -63,3 +63,11 @@ ft3 = FileType.create!(name: 'PDF') unless FileType.exists?(name: 'PDF')
 cat1 = Category.create!(name: 'Template') unless Category.exists?(name: 'Template')
 cat2 = Category.create!(name: 'Example') unless Category.exists?(name: 'Example')
 cat3 = Category.create!(name: 'Knowledge Reference') unless Category.exists?(name: 'Knowledge Reference')
+
+#start each user with a workflow package
+User.all.each do |u|
+  package = WorkflowPackage.create!(name: 'My First Solicitation Package', user: u, workflow: workflow) unless WorkflowPackage.find_by(user: u, workflow: workflow).present?
+  WorkflowStep.where(workflow: workflow).each do |wfs|
+    WorkflowStepPackage.create!(user: u, workflow_step: wfs, workflow_package: package) unless WorkflowStepPackage.find_by(user: u, workflow_step: wfs, workflow_package: package).present?
+  end
+end
