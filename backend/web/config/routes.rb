@@ -1,6 +1,9 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
+  resources :package_file_attachments
+  resources :workflow_step_packages
+  resources :workflow_packages
   resources :file_types
   resources :categories
   resources :file_attachments do

@@ -1,0 +1,2 @@
+module PackageFileAttachmentsHelper
+end

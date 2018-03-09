@@ -20,9 +20,14 @@ exports.config = {
     print: function() {}
   },
   onPrepare() {
+    global.ngApimock = require('ng-apimock')();
     require('ts-node').register({
       project: 'e2e/tsconfig.e2e.json'
     });
     jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
+  },
+  ngApimockOpts: {
+    angularVersion: 5,  // {number} provide major version of Angular
+    hybrid: false // optional boolean which can be used for testing Angular apps within an AngularJs app.
   }
 };

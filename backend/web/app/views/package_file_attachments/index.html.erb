@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Package File Attachments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Workflow step package</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @package_file_attachments.each do |package_file_attachment| %>
+      <tr>
+        <td><%= package_file_attachment.workflow_step_package %></td>
+        <td><%= package_file_attachment.user %></td>
+        <td><%= link_to 'Show', package_file_attachment %></td>
+        <td><%= link_to 'Edit', edit_package_file_attachment_path(package_file_attachment) %></td>
+        <td><%= link_to 'Destroy', package_file_attachment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Package File Attachment', new_package_file_attachment_path %>

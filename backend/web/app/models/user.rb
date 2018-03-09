@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base
   has_many :file_attachments
+  has_many :workflow_packages
+  has_many :workflow_step_packages
+  has_many :package_file_attachments
+
   rolify before_add: :remove_all_roles
   # Include default devise modules.
   devise :database_authenticatable, :registerable,

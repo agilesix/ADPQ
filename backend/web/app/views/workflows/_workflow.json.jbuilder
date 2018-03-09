@@ -1,4 +1,4 @@
-json.extract! workflow, :id, :workflow_type, :name, :description, :created_at, :updated_at
+json.extract! workflow, :id, :workflow_type, :name, :description, :created_at, :updated_at, :package_name
 json.url workflow_url(workflow, format: :json)
 
 json.users_count User.all.count if current_user.has_role? 'Admin'

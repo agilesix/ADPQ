@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180302003934) do
+ActiveRecord::Schema.define(version: 20180307175251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,20 @@ ActiveRecord::Schema.define(version: 20180302003934) do
     t.index ["user_id"], name: "index_knowledge_articles_on_user_id", using: :btree
   end
 
+  create_table "package_file_attachments", force: :cascade do |t|
+    t.string   "filename"
+    t.integer  "workflow_step_package_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "attached_file_file_name"
+    t.string   "attached_file_content_type"
+    t.integer  "attached_file_file_size"
+    t.datetime "attached_file_updated_at"
+    t.index ["user_id"], name: "index_package_file_attachments_on_user_id", using: :btree
+    t.index ["workflow_step_package_id"], name: "index_package_file_attachments_on_workflow_step_package_id", using: :btree
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.string   "resource_type"
@@ -107,12 +121,34 @@ ActiveRecord::Schema.define(version: 20180302003934) do
     t.index ["user_id"], name: "index_users_roles_on_user_id", using: :btree
   end
 
+  create_table "workflow_packages", force: :cascade do |t|
+    t.integer  "workflow_id"
+    t.string   "name"
+    t.string   "description"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_workflow_packages_on_user_id", using: :btree
+    t.index ["workflow_id"], name: "index_workflow_packages_on_workflow_id", using: :btree
+  end
+
   create_table "workflow_step_knowledge_articles", force: :cascade do |t|
     t.integer "workflow_step_id"
     t.integer "knowledge_article_id"
     t.index ["knowledge_article_id"], name: "index_workflow_step_knowledge_articles_on_knowledge_article_id", using: :btree
     t.index ["workflow_step_id", "knowledge_article_id"], name: "index_on_wfs_ka_id", using: :btree
     t.index ["workflow_step_id"], name: "index_workflow_step_knowledge_articles_on_workflow_step_id", using: :btree
+  end
+
+  create_table "workflow_step_packages", force: :cascade do |t|
+    t.integer  "workflow_package_id"
+    t.integer  "workflow_step_id"
+    t.integer  "user_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.index ["user_id"], name: "index_workflow_step_packages_on_user_id", using: :btree
+    t.index ["workflow_package_id"], name: "index_workflow_step_packages_on_workflow_package_id", using: :btree
+    t.index ["workflow_step_id"], name: "index_workflow_step_packages_on_workflow_step_id", using: :btree
   end
 
   create_table "workflow_steps", force: :cascade do |t|
@@ -137,6 +173,7 @@ ActiveRecord::Schema.define(version: 20180302003934) do
     t.string   "description"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.string   "package_name"
     t.index ["workflow_type_id"], name: "index_workflows_on_workflow_type_id", using: :btree
   end
 
@@ -145,6 +182,13 @@ ActiveRecord::Schema.define(version: 20180302003934) do
   add_foreign_key "file_attachments", "knowledge_articles"
   add_foreign_key "file_attachments", "users"
   add_foreign_key "knowledge_articles", "users"
+  add_foreign_key "package_file_attachments", "users"
+  add_foreign_key "package_file_attachments", "workflow_step_packages"
+  add_foreign_key "workflow_packages", "users"
+  add_foreign_key "workflow_packages", "workflows"
+  add_foreign_key "workflow_step_packages", "users"
+  add_foreign_key "workflow_step_packages", "workflow_packages"
+  add_foreign_key "workflow_step_packages", "workflow_steps"
   add_foreign_key "workflow_steps", "workflows"
   add_foreign_key "workflows", "workflow_types"
 end

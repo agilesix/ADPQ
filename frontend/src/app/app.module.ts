@@ -29,6 +29,9 @@ import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 import { LoginGuard } from './guards/login.guard';
 import { WorkflowService } from './services/workflow.service';
 import { Ng2FileRequiredModule } from 'ng2-file-required';
+import { WorkflowPackageService } from './services/workflow-package.service';
+import { WorkflowStepPackageService } from './services/workflow-step-package.service';
+import { PackageFileAttachmentService } from './services/package-file-attachment.service';
 
 @NgModule({
   declarations: [
@@ -66,7 +69,10 @@ import { Ng2FileRequiredModule } from 'ng2-file-required';
     {provide: APP_BASE_HREF, useValue: '/'},
     StepService,
     ArticleService,
-    WorkflowService
+    WorkflowService,
+    WorkflowPackageService,
+    WorkflowStepPackageService,
+    PackageFileAttachmentService
   ],
   bootstrap: [AppComponent]
 })

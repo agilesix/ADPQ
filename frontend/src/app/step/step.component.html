@@ -48,9 +48,18 @@
         
         <br/><br/>
         
-        <div class="a2-callout border-primary" *ngIf="hasRole('Contributor')">
-            <label>Already completed this?</label>
-            <button class="usa-button usa-button-secondary"(click)="presentModal('comingSoon')">Add to your solicitation package</button>
+        <div class="a2-callout border-primary" *ngIf="hasRole('Contributor') && !loading && !loadingUser">
+            <div *ngIf="user.workflowStepPackage.package_file_attachments.length == 0">
+                <label>Already completed this?</label>
+                <button type="button"  class="usa-button usa-button-secondary" (click)="presentModal('portfolio', user.workflowStepPackage)"><i class="fa fa-plus"></i> Add to your {{step.workflow.package_name}} Package</button>
+            </div>
+            <div *ngIf="user.workflowStepPackage.package_file_attachments.length > 0" class="card-content">
+                <p class="grey-text text-darken-1"><i>Great work! You've completed this workflow step.</i></p>
+                <a href="{{user.workflowStepPackage.package_file_attachments[0].attached_file}}"><i class="fa fa-download"></i> {{user.workflowStepPackage.package_file_attachments[0].filename}}</a>
+                <div>
+                    <button type="button" class="usa-button usa-button-secondary"(click)="presentModal('comingSoon')"><i class="fa fa-pencil"></i> Edit</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

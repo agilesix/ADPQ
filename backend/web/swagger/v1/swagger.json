@@ -241,6 +241,151 @@
         }
       }
     },
+    "/package_file_attachments.json": {
+      "post": {
+        "summary": "create",
+        "tags": [
+          "PackageFileAttachments"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "access-token",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "client",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "uid",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "package_file_attachment",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "workflow_step_package_id": {
+                  "type": "integer"
+                },
+                "filename": {
+                  "type": "string"
+                },
+                "file_contents": {
+                  "type": "object",
+                  "value": {
+                    "type": "string"
+                  },
+                  "filename": {
+                    "type": "string"
+                  },
+                  "filetype": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "package file attachment created"
+          }
+        }
+      }
+    },
+    "/workflow_packages.json": {
+      "get": {
+        "summary": "index",
+        "tags": [
+          "WorkflowPackages"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "access-token",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "client",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "uid",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "workflow_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user's workflow packages for workflow retrieved"
+          }
+        }
+      }
+    },
+    "/workflow_step_packages.json": {
+      "get": {
+        "summary": "index",
+        "tags": [
+          "WorkflowStepPackages"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "access-token",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "client",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "uid",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "workflow_package_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user's workflow step packages for workflow package retrieved"
+          }
+        }
+      }
+    },
     "/workflow_steps.json": {
       "get": {
         "summary": "index",

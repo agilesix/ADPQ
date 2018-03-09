@@ -16,9 +16,9 @@ describe('a2 App', () => {
     expect(page.getLoginHeaderText()).toEqual('login');
   });
 
-//  it('should display the initial toolbar', () => {
-//    expect(page.getToolbarText()).toEqual('a2');
-//  });
+  it('should display the initial toolbar', () => {
+    expect(page.getToolbarText()).toEqual('');
+  });
 
   it('should log the user in', async() => {
     await MockService.setup(browser);

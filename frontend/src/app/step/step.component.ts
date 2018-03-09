@@ -5,6 +5,9 @@ import { ModalComponent } from '../modal/modal.component';
 import { StepService } from '../services/step.service';
 import { ArticleService } from '../services/article.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { WorkflowStepPackageService } from '../services/workflow-step-package.service';
+import { WorkflowPackageService } from '../services/workflow-package.service';
+import { PackageFileAttachmentService } from '../services/package-file-attachment.service';
 
 @Component({
   selector: 'app-step',
@@ -17,7 +20,8 @@ export class StepComponent implements OnInit {
 
   id: number;
   private sub: any;
-  loading: boolean;
+  loading: boolean = true;
+  loadingUser: boolean = true;
   public step;
 
   public workflowStep = {
@@ -26,13 +30,26 @@ export class StepComponent implements OnInit {
     description: ''
   }
 
-  @ViewChild('modal') modal: ModalComponent;
-
-  presentModal(mode) {
-    this.modal.openModal(mode);
+  public user = {
+    workflowPackage: {},
+    workflowStepPackage: {}
   }
 
-  constructor(public authTokenService:Angular2TokenService, private stepService: StepService, private articleService: ArticleService, private route: ActivatedRoute, private router: Router) { }
+  @ViewChild('modal') modal: ModalComponent;
+
+  presentModal(mode, data) {
+    this.modal.openModal(mode, data);
+  }
+
+  constructor(
+    public authTokenService:Angular2TokenService, 
+    private stepService: StepService, 
+    private articleService: ArticleService, 
+    private route: ActivatedRoute, private router: Router,
+    private workflowPackageService: WorkflowPackageService,
+    private workflowStepPackageService: WorkflowStepPackageService,
+    private packageFileAttachmentService: PackageFileAttachmentService
+  ) { }
 
   ngOnInit() {
      window.scrollTo(0, 0);
@@ -40,7 +57,7 @@ export class StepComponent implements OnInit {
         this.id = +params['id'];
         this.getStep(this.id);
       });
-     this.initModal();
+     this.initModal();          
   }
 
   initModal() {
@@ -60,6 +77,18 @@ export class StepComponent implements OnInit {
         }
       }
     });
+
+    this.modal.packageFileSubmit.subscribe(
+      packageFileAttachmentData => {
+        this.packageFileAttachmentService.createPackageFileAttachment(packageFileAttachmentData).subscribe(
+          data => {
+            this.getWorkflowPackage(this.step.workflow.id);
+            this.modal.submitSuccess();
+          },
+          err => console.log(err)
+        );
+      }
+    )
   }
 
   refreshModal() {
@@ -91,6 +120,7 @@ export class StepComponent implements OnInit {
         this.workflowStep.id = this.step.id;
         this.loading = false;
         this.refreshModal();
+        this.getWorkflowPackage(this.step.workflow.id);
       },
       err => console.error(err)
     );
@@ -115,5 +145,25 @@ export class StepComponent implements OnInit {
   
   toggleEdit() {
     this.edit = !this.edit;
+  }
+
+  //eventually, this will be plural
+  getWorkflowPackage(workflow_id) {
+    this.workflowPackageService.getWorkflowPackages(workflow_id).subscribe(
+      data => {
+        this.user.workflowPackage = data.json()[0];
+        this.getWorkflowStepPackages(this.user.workflowPackage['id']);
+      }
+    )
+  }
+
+  getWorkflowStepPackages(workflow_package_id) {
+    this.workflowStepPackageService.getWorkflowStepPackages(workflow_package_id).subscribe(
+      data => {
+        this.loadingUser = false;
+        //find by step id
+        this.user.workflowStepPackage = data.json().find(x => x.workflow_step.id == this.id);
+      }
+    )
   }
 }

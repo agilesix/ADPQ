@@ -44,4 +44,5 @@ json.workflow workflow_step.workflow,
               :name,
               :description,
               :workflow_type,
+              :package_name,
               :created_at, :updated_at

@@ -1,9 +1,9 @@
 <!--<div *ngIf="hasRole('Admin')" class="usa-grid usa-grid-max-w usa-grid-top blue darken-2"></div>-->
 <div *ngIf="(authService.userSignedIn$ | async)">
-    
-    
+
+
     <!-- ADMIN HOMEPAGE -->
-    
+
     <div *ngIf="hasRole('Admin')" class="usa-grid usa-grid-max-w usa-grid-max-h blue darken-3">
         <div class="usa-grid usa-grid-max-w">
             <div class="usa-width-whole card">
@@ -71,29 +71,28 @@
         </div>
     </div>
 
-    
+
     <!-- CONTRIBUTOR HOMEPAGE -->
-    
+
     <div *ngIf="hasRole('Contributor')" class="usa-grid usa-grid-max-w usa-grid-max-h blue darken-3">
-        <div class="usa-grid usa-grid-max-w">
+        <div *ngIf="!loading" class="usa-grid usa-grid-max-w">
             <div class="usa-width-whole card">
                 <div class="usa-grid usa-grid-max-w">
                     <div class="usa-width-one-half">
                         <div class="usa-alert usa-alert-info" role="alert">
                             <div class="usa-alert-body">
                                 <h3 class="usa-alert-heading">Not sure where to start?</h3>
-                                <p class="usa-alert-text">There are five steps to a solid agile aquisition workflow. Before you assemble your solicitation package, check out each step's knowledge base to learn more and explore available resources.</p>
+                                <p *ngIf="!loading" class="usa-alert-text">There are {{workflow.workflow_steps.length}} steps to a solid {{workflow.name}}. Before you assemble your {{workflow.package_name}} Package, check out each step's knowledge base to learn more and explore available resources.</p>
                             </div>
                         </div>
                         <br/>
                     </div>
                     <div class="usa-width-one-fourth">
-                        <h6 class="text-flush">Your solicitation package</h6>
-                        <h1 class="text-sans text-flush">0% <small>assembled</small></h1>
-                        <!--Show only when NOT completed-->
-                        <p>You have 5 more steps to complete!</p>
-                        <!--TODO: Show when 5/5 complete:
-                        <a class="usa-button">Download completed portfolio</a>-->
+                        <h6 *ngIf="!loading" class="text-flush">Your {{workflow.package_name}} Package</h6>
+                        <h1 class="text-sans text-flush">{{user.percentageCompleted}}% <small>assembled</small></h1>
+                        <p *ngIf="workflow.workflow_steps.length - user.completedSteps > 0">You have {{workflow.workflow_steps.length - user.completedSteps}} more step{{workflow.workflow_steps.length - user.completedSteps == 1 ? '' : 's'}} to complete!</p>
+
+                        <button *ngIf="workflow.workflow_steps.length - user.completedSteps == 0" type="button" class="usa-button" (click)="presentModal('comingSoon')">Download completed portfolio</button>
                         <br/>
                     </div>
                     <div class="usa-width-one-fourth" *ngIf="user.fileAttachments.approved.length > 0 || user.fileAttachments.unapproved.length > 0">
@@ -106,8 +105,8 @@
         </div>
         <br/>
         <div class="usa-grid usa-grid-max-w" *ngIf="!loading">
-            <div class="usa-width-one-fifth card" *ngFor="let step of workflow.workflow_steps; let i = index" [attr.data-index]="i">
-                <a [routerLink]="['/step', step.id]">
+            <div class="usa-width-one-fifth card" *ngFor="let step of user.workflowStepPackages; let i = index" [attr.data-index]="i">
+                <a [routerLink]="['/step', step.workflow_step.id]">
                     <div class="card-content green lighten-1 white-text">
                         <i class="fa fa-arrow-right fa-2x right"></i>
                         <p class="text-sans text-large"><b>Read {{step.knowledge_articles.length}} article{{step.knowledge_articles.length == 1 ? '': 's'}}
@@ -116,24 +115,26 @@
                 </a>
                 <div class="card-content">
                     <h1 class="border-primary">
-                        <i class="fa fa-square-o"></i>
-                        <!--TODO: Wire up to show when completed:
-                        <i class="fa fa-check-square green-text text-lighten-1"></i>-->
+                        <i *ngIf="step.package_file_attachments.length == 0" class="fa fa-square-o"></i>
+
+                        <i *ngIf="step.package_file_attachments.length > 0" class="fa fa-check-square green-text text-lighten-1"></i>
 
                         {{i + 1}}
                     </h1>
-                    <h3 class="text-sans grey-text text-darken-3 clearfix">{{step.name}}</h3>
+                    <h3 class="text-sans grey-text text-darken-3 clearfix">{{step.workflow_step.name}}</h3>
                 </div>
-                <div class="card-content">
+                <div *ngIf="step.package_file_attachments.length == 0" class="card-content">
                     <p class="grey-text text-darken-1"><i>Already completed this?</i></p>
-                    <a class="usa-button usa-button-secondary"(click)="presentModal('comingSoon')">Add to solicitation package</a>
+                    <a class="usa-button usa-button-secondary" (click)="presentModal('portfolio', step)">Add to {{workflow.package_name}} Package</a>
                 </div>
 
-                <!--TODO: Wire up to display when complete
-                <div class="card-content">
+                <div *ngIf="step.package_file_attachments.length > 0" class="card-content">
                     <p class="grey-text text-darken-1"><i>Great work! You've completed this workflow step.</i></p>
-                    <a class="usa-button usa-button-secondary"(click)="presentModal('portfolio')">Edit</a>
-                </div>-->
+                    <a href="{{step.package_file_attachments[0].attached_file}}" target="_blank"><i class="fa fa-download"></i> {{step.package_file_attachments[0].filename}}</a>
+                    <div>
+                        <button type="button" class="usa-button usa-button-secondary"(click)="presentModal('comingSoon')"><i class="fa fa-pencil"></i> Edit</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
