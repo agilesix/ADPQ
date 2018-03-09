@@ -237,8 +237,8 @@
 
         <!-- MODAL: portfolio -->
         <div *ngIf="modalPortfolio()">
-            <h3>Add your {{data.workflow_step.name}} to your {{data.workflow.package_name}} Package</h3>
             <div *ngIf="!submitted">
+                <h3>Add your {{data.workflow_step.name}} to your {{data.workflow.package_name}} Package</h3>
                 <form class="usa-form" #submitPackageFileForm="ngForm" (ngSubmit)="submitPackageFileAttachment()">
                     <div class="modal-body">
                         <p class="text-large">Is it ready to go? Upload it below. Still not sure how to create it? <a (click)="closeModal()" [routerLink]="['/step', data.workflow_step.id]">Visit the {{data.workflow_step.name}} knowledge base.</a></p>
