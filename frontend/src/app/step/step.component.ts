@@ -37,7 +37,7 @@ export class StepComponent implements OnInit {
 
   @ViewChild('modal') modal: ModalComponent;
 
-  presentModal(mode, data) {
+  presentModal(mode, data?) {
     this.modal.openModal(mode, data);
   }
 
