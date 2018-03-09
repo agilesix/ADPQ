@@ -220,6 +220,14 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+
+
+@media screen and (max-width: 1200px) {
+    &.usa-grid-top {
+        display: none;
+    }
+}
+
 @media screen and (min-width: 600px) and (max-width: 1200px) {
     .usa-width-one-third, .usa-width-two-thirds {
         float: none;
