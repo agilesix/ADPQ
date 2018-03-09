@@ -58,7 +58,7 @@ We think of HCD as being in **3** repeating phases:
 
 - **Dan Levenson** (Agile Six) - *Content Writer*
 
-- **Brian Derfer** (Agile Six)  - *Technical Architect*
+- **Brian Derfer** (Agile Six)  - *Solution Architect*
 
 - **Aurora Hay** (Agile Six)  - *Fullstack Web Developer, DevOps Engineer*
 
@@ -126,7 +126,7 @@ H. We followed a style guide based on [USWDS](https://designsystem.digital.gov/)
 
 - [PostgreSQL](https://git.postgresql.org/gitweb/) `9.6.2` as a relational DBMS
 
-- [AngularJS](https://angularjs.org/) `5.2.5` as a JavaScript frontend framework
+- [AngularJS](https://angularjs.org/) `5.2.5` as a JavaScript front-end framework
 
 - [Docker/docker-compose](https://www.docker.com/) as our containerized deployment/development tool
 
@@ -134,7 +134,11 @@ and many more.
 
 **M.** We deployed the prototype on [AWS ElasticBeanstalk](https://aws.amazon.com/elasticbeanstalk/), a **PaaS** provider. 
 
-**N.** We developed automated unit tests for our code using **[Rspec](http://rspec.info/)**, **[Jasmine](https://jasmine.github.io/)**, and **[Protractor](http://www.protractortest.org/#/)**.
+**N.** Our functional testing strategy includes two modes: Back-end testing and front-end testing with the goal of achieving full feature coverage and 100% line coverage.
+
+The backend, which is a Rails stack, is tested at two levels: at the domain model layer, using rspec with shoulda matchers, and at the full-stack or integration level, using rspec with rswag (https://github.com/domaindrivendev/rswag), a Swagger integration Gem.
+
+The front-end is written in Angular 5 to allow rapid prototyping using pure HTML (given the composition of the development team). Our preferred testing tool, **[Protractor](http://www.protractortest.org/#/)** (https://www.protractortest.org), is not well supported yet for Angular 5, and given the limited number of functional features implemented so far, we have written a minimal set of automated functional tests for the front-end using **[Jasmine](https://jasmine.github.io/)** and Protractor. We have supplemented these automated tests with manual testing for some areas of functionality for this MVP release. We have also added user stories to the backlog to increase the coverage of automated tests on the front-end. 
 
 **O.** We used [CircleCI](https://circleci.com) for **continuous integration** and, once the builds on our master branch were *successful*, set up the infrastructure to **deploy to AWSELB**. [Here are our builds](https://circleci.com/gh/agilesix/ADPQ).
 
@@ -144,6 +148,10 @@ and many more.
 
 **R.** We deployed our **Docker** containers using **AWS ELB's infrastructure as code**.
 
-**S.** [Setup instructions can be found here](https://github.com/agilesix/ADPQ/wiki/Development-Environment-Setup-Instructions).
+**S.** For accessibility, we followed the http://www.ca.gov/Accessibility guidelines, and WCAG 2.0 (https://www.w3.org/TR/WCAG20/) where we targeted compliance with level A (the lowest level).
 
-**T.** Our entire software stack is [open source](https://opensource.org/) and provided *free of charge*.
+We deployed a set of tools: Evaluera (http://www.evaluera.co.uk/atester) and the Chrome Accessibility Developer Tools plugin to do a first pass of the site as it is developed. We followed that with a human review for finding further issues where the tools fall short, which revealed several issues that were not found by the tools, in part due to the use of Javascript.
+
+**T.** [Setup instructions can be found here](https://github.com/agilesix/ADPQ/wiki/Development-Environment-Setup-Instructions).
+
+**U.** Our entire software stack is [open source](https://opensource.org/) and provided *free of charge*.
