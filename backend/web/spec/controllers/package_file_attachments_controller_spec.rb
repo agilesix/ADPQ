@@ -86,7 +86,7 @@ RSpec.describe PackageFileAttachmentsController, type: :controller do
     context "with valid params" do
       it "creates a new PackageFileAttachment" do
         expect {
-          post :create, params: {package_file_attachment: valid_attributes, file_contents: {filename: 'Test', category_id: 1, filetype: 'text/plain', value: 'Tm8gbW9yZSB0ZXN0IHBpY3R1cmVzIG9mIGtpdHRlbnMgOig=\n'}}, session: valid_session
+          post :create, params: {package_file_attachment: valid_attributes, file_contents: {filename: 'Test', filetype: 'text/plain', value: 'Tm8gbW9yZSB0ZXN0IHBpY3R1cmVzIG9mIGtpdHRlbnMgOig=\n'}}, session: valid_session
         }.to change(PackageFileAttachment, :count).by(1)
       end
 

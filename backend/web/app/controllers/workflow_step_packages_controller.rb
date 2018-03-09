@@ -42,7 +42,7 @@ class WorkflowStepPackagesController < ApplicationController
   # PATCH/PUT /workflow_step_packages/1.json
   def update
     respond_to do |format|
-      if @workflow_step_package.update(workflow_step_package_params)
+      if @workflow_step_package.user == current_user && @workflow_step_package.update(workflow_step_package_params)
         format.html { redirect_to @workflow_step_package, notice: 'Workflow step package was successfully updated.' }
         format.json { render :show, status: :ok, location: @workflow_step_package }
       else
@@ -55,7 +55,7 @@ class WorkflowStepPackagesController < ApplicationController
   # DELETE /workflow_step_packages/1
   # DELETE /workflow_step_packages/1.json
   def destroy
-    @workflow_step_package.destroy
+    @workflow_step_package.destroy if @workflow_step_package.user == current_user
     respond_to do |format|
       format.html { redirect_to workflow_step_packages_url, notice: 'Workflow step package was successfully destroyed.' }
       format.json { head :no_content }

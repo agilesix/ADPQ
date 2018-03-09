@@ -42,7 +42,7 @@ class WorkflowPackagesController < ApplicationController
   # PATCH/PUT /workflow_packages/1.json
   def update
     respond_to do |format|
-      if @workflow_package.update(workflow_package_params)
+      if @workflow_package.user == current_user && @workflow_package.update(workflow_package_params)
         format.html { redirect_to @workflow_package, notice: 'Workflow package was successfully updated.' }
         format.json { render :show, status: :ok, location: @workflow_package }
       else
@@ -55,7 +55,7 @@ class WorkflowPackagesController < ApplicationController
   # DELETE /workflow_packages/1
   # DELETE /workflow_packages/1.json
   def destroy
-    @workflow_package.destroy
+    @workflow_package.destroy if @workflow_package.user == current_user
     respond_to do |format|
       format.html { redirect_to workflow_packages_url, notice: 'Workflow package was successfully destroyed.' }
       format.json { head :no_content }

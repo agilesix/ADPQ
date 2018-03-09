@@ -53,7 +53,7 @@ class PackageFileAttachmentsController < ApplicationController
   # PATCH/PUT /package_file_attachments/1.json
   def update
     respond_to do |format|
-      if @package_file_attachment.update(package_file_attachment_params)
+      if @package_file_attachment.user == current_user && @package_file_attachment.update(package_file_attachment_params)
         format.html { redirect_to @package_file_attachment, notice: 'Package file attachment was successfully updated.' }
         format.json { render :show, status: :ok, location: @package_file_attachment }
       else
@@ -66,7 +66,7 @@ class PackageFileAttachmentsController < ApplicationController
   # DELETE /package_file_attachments/1
   # DELETE /package_file_attachments/1.json
   def destroy
-    @package_file_attachment.destroy
+    @package_file_attachment.destroy if @package_file_attachment.user == current_user
     respond_to do |format|
       format.html { redirect_to package_file_attachments_url, notice: 'Package file attachment was successfully destroyed.' }
       format.json { head :no_content }
