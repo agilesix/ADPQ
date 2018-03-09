@@ -1,4 +1,44 @@
-<p>
-  landing works!
-</p>
-<a id="get-started-link" [routerLink]="['/login']">Get Started</a>
+<div class="usa-grid usa-grid-max-w usa-grid-top blue darken-2 right-align">
+    <a class="usa-button" [routerLink]="['/login']">Login</a>
+    <a class="usa-button" [routerLink]="['/login']" (click)="authMode='register'">Sign up</a>
+</div>
+<img src="../../assets/images/a2-logo-bg2.png" class="a2-home-bg" />
+<div class="usa-grid usa-grid-max-w">
+    <div class="usa-grid">
+        <div class="usa-width-one-half">
+            <h1 class="text-sans blue-text text-lighten-1">Learn and collaborate throughout the agile acquisition process.</h1>
+        </div>
+        <div class="usa-width-one-half">
+            <p class="text-large">Open data and shared knowledge allows for greater growth both individually and across the industry. A2 is a community knowledge base to allow agile acquisition professionals to learn and grow in their craft.</p>
+            <a class="usa-button usa-button-secondary" id="get-started-link" [routerLink]="['/login']">Get started</a>
+        </div>
+    </div>
+</div>
+<div class="usa-grid usa-grid-max-w grey lighten-4 grey-opacity">
+    <div class="usa-grid">
+        <div class="usa-width-one-third">
+            <i class="fa fa-files-o fa-4x grey-text text-lighten-2"></i>
+            <h3 class="text-sans red-text text-lighten-1">Read knowledge articles</h3>
+            <p>Benefit from others' lessons learned, document samples and templates, and community knowledge. Have something to add? You can contribute files to share with the community.</p>
+        </div>
+        <div class="usa-width-one-third">
+            <i class="fa fa-retweet fa-4x grey-text text-lighten-2"></i>
+            <h3 class="text-sans red-text text-lighten-1">Build upon a workflow</h3>
+            <p>Not sure where to start? Each workflow step guides you through a piece of the solicitation process with a curated set of knowledge articles full of examples and templates.</p>
+        </div>
+        <div class="usa-width-one-third">
+            <i class="fa fa-briefcase fa-4x grey-text text-lighten-2"></i>
+            <h3 class="text-sans red-text text-lighten-1">Assemble a solicitation package</h3>
+            <p>Once you have read up on knowledge articles and understand the process, assemble your solicitation package by creating and uploading each document to your online portfolio.</p>
+        </div>
+    </div>
+</div>
+<div class="usa-grid usa-grid-max-w">
+    <div class="usa-grid">
+        <div class="usa-width-one-whole">
+<!--            <iframe width="560" height="315" style="margin: 0 auto; display: block;" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
+        </div>
+    </div>
+</div>
+
+

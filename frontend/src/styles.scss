@@ -106,6 +106,10 @@ h1, h2, h3, h4, h5, h6 {
     color: white;
 }
 
+.grey.grey-opacity {
+    background-color: rgba(245,245,245,.7) !important;
+}
+
 
 /*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -207,7 +211,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     &.usa-grid-top {
-        height: 166px;
+        height: 200px;
     }
     
     &.usa-grid-top + .usa-grid-max-h {
@@ -598,6 +602,13 @@ h1, h2, h3, h4, h5, h6 {
             background: #fafafa;
         }
     }
+}
+
+.a2-home-bg {
+    position: absolute;
+    top: 350px;
+    right: -200px;
+    z-index: -1;
 }
 
 
