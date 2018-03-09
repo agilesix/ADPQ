@@ -9,7 +9,7 @@
     <app-register-form (onFormResult)="onRegisterFormResult($event)" *ngIf="isRegisterMode()">
     </app-register-form>
     <span *ngIf="isLoginMode()">
-        Need an account? <a (click)="authMode='register'">Click here to register.</a>
+        Need an account? <a (click)="authMode='register'">Click here to sign up.</a>
     </span>
     <span *ngIf="isRegisterMode()">
         Already have an account? <a (click)="authMode='login'">Click here to login.</a>

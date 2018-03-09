@@ -10,12 +10,18 @@ import { ArticleComponent } from './article/article.component';
 import { ArticleNewComponent } from './article-new/article-new.component';
 import { ArticleEditComponent } from './article-edit/article-edit.component';
 import { LoginGuard } from './guards/login.guard';
+import { LandingComponent } from './landing/landing.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
-    pathMatch: 'full'
+    redirectTo: '/landing',
+    pathMatch: 'full'   
+  },
+  {
+    path: 'landing',
+    component: LandingComponent,
+    canActivate: [LoginGuard]
   },
   {
     path: 'home',

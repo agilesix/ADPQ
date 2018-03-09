@@ -32,6 +32,7 @@ import { Ng2FileRequiredModule } from 'ng2-file-required';
 import { WorkflowPackageService } from './services/workflow-package.service';
 import { WorkflowStepPackageService } from './services/workflow-step-package.service';
 import { PackageFileAttachmentService } from './services/package-file-attachment.service';
+import { LandingComponent } from './landing/landing.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { PackageFileAttachmentService } from './services/package-file-attachment
     ArticleComponent,
     ModalComponent,
     ArticleNewComponent,
-    ArticleEditComponent
+    ArticleEditComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
