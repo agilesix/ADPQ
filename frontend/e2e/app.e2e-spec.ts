@@ -13,7 +13,7 @@ describe('a2 App', () => {
 
   it('should display the landing page', () => {
     page.navigateTo();
-    expect(page.getLandingText()).toEqual('Get Started');
+    expect(page.getLandingText()).toEqual('Get started');
   });
 
   it('should display the login page', () => {
