@@ -11,13 +11,14 @@ describe('a2 App', () => {
     
   });
 
-  it('should display the login page', () => {
+  it('should display the landing page', () => {
     page.navigateTo();
-    expect(page.getLoginHeaderText()).toEqual('login');
+    expect(page.getLandingText()).toEqual('Get Started');
   });
 
-  it('should display the initial toolbar', () => {
-    expect(page.getToolbarText()).toEqual('');
+  it('should display the login page', () => {
+    page.navigateToLogin();
+    expect(page.getLoginHeaderText()).toEqual('login');
   });
 
   it('should log the user in', async() => {

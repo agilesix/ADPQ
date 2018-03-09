@@ -10,8 +10,17 @@ export class A2 {
     return browser.get('/');
   }  
 
+  navigateToLogin() {
+    return browser.get('/login');
+  } 
+
   getToolbarText() {
     return element(by.css('app-toolbar header a h1')).getText();
+  }
+
+  /* Landing Elements */
+  getLandingText() {
+    return element(by.css('#get-started-link')).getText();
   }
 
   /* Login Elements */
