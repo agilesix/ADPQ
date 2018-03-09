@@ -3,18 +3,18 @@
         <div class="usa-width-one-half">
             <h6>
                 <a *ngIf="!loading" [routerLink]="['/step', stepId]">
-                    <i class="fa fa-angle-left left"></i> 
-                    <span class="chip"><b>{{stepId}}</b></span> 
+                    <i class="fa fa-angle-left left"></i>
+                    <span class="chip"><b>{{stepId}}</b></span>
                     <b>{{step.name}}</b>
                 </a>
             </h6>
         </div>
-        
-        <div class="usa-width-one-half right-align">            
-            <button class="right usa-button usa-button-secondary" [routerLink]="['/step', stepId]"><i class="fa fa-times"></i> Cancel</button>
+
+        <div class="usa-width-one-half right-align">
+            <button class="right usa-button usa-button-secondary" [routerLink]="['/step', stepId]"><i class="fa fa-times" title="Cancel edits" aria-label="Cancel edits"></i> Cancel</button>
         </div>
     </div>
-</div>    
+</div>
 
 <div class="usa-grid">
     <h2>Add a new knowledge article</h2><br/>
@@ -22,20 +22,20 @@
         <form (ngSubmit)="createKnowledgeArticle()" #f="ngForm" class="usa-form">
                 <fieldset>
                         <div class="usa-width-one-half">
-                            <label for="title">Title</label>
+                            <label for="title">Title <span class="red-text text-lighten-1">(*Required)</span></label>
                             <input id="title"
                                 type="text"
                                 required
                                 name="title"
                                 [(ngModel)]="knowledgeArticle.title"
                                 class="validate" />
-        
-                            <label for="description">Description</label>
+
+                            <label for="description">Description <span class="red-text text-lighten-1">(*Required)</span></label>
                             <div class="input-field">
                                 <textarea [(ngModel)]="knowledgeArticle.description" id="description" name="description" required class="validate materialize-textarea" data-length="250"></textarea>
                             </div>
                         </div>
-        
+
                         <!--TODO: Wire up to db -->
                         <div class="usa-width-one-half">
                             <label for="files">Upload files</label>
@@ -56,10 +56,10 @@
                                 <div class="">
                                     <h3>
                                         Content
-                                    </h3> 
-        
+                                    </h3>
+
                                     <div *ngIf="edit">
-                                        <label for="body">Content</label>
+                                        <label for="body">Content <span class="red-text text-lighten-1">(*Required)</span></label>
                                         <md-editor id="body" name="body" [(ngModel)]="knowledgeArticle.body"></md-editor>
                                     </div>
                                     <div *ngIf="!edit">
@@ -73,30 +73,30 @@
                     </fieldset>
                     <br/>
                     <fieldset>
-                        <button (click)="toggleEdit()" type="button" class="usa-button usa-button-secondary">{{edit ? 'Preview content' : 'Back to editing mode'}}</button>
+                        <button (click)="toggleEdit()" type="button" class="usa-button usa-button-secondary"><i class="fa fa-eye"></i> {{edit ? 'Preview content' : 'Back to editing mode'}}</button>
                     </fieldset>
                     <br><hr/><br>
 
             <!--TODO: remove "draft" status functionality (and this publish checkbox) for now, will add back later? -->
-            <!-- <input id="published" 
-                type="checkbox" 
+            <!-- <input id="published"
+                type="checkbox"
                 name="published" [(ngModel)]="knowledgeArticle.published" />
             <label for="published">Publish?</label> -->
-            
-            <input type="hidden" 
-                name="workflow_step_id" [(ngModel)]="knowledgeArticle.workflow_step_id" 
+
+            <input type="hidden"
+                name="workflow_step_id" [(ngModel)]="knowledgeArticle.workflow_step_id"
                 [value]="stepId" />
-            <input type="hidden" 
+            <input type="hidden"
                 name="user_id" [(ngModel)]="knowledgeArticle.userId" [value]="authTokenService.currentUserData.id" />
-            
+
             <fieldset>
-                <button type="submit" 
-                    [disabled]="!(f.valid)" 
-                    value="Publish knowledge article" 
-                    class="usa-button right" ><i class="fa fa-save"></i> Publish knowledge article</button>
-                <button class="usa-button usa-button-secondary right" [routerLink]="['/step', stepId]"><i class="fa fa-times"></i> Cancel</button>
+                <button type="submit"
+                    [disabled]="!(f.valid)"
+                    value="Publish knowledge article"
+                    class="usa-button right" ><i class="fa fa-arrow-right"></i> Publish knowledge article</button>
+                <button class="usa-button usa-button-secondary right" [routerLink]="['/step', stepId]"><i class="fa fa-times" title="Cancel edits" aria-label="Cancel edits"></i> Cancel</button>
                 <br/><br/><br/><br/>
             </fieldset>
-        </form>       
-    </div>    
+        </form>
+    </div>
 </div>

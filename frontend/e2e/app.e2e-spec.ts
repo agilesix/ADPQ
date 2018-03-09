@@ -17,7 +17,7 @@ describe('a2 App', () => {
   });
 
   it('should display the initial toolbar', () => {
-    expect(page.getToolbarText()).toEqual('a2');
+    expect(page.getToolbarText()).toEqual('');
   });
 
   it('should log the user in', async() => {

@@ -8,13 +8,13 @@
         <div *ngIf="modalFileSubmit()">
             <div *ngIf="!submitted">
                 <h3>Submit a file to the knowledge article</h3>
-                
+
                 <div class="modal-body">
                     <p class="text-large">Have something to add to this knowledge article? We'd love to share your templates, samples, or resources with this knowledge base. If you have files that enhance this article, upload them for publishing below.</p>
 
                     <form class="usa-form" #submitFileForm="ngForm" (ngSubmit)="submitFileSubmission()">
-                        <label for="fileName">File Name</label>
-                        <input id="fileName"                            
+                        <label for="fileName">File name <span class="red-text text-lighten-1">(*Required)</span></label>
+                        <input id="fileName"
                             type="text"
                             required
                             name="fileName"
@@ -37,15 +37,15 @@
                                 <i class="close fa fa-times"></i>
                             </div>
                         </div> -->
-                        <label for="fileInput">Upload file</label>
+                        <label for="fileInput">Upload file <span class="red-text text-lighten-1">(*Required)</span></label>
                         <div class="file-field input-field">
                           <div class="btn blue">
                             <span>File</span>
                             <input (change)="onFileInputChange($event, 'submitFile')"
                                 accept=".doc, .docx, .xls, .xlsx, application/pdf, .txt, .csv, .rtf, .htm, .msg, .ppt, .pptx, .tif, .xlsb, .jpg, .jpeg, .png"
-                                id="fileInput" 
-                                name="fileInput" 
-                                [(ngModel)]="submitFile.fileInput" 
+                                id="fileInput"
+                                name="fileInput"
+                                [(ngModel)]="submitFile.fileInput"
                                 required type="file">
                           </div>
                           <div class="file-path-wrapper">
@@ -223,7 +223,7 @@
                 </div>
             </div>
         </div>
-        
+
 
         <!-- MODAL: comingSoon -->
         <div *ngIf="modalComingSoon()">
@@ -233,7 +233,7 @@
                 <p class="text-large">That feature is still on its way!</p>
             </div>
         </div>
-        
+
 
         <!-- MODAL: portfolio -->
         <div *ngIf="modalPortfolio()">
@@ -243,24 +243,24 @@
                     <div class="modal-body">
                         <p class="text-large">Is it ready to go? Upload it below. Still not sure how to create it? <a (click)="closeModal()" [routerLink]="['/step', data.workflow_step.id]">Visit the {{data.workflow_step.name}} knowledge base.</a></p>
                         <label for="packageFileName">File Name</label>
-                        <input id="packageFileName"                            
+                        <input id="packageFileName"
                             type="text"
                             required
                             name="packageFileName"
                             [(ngModel)]="packageFileAttachment.fileName"
                             class="validate" />
 
-                        <label for="packageFileAttachmentInput">Upload file</label>
+                        <label for="packageFileAttachmentInput">Upload file <span class="red-text text-lighten-1">(*Required)</span></label>
                         <div class="file-field input-field">
                             <div class="btn blue">
                                 <span>File</span>
-                                <input 
+                                <input
                                     required
                                     class="validate"
-                                    type="file" 
+                                    type="file"
                                     id="packageFileAttachmentInput"
-                                    name="packageFileAttachmentInput" 
-                                    [(ngModel)]="packageFileAttachment.fileInput" 
+                                    name="packageFileAttachmentInput"
+                                    [(ngModel)]="packageFileAttachment.fileInput"
                                     (change)="onFileInputChange($event, 'packageFileAttachment')"
                                     accept=".doc, .docx, .xls, .xlsx, application/pdf, .txt, .csv, .rtf, .htm, .msg, .ppt, .pptx, .tif, .xlsb, .jpg, .jpeg, .png"
                                 >
@@ -312,6 +312,8 @@
                 </div>
             </div>
         </div>
+
+
 
     </div>
 </div>

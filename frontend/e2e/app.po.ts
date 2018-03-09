@@ -11,7 +11,7 @@ export class A2 {
   }  
 
   getToolbarText() {
-    return element(by.css('app-toolbar header')).getText();
+    return element(by.css('app-toolbar header a h1')).getText();
   }
 
   /* Login Elements */

@@ -1,9 +1,9 @@
 <!--<div *ngIf="hasRole('Admin')" class="usa-grid usa-grid-max-w usa-grid-top blue darken-2"></div>-->
 <div *ngIf="(authService.userSignedIn$ | async)">
-    
-    
+
+
     <!-- ADMIN HOMEPAGE -->
-    
+
     <div *ngIf="hasRole('Admin')" class="usa-grid usa-grid-max-w usa-grid-max-h blue darken-3">
         <div class="usa-grid usa-grid-max-w">
             <div class="usa-width-whole card">
@@ -71,9 +71,9 @@
         </div>
     </div>
 
-    
+
     <!-- CONTRIBUTOR HOMEPAGE -->
-    
+
     <div *ngIf="hasRole('Contributor')" class="usa-grid usa-grid-max-w usa-grid-max-h blue darken-3">
         <div *ngIf="!loading" class="usa-grid usa-grid-max-w">
             <div class="usa-width-whole card">
@@ -91,7 +91,7 @@
                         <h6 *ngIf="!loading" class="text-flush">Your {{workflow.package_name}} Package</h6>
                         <h1 class="text-sans text-flush">{{user.percentageCompleted}}% <small>assembled</small></h1>
                         <p *ngIf="workflow.workflow_steps.length - user.completedSteps > 0">You have {{workflow.workflow_steps.length - user.completedSteps}} more step{{workflow.workflow_steps.length - user.completedSteps == 1 ? '' : 's'}} to complete!</p>
-                        
+
                         <button *ngIf="workflow.workflow_steps.length - user.completedSteps == 0" type="button" class="usa-button" (click)="presentModal('comingSoon')">Download completed portfolio</button>
                         <br/>
                     </div>
@@ -106,23 +106,17 @@
         <br/>
         <div class="usa-grid usa-grid-max-w" *ngIf="!loading">
             <div class="usa-width-one-fifth card" *ngFor="let step of user.workflowStepPackages; let i = index" [attr.data-index]="i">
-                <a [routerLink]="['/step', step.workflow_step.id]">
-                    <div class="card-content usa-grid-full green lighten-1 white-text">
-                        <div class="usa-width-one-third">
-                            <h3>{{step.knowledge_articles.length}}</h3>
-                            <p><small>Article{{step.knowledge_articles.length == 1 ? '': 's'}}</small></p>
-                        </div>
-                        <div class="usa-width-two-thirds">
-                            <h5 class="text-sans">
-                                <i class="fa fa-angle-right fa-3x right"></i>Knowledge Base
-                            </h5>
-                        </div>
+                <a [routerLink]="['/step', step.id]">
+                    <div class="card-content green lighten-1 white-text">
+                        <i class="fa fa-arrow-right fa-2x right"></i>
+                        <p class="text-sans text-large"><b>Read {{step.knowledge_articles.length}} article{{step.knowledge_articles.length == 1 ? '': 's'}}
+                        </b></p>
                     </div>
                 </a>
                 <div class="card-content">
                     <h1 class="border-primary">
                         <i *ngIf="step.package_file_attachments.length == 0" class="fa fa-square-o"></i>
-                        
+
                         <i *ngIf="step.package_file_attachments.length > 0" class="fa fa-check-square green-text text-lighten-1"></i>
 
                         {{i + 1}}
@@ -133,7 +127,7 @@
                     <p class="grey-text text-darken-1"><i>Already completed this?</i></p>
                     <a class="usa-button usa-button-secondary" (click)="presentModal('portfolio', step)">Add to {{workflow.package_name}} Package</a>
                 </div>
-                
+
                 <div *ngIf="step.package_file_attachments.length > 0" class="card-content">
                     <p class="grey-text text-darken-1"><i>Great work! You've completed this workflow step.</i></p>
                     <a href="{{step.package_file_attachments[0].attached_file}}" target="_blank"><i class="fa fa-download"></i> {{step.package_file_attachments[0].filename}}</a>
