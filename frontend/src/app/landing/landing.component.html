@@ -1,6 +1,6 @@
 <div class="usa-grid usa-grid-max-w usa-grid-top blue darken-2 right-align">
     <a class="usa-button" [routerLink]="['/login']">Login</a>
-    <a class="usa-button" [routerLink]="['/login']" (click)="authMode='register'">Sign up</a>
+    <a class="usa-button" [routerLink]="['/login', {register: true}]" (click)="authMode='register'">Sign up</a>
 </div>
 <img src="../../assets/images/a2-logo-bg2.png" class="a2-home-bg" />
 <div class="usa-grid usa-grid-max-w">

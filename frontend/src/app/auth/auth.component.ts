@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,10 +7,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
-
+  public sub: any;
   @Input() authMode: 'login' | 'register' = 'login';
 
-  constructor( private router: Router ) { }
+  constructor( private route: ActivatedRoute,private router: Router ) { }
   
   onLoginFormResult(e) {
 
@@ -30,6 +30,11 @@ export class AuthComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.sub = this.route.params.subscribe(params => {
+      if (params['register']) {
+        this.authMode = 'register';
+      }
+    });
   }
   
   isLoginMode() {

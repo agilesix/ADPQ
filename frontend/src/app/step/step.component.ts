@@ -52,12 +52,12 @@ export class StepComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-     window.scrollTo(0, 0);
-      this.sub = this.route.params.subscribe(params => {
-        this.id = +params['id'];
-        this.getStep(this.id);
-      });
-     this.initModal();          
+    window.scrollTo(0, 0);
+    this.sub = this.route.params.subscribe(params => {
+      this.id = +params['id'];
+      this.getStep(this.id);
+    });
+    this.initModal();          
   }
 
   initModal() {
