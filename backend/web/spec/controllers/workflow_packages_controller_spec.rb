@@ -25,6 +25,7 @@ require 'rails_helper'
 
 RSpec.describe WorkflowPackagesController, type: :controller do
   before :each do
+    @workflow = FactoryBot.create(:workflow, workflow_type: FactoryBot.create(:workflow_type))
     Role.create name: 'Contributor'
     @user = FactoryBot.create(:user)
     @user.add_role 'Contributor'

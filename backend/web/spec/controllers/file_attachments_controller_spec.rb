@@ -26,6 +26,7 @@ require 'rack/test'
 RSpec.describe FileAttachmentsController, type: :controller do
 
   before :each do
+    @workflow = FactoryBot.create(:workflow, workflow_type: FactoryBot.create(:workflow_type))
     Role.create name: 'Admin'
     @user = FactoryBot.create(:user)
     @user.add_role 'Admin'
