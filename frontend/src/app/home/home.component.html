@@ -1,7 +1,8 @@
 <!--<div *ngIf="hasRole('Admin')" class="usa-grid usa-grid-max-w usa-grid-top blue darken-2"></div>-->
+<div *ngIf="submitting || loading" id="loading" class="loading">
+    <span class="fa fa-spinner fa-pulse fa-3x fa-fw"></span>
+</div>
 <div *ngIf="(authService.userSignedIn$ | async)">
-
-
     <!-- ADMIN HOMEPAGE -->
 
     <div *ngIf="hasRole('Admin')" class="usa-grid usa-grid-max-w usa-grid-max-h blue darken-3">

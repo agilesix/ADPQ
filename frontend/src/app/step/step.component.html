@@ -1,7 +1,8 @@
 <br/><br/>
-
-<div class="usa-grid">
-    <div *ngIf="loading" class="loading">Loading...</div>
+<div *ngIf="submitting || loading" id="loading" class="loading">
+    <span class="fa fa-spinner fa-pulse fa-3x fa-fw"></span>
+</div>
+<div class="usa-grid">    
     <div class="usa-width-two-thirds">
         <div *ngIf="!loading">
             <div *ngIf="!edit">
@@ -71,7 +72,7 @@
             <br/>
             <div role="search">
                 <form class="usa-search usa-search-big">
-                    <input id="search-field" type="search" name="search" class="browser-default" (click)="presentModal('comingSoon')">
+                    <input id="search-field" type="search" name="search" placeholder="Search for Knowledge Articles by name" class="browser-default" (click)="presentModal('comingSoon')">
                     <button type="submit" class="usa-button usa-button-secondary" (click)="presentModal('comingSoon')">
                         <span class="usa-search-submit-text"><i class="fa fa-search"></i></span>
                     </button>

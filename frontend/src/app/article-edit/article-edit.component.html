@@ -1,3 +1,6 @@
+<div *ngIf="submitting || loading" id="loading" class="loading">
+    <span class="fa fa-spinner fa-pulse fa-3x fa-fw"></span>
+</div>
 <div class="a2-header grey lighten-4">
         <div class="usa-grid">
             <div class="usa-width-one-half">
@@ -72,13 +75,9 @@
                 <br><hr/><br>
                 <fieldset class="grey lighten-4">
                     <div class="usa-grid">
-                            <div class="grey lighten-4">
-                                <h3>
-                                    Content
-                                </h3> 
-    
+                            <div class="grey lighten-4">    
                                 <div *ngIf="edit">
-                                    <label for="body">Content <span class="red-text text-lighten-1">(*Required)</span></label>
+                                    <label for="body">Content</label>
                                     <md-editor id="body" name="body" [(ngModel)]="knowledgeArticle.body"></md-editor>
                                 </div>
                                 <div *ngIf="!edit">

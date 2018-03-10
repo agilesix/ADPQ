@@ -1,3 +1,6 @@
+<div *ngIf="submitting || loading" id="loading" class="loading">
+    <span class="fa fa-spinner fa-pulse fa-3x fa-fw"></span>
+</div>
 <div class="a2-header grey lighten-4">
     <div class="usa-grid">
         <div class="usa-width-one-half">
@@ -21,7 +24,6 @@
     </div>
 </div>
 <div class="usa-grid">
-    <div *ngIf="loading && !error" class="loading">Loading...</div>
     <div *ngIf="error" class="error">The requested article could not be found.</div>
     <div *ngIf="!loading" class="usa-width-two-thirds">
         <h2>{{article.title}}</h2>

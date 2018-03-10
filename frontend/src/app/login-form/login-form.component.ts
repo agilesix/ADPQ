@@ -14,7 +14,7 @@ export class LoginFormComponent implements OnInit {
     email: '',
     password: ''
   };
-
+  submitting: boolean = false;
   @Output() onFormResult = new EventEmitter<any>();
 
   constructor(public authService: AuthService, public stepService: StepService, private router: Router) {}
@@ -22,16 +22,18 @@ export class LoginFormComponent implements OnInit {
   ngOnInit() {}
 
   onSignInSubmit() {
-
+    this.submitting = true;
     this.authService.logInUser(this.signInUser).subscribe(
         res => {
           if (res.status === 200) {
             this.onFormResult.emit({signedIn: true, res});
             this.router.navigate(['/home']);
             this.stepService.getWorkflowSteps();
+            this.submitting = false;
           }
         },
         err => {
+          this.submitting = false;
           console.log('err:', err);
           this.onFormResult.emit({signedIn: false, err});
         }

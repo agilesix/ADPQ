@@ -1,3 +1,6 @@
+<div *ngIf="submitting" id="loading" class="loading">
+    <span class="fa fa-spinner fa-pulse fa-3x fa-fw"></span>
+</div>
 <form (ngSubmit)="onSignUpSubmit()" #f="ngForm" class="usa-form">
     <label for="email">Email</label>
     <input id="email"
