@@ -25,6 +25,7 @@ require 'rails_helper'
 
 RSpec.describe FileTypesController, type: :controller do
   before :each do
+    @workflow = FactoryBot.create(:workflow, workflow_type: FactoryBot.create(:workflow_type))
     user = FactoryBot.create(:user)
     @auth_headers = user.create_new_auth_token
     request.headers.merge!(@auth_headers)

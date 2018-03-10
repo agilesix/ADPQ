@@ -13,9 +13,19 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   before_create :set_contributor_role
+  after_create :create_workflow_packages
 
   def set_contributor_role
     add_role 'Contributor'
+  end
+
+  #this will be replaced by adding the ability to add workflow packages by workflow through the ui
+  def create_workflow_packages
+    workflow = Workflow.find_by(name: 'Agile Acquisition Workflow', package_name: 'Solicitation')
+    package = WorkflowPackage.create!(name: 'My First Solicitation Package', user: self, workflow: workflow) unless WorkflowPackage.find_by(user: self, workflow: workflow).present?
+    WorkflowStep.where(workflow: workflow).each do |wfs|
+      WorkflowStepPackage.create!(user: self, workflow_step: wfs, workflow_package: package) unless WorkflowStepPackage.find_by(user: self, workflow_step: wfs, workflow_package: package).present?
+    end
   end
 
   def remove_all_roles(role)
