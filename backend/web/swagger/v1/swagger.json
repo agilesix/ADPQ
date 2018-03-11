@@ -169,7 +169,7 @@
           {
             "name": "id",
             "in": "path",
-            "type": "string",
+            "type": "integer",
             "required": true
           }
         ],
@@ -290,7 +290,7 @@
                     "type": "string"
                   },
                   "filetype": {
-                    "type": "string"
+                    "type": "integer"
                   }
                 }
               }
@@ -335,6 +335,7 @@
           {
             "name": "workflow_id",
             "in": "path",
+            "type": "integer",
             "required": true
           }
         ],
@@ -376,6 +377,7 @@
           {
             "name": "workflow_package_id",
             "in": "path",
+            "type": "integer",
             "required": true
           }
         ],
@@ -447,7 +449,7 @@
           {
             "name": "id",
             "in": "path",
-            "type": "string",
+            "type": "integer",
             "required": true
           }
         ],
@@ -484,7 +486,7 @@
           {
             "name": "id",
             "in": "path",
-            "type": "string",
+            "type": "integer",
             "required": true
           },
           {

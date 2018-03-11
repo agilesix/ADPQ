@@ -25,7 +25,7 @@ describe 'Package File Attachments API', type: :request do
                   type: :object,
                   value: {type: :string},
                   filename: {type: :string},
-                  filetype: {type: :string}
+                  filetype: {type: :integer}
               }
           }
       }

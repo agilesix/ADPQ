@@ -33,7 +33,7 @@ describe 'Knowledge Article API', type: :request do
       parameter name: 'access-token', :in => :header, :type => :string
       parameter name: 'client', :in => :header, :type => :string
       parameter name: 'uid', :in => :header, :type => :string
-      parameter name: 'id', :in => :path, :type => :string
+      parameter name: 'id', :in => :path, :type => :integer
 
       response '200', 'knowledge article step retrieved' do
         let(:id) { 1 }

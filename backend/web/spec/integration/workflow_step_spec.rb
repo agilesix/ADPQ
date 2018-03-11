@@ -32,7 +32,7 @@ describe 'Workflow Step API', type: :request do
       parameter name: 'access-token', :in => :header, :type => :string
       parameter name: 'client', :in => :header, :type => :string
       parameter name: 'uid', :in => :header, :type => :string
-      parameter name: 'id', :in => :path, :type => :string
+      parameter name: 'id', :in => :path, :type => :integer
 
       response '200', 'workflow step retrieved' do
         let(:id) { 1 }
@@ -50,7 +50,7 @@ describe 'Workflow Step API', type: :request do
       parameter name: 'access-token', :in => :header, :type => :string
       parameter name: 'client', :in => :header, :type => :string
       parameter name: 'uid', :in => :header, :type => :string
-      parameter name: 'id', :in => :path, :type => :string
+      parameter name: 'id', :in => :path, :type => :integer
 
       parameter name: :workflow_step, in: :body, schema: {
           type: :object,
