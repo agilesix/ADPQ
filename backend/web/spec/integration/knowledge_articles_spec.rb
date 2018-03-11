@@ -25,7 +25,7 @@ describe 'Knowledge Article API', type: :request do
   end
 
   path '/knowledge_articles/{id}.json' do
-    get 'show/{id}.json' do
+    get 'show' do
       tags 'KnowledgeArticles'
 
       produces 'application/json'
@@ -83,6 +83,7 @@ describe 'Knowledge Article API', type: :request do
       parameter name: 'access-token', :in => :header, :type => :string
       parameter name: 'client', :in => :header, :type => :string
       parameter name: 'uid', :in => :header, :type => :string
+      parameter name: 'id', :in => :path, :type => :integer
 
       parameter name: :knowledge_article, in: :body, schema: {
           type: :object,
