@@ -36,5 +36,6 @@
             <span class="chip" *ngFor="let role of authTokenService.currentUserData.roles">{{role.name}}</span>
         </div>
         <button class="usa-button" (click)="logOut()">Logout</button>
+        <a class="usa-button" href="mailto://contact@agile6.com" target="_blank">Feedback</a>
     </div>
 </header>

@@ -121,6 +121,10 @@ export class ModalComponent implements OnInit {
     return this.modalContent === 'remove';
   }
 
+  modalTutorial() {
+    return this.modalContent === 'tutorial';
+  }
+
   submitSuccess() {
     this.submitted = !this.submitted;
     if (this.submitted) {
