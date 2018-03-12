@@ -41,7 +41,7 @@
     
                     <!--TODO: Wire up to db -->
                     <div class="usa-width-one-half">
-                        <label for="files">Upload files</label>
+                        <label for="files">Upload new files</label>
                         <div class="file-field input-field">
                           <div class="btn blue">
                             <span>Files</span>
@@ -57,7 +57,7 @@
                         </div>
                         <table *ngIf="article.file_attachments.length > 0" class="usa-table-borderless">
                             <tbody>
-                                <tr><label>Already uploaded files</label></tr>
+                                <tr><label>Existing files</label></tr>
                                 <tr *ngFor="let attachment of article.file_attachments">
                                     <td>
                                         <a href="{{attachment.attached_file}}" target="_blank"><i class="fa fa-download"></i> {{attachment.filename}}</a>
@@ -72,7 +72,7 @@
                         </table>
                     </div>
                 </fieldset>
-                <br><hr/><br>
+                <br><br>
                 <fieldset class="grey lighten-4">
                     <div class="usa-grid">
                             <div class="grey lighten-4">    

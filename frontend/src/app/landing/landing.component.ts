@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-landing',
@@ -12,4 +13,10 @@ export class LandingComponent implements OnInit {
   ngOnInit() {
   }
 
+  @ViewChild('modal') modal: ModalComponent;
+
+  presentModal(mode) {
+    this.modal.openModal(mode);
+  }
+   
 }

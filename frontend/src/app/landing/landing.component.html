@@ -11,6 +11,7 @@
         <div class="usa-width-one-half">
             <p class="text-large">Open data and shared knowledge allows for greater growth both individually and across the industry. A2 is a community knowledge base to allow agile acquisition professionals to learn and grow in their craft.</p>
             <a class="usa-button usa-button-secondary" id="get-started-link" [routerLink]="['/login']">Get started</a>
+            <a class="usa-button" (click)="presentModal('tutorial')">Watch a demo</a>
         </div>
     </div>
 </div>
@@ -33,12 +34,5 @@
         </div>
     </div>
 </div>
-<div class="usa-grid usa-grid-max-w">
-    <div class="usa-grid">
-        <div class="usa-width-one-whole">
-<!--            <iframe width="560" height="315" style="margin: 0 auto; display: block;" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
-        </div>
-    </div>
-</div>
 
-
+<app-modal #modal ></app-modal>
