@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   #this will be replaced by adding the ability to add workflow packages by workflow through the ui
   def create_workflow_packages
     workflow = Workflow.find_by(name: 'Agile Acquisition Workflow', package_name: 'Solicitation')
-    package = WorkflowPackage.create!(name: 'My First Solicitation Package', user: self, workflow: workflow) unless WorkflowPackage.find_by(user: self, workflow: workflow).present?
+    package = WorkflowPackage.create!(name: 'My First Solicitation Package', user: self, workflow: workflow)
     WorkflowStep.where(workflow: workflow).each do |wfs|
       WorkflowStepPackage.create!(user: self, workflow_step: wfs, workflow_package: package) unless WorkflowStepPackage.find_by(user: self, workflow_step: wfs, workflow_package: package).present?
     end

@@ -15,7 +15,7 @@ import { PackageFileAttachmentService } from '../services/package-file-attachmen
   styleUrls: ['./step.component.scss']
 })
 export class StepComponent implements OnInit {
-  submitting: boolean;
+  submitting: boolean = false;
   edit: boolean;
 
   id: number;
@@ -62,15 +62,18 @@ export class StepComponent implements OnInit {
 
   initModal() {
     this.modal.fileActions.subscribe(evt => {
+      this.submitting = true;
       switch (evt.action) {
         case 'approve': {
           this.articleService.approveFileAttachment(evt).subscribe(() => {
+            this.submitting = false;
             this.getStep(this.workflowStep.id);
           });
           break;
         }
         case 'reject': {
           this.articleService.removeFileAttachment(evt).subscribe(() => {
+            this.submitting = false;
             this.getStep(this.workflowStep.id);
           });
           break;
@@ -80,12 +83,17 @@ export class StepComponent implements OnInit {
 
     this.modal.packageFileSubmit.subscribe(
       packageFileAttachmentData => {
+        this.submitting = true;
         this.packageFileAttachmentService.createPackageFileAttachment(packageFileAttachmentData).subscribe(
           data => {
+            this.submitting = false;
             this.getWorkflowPackage(this.step.workflow.id);
             this.modal.submitSuccess();
           },
-          err => console.log(err)
+          err => {
+            this.submitting = false;
+            console.log(err);
+          }
         );
       }
     )
@@ -135,7 +143,10 @@ export class StepComponent implements OnInit {
         this.stepService.getWorkflowSteps();
         this.edit = false;
       },
-      err => console.error(err)
+      err => {
+        this.submitting = false;
+        console.error(err);
+      }
     );
   }
 

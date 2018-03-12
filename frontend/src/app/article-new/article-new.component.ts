@@ -15,7 +15,7 @@ export class ArticleNewComponent implements OnInit {
   stepId: number;
   private sub: any;
   loading: boolean;
-  submitting: boolean;
+  submitting: boolean = false;
   public article;
   baseUrl: string = environment.token_auth_config.apiBase;
   public step;
@@ -72,8 +72,7 @@ export class ArticleNewComponent implements OnInit {
           this.router.navigate(['/step/'+ this.stepId + '/article/' + this.article.id]);
         }
       },
-      err => console.error(err),
-      () => console.log('article: ', this.article)
+      err => console.error(err)
     );
   }
 
@@ -84,8 +83,7 @@ export class ArticleNewComponent implements OnInit {
         this.step = JSON.parse(data['_body']);
         this.loading = false;
       },
-      err => console.error(err),
-      () => console.log('step: ', this.step)
+      err => console.error(err)
     );
   } 
   

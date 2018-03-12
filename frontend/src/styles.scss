@@ -641,4 +641,32 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-
+/*=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+             Loader
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*/
+/* Absolute Center Spinner */
+.loading {
+    position: fixed;
+    z-index: 1051;
+    height: 2em;
+    width: 2em;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+  
+/* Transparent Overlay */
+.loading:before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}

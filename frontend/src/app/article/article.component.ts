@@ -20,6 +20,7 @@ export class ArticleComponent implements OnInit {
   error: any;
   public article;
   baseUrl: string = environment.token_auth_config.apiBase;
+  submitting: boolean = false;
 
   constructor(public authTokenService:Angular2TokenService, private route: ActivatedRoute, private articleService: ArticleService) { }
 
@@ -47,6 +48,7 @@ export class ArticleComponent implements OnInit {
     });
 
     this.modal.fileSubmit.subscribe(submitFileData => {
+      this.submitting = true;
       let fileAttachmentData = {
         filename: submitFileData.filename, 
         knowledge_article_id: this.id, 
@@ -62,9 +64,11 @@ export class ArticleComponent implements OnInit {
             fileContents: null,
             fileInput: null
           }
+          this.submitting = false;
           this.modal.submitSuccess();
         },
         err => {
+          this.submitting = false;
           this.error = err;
           console.error(err);
         }
@@ -79,15 +83,18 @@ export class ArticleComponent implements OnInit {
 
   initModal() {
     this.modal.fileActions.subscribe(evt => {
+      this.submitting = true;
       switch (evt.action) {
         case 'approve': {
           this.articleService.approveFileAttachment(evt).subscribe(() => {
+            this.submitting = false;
             this.getKnowledgeArticle(this.article.id);
           });
           break;
         }
         case 'reject': {
           this.articleService.removeFileAttachment(evt).subscribe(() => {
+            this.submitting = false;
             this.getKnowledgeArticle(this.article.id);
           });
           break;

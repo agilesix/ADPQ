@@ -16,7 +16,7 @@ describe 'Workflow Step Packages API', type: :request do
       parameter name: 'client', :in => :header, :type => :string
       parameter name: 'uid', :in => :header, :type => :string
 
-      parameter name: :workflow_package_id, in: :path
+      parameter name: :workflow_package_id, in: :path, type: :integer
 
       response '200', 'user\'s workflow step packages for workflow package retrieved' do
         let(:workflow_package_id) { 1 }

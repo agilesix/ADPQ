@@ -16,7 +16,7 @@ describe 'Workflow Packages API', type: :request do
       parameter name: 'client', :in => :header, :type => :string
       parameter name: 'uid', :in => :header, :type => :string
 
-      parameter name: :workflow_id, in: :path
+      parameter name: :workflow_id, in: :path, type: :integer
 
       response '200', 'user\'s workflow packages for workflow retrieved' do
         let(:workflow_id) { 1 }

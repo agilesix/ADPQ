@@ -9,8 +9,8 @@ import { Location } from '@angular/common';
   templateUrl: './register-form.component.html',
   styleUrls: ['./register-form.component.scss']
 })
-export class RegisterFormComponent implements OnInit {
-
+export class RegisterFormComponent implements OnInit { 
+  
   signUpUser = {
     email: '',
     name: '',
@@ -23,12 +23,12 @@ export class RegisterFormComponent implements OnInit {
   constructor(public authService: AuthService, public stepService: StepService, private router: Router, private location: Location) {}
 
   ngOnInit() {}
-
+  submitting:boolean = false; 
   onSignUpSubmit() {
-
-    this.authService.registerUser(this.signUpUser).subscribe(
+    this.submitting = true;
+    this.authService.registerUser(this.signUpUser).subscribe(      
         res => {
-          if (res.status === 200) {            
+          if (res.status === 200) {         
             this.onFormResult.emit({signedUp: true, res});
           }
         },

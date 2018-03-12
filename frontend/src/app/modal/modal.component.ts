@@ -9,7 +9,7 @@ import { ArticleService } from '../services/article.service';
 })
 export class ModalComponent implements OnInit {
   submitted: boolean;
-
+  submitting:boolean = false;
   @Input() modalContent;
 
   modalActions = new EventEmitter<string|MaterializeAction>();

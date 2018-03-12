@@ -1,3 +1,6 @@
+<div *ngIf="submitting || loading" id="loading" class="loading">
+    <span class="fa fa-spinner fa-pulse fa-3x fa-fw"></span>
+</div>
 <div class="a2-header grey lighten-4">
     <div class="usa-grid">
         <div class="usa-width-one-half">
@@ -42,7 +45,13 @@
                             <div class="file-field input-field">
                               <div class="btn blue">
                                 <span>Files</span>
-                                <input type="file" name="file_attachments" (change)="onFileInputChange($event)" multiple>
+                                <input 
+                                    type="file" 
+                                    name="file_attachments" 
+                                    (change)="onFileInputChange($event)" 
+                                    accept=".doc, .docx, .xls, .xlsx, application/pdf, .txt, .csv, .rtf, .htm, .msg, .ppt, .pptx, .tif, .xlsb, .jpg, .jpeg, .png"
+                                    multiple
+                                >
                               </div>
                               <div class="file-path-wrapper">
                                 <input class="file-path validate" type="text" placeholder="Upload one or more files">
@@ -54,12 +63,8 @@
                     <fieldset class="grey lighten-4">
                         <div class="usa-grid">
                                 <div class="">
-                                    <h3>
-                                        Content
-                                    </h3>
-
                                     <div *ngIf="edit">
-                                        <label for="body">Content <span class="red-text text-lighten-1">(*Required)</span></label>
+                                        <label for="body">Content</label>
                                         <md-editor id="body" name="body" [(ngModel)]="knowledgeArticle.body"></md-editor>
                                     </div>
                                     <div *ngIf="!edit">

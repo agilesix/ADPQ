@@ -19,7 +19,7 @@ export class ArticleEditComponent implements OnInit {
   private sub: any;
   loading: boolean;
   stepLoading: boolean;
-  submitting: boolean;
+  submitting: boolean = false;
   public article;
   baseUrl: string = environment.token_auth_config.apiBase;
   public step;

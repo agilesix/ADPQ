@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   public fileSubmissionCount;
   public workflow;
   public loading: boolean = true;
+  public submitting: boolean = false;
   public user = {
     filesLoading: true,
     fileAttachments:  {
@@ -56,7 +57,9 @@ export class HomeComponent implements OnInit {
   };
 
   refreshFileSubmissions() {
+    this.submitting = true;
     this.articleService.getFileAttachments({approved: false}).subscribe(data => {
+      this.submitting = false;
       this.modal['fileSubmissions'] = data.json();
       this.fileSubmissionCount = this.modal['fileSubmissions'].length;
     });
@@ -70,9 +73,11 @@ export class HomeComponent implements OnInit {
     this.refreshFileSubmissions();
     this.getUserFileAttachments();
     this.modal.fileActions.subscribe(evt => {
+      this.submitting = true;
       switch (evt.action) {
         case 'approve': {
           this.articleService.approveFileAttachment(evt).subscribe(() => {
+            this.submitting = true;
             this.refreshFileSubmissions();
             this.getWorkflow(1);
           });
@@ -80,12 +85,14 @@ export class HomeComponent implements OnInit {
         }
         case 'reject': {
           this.articleService.removeFileAttachment(evt).subscribe(() => {
+            this.submitting = false;
             this.refreshFileSubmissions();
             this.getWorkflow(1);
           });
           break;
         }
         case 'contributorDelete': {
+          this.submitting = false;
           this.getUserFileAttachments();
           break;
         }
@@ -94,12 +101,17 @@ export class HomeComponent implements OnInit {
 
     this.modal.packageFileSubmit.subscribe(
       packageFileAttachmentData => {
+        this.submitting = true;
         this.packageFileAttachmentService.createPackageFileAttachment(packageFileAttachmentData).subscribe(
           data => {
+            this.submitting = false;
             this.getWorkflowPackage(this.workflow.id);
             this.modal.submitSuccess();
           },
-          err => console.log(err)
+          err => {
+            this.submitting = false;
+            console.log(err)
+          }
         );
       }
     )
@@ -174,13 +186,16 @@ export class HomeComponent implements OnInit {
 
   removeFileAttachment(id) {
     if (confirm("Are you sure you want to delete this uploaded file? This cannot be undone.")) {
+      this.submitting = true;
       this.articleService.removeFileAttachment({file_attachment_id: id}).subscribe(
         data => {
+          this.submitting = false;
           this.getUserFileAttachments();
           this.getWorkflow(1);
         },
         err => {
           console.error('there is an error here');
+          this.submitting = false;
           this.modal.error = err;
         }
       );
