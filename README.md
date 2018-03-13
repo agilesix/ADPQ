@@ -85,17 +85,13 @@ Our approach was as follows:
 
 - ***Future Backlog*** - The following link shows the trello board we used as both a product and sprint [backlogs](https://trello.com/b/Ww8O7aX7/adpq2018).
 
-**D.** Agile Six used at least 4 user design techniques
+**D.** Agile Six used at least 3 user design techniques
 
 - [Personas & Surveys](https://app.xtensio.com/folio/y0wgeokr)
 
-- [User Interviews](http://XXX)
-
 - [Usability Testing](https://drive.google.com/open?id=1Gk2jxA2E0F5bU2UV6LJkFfydR31iFcM-)
 
-- [Empathy Map](../../tree/master/artifacts/eMap)
-
-- [Wireframes](../../tree/master/artifacts)
+- [Wireframes](https://github.com/agilesix/ADPQ/wiki/A2-Wireframes)
 
 **E.** We used only one [repository](https://github.com/agilesix/ADPQ) where all code and artifacts are stored and all code commits documented.
 
