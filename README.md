@@ -101,7 +101,7 @@ Our approach was as follows:
 
 We deployed a set of tools: [Evaluera](http://www.evaluera.co.uk/atester) and the Chrome Accessibility Developer Tools plugin to do a first pass of the site as it is developed. We followed that with a human review for finding further issues where the tools fall short, which revealed several issues that were not found by the tools, in part due to the use of Javascript.
 
-**H.** We followed a style guide based on [USWDS](https://designsystem.digital.gov/) and [Materialize](http://materializecss.com/).
+**H.** [Our style guide](https://github.com/agilesix/ADPQ/wiki/A2-Style-Guide) is based on [USWDS](https://designsystem.digital.gov/) and [Materialize](http://materializecss.com/).
 
 **I.** Recordings of User Testing Sessions can be found here: [User Testing Sessions](https://drive.google.com/open?id=1Gk2jxA2E0F5bU2UV6LJkFfydR31iFcM-).
 
