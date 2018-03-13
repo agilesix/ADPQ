@@ -1,3 +1,4 @@
+![A2 Landing](https://github.com/agilesix/ADPQ/blob/PO_branch/artifacts/A2%20Landing.png)
 # PQVP AD-DS Refresh
 
 ### How we approached the Prototype:
@@ -29,9 +30,9 @@ These include:
 
 **Principle 2:** Leverage pre-built components. In our view, it always makes sense to weigh the cost of building features from scratch against leveraging a suitable COTS and Open-Source components available. In this case, we decided to build the application from scratch.
 
-**Principle 3:** Design for and Deploy to the Cloud. An application that makes no assumptions about where and how it is hosted enables it to leverage Cloud-based infrastructures such as AWS, and scale on demand as usage patterns change. Our ***a2*** application runs in Docker containers that can be hosted on any Linux environment, and is deployed to an AWS  environment that can be scaled on demand as needed.
+**Principle 3:** Design for and Deploy to the Cloud. An application that makes no assumptions about where and how it is hosted enables it to leverage Cloud-based infrastructures such as AWS, and scale on demand as usage patterns change. Our ***A2*** application runs in Docker containers that can be hosted on any Linux environment, and is deployed to an AWS  environment that can be scaled on demand as needed.
 
-**Principle 4:** Leverage Automated Processes. As the codebase for an application or system grows, it it essential to have an automated build, test, deployment, and monitoring infrastructure in place. Automated processes allow the team to focus on forward-looking feature development, and not on basic maintenance, testing, and infrastructure tasks. For ***a2***, our team leverages open source testing frameworks for automated testing, CircleCI for continuous integration and continuous deployment, and Amazon CloudWatch for performance monitoring.
+**Principle 4:** Leverage Automated Processes. As the codebase for an application or system grows, it it essential to have an automated build, test, deployment, and monitoring infrastructure in place. Automated processes allow the team to focus on forward-looking feature development, and not on basic maintenance, testing, and infrastructure tasks. For ***A2***, our team leverages open source testing frameworks for automated testing, CircleCI for continuous integration and continuous deployment, and Amazon CloudWatch for performance monitoring.
 
 See our System Overview for a graphical depiction of the technologies used in this prototype.
 
@@ -80,7 +81,7 @@ Our approach was as follows:
 
 - ***Create Phase*** - After listening to our users both with interviews and surveys we created [drawings](../vision) and [wirefames](../artifacts)  Based on this experience we were ready to start building our prototype with a goal of getting something in the users hands fast. 
 
-- ***Deliver Phas*e** - After the first iteration was pushed to QA environment we were able to start exposing the applciation to our users. We were quickly able to identify gaps, bugs and ideas which informed subsequent iterations of our prototype. We plan in the future to frequently add new features in similar fashion (expose to small subset of users, analyze, slowly roll out).
+- ***Deliver Phase*** - After the first iteration was pushed to QA environment we were able to start exposing the applciation to our users. We were quickly able to identify gaps, bugs and ideas which informed subsequent iterations of our prototype. We plan in the future to frequently add new features in similar fashion (expose to small subset of users, analyze, slowly roll out).
 
 - ***Future Backlog*** - The following link shows the trello board we used as both a product and sprint [backlogs](https://trello.com/b/Ww8O7aX7/adpq2018).
 
