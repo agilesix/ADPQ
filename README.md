@@ -72,7 +72,7 @@ We think of HCD as being in **3** repeating phases:
 
 - **Edward Teeple** (Agile Six)  - *Security Engineer*
 
-**C.** Agile Six included end-users from the inception of our prototype , see [test videos here](../artifacts/videos).
+**C.** Agile Six included end-users from the inception of our prototype , see [test videos here](https://drive.google.com/open?id=1Gk2jxA2E0F5bU2UV6LJkFfydR31iFcM-).
 
 Our approach was as follows:
 
@@ -90,7 +90,7 @@ Our approach was as follows:
 
 - [User Interviews](http://XXX)
 
-- [Usability Testing](../../tree/master/artifacts/artifacts/videos)
+- [Usability Testing](https://drive.google.com/open?id=1Gk2jxA2E0F5bU2UV6LJkFfydR31iFcM-)
 
 - [Empathy Map](../../tree/master/artifacts/eMap)
 
@@ -100,11 +100,13 @@ Our approach was as follows:
 
 **F.** We have documented a subset of the **A2 RESTful API** in order to demonstrate our understanding of how to use Swagger to [document RESTful APIs](https://prod-agilesix-adpq-2018-backend.us-west-2.elasticbeanstalk.com/api-docs).
 
-**G.** We followed WCAG 2.0 as well as http://www.ca.gov/Accessibility. We also leveraged XXX
+**G.** For accessibility, we followed the http://www.ca.gov/Accessibility guidelines, and [WCAG 2.0](https://www.w3.org/TR/WCAG20/) where we targeted compliance with level A (the lowest level).
 
-H. We followed a style guide based on [USWDS](https://designsystem.digital.gov/) and [Materialize](http://materializecss.com/).
+We deployed a set of tools: [Evaluera](http://www.evaluera.co.uk/atester) and the Chrome Accessibility Developer Tools plugin to do a first pass of the site as it is developed. We followed that with a human review for finding further issues where the tools fall short, which revealed several issues that were not found by the tools, in part due to the use of Javascript.
 
-**I.** Recordings of User Testing Sessions can be found here: [User Testing Sessions](../artifacts/videos).
+**H.** We followed a style guide based on [USWDS](https://designsystem.digital.gov/) and [Materialize](http://materializecss.com/).
+
+**I.** Recordings of User Testing Sessions can be found here: [User Testing Sessions](https://drive.google.com/open?id=1Gk2jxA2E0F5bU2UV6LJkFfydR31iFcM-).
 
 **J.** We believe strongly in frequent iterations based on user feedback. Therefore, we focus on getting an MVP in the hands of users ASAP (usually within 30 days). In the case of this prototype we had very limited time and budget. Therefore we performed only one post production iteration based one user test sessions. User feedback that was not prioritized for our iteration was put into the prioritized [product backlog](https://trello.com/b/Ww8O7aX7/adpq2018) for use in future releases.  
 
@@ -136,7 +138,7 @@ and many more.
 
 **N.** Our functional testing strategy includes two modes: Back-end testing and front-end testing with the goal of achieving full feature coverage and 100% line coverage.
 
-The backend, which is a Rails stack, is tested at two levels: at the domain model layer, using rspec with shoulda matchers, and at the full-stack or integration level, using rspec with rswag (https://github.com/domaindrivendev/rswag), a Swagger integration Gem.
+The backend, which is a Rails stack, is tested at two levels: at the domain model layer, using rspec with shoulda matchers, and at the full-stack or integration level, using rspec with [rswag](https://github.com/domaindrivendev/rswag), a Swagger integration Gem.
 
 The front-end is written in Angular 5 to allow rapid prototyping using pure HTML (given the composition of the development team). Our preferred testing tool, **[Protractor](http://www.protractortest.org/#/)**, is not well supported yet for Angular 5, and given the limited number of functional features implemented so far, we have written a minimal set of automated functional tests for the front-end using **[Jasmine](https://jasmine.github.io/)** and Protractor. We have supplemented these automated tests with manual testing for some areas of functionality for this MVP release. We have also added user stories to the backlog to increase the coverage of automated tests on the front-end. 
 
@@ -148,10 +150,6 @@ The front-end is written in Angular 5 to allow rapid prototyping using pure HTML
 
 **R.** We deployed our **Docker** containers using **AWS ELB's infrastructure as code**.
 
-**S.** For accessibility, we followed the http://www.ca.gov/Accessibility guidelines, and WCAG 2.0 (https://www.w3.org/TR/WCAG20/) where we targeted compliance with level A (the lowest level).
+**S.** [Setup instructions can be found here](https://github.com/agilesix/ADPQ/wiki/Development-Environment-Setup-Instructions).
 
-We deployed a set of tools: Evaluera (http://www.evaluera.co.uk/atester) and the Chrome Accessibility Developer Tools plugin to do a first pass of the site as it is developed. We followed that with a human review for finding further issues where the tools fall short, which revealed several issues that were not found by the tools, in part due to the use of Javascript.
-
-**T.** [Setup instructions can be found here](https://github.com/agilesix/ADPQ/wiki/Development-Environment-Setup-Instructions).
-
-**U.** Our entire software stack is [open source](https://opensource.org/) and provided *free of charge*.
+**T.** Our entire software stack is [open source](https://opensource.org/) and provided *free of charge*.
