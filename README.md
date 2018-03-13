@@ -11,7 +11,7 @@ The team organized its work using a [Trello board](https://trello.com/b/Ww8O7aX7
 
 The prototype is located at https://a2.agile6.com.
 
-Our team employs ***Domain Driven Design*** in the construction of services and applications. One of the first artifacts we created, and rapidly iterated on in collaboration with users and SMEs, was a [domain model](architecture/Domain%20Model%20-%20Domain%20Model.png), which helped the team gain an understanding of the concepts and real-world objects with which our users engage. The domain model droe the initial creation of entities and data objects in our services and application. This reults in close alignment between the user's understanding of their task and the entities represented in code.
+Our team employs ***Domain Driven Design*** in the construction of services and applications. One of the first artifacts we created, and rapidly iterated on in collaboration with users and SMEs, was a [domain model](https://github.com/agilesix/ADPQ/wiki/A2-Architecture#domain-driven-design), which helped the team gain an understanding of the concepts and real-world objects with which our users engage. The domain model drove the initial creation of entities and data objects in our services and application. This reults in close alignment between the user's understanding of their task and the entities represented in code.
 
 However, once development begins, we have found that the domain model can become stale as the application continues to evolve. In order to support agility and keep the domain model from going stale, the team has leveraged an open source modeling tool, called [ERD](https://github.com/amatsuda/erd), which tightly integrates with the application; in fact it runs as part of the development build (and only the development build). With this tool and the Rails database modules (ie. versioned database migrations and ActiveRecord), we can continue to rapidly iterate on the domain model as well as its representation in code, keeping the database schema, source code and domain model all in sync. 
 
@@ -26,7 +26,7 @@ Our application architecture and infrastructure were anchored by a number of key
 
 These include:
 
-**Principle 1:** Leverage a modern, open source technology stack. Using a modern technology stack supported by a thriving open source community mitigates a number of technical risks, including reduced security vulnerabilities, increased availability of technical resources familiar with the technologies, alignment with modern devices and usage scenarios, and the ability to leverage a large ecosystem of pre-built components based on these toolsets. [Our technology stack](architecture/Domain%20Model%20-%20Tech%20Stack.jpeg) is comprised entirely of open source frameworks and components.
+**Principle 1:** Leverage a modern, open source technology stack. Using a modern technology stack supported by a thriving open source community mitigates a number of technical risks, including reduced security vulnerabilities, increased availability of technical resources familiar with the technologies, alignment with modern devices and usage scenarios, and the ability to leverage a large ecosystem of pre-built components based on these toolsets. [Our technology stack](https://github.com/agilesix/ADPQ/wiki/A2-Architecture#technology-stack) is comprised entirely of open source frameworks and components.
 
 **Principle 2:** Leverage pre-built components. In our view, it always makes sense to weigh the cost of building features from scratch against leveraging a suitable COTS and Open-Source components available. In this case, we decided to build the application from scratch.
 
@@ -34,7 +34,7 @@ These include:
 
 **Principle 4:** Leverage Automated Processes. As the codebase for an application or system grows, it it essential to have an automated build, test, deployment, and monitoring infrastructure in place. Automated processes allow the team to focus on forward-looking feature development, and not on basic maintenance, testing, and infrastructure tasks. For ***A2***, our team leverages open source testing frameworks for automated testing, CircleCI for continuous integration and continuous deployment, and Amazon CloudWatch for performance monitoring.
 
-See our System Overview for a graphical depiction of the technologies used in this prototype.
+[See our System Overview](https://github.com/agilesix/ADPQ/wiki/A2-Architecture#technology-stack) for a graphical depiction of the technologies used in this prototype.
 
 ### Our approach to Human-Centered Design (HCD)
 ---
@@ -73,7 +73,7 @@ We think of HCD as being in **3** repeating phases:
 
 - **Edward Teeple** (Agile Six)  - *Security Engineer*
 
-**C.** Agile Six included end-users from the inception of our prototype , see [test videos here](https://drive.google.com/open?id=1Gk2jxA2E0F5bU2UV6LJkFfydR31iFcM-).
+**C.** Agile Six included end-users from the inception of our prototype; see [test videos here](https://drive.google.com/open?id=1Gk2jxA2E0F5bU2UV6LJkFfydR31iFcM-).
 
 Our approach was as follows:
 
