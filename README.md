@@ -79,7 +79,7 @@ Our approach was as follows:
 
 - ***Hear Phase*** -  We performed a usability study survey of actual contracting professionals asking question about their Movitations, Expertise and Personality on the topic of Agile Acquisition.  We then performed User Interviews concerning thier workflows and their expectations as documented in our Empathy Map and Personas. We presented the entire development team with an overview of these findings during a workshop before we started any applicaiton design, where they could ask additional questions of the users.
 
-- ***Create Phase*** - After listening to our users both with interviews and surveys we created [drawings](../vision) and [wirefames](../artifacts)  Based on this experience we were ready to start building our prototype with a goal of getting something in the users hands fast. 
+- ***Create Phase*** - After listening to our users both with interviews and surveys we created [drawings](artifacts/A2%20Tool%20Concept.pdf) and [wirefames](../artifacts)  Based on this experience we were ready to start building our prototype with a goal of getting something in the users hands fast. 
 
 - ***Deliver Phase*** - After the first iteration was pushed to QA environment we were able to start exposing the applciation to our users. We were quickly able to identify gaps, bugs and ideas which informed subsequent iterations of our prototype. We plan in the future to frequently add new features in similar fashion (expose to small subset of users, analyze, slowly roll out).
 
