@@ -70,15 +70,15 @@ We think of HCD as being in **3** repeating phases:
 
 - **Edward Teeple** (Agile Six)  - *Security Engineer*
 
-**C.** Agile Six included end-users from the inception of our prototype; see [test videos here](https://drive.google.com/open?id=1Gk2jxA2E0F5bU2UV6LJkFfydR31iFcM-).
+**C.** Agile Six included end-users from the inception of our prototype; see artifact links under requirement D.
 
 Our approach was as follows:
 
-- ***Hear Phase*** -  We performed a usability study survey of actual contracting professionals asking question about their Movitations, Expertise and Personality on the topic of Agile Acquisition.  We then performed User Interviews concerning thier workflows and their expectations as documented in our Empathy Map and Personas. We presented the entire development team with an overview of these findings during a workshop before we started any applicaiton design, where they could ask additional questions of the users.
+- ***Hear Phase*** -  We performed [Design Research Interviews](https://drive.google.com/drive/folders/163f2UsKxhqRlkdyK3SK6H7fESrUpo2wk?usp=sharing) and surveys of actual contracting professionals asking question about their Movitations, Expertise and Personality on the topic of Agile Acquisition as documented in our [Personas](https://app.xtensio.com/folio/y0wgeokr). We presented the entire development team with an overview of these findings during a workshop before we started any applicaiton design, where they could ask additional questions of the users.
 
 - ***Create Phase*** - After listening to our users both with interviews and surveys we created [drawings](artifacts/A2%20Tool%20Concept.pdf) and [wirefames](https://github.com/agilesix/ADPQ/wiki/A2-Wireframes)  Based on this experience we were ready to start building our prototype with a goal of getting something in the users hands fast. 
 
-- ***Deliver Phase*** - After the first iteration was pushed to QA environment we were able to start exposing the applciation to our users. We were quickly able to identify gaps, bugs and ideas which informed subsequent iterations of our prototype. We plan in the future to frequently add new features in similar fashion (expose to small subset of users, analyze, slowly roll out).
+- ***Deliver Phase*** - After the first iteration was pushed to QA environment we were able to start exposing the applciation to our users. We were quickly able to identify gaps (notice black label items in our [product backlog](https://trello.com/b/Ww8O7aX7/adpq2018) were learned from user testing) which informed subsequent iterations of our prototype. We plan in the future to frequently add new features in similar fashion (expose to small subset of users, analyze, slowly roll out).
 
 - ***Future Backlog*** - The following link shows the trello board we used as both a product and sprint [backlogs](https://trello.com/b/Ww8O7aX7/adpq2018).
 
@@ -94,19 +94,21 @@ Our approach was as follows:
 - [Usability Testing](https://drive.google.com/open?id=1Gk2jxA2E0F5bU2UV6LJkFfydR31iFcM-)
 
 
-**E.** We used only one [repository](https://github.com/agilesix/ADPQ) where all code and artifacts are stored and all code commits documented.
+**E.** We used only one [repository](https://github.com/agilesix/ADPQ) where all code commits documented.
 
 **F.** We have documented a subset of the **A2 RESTful API** in order to demonstrate our understanding of how to use Swagger to [document RESTful APIs](https://prod-agilesix-adpq-2018-backend.us-west-2.elasticbeanstalk.com/api-docs).
 
-**G.** For accessibility, we followed the http://www.ca.gov/Accessibility guidelines, and [WCAG 2.0](https://www.w3.org/TR/WCAG20/) where we targeted compliance with level A (the lowest level).
+**G.** For accessibility, we followed the http://www.ca.gov/Accessibility guidelines, and [WCAG 2.0](https://www.w3.org/TR/WCAG20/) where we targeted compliance with level A (the lowest level). 
 
 We deployed a set of tools: [Evaluera](http://www.evaluera.co.uk/atester) and the Chrome Accessibility Developer Tools plugin to do a first pass of the site as it is developed. We followed that with a human review for finding further issues where the tools fall short, which revealed several issues that were not found by the tools, in part due to the use of Javascript.
+
+Notice Red labels in our [product backlog](https://trello.com/b/Ww8O7aX7/adpq2018) indicate future 508 improvments. 
 
 **H.** [Our style guide](https://github.com/agilesix/ADPQ/wiki/A2-Style-Guide) is based on [USWDS](https://designsystem.digital.gov/) and [Materialize](http://materializecss.com/).
 
 **I.** Recordings of User Testing Sessions can be found here: [User Testing Sessions](https://drive.google.com/open?id=1Gk2jxA2E0F5bU2UV6LJkFfydR31iFcM-).
 
-**J.** We believe strongly in frequent iterations based on user feedback. Therefore, we focus on getting an MVP in the hands of users ASAP . Due to the time constraints, we performed only one post production iteration. User feedback that was not prioritized for our iteration was put into the prioritized [product backlog](https://trello.com/b/Ww8O7aX7/adpq2018) for use in future releases.  
+**J.** We believe strongly in frequent iterations based on user feedback. Therefore, we focus on getting an MVP in the hands of users ASAP . Due to the time constraints, we performed only one post production iteration. User feedback that was not prioritized for our iteration was put into the prioritized [product backlog](https://trello.com/b/Ww8O7aX7/adpq2018) for use in future releases(see black labels).  
 
 **K.** The user-facing features of our prototype leverage USWDS's grid system and employ responsive techniques, resulting in an excellent user experience regardless of the kind or size of device used. Our team utilized a mobile-first approach on the custom features we implemented, creating initial designs to work on phones and small mobile devices, then progressively enhancing this design for larger devices. 
 
@@ -144,7 +146,7 @@ The front-end is written in Angular 5 to allow rapid prototyping using pure HTML
 
 **P.** [AWSELB](https://aws.amazon.com/elasticbeanstalk/) provides configuration management.
 
-**Q.** **Continuous Monitoring** - The team leveraged **[Amazon Cloud Watch](https://aws.amazon.com/cloudwatch/)** to continuously monitor the availability and performance of the the application. We set up a dashboard in **Cloudwatch** that displayed a variety of **EC2 metrics**, including Network-In, Network-Out, CPU utilization, and Status Check Failures on each production web server. Because we used **Elastic Beanstalk** to manage our application instances, we were able to set up metrics and alarms on EB auto-scaling groups as well. We configured alarms to alert our DevOps personnel whenever the site became unavailable, as well as “self-healing” alarms to automatically add an instance whenever the in-service instance pool dropped below a certain threshold.
+**Q.** The team leveraged **[Amazon Cloud Watch](https://aws.amazon.com/cloudwatch/)** to continuously monitor the availability and performance of the the application. We set up a dashboard in **Cloudwatch** that displayed a variety of **EC2 metrics**, including Network-In, Network-Out, CPU utilization, and Status Check Failures on each production web server. Because we used **Elastic Beanstalk** to manage our application instances, we were able to set up metrics and alarms on EB auto-scaling groups as well. We configured alarms to alert our DevOps personnel whenever the site became unavailable, as well as “self-healing” alarms to automatically add an instance whenever the in-service instance pool dropped below a certain threshold.
 
 **R.** We deployed our **Docker** containers using **AWS ELB's infrastructure as code**.
 
