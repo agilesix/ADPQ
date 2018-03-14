@@ -7,11 +7,11 @@
 
 The prototype is located at https://a2.agile6.com.
 
-The team (described under item B below) conducted a one-week Runway Sprint (UX discovery/architecture/infrastructure), where we defined and proofed the core architecture of the site as well as settled upon a number of toolsets and processes, including those we would leverage for CI, CM, Deployment, Version Control, and general communication within the team. The runway sprint was followed by a 3 day intense feature development sprint in which the feature-based user stories were implemented and tested by the team, then we followed with  a usability testing and remediation sprint.
+The team (described under item B below) conducted a one-week Runway Sprint (UX discovery/architecture/infrastructure), where we defined and proofed the core architecture of the site as well as settled upon a number of toolsets and processes, including those we would leverage for CI, CM, Deployment, Version Control, and general communication within the team. The runway sprint was followed by a 3-day intense feature development sprint in which the feature-based user stories were implemented and tested by the team, then we followed with  a usability testing and remediation sprint.
 
-The team organized its work using a [Trello board](https://trello.com/b/Ww8O7aX7/adpq2018) and a Slack Channel and uberconference to facilitate quick communication, we used Google Drive for internal artifacts for access until they could later be uploaded to the repo for evalutation. Please note that file dates in the subnmitted repo (e.g. for HCD artifacts) do not match creation dates in google drive.  We leveraged Google Drive as a collaborative document repository, and GitHub as a version control repository.
+The team organized its work using a [Trello board](https://trello.com/b/Ww8O7aX7/adpq2018) and a Slack Channel and uberconference to facilitate quick communication, we used Google Drive for internal artifacts for access until they could later be uploaded to the repo for evaluation. Please note that file dates in the submitted repo (e.g. for HCD artifacts) do not match creation dates in google drive.  We leveraged Google Drive as a collaborative document repository, and GitHub as a version control repository.
 
-Our team employs ***[Domain Driven Design](https://github.com/agilesix/ADPQ/wiki/A2-Architecture#domain-driven-design)*** in the construction of services and applications. One of the first artifacts we created, and rapidly iterated on in collaboration with users and SMEs, was a [domain model](https://github.com/agilesix/ADPQ/wiki/A2-Architecture#domain-driven-design), which helped the team gain an understanding of the concepts and real-world objects with which our users engage. The domain model drove the initial creation of entities and data objects in our services and application. This reults in close alignment between the user's understanding of their task and the entities represented in code.
+Our team employs ***[Domain Driven Design](https://github.com/agilesix/ADPQ/wiki/A2-Architecture#domain-driven-design)*** in the construction of services and applications. One of the first artifacts we created, and rapidly iterated on in collaboration with users and SMEs, was a [domain model](https://github.com/agilesix/ADPQ/wiki/A2-Architecture#domain-driven-design), which helped the team gain an understanding of the concepts and real-world objects with which our users engage. The domain model drove the initial creation of entities and data objects in our services and application. This results in close alignment between the user's understanding of their task and the entities represented in code.
 
 In order to support agility and keep the domain model from going stale, the team has leveraged an open source modeling tool, called [ERD](https://github.com/amatsuda/erd), which tightly integrates with the application; in fact it runs as part of the development build (and only the development build). With this tool and the Rails database modules (ie. versioned database migrations and ActiveRecord), we can continue to rapidly iterate on the domain model as well as its representation in code, keeping the database schema, source code and domain model all in sync. 
 
@@ -56,7 +56,7 @@ We think of HCD as being in **3** repeating phases:
 
 - **Dan Levenson** (Agile Six) - *Content Writer*
 
-- **Brian Derfer** (Agile Six)  - *Solution Architect*
+- **Brian Derfer** (Agile Six)  - *Technical Architect*
 
 - **Aurora Hay** (Agile Six)  - *Fullstack Web Developer, DevOps Engineer*
 
@@ -74,13 +74,13 @@ We think of HCD as being in **3** repeating phases:
 
 Our approach was as follows:
 
-- ***Hear Phase*** -  We performed [Design Research Interviews](https://drive.google.com/drive/folders/163f2UsKxhqRlkdyK3SK6H7fESrUpo2wk?usp=sharing) and surveys of actual contracting professionals asking question about their Movitations, Expertise and Personality on the topic of Agile Acquisition as documented in our [Personas](https://app.xtensio.com/folio/y0wgeokr). We presented the entire development team with an overview of these findings during a workshop before we started any applicaiton design, where they could ask additional questions of the users.
+- ***Hear Phase*** -  We performed [Design Research Interviews](https://drive.google.com/drive/folders/163f2UsKxhqRlkdyK3SK6H7fESrUpo2wk?usp=sharing) and surveys of actual contracting professionals asking question about their Movitations, Expertise and Personality on the topic of Agile Acquisition as documented in our [Personas](https://app.xtensio.com/folio/y0wgeokr). We presented the entire development team with an overview of these findings during a workshop before we started any application design, where they could ask additional questions of the users.
 
 - ***Create Phase*** - After listening to our users both with interviews and surveys we created [drawings](artifacts/A2%20Tool%20Concept.pdf) and [wirefames](https://github.com/agilesix/ADPQ/wiki/A2-Wireframes)  Based on this experience we were ready to start building our prototype with a goal of getting something in the users hands fast. 
 
-- ***Deliver Phase*** - After the first iteration was pushed to QA environment we were able to start exposing the applciation to our users. We were quickly able to identify gaps (notice black label items in our [product backlog](https://trello.com/b/Ww8O7aX7/adpq2018) were learned from user testing) which informed subsequent iterations of our prototype. We plan in the future to frequently add new features in similar fashion (expose to small subset of users, analyze, slowly roll out).
+- ***Deliver Phase*** - After the first iteration was pushed to QA environment we were able to start exposing the application to our users. We were quickly able to identify gaps (notice black label items in our [product backlog](https://trello.com/b/Ww8O7aX7/adpq2018) were learned from user testing), which informed subsequent iterations of our prototype. We plan in the future to frequently add new features in similar fashion (expose to small subset of users, analyze, slowly roll out).
 
-- ***Future Backlog*** - The following link shows the trello board we used as both a product and sprint [backlogs](https://trello.com/b/Ww8O7aX7/adpq2018).
+- ***Future Backlog*** - The following link shows the Trello board we used as both a product and sprint [backlogs](https://trello.com/b/Ww8O7aX7/adpq2018).
 
 **D.** Agile Six used at least 4 user design techniques
 
