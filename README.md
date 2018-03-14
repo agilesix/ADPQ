@@ -37,6 +37,8 @@ These include:
 
 ![TechStack](https://github.com/agilesix/ADPQ/raw/PO_branch/architecture/Domain%20Model%20-%20Tech%20Stack.jpeg)
 
+![CodeFlow](https://github.com/agilesix/ADPQ/raw/PO_branch/architecture/CodeFlowDiagram.png)
+
 ### Our approach to Human-Centered Design (HCD)
 ---
 We think of HCD as being in **3** repeating phases:
@@ -60,7 +62,7 @@ We think of HCD as being in **3** repeating phases:
 
 - **Dan Levenson** (Agile Six - 20 hrs) - *Content Writer*
 
-- **Brian Derfer** (Agile Six - 40 hrs )  - *Technical Architect*
+- **Brian Derfer** (Agile Six - 40 hrs )  - *Solution Architect*
 
 - **Aurora Hay** (Agile Six - 116 hrs)  - *Fullstack Web Developer, DevOps Engineer*
 
@@ -138,7 +140,7 @@ Notice Red labels in our [product backlog](https://trello.com/b/Ww8O7aX7/adpq201
 
 - [Docker/docker-compose](https://www.docker.com/) as our containerized deployment/development tool
 
-and many more.
+and several others.
 
 **M.** We deployed the prototype on [AWS ElasticBeanstalk](https://aws.amazon.com/elasticbeanstalk/), a **PaaS** provider. 
 
