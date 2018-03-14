@@ -52,27 +52,27 @@ We think of HCD as being in **3** repeating phases:
 
 **A.** Team Agile Six was lead by Product Owner/Manager Robert Rasmussen who had complete responsibility for the product as well as the team. Mr. Rasmussen is a certified Product Owner, Scrum Master, Project Manager and Scrum Coach (CSPO, CSM, PMP, CSP, PSPO2, PSM).
 
-**B.** Team Agile Six was cross-functional and included:
+**B.** Team Agile Six was cross-functional, used XXX hours and included:
 
 - **Robert Rasmussen** (Agile Six - 35 hrs) - *Product Manager, Agile Coach*
 
-- **Delali Dziaras** (Fearless) - *Agile Coach, Content Writer*
+- **Delali Dziaras** (Fearless - XX hrs) - *Agile Coach, Content Writer*
 
-- **Dan Levenson** (Agile Six 20 hrs) - *Content Writer*
+- **Dan Levenson** (Agile Six - 20 hrs) - *Content Writer*
 
-- **Brian Derfer** (Agile Six - )  - *Technical Architect*
+- **Brian Derfer** (Agile Six - XX hrs )  - *Technical Architect*
 
-- **Aurora Hay** (Agile Six)  - *Fullstack Web Developer, DevOps Engineer*
+- **Aurora Hay** (Agile Six - 120 hrs)  - *Fullstack Web Developer, DevOps Engineer*
 
 - **Chris Cairns** (Skylight - 9 hrs) - *Content Writer, Usability Tester*
 
 - **Nick Bristow** (Skylight - 2 hrs) - *Content Writer, Usability Tester*
 
-- **Allan Schougaard** (Agile Six)  - *Technical Architect, Back-end Web Developer*
+- **Allan Schougaard** (Agile Six - XX hrs)  - *Technical Architect, Back-end Web Developer*
 
-- **David Gage** (Fearless) - *Fullstack Web Developer*
+- **David Gage** (Fearless - XX hrs) - *Fullstack Web Developer*
 
-- **Bethany Halteman** (Fearless) -  *Visual Designer, Usability Designer*
+- **Bethany Halteman** (Fearless - XX hrs) -  *Visual Designer, Usability Designer*
 
 - **Edward Teeple** (Agile Six - 4 hrs)  - *Security Engineer*
 
