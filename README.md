@@ -54,17 +54,19 @@ We think of HCD as being in **3** repeating phases:
 
 **B.** Team Agile Six was cross-functional and included:
 
-- **Robert Rasmussen** (Agile Six) - *Product Manager, Agile Coach*
+- **Robert Rasmussen** (Agile Six - 35 hrs) - *Product Manager, Agile Coach*
 
 - **Delali Dziaras** (Fearless) - *Agile Coach, Content Writer*
 
-- **Dan Levenson** (Agile Six) - *Content Writer*
+- **Dan Levenson** (Agile Six 20 hrs) - *Content Writer*
 
-- **Brian Derfer** (Agile Six)  - *Technical Architect*
+- **Brian Derfer** (Agile Six - )  - *Technical Architect*
 
 - **Aurora Hay** (Agile Six)  - *Fullstack Web Developer, DevOps Engineer*
 
-- **Chris Cairns** (Skylight)- *Content Writer, Usability Tester*
+- **Chris Cairns** (Skylight - 9 hrs) - *Content Writer, Usability Tester*
+
+- **Nick Bristow** (Skylight - 2 hrs) - *Content Writer, Usability Tester*
 
 - **Allan Schougaard** (Agile Six)  - *Technical Architect, Back-end Web Developer*
 
@@ -72,7 +74,7 @@ We think of HCD as being in **3** repeating phases:
 
 - **Bethany Halteman** (Fearless) -  *Visual Designer, Usability Designer*
 
-- **Edward Teeple** (Agile Six)  - *Security Engineer*
+- **Edward Teeple** (Agile Six - 4 hrs)  - *Security Engineer*
 
 **C.** Agile Six included end-users from the inception of our prototype; see artifact links under requirement D.
 
