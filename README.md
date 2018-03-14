@@ -1,21 +1,25 @@
 ![A2 Landing](https://github.com/agilesix/ADPQ/blob/PO_branch/artifacts/A2%20Landing.png)
 # PQVP AD-DS Refresh
 
+The prototype is located at https://a2.agile6.com
+
+login accounts: [found in the wiki](https://github.com/agilesix/ADPQ/wiki)
+
+
 ### How we approached the Prototype:
 ---
 [Agile Six](https://agile6.com/) is a California based DVBE founded in response to the US Digital Service. For this effort, we teamed with [Fearless Solutions](https://fearless.tech/) and [Skylight Digital](https://skylight.digital/). We are very proud to submit our prototype and our team for consideration. Looking forward, we have captured several bugs and a future roadmap in our [product backlog](https://trello.com/b/Ww8O7aX7/adpq2018).
 
-The prototype is located at https://a2.agile6.com.
 
-The team (described under item B below) conducted a one-week Runway Sprint (UX discovery/architecture/infrastructure), where we defined and proofed the core architecture of the site as well as settled upon a number of toolsets and processes, including those we would leverage for CI, CM, Deployment, Version Control, and general communication within the team. The runway sprint was followed by a 3 day intense feature development sprint in which the feature-based user stories were implemented and tested by the team, then we followed with  a usability testing and remediation sprint.
+The team (described under item B below) conducted a one-week Runway Sprint (UX discovery/architecture/infrastructure), where we defined and proofed the core architecture of the site as well as settled upon a number of toolsets and processes, including those we would leverage for CI, CM, Deployment, Version Control, and general communication within the team. The runway sprint was followed by a 3-day intense feature development sprint in which the feature-based user stories were implemented and tested by the team, then we followed with  a usability testing and remediation sprint.
 
-The team organized its work using a [Trello board](https://trello.com/b/Ww8O7aX7/adpq2018) and a Slack Channel and uberconference to facilitate quick communication, we used Google Drive for internal artifacts for access until they could later be uploaded to the repo for evalutation. Please note that file dates in the subnmitted repo (e.g. for HCD artifacts) do not match creation dates in google drive.  We leveraged Google Drive as a collaborative document repository, and GitHub as a version control repository.
+The team organized its work using a [Trello board](https://trello.com/b/Ww8O7aX7/adpq2018) and a Slack Channel and uberconference to facilitate quick communication, we used Google Drive for internal artifacts for access until they could later be uploaded to the repo for evaluation. Please note that file dates in the submitted repo (e.g. for HCD artifacts) do not match creation dates in google drive.  We leveraged Google Drive as a collaborative document repository, and GitHub as a version control repository.
 
-Our team employs ***[Domain Driven Design](https://github.com/agilesix/ADPQ/wiki/A2-Architecture#domain-driven-design)*** in the construction of services and applications. One of the first artifacts we created, and rapidly iterated on in collaboration with users and SMEs, was a [domain model](https://github.com/agilesix/ADPQ/wiki/A2-Architecture#domain-driven-design), which helped the team gain an understanding of the concepts and real-world objects with which our users engage. The domain model drove the initial creation of entities and data objects in our services and application. This reults in close alignment between the user's understanding of their task and the entities represented in code.
+Our team employs ***[Domain Driven Design](https://github.com/agilesix/ADPQ/wiki/A2-Architecture#domain-driven-design)*** in the construction of services and applications. One of the first artifacts we created, and rapidly iterated on in collaboration with users and SMEs, was a [domain model](https://github.com/agilesix/ADPQ/wiki/A2-Architecture#domain-driven-design), which helped the team gain an understanding of the concepts and real-world objects with which our users engage. The domain model drove the initial creation of entities and data objects in our services and application. This results in close alignment between the user's understanding of their task and the entities represented in code.
 
 In order to support agility and keep the domain model from going stale, the team has leveraged an open source modeling tool, called [ERD](https://github.com/amatsuda/erd), which tightly integrates with the application; in fact it runs as part of the development build (and only the development build). With this tool and the Rails database modules (ie. versioned database migrations and ActiveRecord), we can continue to rapidly iterate on the domain model as well as its representation in code, keeping the database schema, source code and domain model all in sync. 
 
-One of the first decisions was to build or repurpose. Whenever possible, we want to make these decisions based on empirical knowledge, rather than simply making a "guess". We used a technique called "Concurrent Set Based Engineering" (CSBE), by which the team pursued multiple different development approaches in parallel. In this case, we pursued two approaches for two hours: one approach leveraged an [open source knowledge management platform written using Rails](https://github.com/charusat09/kms), and the other building a platform from scratch. At the end of the timebox, the team decided based to continue with the custom applicaiton itt was outpacing the re-purposing option.  The custom solution aligned better with our domain model (because it was built with reference to it), and leveraged an authentication mechanism that matched our requirement. The team then took a mobile-first approach to design. Because this was an MVP prototype with a necessarily limited budget, we were necessarily limited in the amount of progressive enhancement for larger screen sizes that we were able to accomplish.
+One of the first decisions was to build or repurpose. Whenever possible, we want to make these decisions based on empirical knowledge, rather than simply making a "guess." We used a technique called "Set-Based Concurrent Engineering" (SBCE), by which the team pursued multiple different development approaches in parallel. In this case, we pursued two approaches for two hours: one approach leveraged an [open source knowledge management platform written using Rails](https://github.com/charusat09/kms), and the other building a platform from scratch. At the end of the timebox, the team decided to eliminate the re-purposing option.  The custom solution aligned better with our domain model (because it was built with reference to it), and leveraged an authentication mechanism that matched our requirement. The team then took a mobile-first approach to design. Because this was an MVP prototype with a necessarily limited budget, we were necessarily limited in the amount of progressive enhancement for larger screen sizes that we were able to accomplish.
 
 ### Technology Stack
 ---
@@ -31,7 +35,11 @@ These include:
 
 **Principle 4:** Leverage Automated Processes. As the codebase for an application or system grows, it it essential to have an automated build, test, deployment, and monitoring infrastructure in place.  For ***A2***, our team leverages open source testing frameworks for automated testing, CircleCI for continuous integration and continuous deployment, and Amazon CloudWatch for performance monitoring.
 
-[See our System Overview](https://github.com/agilesix/ADPQ/wiki/A2-Architecture#technology-stack) for a graphical depiction of the technologies used in this prototype.
+![TechStack](https://github.com/agilesix/ADPQ/raw/PO_branch/architecture/Domain%20Model%20-%20Tech%20Stack.jpeg)
+
+<p align="center">
+  <img src="https://github.com/agilesix/ADPQ/raw/PO_branch/architecture/CodeFlowDiagram.png" />
+</p>
 
 ### Our approach to Human-Centered Design (HCD)
 ---
@@ -48,39 +56,41 @@ We think of HCD as being in **3** repeating phases:
 
 **A.** Team Agile Six was lead by Product Owner/Manager Robert Rasmussen who had complete responsibility for the product as well as the team. Mr. Rasmussen is a certified Product Owner, Scrum Master, Project Manager and Scrum Coach (CSPO, CSM, PMP, CSP, PSPO2, PSM).
 
-**B.** Team Agile Six was cross-functional and included:
+**B.** Team Agile Six was cross-functional, used only 340 hours, and included:
 
-- **Robert Rasmussen** (Agile Six) - *Product Manager, Agile Coach*
+- **Robert Rasmussen** (Agile Six - 35 hrs) - *Product Manager, Agile Coach*
 
-- **Delali Dziaras** (Fearless) - *Agile Coach, Content Writer*
+- **Delali Dziaras** (Fearless - 13 hrs) - *Agile Coach, Content Writer*
 
-- **Dan Levenson** (Agile Six) - *Content Writer*
+- **Dan Levenson** (Agile Six - 20 hrs) - *Content Writer*
 
-- **Brian Derfer** (Agile Six)  - *Solution Architect*
+- **Brian Derfer** (Agile Six - 40 hrs )  - *Technical Architect*
 
-- **Aurora Hay** (Agile Six)  - *Fullstack Web Developer, DevOps Engineer*
+- **Aurora Hay** (Agile Six - 116 hrs)  - *Fullstack Web Developer, DevOps Engineer*
 
-- **Chris Cairns** (Skylight)- *Content Writer, Usability Tester*
+- **Chris Cairns** (Skylight - 9 hrs) - *Content Writer, Usability Tester*
 
-- **Allan Schougaard** (Agile Six)  - *Technical Architect, Back-end Web Developer*
+- **Nick Bristow** (Skylight - 2 hrs) - *Content Writer, Usability Tester*
 
-- **David Gage** (Fearless) - *Fullstack Web Developer*
+- **Allan Schougaard** (Agile Six - 37 hrs)  - *Technical Architect, Back-end Web Developer*
 
-- **Bethany Halteman** (Fearless) -  *Visual Designer, Usability Designer*
+- **David Gage** (Fearless - 18 hrs) - *Fullstack Web Developer*
 
-- **Edward Teeple** (Agile Six)  - *Security Engineer*
+- **Bethany Halteman** (Fearless - 46 hrs) -  *Visual Designer, Usability Designer*
+
+- **Edward Teeple** (Agile Six - 4 hrs)  - *Security Engineer*
 
 **C.** Agile Six included end-users from the inception of our prototype; see artifact links under requirement D.
 
 Our approach was as follows:
 
-- ***Hear Phase*** -  We performed [Design Research Interviews](https://drive.google.com/drive/folders/163f2UsKxhqRlkdyK3SK6H7fESrUpo2wk?usp=sharing) and surveys of actual contracting professionals asking question about their Movitations, Expertise and Personality on the topic of Agile Acquisition as documented in our [Personas](https://app.xtensio.com/folio/y0wgeokr). We presented the entire development team with an overview of these findings during a workshop before we started any applicaiton design, where they could ask additional questions of the users.
+- ***Hear Phase*** -  We performed [Design Research Interviews](https://drive.google.com/drive/folders/163f2UsKxhqRlkdyK3SK6H7fESrUpo2wk?usp=sharing) and surveys of actual contracting professionals asking question about their Movitations, Expertise and Personality on the topic of Agile Acquisition as documented in our [Personas](https://app.xtensio.com/folio/y0wgeokr). We presented the entire development team with an overview of these findings during a workshop before we started any application design, where they could ask additional questions of the users.
 
 - ***Create Phase*** - After listening to our users both with interviews and surveys we created [drawings](artifacts/A2%20Tool%20Concept.pdf) and [wirefames](https://github.com/agilesix/ADPQ/wiki/A2-Wireframes)  Based on this experience we were ready to start building our prototype with a goal of getting something in the users hands fast. 
 
-- ***Deliver Phase*** - After the first iteration was pushed to QA environment we were able to start exposing the applciation to our users. We were quickly able to identify gaps (notice black label items in our [product backlog](https://trello.com/b/Ww8O7aX7/adpq2018) were learned from user testing) which informed subsequent iterations of our prototype. We plan in the future to frequently add new features in similar fashion (expose to small subset of users, analyze, slowly roll out).
+- ***Deliver Phase*** - After the first iteration was pushed to QA environment we were able to start exposing the application to our users. We were quickly able to identify gaps (notice black label items in our [product backlog](https://trello.com/b/Ww8O7aX7/adpq2018) were learned from user testing), which informed subsequent iterations of our prototype. We plan in the future to frequently add new features in similar fashion (expose to small subset of users, analyze, slowly roll out).
 
-- ***Future Backlog*** - The following link shows the trello board we used as both a product and sprint [backlogs](https://trello.com/b/Ww8O7aX7/adpq2018).
+- ***Future Backlog*** - The following link shows the Trello board we used as both a product and sprint [backlogs](https://trello.com/b/Ww8O7aX7/adpq2018).
 
 **D.** Agile Six used at least 4 user design techniques
 
@@ -96,7 +106,7 @@ Our approach was as follows:
 
 **E.** We used only one [repository](https://github.com/agilesix/ADPQ) where all code commits documented.
 
-**F.** We have documented a subset of the **A2 RESTful API** in order to demonstrate our understanding of how to use Swagger to [document RESTful APIs](https://prod-agilesix-adpq-2018-backend.us-west-2.elasticbeanstalk.com/api-docs).
+**F.** We have documented a subset of the **A2 RESTful API** in order to demonstrate our understanding of how to use Swagger to [document RESTful OpenAPI specification for APIs](https://prod-agilesix-adpq-2018-backend.us-west-2.elasticbeanstalk.com/api-docs).
 
 **G.** For accessibility, we followed the http://www.ca.gov/Accessibility guidelines, and [WCAG 2.0](https://www.w3.org/TR/WCAG20/) where we targeted compliance with level A (the lowest level). 
 
@@ -132,7 +142,7 @@ Notice Red labels in our [product backlog](https://trello.com/b/Ww8O7aX7/adpq201
 
 - [Docker/docker-compose](https://www.docker.com/) as our containerized deployment/development tool
 
-and many more.
+and several others.
 
 **M.** We deployed the prototype on [AWS ElasticBeanstalk](https://aws.amazon.com/elasticbeanstalk/), a **PaaS** provider. 
 
@@ -144,9 +154,11 @@ The front-end is written in Angular 5 to allow rapid prototyping using pure HTML
 
 **O.** We used [CircleCI](https://circleci.com) for **continuous integration** and, once the builds on our master branch were *successful*, set up the infrastructure to **deploy to AWSELB**. [Here are our builds](https://circleci.com/gh/agilesix/ADPQ).
 
-**P.** [AWSELB](https://aws.amazon.com/elasticbeanstalk/) provides configuration management.
-
+**P.** [AWSELB](https://aws.amazon.com/elasticbeanstalk/) provided our configuration management.
+![AWSELB](https://github.com/agilesix/ADPQ/blob/PO_branch/artifacts/A2%20AWS%20Elastic%20Beanstalk.png)
 **Q.** The team leveraged **[Amazon Cloud Watch](https://aws.amazon.com/cloudwatch/)** to continuously monitor the availability and performance of the the application. We set up a dashboard in **Cloudwatch** that displayed a variety of **EC2 metrics**, including Network-In, Network-Out, CPU utilization, and Status Check Failures on each production web server. Because we used **Elastic Beanstalk** to manage our application instances, we were able to set up metrics and alarms on EB auto-scaling groups as well. We configured alarms to alert our DevOps personnel whenever the site became unavailable, as well as “self-healing” alarms to automatically add an instance whenever the in-service instance pool dropped below a certain threshold.
+
+![CloudWatch](https://github.com/agilesix/ADPQ/blob/PO_branch/artifacts/AWSDashboard.png)
 
 **R.** We deployed our **Docker** containers using **AWS ELB's infrastructure as code**.
 
