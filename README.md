@@ -37,7 +37,9 @@ These include:
 
 ![TechStack](https://github.com/agilesix/ADPQ/raw/PO_branch/architecture/Domain%20Model%20-%20Tech%20Stack.jpeg)
 
-![CodeFlow](https://github.com/agilesix/ADPQ/raw/PO_branch/architecture/CodeFlowDiagram.png)
+<p align="center">
+  <img src="https://github.com/agilesix/ADPQ/raw/PO_branch/architecture/CodeFlowDiagram.png" />
+</p>
 
 ### Our approach to Human-Centered Design (HCD)
 ---
