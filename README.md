@@ -150,7 +150,7 @@ The front-end is written in Angular 5 to allow rapid prototyping using pure HTML
 
 **O.** We used [CircleCI](https://circleci.com) for **continuous integration** and, once the builds on our master branch were *successful*, set up the infrastructure to **deploy to AWSELB**. [Here are our builds](https://circleci.com/gh/agilesix/ADPQ).
 
-**P.** [AWSELB](https://aws.amazon.com/elasticbeanstalk/) provides configuration management.
+**P.** [AWSELB](https://aws.amazon.com/elasticbeanstalk/) provided our configuration management.
 ![AWSELB](https://github.com/agilesix/ADPQ/blob/PO_branch/A2%20AWS%20Elastic%20Beanstalk.png)
 **Q.** The team leveraged **[Amazon Cloud Watch](https://aws.amazon.com/cloudwatch/)** to continuously monitor the availability and performance of the the application. We set up a dashboard in **Cloudwatch** that displayed a variety of **EC2 metrics**, including Network-In, Network-Out, CPU utilization, and Status Check Failures on each production web server. Because we used **Elastic Beanstalk** to manage our application instances, we were able to set up metrics and alarms on EB auto-scaling groups as well. We configured alarms to alert our DevOps personnel whenever the site became unavailable, as well as “self-healing” alarms to automatically add an instance whenever the in-service instance pool dropped below a certain threshold.
 
