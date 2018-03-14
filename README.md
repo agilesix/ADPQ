@@ -62,7 +62,7 @@ We think of HCD as being in **3** repeating phases:
 
 - **Dan Levenson** (Agile Six - 20 hrs) - *Content Writer*
 
-- **Brian Derfer** (Agile Six - 40 hrs )  - *Solution Architect*
+- **Brian Derfer** (Agile Six - 40 hrs )  - *Technical Architect*
 
 - **Aurora Hay** (Agile Six - 116 hrs)  - *Fullstack Web Developer, DevOps Engineer*
 
