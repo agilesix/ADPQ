@@ -1,11 +1,17 @@
 ![A2 Landing](https://github.com/agilesix/ADPQ/blob/PO_branch/artifacts/A2%20Landing.png)
 # PQVP AD-DS Refresh
 
+The prototype is located at https://a2.agile6.com
+logins:
+chris@a2tool.com / chrisa2tool (Librarian)
+dan@a2tool.com / dana2tool (Librarian)
+bob@a2tool.com / boba2tool (Contracting Professional)
+tanya@a2tool.com / tanyaa2tool (Contractiong Professional)
+
 ### How we approached the Prototype:
 ---
 [Agile Six](https://agile6.com/) is a California based DVBE founded in response to the US Digital Service. For this effort, we teamed with [Fearless Solutions](https://fearless.tech/) and [Skylight Digital](https://skylight.digital/). We are very proud to submit our prototype and our team for consideration. Looking forward, we have captured several bugs and a future roadmap in our [product backlog](https://trello.com/b/Ww8O7aX7/adpq2018).
 
-The prototype is located at https://a2.agile6.com.
 
 The team (described under item B below) conducted a one-week Runway Sprint (UX discovery/architecture/infrastructure), where we defined and proofed the core architecture of the site as well as settled upon a number of toolsets and processes, including those we would leverage for CI, CM, Deployment, Version Control, and general communication within the team. The runway sprint was followed by a 3-day intense feature development sprint in which the feature-based user stories were implemented and tested by the team, then we followed with  a usability testing and remediation sprint.
 
