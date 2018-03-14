@@ -3,10 +3,7 @@
 
 The prototype is located at https://a2.agile6.com
 logins:
-chris@a2tool.com / chrisa2tool (Librarian)
-dan@a2tool.com / dana2tool (Librarian)
-bob@a2tool.com / boba2tool (Contracting Professional)
-tanya@a2tool.com / tanyaa2tool (Contractiong Professional)
+
 
 ### How we approached the Prototype:
 ---
