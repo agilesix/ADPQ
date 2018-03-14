@@ -60,15 +60,15 @@ We think of HCD as being in **3** repeating phases:
 
 - **Dan Levenson** (Agile Six - 20 hrs) - *Content Writer*
 
-- **Brian Derfer** (Agile Six - XX hrs )  - *Technical Architect*
+- **Brian Derfer** (Agile Six - 40 hrs )  - *Technical Architect*
 
-- **Aurora Hay** (Agile Six - 120 hrs)  - *Fullstack Web Developer, DevOps Engineer*
+- **Aurora Hay** (Agile Six - 116 hrs)  - *Fullstack Web Developer, DevOps Engineer*
 
 - **Chris Cairns** (Skylight - 9 hrs) - *Content Writer, Usability Tester*
 
 - **Nick Bristow** (Skylight - 2 hrs) - *Content Writer, Usability Tester*
 
-- **Allan Schougaard** (Agile Six - XX hrs)  - *Technical Architect, Back-end Web Developer*
+- **Allan Schougaard** (Agile Six - 37 hrs)  - *Technical Architect, Back-end Web Developer*
 
 - **David Gage** (Fearless - XX hrs) - *Fullstack Web Developer*
 
