@@ -3,7 +3,7 @@
 
 The prototype is located at https://a2.agile6.com
 
-logins:found in the [wiki](https://github.com/agilesix/ADPQ/wiki)
+login accounts: [found in the wiki](https://github.com/agilesix/ADPQ/wiki)
 
 
 ### How we approached the Prototype:
