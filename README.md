@@ -7,7 +7,7 @@
 
 The prototype is located at https://a2.agile6.com.
 
-The team (described under item B below) conducted a one-week Runway Sprint (infrastructure/architecture/ux discovery), where we defined and proofed the core architecture of the site as well as settled upon a number of toolsets and processes, including those we would leverage for CI, CM, Deployment, Version Control, and general communication within the team. The runway sprint was followed by a 3 day intense feature development sprint in which the feature-based user stories were implemented and tested by the team, then we followed with  a usability testing and remediation sprint.
+The team (described under item B below) conducted a one-week Runway Sprint (UX discovery/architecture/infrastructure), where we defined and proofed the core architecture of the site as well as settled upon a number of toolsets and processes, including those we would leverage for CI, CM, Deployment, Version Control, and general communication within the team. The runway sprint was followed by a 3 day intense feature development sprint in which the feature-based user stories were implemented and tested by the team, then we followed with  a usability testing and remediation sprint.
 
 The team organized its work using a [Trello board](https://trello.com/b/Ww8O7aX7/adpq2018) and a Slack Channel and uberconference to facilitate quick communication, we used Google Drive for internal artifacts for access until they could later be uploaded to the repo for evalutation. Please note that file dates in the subnmitted repo (e.g. for HCD artifacts) do not match creation dates in google drive.  We leveraged Google Drive as a collaborative document repository, and GitHub as a version control repository.
 
@@ -82,9 +82,11 @@ Our approach was as follows:
 
 - ***Future Backlog*** - The following link shows the trello board we used as both a product and sprint [backlogs](https://trello.com/b/Ww8O7aX7/adpq2018).
 
-**D.** Agile Six used at least 3 user design techniques
+**D.** Agile Six used at least 4 user design techniques
 
-- [Personas & Surveys](https://app.xtensio.com/folio/y0wgeokr)
+- [Surveys & Personas](https://app.xtensio.com/folio/y0wgeokr)
+
+- [Design Research Interviews](https://drive.google.com/drive/folders/163f2UsKxhqRlkdyK3SK6H7fESrUpo2wk?usp=sharing)
 
 - [Usability Testing](https://drive.google.com/open?id=1Gk2jxA2E0F5bU2UV6LJkFfydR31iFcM-)
 
