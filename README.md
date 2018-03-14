@@ -3,7 +3,7 @@
 
 ### How we approached the Prototype:
 ---
-[Agile Six](https://agile6.com/) is an SDVOSB founded in response to the US Digital Service. For this effort, we teamed with [Fearless Solutions](https://fearless.tech/) and [Skylight Digital](https://skylight.digital/). We are very proud to submit our prototype for consideration. Looking forward, we have captured several bugs and a future roadmap in our [product backlog](https://trello.com/b/Ww8O7aX7/adpq2018).
+[Agile Six](https://agile6.com/) is a California based DVBE founded in response to the US Digital Service. For this effort, we teamed with [Fearless Solutions](https://fearless.tech/) and [Skylight Digital](https://skylight.digital/). We are very proud to submit our prototype and our team for consideration. Looking forward, we have captured several bugs and a future roadmap in our [product backlog](https://trello.com/b/Ww8O7aX7/adpq2018).
 
 The prototype is located at https://a2.agile6.com.
 
