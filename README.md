@@ -35,6 +35,7 @@ These include:
 
 **Principle 4:** Leverage Automated Processes. As the codebase for an application or system grows, it it essential to have an automated build, test, deployment, and monitoring infrastructure in place.  For ***A2***, our team leverages open source testing frameworks for automated testing, CircleCI for continuous integration and continuous deployment, and Amazon CloudWatch for performance monitoring.
 
+![TechStack](https://github.com/agilesix/ADPQ/raw/PO_branch/architecture/Domain%20Model%20-%20Tech%20Stack.jpeg)
 [See our System Overview](https://github.com/agilesix/ADPQ/wiki/A2-Architecture#technology-stack) for a graphical depiction of the technologies used in this prototype.
 
 ### Our approach to Human-Centered Design (HCD)
