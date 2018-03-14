@@ -54,7 +54,7 @@ We think of HCD as being in **3** repeating phases:
 
 **A.** Team Agile Six was lead by Product Owner/Manager Robert Rasmussen who had complete responsibility for the product as well as the team. Mr. Rasmussen is a certified Product Owner, Scrum Master, Project Manager and Scrum Coach (CSPO, CSM, PMP, CSP, PSPO2, PSM).
 
-**B.** Team Agile Six was cross-functional, used only 340 hours and included:
+**B.** Team Agile Six was cross-functional, used only 340 hours, and included:
 
 - **Robert Rasmussen** (Agile Six - 35 hrs) - *Product Manager, Agile Coach*
 
