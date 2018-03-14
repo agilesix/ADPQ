@@ -84,13 +84,15 @@ Our approach was as follows:
 
 **D.** Agile Six used at least 4 user design techniques
 
-- [Surveys & Personas](https://app.xtensio.com/folio/y0wgeokr)
 
 - [Design Research Interviews](https://drive.google.com/drive/folders/163f2UsKxhqRlkdyK3SK6H7fESrUpo2wk?usp=sharing)
 
-- [Usability Testing](https://drive.google.com/open?id=1Gk2jxA2E0F5bU2UV6LJkFfydR31iFcM-)
+- [Personas](https://app.xtensio.com/folio/y0wgeokr)
 
 - [Wireframes](https://github.com/agilesix/ADPQ/wiki/A2-Wireframes)
+
+- [Usability Testing](https://drive.google.com/open?id=1Gk2jxA2E0F5bU2UV6LJkFfydR31iFcM-)
+
 
 **E.** We used only one [repository](https://github.com/agilesix/ADPQ) where all code and artifacts are stored and all code commits documented.
 
