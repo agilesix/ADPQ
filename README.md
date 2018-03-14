@@ -16,9 +16,9 @@ The team (described under item B below) conducted a one-week Runway Sprint (UX d
 The team organized its work using a [Trello board](https://trello.com/b/Ww8O7aX7/adpq2018) and a Slack Channel and uberconference to facilitate quick communication, we used Google Drive for internal artifacts for access until they could later be uploaded to the repo for evaluation. Please note that file dates in the submitted repo (e.g. for HCD artifacts) do not match creation dates in google drive.  We leveraged Google Drive as a collaborative document repository, and GitHub as a version control repository.
 
 Our team employs ***[Domain Driven Design](https://github.com/agilesix/ADPQ/wiki/A2-Architecture#domain-driven-design)*** in the construction of services and applications. One of the first artifacts we created, and rapidly iterated on in collaboration with users and SMEs, was a [domain model](https://github.com/agilesix/ADPQ/wiki/A2-Architecture#domain-driven-design), which helped the team gain an understanding of the concepts and real-world objects with which our users engage. The domain model drove the initial creation of entities and data objects in our services and application. This results in close alignment between the user's understanding of their task and the entities represented in code.
-![DModel](https://github.com/agilesix/ADPQ/raw/PO_branch/architecture/Domain%20Model%20-%20Domain%20Model.png)
+
 In order to support agility and keep the domain model from going stale, the team has leveraged an open source modeling tool, called [ERD](https://github.com/amatsuda/erd), which tightly integrates with the application; in fact it runs as part of the development build (and only the development build). With this tool and the Rails database modules (ie. versioned database migrations and ActiveRecord), we can continue to rapidly iterate on the domain model as well as its representation in code, keeping the database schema, source code and domain model all in sync. 
-![ERD](https://github.com/agilesix/ADPQ/blob/PO_branch/architecture/ERD.png)
+
 One of the first decisions was to build or repurpose. Whenever possible, we want to make these decisions based on empirical knowledge, rather than simply making a "guess". We used a technique called "Concurrent Set Based Engineering" (CSBE), by which the team pursued multiple different development approaches in parallel. In this case, we pursued two approaches for two hours: one approach leveraged an [open source knowledge management platform written using Rails](https://github.com/charusat09/kms), and the other building a platform from scratch. At the end of the timebox, the team decided based to continue with the custom applicaiton itt was outpacing the re-purposing option.  The custom solution aligned better with our domain model (because it was built with reference to it), and leveraged an authentication mechanism that matched our requirement. The team then took a mobile-first approach to design. Because this was an MVP prototype with a necessarily limited budget, we were necessarily limited in the amount of progressive enhancement for larger screen sizes that we were able to accomplish.
 
 ### Technology Stack
@@ -28,7 +28,6 @@ Our application architecture and infrastructure were anchored by a number of key
 These include:
 
 **Principle 1:** Leverage a modern, open source technology stack.  [Our technology stack](https://github.com/agilesix/ADPQ/wiki/A2-Architecture#technology-stack) is comprised entirely of open source frameworks and components.
-![TechStack](https://github.com/agilesix/ADPQ/raw/PO_branch/architecture/Domain%20Model%20-%20Tech%20Stack.jpeg)
 
 **Principle 2:** Leverage pre-built components. In our view, it always makes sense to weigh the cost of building features from scratch against leveraging a suitable COTS and Open-Source components available. In this case, we decided to build the application from scratch.
 
@@ -36,7 +35,7 @@ These include:
 
 **Principle 4:** Leverage Automated Processes. As the codebase for an application or system grows, it it essential to have an automated build, test, deployment, and monitoring infrastructure in place.  For ***A2***, our team leverages open source testing frameworks for automated testing, CircleCI for continuous integration and continuous deployment, and Amazon CloudWatch for performance monitoring.
 
-[See our System Overview](https://github.com/agilesix/ADPQ/wiki/A2-Architecture#technology-stack) for a graphical depiction of the technologies used in this prototype.
+![TechStack](https://github.com/agilesix/ADPQ/raw/PO_branch/architecture/Domain%20Model%20-%20Tech%20Stack.jpeg)
 
 ### Our approach to Human-Centered Design (HCD)
 ---
