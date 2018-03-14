@@ -2,7 +2,7 @@
 # PQVP AD-DS Refresh
 
 The prototype is located at https://a2.agile6.com
-logins:
+logins:found in the [wiki](https://github.com/agilesix/ADPQ/wiki)
 
 
 ### How we approached the Prototype:
