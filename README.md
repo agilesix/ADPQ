@@ -54,7 +54,7 @@ We think of HCD as being in **3** repeating phases:
 ### How we handled the specific RFI Requirements
 ---
 
-**A.** Team Agile Six was lead by Product Owner/Manager Robert Rasmussen who had complete responsibility for the product as well as the team. Mr. Rasmussen is a certified Product Owner, Scrum Master, Project Manager and Scrum Coach (CSPO, CSM, PMP, CSP, PSPO2, PSM).
+**A.** Team Agile Six was led by Product Owner/Manager Robert Rasmussen who had complete responsibility for the product as well as the team. Mr. Rasmussen is a certified Product Owner, Scrum Master, Project Manager and Scrum Coach (CSPO, CSM, PMP, CSP, PSPO2, PSM).
 
 **B.** Team Agile Six was cross-functional, used only 340 hours, and included:
 
@@ -86,7 +86,7 @@ Our approach was as follows:
 
 - ***Hear Phase*** -  We performed [Design Research Interviews](https://drive.google.com/drive/folders/163f2UsKxhqRlkdyK3SK6H7fESrUpo2wk?usp=sharing) and surveys of actual contracting professionals asking question about their Movitations, Expertise and Personality on the topic of Agile Acquisition as documented in our [Personas](https://app.xtensio.com/folio/y0wgeokr). We presented the entire development team with an overview of these findings during a workshop before we started any application design, where they could ask additional questions of the users.
 
-- ***Create Phase*** - After listening to our users both with interviews and surveys we created [drawings](artifacts/A2%20Tool%20Concept.pdf) and [wirefames](https://github.com/agilesix/ADPQ/wiki/A2-Wireframes)  Based on this experience we were ready to start building our prototype with a goal of getting something in the users hands fast. 
+- ***Create Phase*** - After listening to our users both with interviews and surveys we created [drawings](artifacts/A2%20Tool%20Concept.pdf) and [wirefames](https://github.com/agilesix/ADPQ/wiki/A2-Wireframes). Based on this experience we were ready to start building our prototype with a goal of getting something in the users hands fast. 
 
 - ***Deliver Phase*** - After the first iteration was pushed to QA environment we were able to start exposing the application to our users. We were quickly able to identify gaps (notice black label items in our [product backlog](https://trello.com/b/Ww8O7aX7/adpq2018) were learned from user testing), which informed subsequent iterations of our prototype. We plan in the future to frequently add new features in similar fashion (expose to small subset of users, analyze, slowly roll out).
 
